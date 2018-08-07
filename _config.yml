@@ -1,19 +1,18 @@
 # Site wide configuration
 
-title: Site Title
+title: Geoffrey Pruvost
 locale: en_US
 logo: # filename of a logo image that has been placed into your images directory
 
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
-  name: Your Name
+  name: Geoffrey Pruvost
   avatar: bio-photo.jpg
-  bio: "A brief description of yourself."
-  email: #emailaddress
-  # Do not include the @ symbol in your Twitter username
+  bio: "Phd Student."
+  email: "geoffrey [at] pruvost.xyz"
   twitter: #username
-  linkedin: #username
-  github: #username
+  linkedin: geoffreypruvost
+  github: geoffreyp
   orcid: # ID Number (ex. 0000-0000-0000-0000)
   researchgate: #username
   mendeley: #username
