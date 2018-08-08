@@ -7,17 +7,18 @@ Current Position Description
 
 ## Education
 
-`2013 - 2015`
-__IUT of Littoral Côte d'Opale__
-DUT Degree in computer science
+`2016 - 2018`
+__University of Littoral Côte d'Opale__
+Master Degree specialized in Open Source
 
 `2015 - 2016`
 __University of Littoral Côte d'Opale__
 Licence Degree 
 
-`2016 - 2018`
-__University of Littoral Côte d'Opale__
-Master Degree specialized in Open Source
+`2013 - 2015`
+__IUT of Littoral Côte d'Opale__
+DUT Degree in computer science
+
 
 <!-- 
 ## Awards
@@ -58,11 +59,18 @@ __Current Job Title__, Current Employer
 - Task
 - Task
 -->
-`2016-208`
+`2016-2018`
 __Web Developer__, Adexos 
 
 - Magento 1
 - Magento 2
+
+`2014-2016`
+__Java Developer__, SBE Global Services 
+
+- Nexaweb (JEE)
+- Java web services
+- GWT
 
 
 
