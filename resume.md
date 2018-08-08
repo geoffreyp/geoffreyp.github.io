@@ -7,22 +7,25 @@ Current Position Description
 
 ## Education
 
-`1990 - 1994`
-__University Name__
-Degree Awarded
+`2013 - 2015`
+__IUT of Littoral Côte d'Opale__
+DUT Degree in computer science
 
-`1995 - 1997`
-__University Name__
-Degree Awarded 
+`2015 - 2016`
+__University of Littoral Côte d'Opale__
+Licence Degree 
 
+`2016 - 2018`
+__University of Littoral Côte d'Opale__
+Master Degree specialized in Open Source
+
+<!-- 
 ## Awards
 
 `2012`
 Name of Award, Organization 
 
 ## Publications
-
-<!-- A list is also available [online](https://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
 
 ### Journals
 
@@ -46,25 +49,25 @@ Book Title, Journal Title
 `1994`
 Presentation Title, Conference, <a href="https://MyWebsite.tld/presentation1">Link to Presentation</a>
 
-
+ -->
 ## Occupation
-
+<!-- 
 `Current`
 __Current Job Title__, Current Employer 
 
 - Task
 - Task
+-->
+`2016-208`
+__Web Developer__, Adexos 
 
-`1994-1996`
-__Current Job Title__, Current Employer 
-
-- Task
-- Task
+- Magento 1
+- Magento 2
 
 
 
 <!-- ### Footer
 
-Last updated: May 2013 -->
+Last updated: August 2018 -->
 
 
