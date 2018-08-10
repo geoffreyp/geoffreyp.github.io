@@ -1,9 +1,6 @@
 ---
 layout: resume
 ---
-## Currently
-
-Current Position Description
 
 ## Education
 
