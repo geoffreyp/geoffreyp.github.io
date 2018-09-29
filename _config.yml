@@ -9,7 +9,7 @@ owner:
   name: Geoffrey Pruvost
   avatar: bio-photo.jpg
   bio: "Phd Student."
-  email: "geoffrey [at] pruvost.xyz"
+  email: "geoffrey@pruvost.xyz"
   twitter: #username
   linkedin: geoffreypruvost
   github: geoffreyp
@@ -47,7 +47,7 @@ lowlight-color: '#000'
   # NOTE: If you would like your site to be licensed under a creative commons license, uncomment the 'yes' next to the type of license you wish to use.
 creative-commons:
   cc-by: #yes
-  cc-by-nc: #yes
+  cc-by-nc: yes
 
 #DO NOT EDIT BEYOND THIS POINT
 # Jekyll configuration
