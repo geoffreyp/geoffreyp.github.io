@@ -57,13 +57,13 @@ __Current Job Title__, Current Employer
 - Task
 -->
 `2016-2018`
-__Web Developer__, Adexos 
+__Web Developer__ Adexos 
 
 - Magento 1
 - Magento 2
 
 `2014-2016`
-__Java Developer__, SBE Global Services 
+__Java Developer__ SBE Global Services 
 
 - Nexaweb (JEE)
 - Java web services
