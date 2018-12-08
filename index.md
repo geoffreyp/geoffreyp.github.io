@@ -10,3 +10,9 @@ I am a [Phd Student](/research/) in computer science in the BONUS team ([Inria](
 - Multiobjective optimization
 - [MOEA/D algorithm](https://sites.google.com/view/moead/home)
 - [BigMO Project](https://sites.google.com/view/bigmo/home)
+
+## Open Source projects followed:
+
+- [Gladys project](https://gladysproject.com/en/)
+- [Cozy Cloud](https://cozy.io/en/)
+- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
