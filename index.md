@@ -3,7 +3,7 @@ layout: page
 excerpt: "About Me..."
 ---
 
-I am a [Phd Student](/research/) in computer science in the BONUS team ([Inria](https://www.inria.fr/equipes/bonus)/[Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47)). My work is focused on multiobjective optimization and more particularly on the decomposition of large scale multiobjectif problems.
+I am a [Phd Student](/research/) in computer science at the Lille University ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). My work is focused on multiobjective optimization and more particularly on the decomposition of large scale multiobjectif problems.
 
 ## Current Interests and Projects:
 
@@ -16,3 +16,4 @@ I am a [Phd Student](/research/) in computer science in the BONUS team ([Inria](
 - [Gladys project](https://gladysproject.com/en/)
 - [Cozy Cloud](https://cozy.io/en/)
 - [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [Blockstack](https://blockstack.org/)
