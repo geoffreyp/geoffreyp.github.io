@@ -11,9 +11,7 @@ I am a [Phd Student](/research/) in computer science at the Lille University ([C
 - [MOEA/D algorithm](https://sites.google.com/view/moead/home)
 - [BigMO Project](https://sites.google.com/view/bigmo/home)
 
-## Open Source projects followed:
+## News
 
-- [Gladys project](https://gladysproject.com/en/)
-- [Cozy Cloud](https://cozy.io/en/)
-- [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh)
-- [Blockstack](https://blockstack.org/)
+- 8 Jan, 2020 : New paper accepted at Evocop 2020
+- 5 Dec, 2019 : Visiting the Exeter University to present a talk at a student workshop about the sub-problem selection strategy in MOEA/D
