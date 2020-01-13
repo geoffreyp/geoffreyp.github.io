@@ -14,4 +14,4 @@ I am a [Phd Student](/research/) in computer science at the Lille University ([C
 ## News
 
 - 8 Jan, 2020 : New paper accepted at Evocop 2020
-- 5 Dec, 2019 : Visiting the Exeter University to present a talk at a student workshop about the sub-problem selection strategy in MOEA/D
+- 5 Dec, 2019 : Visiting the Exeter University to present a talk at the student workshop between the Exeter University and the Lille University (Talk about the sub-problem selection strategy in MOEA/D)
