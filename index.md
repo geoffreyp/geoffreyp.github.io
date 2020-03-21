@@ -3,7 +3,7 @@ layout: page
 excerpt: "About Me..."
 ---
 
-I am a [Phd Student](/research/) in computer science at the Lille University ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). My work is focused on multiobjective optimization and more particularly on the decomposition of large scale multiobjectif problems.
+I am a [Phd Student](/research/) in computer science at the Lille University ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). My work is focused on multiobjective optimization and more particularly on the decomposition of large scale multiobjective problems.
 
 ## Current Interests and Projects:
 
