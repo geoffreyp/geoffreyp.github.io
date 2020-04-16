@@ -15,7 +15,7 @@ Genetic and Evolutionary Computation Conference (GECCO 2020)
 __On the Combined Impact of Population Size and Sub-problem Selection in MOEA/D__
 *Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe, Ke Li, Qingfu Zhang <br>
 Evolutionary Computation in Combinatorial Optimization. EvoCOP 2020. Lecture Notes in Computer Science, vol 12102. Springer, Cham  <br>
-[Cite the paper [BIB File]](/assets/bib/pruvost_evocop2020.bib) - [[PDF]](https://rdcu.be/b3weL) - [[slides]](slides_evocop2020_last.pdf)
+[Cite the paper [BIB File]](/assets/bib/pruvost_evocop2020.bib) - [[PDF]](https://rdcu.be/b3weL) - [[slides]](/assets/slides_evocop2020_last.pdf)
 
 
 ## Thesis
