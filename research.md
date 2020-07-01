@@ -1,15 +1,16 @@
 ---
 layout: resume
 ---
-## To appear
+<!-- ## To appear -->
+
+
+## Conference Papers
 
 `July 2020 `
 __Surrogate-assisted Multi-objective Combinatorial Optimization based on Decomposition and Walsh Basis__
 *Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe, Sébastien Verel, Qingfu Zhang <br>
 Genetic and Evolutionary Computation Conference (GECCO 2020)
-
-
-## Conference Papers
+[Cite the paper [BIB File]](/assets/bib/pruvost_gecco2020.bib) - [[PDF]](https://dl.acm.org/doi/epdf/10.1145/3377930.3390149) 
 
 `April 2020 `
 __On the Combined Impact of Population Size and Sub-problem Selection in MOEA/D__
