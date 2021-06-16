@@ -1,7 +1,12 @@
 ---
 layout: resume
 ---
-<!-- ## To appear -->
+## To appear
+
+`June 2021 `
+__Enhancing MOEA/D with Escape Mechanisms__
+Bilel Derbel, *Geoffrey Pruvost*, Byung-Woo Hong <br>
+IEEE Congress on Evolutionary Computation (IEEE CEC 2021) <br>
 
 
 ## Conference Papers
