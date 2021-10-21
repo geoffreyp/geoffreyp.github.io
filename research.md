@@ -1,15 +1,22 @@
 ---
 layout: resume
 ---
-## To appear
+## To appear / preprint
+
+`October 2021 `
+__ A Modular Surrogate-assisted Framework for Expensive Multiobjective Combinatorial Optimization__
+*Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe, Sébastien Verel, Qingfu Zhang <br>
+Preprint <br>
+[Cite the paper [BIB File]](/assets/bib/pruvost_preprint2021.bib) - [[PDF]](https://hal.inria.fr/hal-03380316)
+
+
+## Conference Papers
 
 `June 2021 `
 __Enhancing MOEA/D with Escape Mechanisms__
 Bilel Derbel, *Geoffrey Pruvost*, Byung-Woo Hong <br>
 IEEE Congress on Evolutionary Computation (IEEE CEC 2021) <br>
-
-
-## Conference Papers
+[Cite the paper [BIB File]](/assets/bib/derbel_cec2021.bib) - [[PDF]](https://hal.inria.fr/hal-03334087/)
 
 `July 2020 `
 __Surrogate-assisted Multi-objective Combinatorial Optimization based on Decomposition and Walsh Basis__
