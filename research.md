@@ -4,7 +4,7 @@ layout: resume
 ## To appear / preprint
 
 `October 2021 `
-__ A Modular Surrogate-assisted Framework for Expensive Multiobjective Combinatorial Optimization__
+__A Modular Surrogate-assisted Framework for Expensive Multiobjective Combinatorial Optimization__
 *Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe, Sébastien Verel, Qingfu Zhang <br>
 Preprint <br>
 [Cite the paper [BIB File]](/assets/bib/pruvost_preprint2021.bib) - [[PDF]](https://hal.inria.fr/hal-03380316)
