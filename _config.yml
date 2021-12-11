@@ -4,11 +4,16 @@ title: Geoffrey Pruvost
 locale: en_US
 logo: # filename of a logo image that has been placed into your images directory
 
+# Multi-site (translate)
+languages: ["fr", "en"]
+#exclude_from_localizations: ["javascript", "images", "css"]
+default_locale_in_subfolder: true
+
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
   name: Geoffrey Pruvost
   avatar: bio-photo.jpg
-  bio: "Phd Student."
+  bio: "Docteur-Entrepreneur a l'Inria Startup Studio."
   email: "geoffrey@pruvost.xyz"
   twitter: #username
   linkedin: geoffreypruvost
@@ -59,6 +64,7 @@ sass:
   sass_dir: _sass
   style: compressed
 plugins:
+  - jekyll-multiple-languages-plugin
   - jekyll-sitemap
   - jekyll-seo-tag
 

@@ -1,7 +1,7 @@
 ---
 layout: resume
 ---
-## To appear / preprint
+## {% t research.to_appear %}
 
 `October 2021 `
 __A Modular Surrogate-assisted Framework for Expensive Multiobjective Combinatorial Optimization__
@@ -10,7 +10,7 @@ Preprint <br>
 [Cite the paper [BIB File]](/assets/bib/pruvost_preprint2021.bib) - [[PDF]](https://hal.inria.fr/hal-03380316)
 
 
-## Conference Papers
+## {% t research.conf %}
 
 `June 2021 `
 __Enhancing MOEA/D with Escape Mechanisms__
@@ -31,7 +31,7 @@ Evolutionary Computation in Combinatorial Optimization. EvoCOP 2020. Lecture Not
 [Cite the paper [BIB File]](/assets/bib/pruvost_evocop2020.bib) - [[PDF]](https://rdcu.be/b3weL) - [[slides]](/assets/slides_evocop2020_last.pdf) - [[Video]](https://youtu.be/wr34i5tMhTs)
 
 
-## Thesis
+## {% t research.thesis %}
 
 `2018 - 2021`
 __University of Lille / Inria__

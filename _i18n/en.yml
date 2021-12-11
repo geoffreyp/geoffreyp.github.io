@@ -1,0 +1,15 @@
+nav:
+  home: Home
+  resume: Resume
+  thesis: Thesis
+  research: Research
+
+global:
+  french: FR
+  english: EN
+  lang: Aller vers le site français
+
+research:
+  to_appear: To appear / preprint
+  conf: Conference Papers
+  thesis: Thesis
