@@ -6,3 +6,9 @@ By using this template you will have a website that is well designed, easy to ma
 
 ## [Getting Started Guide](https://ncsu-libraries.github.io/jekyll-academic-docs/)
 Complete documentation for getting started as well as advanced features of Jekyll Academic can be fount at [https://ncsu-libraries.github.io/jekyll-academic-docs/](https://ncsu-libraries.github.io/jekyll-academic-docs/).
+
+
+## How build 
+
+
+    bundle exec jekyll build -d ./docs

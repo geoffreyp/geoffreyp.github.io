@@ -2,66 +2,72 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-{% include _cvhead.html %}
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
-<style>
-     #main .page {
+<head>
+  {% include _cvhead.html %}
+
+  <style>
+    /* #main .page {
       width:52.5%;
-      }
-     .resume code{
-          margin-left: 25px;
-          padding: 4px 10px;
-     }
-    .resume p strong{
-         margin-bottom: 4px;
-     }
-     .resume a {
-          color: #5c8fdf;
-          text-decoration: underline;
-     }
-    
+      } */
+    .resume code {
+      margin-left: 25px;
+      padding: 4px 10px;
+    }
+
+    .resume p strong {
+      margin-bottom: 4px;
+    }
+
+    .resume a {
+      color: #5c8fdf;
+      text-decoration: underline;
+    }
   </style>
-  
+
 </head>
 
 <body class="page">
 
-{% include _browser-upgrade.html %}
+  {% include _browser-upgrade.html %}
 
-{% include _navigation.html %}
+  {% include _navigation.html %}
 
 
 
-<div id="main" role="main">
-  <div class="article-author-side">
-    {% include _author-bio.html %}
-  </div>
-  <article class="page">
-    <!--h1>{{ page.title }}</h1-->
+  <div id="main" role="main">
+    <div class="article-author-side">
+      {% include _author-bio.html %}
+    </div>
+    <article class="page">
+      <!--h1>{{ page.title }}</h1-->
 
-   <div class="resume">
-      {{ content }}
-</div><!--closing resume div-->
-    <!--  {% if page.share != false %}
+      <div class="resume">
+        {{ content }}
+      </div>
+      <!--closing resume div-->
+      <!--  {% if page.share != false %}
         <hr />
   
       {% endif %}-->
 
-   <!-- {% if site.owner.disqus-shortname and page.comments == true %}
+      <!-- {% if site.owner.disqus-shortname and page.comments == true %}
       <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  {% endif %}
-  </article>
-</div><!-- /#index -->
+      {% endif %}
+    </article>
+  </div><!-- /#index -->
 
-<div class="footer-wrap">
-  <footer>
-  <!--  {% include _footer.html %}-->
-  </footer>
-</div><!-- /.footer-wrap -->
+  <div class="footer-wrap">
+    <footer>
+      <!--  {% include _footer.html %}-->
+    </footer>
+  </div><!-- /.footer-wrap -->
 
-{% include _scripts.html %}
+  {% include _scripts.html %}
 
 </body>
+
 </html>
