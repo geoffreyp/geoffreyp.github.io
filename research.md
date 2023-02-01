@@ -1,16 +1,21 @@
 ---
 layout: resume
 ---
-## {% t research.to_appear %}
-
-`October 2021 `
-__A Modular Surrogate-assisted Framework for Expensive Multiobjective Combinatorial Optimization__
-*Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe, Sébastien Verel, Qingfu Zhang <br>
-Preprint <br>
-[Cite the paper [BIB File]](/assets/bib/pruvost_preprint2021.bib) - [[PDF]](https://hal.inria.fr/hal-03380316)
-
 
 ## {% t research.conf %}
+
+`January 2023 `
+__Walsh-based surrogate-assisted multi-objective combinatorial optimization: A fine-grained analysis for pseudo-boolean functions__
+Bilel Derbel, *Geoffrey Pruvost*, Arnaud Liefooghe, Sébastien Verel, Qingfu Zhang <br>
+Journal of Applied Soft Computing <br>
+[[PDF]](https://doi.org/10.1016/j.asoc.2023.110061)
+
+
+`October 2022 `
+__Moead-framework: a modular MOEA/D Python framework__
+*Geoffrey Pruvost*, Bilel Derbel, Arnaud Liefooghe <br>
+Journal of Open Source Software <br>
+[[PDF]](https://joss.theoj.org/papers/10.21105/joss.02974.pdf)
 
 `June 2021 `
 __Enhancing MOEA/D with Escape Mechanisms__
