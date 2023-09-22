@@ -1,15 +1,17 @@
-I am a [doctor](/en/thesis) in computer science, recently graduated from the University of Lille ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). My work focuses on multi-objective optimization and more particularly on the decomposition of multi-objective problems.
+I have a [PhD](/en/thesis) in computer science from the University of Lille ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)).
 
-I am currently a project holder at the [Inria Startup Studio](https://www.inria.fr/en/inria-startup-studio). The project consists in optimizing multiobjective urban mobility problems.
+I'm currently a Data Scientist in the startup [Diag n' Grow]([https://www.inria.fr/en/inria-startup-studio](https://www.diagngrow.com/)). My work focuses on data and artificial intelligence in the context of intangible assets, and covers a wide range of subjects such as patent classification.
+
+I was the Optimo startup project leader at the Inria Startup Studio from September 2021 to January 2023.
 
 ## Current Interests and Projects:
 
 - Multiobjective optimization
 - [MOEA/D algorithm](https://sites.google.com/view/moead/home)
-- [BigMO Project](https://sites.google.com/view/bigmo/home)
+- Data Science
 
 ## News
-
+- 07 Aug, 2023 : I'm joining the [Diag n' Grow]([https://www.inria.fr/en/inria-startup-studio](https://www.diagngrow.com/)) team as a data scientist
 - 03 Dec, 2021 : PhD defense ! I am Doctor of the University of Lille in computer science
 - 25-27 Nov, 2021 : Participation in the 2nd edition of the [Hackatech](https://hackatechlille.inria.fr/) with my own project : Optimo
 - 01, Oct, 2021 : Joining the [Inria Startup Studio](https://www.inria.fr/en/inria-startup-studio) with the project Optimo
