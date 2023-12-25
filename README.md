@@ -21,7 +21,7 @@ You can see it live in https://www.adrianmoreno.info (my personal website)
 ## Download
 
 - Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
-- [Download from Github](https://github.com/zetxek/adritian-free-hugo-theme/archive/master.zip).
+- [Download from Github](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip).
 
 ## Installation
 
