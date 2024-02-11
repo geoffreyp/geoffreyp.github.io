@@ -39,7 +39,7 @@ Note: the theme has **not** been migrated to Hugo Modules yet. To install it, yo
 
     - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
     - Enter the newly created folder: `cd <your website's name>/themes/`
-    - Install PostCSS: `npm i -D postcss postcss-cli autoprefixer` [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
+    - Install PostCSS: execute `npm i -D postcss postcss-cli autoprefixer` from the top-level site folder [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
     - Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
     - Replace the `config.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/config.toml hugo.toml` (*executed from the website root folder*)
     - Start Hugo with `hugo server -D`
