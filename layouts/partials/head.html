@@ -15,10 +15,10 @@
 
 {{ $cssBundle := slice }}
 {{ range .Site.Params.plugins.css }}
-    {{ if findRE "^http" .link }}
-        <link rel="stylesheet" href="{{ .link | absURL }}">
-        {{ else }}
-        {{ $cssFile := resources.Get .link }}
+    {{ if findRE "^http" .URL }}
+        <link rel="stylesheet" href="{{ .URL | absURL }}">
+    {{ else }}
+        {{ $cssFile := resources.Get .URL }}
         {{ $cssBundle = $cssBundle | append $cssFile }}
     {{ end }}
 {{ end }}
