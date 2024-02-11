@@ -1,8 +1,9 @@
 # Adritian Free Hugo Theme
 ###### Adritian Hugo Theme for Personal Websites
 
-This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme created by Radity.
-It's based on Bootstrap (so it's responsive and mobile-first), and the main changes have been upgrades on the web performance and accessibility of the template.
+This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme created by Radity. It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
+
+The templates are based on Bootstrap (so it's responsive and mobile-first), and the main changes I have made have been upgrades on the web performance and accessibility of the template.
 
 Some of the best usages for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form that you can customize to your mail address, without setting up a backend (using https://formspree.io).
 
@@ -16,7 +17,7 @@ Some of the best usages for the theme are for minimalistic websites, single-page
 - added more pages/templates
 - upgrade loading performance (100 score in [Google Page Speed Insights](https://pagespeed.web.dev))
 
-You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website)
+You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website), as well as in this screenshot for reference:
 
 ![adrianmorenoinfo](https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png)
 
@@ -29,7 +30,8 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 ## Installation
 
 #### Install Hugo
-    To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
+
+To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
 
 #### Setting up
 
@@ -37,13 +39,13 @@ As a pre-requirement you will need Hugo set up and running. You can follow [the 
 
 Note: the theme has **not** been migrated to Hugo Modules yet. To install it, you need to set it up by copying the theme files (either as a sub-module, or by copying the files). You can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/), or the next ones as help:
 
-    - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
-    - Enter the newly created folder: `cd <your website's name>/themes/`
-    - Install PostCSS: execute `npm i -D postcss postcss-cli autoprefixer` from the top-level site folder [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
-    - Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
-    - Replace the `config.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/config.toml hugo.toml` (*executed from the website root folder*)
-    - Start Hugo with `hugo server -D`
-    - 🎉 The theme is alive on http://localhost:1313/
+- Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
+- Enter the newly created folder: `cd <your website's name>/themes/`
+- Install PostCSS: execute `npm i -D postcss postcss-cli autoprefixer` from the top-level site folder [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
+- Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
+- Replace the `config.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/config.toml hugo.toml` (*executed from the website root folder*)
+- Start Hugo with `hugo server -D`
+- 🎉 The theme is alive on http://localhost:1313/
 
 The output for the last command will be something like
 ```
