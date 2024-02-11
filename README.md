@@ -76,11 +76,15 @@ Press Ctrl+C to stop
 
 ```
 
+## Troubleshooting
+
+This theme is a version of the one found on my website [adriamoreno.info](https://www.adrianmoreno.info). If you run into trouble, [you can check the code on my website](https://github.com/zetxek/adrianmoreno.info) for reference.
+
+## Getting help
+
+The project is offered "as is", and it's a hobby project. Support is given whenever life allows - you can create an issue [create an issue](https://github.com/zetxek/adritian-free-hugo-theme/issues) so anyone else could also help, or the author.
+
 ## License
 
 - Copyright 2020 Radity (https://radity.com/), 2022 Adrián Moreno Peña (https://www.adrianmoreno.info)
 - Licensed under MIT (https://github.com/zetxek/adritian-free-hugo-theme/blob/master/LICENSE)
-
-## Getting help
-
-The project is offered "as is", and it's a hobby project. Support is given whenever life allows - you can create an issue [create an issue]([url](https://github.com/zetxek/adritian-free-hugo-theme/issues)https://github.com/zetxek/adritian-free-hugo-theme/issues) so anyone else could also help, or the author.
