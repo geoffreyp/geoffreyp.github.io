@@ -40,8 +40,9 @@ As a pre-requirement you will need Hugo set up and running. You can follow [the 
 Note: the theme has **not** been migrated to Hugo Modules yet. To install it, you need to set it up by copying the theme files (either as a sub-module, or by copying the files). You can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/), or the next ones as help:
 
 - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
-- Enter the newly created folder: `cd <your website's name>/themes/`
+- Enter the newly created folder: `cd <your website's name>/`
 - Install PostCSS: execute `npm i -D postcss postcss-cli autoprefixer` from the top-level site folder [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
+- Enter the themes folder: `cd themes/`
 - Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
 - Replace the `config.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/config.toml hugo.toml` (*executed from the website root folder*)
 - Start Hugo with `hugo server -D`
