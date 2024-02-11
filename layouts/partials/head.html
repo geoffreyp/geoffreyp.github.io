@@ -18,14 +18,11 @@
     {{ if findRE "^http" .link }}
         <link rel="stylesheet" href="{{ .link | absURL }}">
         {{ else }}
-          {{ $cssFile := resources.Get .link }}
-          {{ $cssBundle = append $cssFile $cssBundle }}
-      {{ end }}
+        {{ $cssFile := resources.Get .link }}
+        {{ $cssBundle = $cssBundle | append $cssFile }}
+    {{ end }}
 {{ end }}
-{{ $file1 := resources.Get "css/main.css" }}
-{{ $file2 := resources.Get "css/rad-icons.css" }}
-
-{{ $cssBundle := slice $file1 $file2 | resources.Concat "css/bundle.css" }}
+{{ $cssBundle := $cssBundle | resources.Concat "css/bundle.css" }}
 
 
 <!-- Purge CSS -->
