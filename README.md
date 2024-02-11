@@ -78,6 +78,11 @@ Press Ctrl+C to stop
 
 ```
 
+#### Additional configuration
+
+- _(optional, if you want to use the contact form)_ edit the line 212 in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
+
+
 ## Troubleshooting
 
 This theme is a version of the one found on my website [adriamoreno.info](https://www.adrianmoreno.info). If you run into trouble, [you can check the code on my website](https://github.com/zetxek/adrianmoreno.info) for reference.
