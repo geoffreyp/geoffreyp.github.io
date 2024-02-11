@@ -31,13 +31,50 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 #### Install Hugo
     To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
 
-#### Create your website and run
-    > hugo new site <your website's name>
-    > cd <your website's name>/themes/
-    Clone the adritian-free-hugo-theme (git clone https://github.com/zetxek/adritian-free-hugo-theme.git).
-    Replace the "config.toml" file that in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml
-    > hugo server -D
-    The theme is alive on http://localhost:1313/ 
+#### Setting up
+
+As a pre-requirement you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
+
+Note: the theme has **not** been migrated to Hugo Modules yet. To install it, you need to set it up by copying the theme files (either as a sub-module, or by copying the files). You can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/), or the next ones as help:
+
+    - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
+    - Enter the newly created folder: `cd <your website's name>/themes/`
+    - Install PostCSS: `npm i -D postcss postcss-cli autoprefixer` [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
+    - Clone the adritian-free-hugo-theme: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
+    - Replace the `config.toml` file in the project's root directory with themes/adritian-free-hugo-theme/exampleSite/config.toml: `cp themes/adritian-free-hugo-theme/exampleSite/config.toml hugo.toml` (*executed from the website root folder*)
+    - Start Hugo with `hugo server -D`
+    - 🎉 The theme is alive on http://localhost:1313/
+
+The output for the last command will be something like
+```
+adritian-demo git:(master) ✗ hugo server -D
+port 1313 already in use, attempting to use an available port
+Watching for changes in /Users/adrianmorenopena/Projects/adritian-demo/{archetypes,assets,content,data,i18n,layouts,static,themes}
+Watching for config changes in /Users/adrianmorenopena/Projects/adritian-demo/hugo.toml
+Start building sites …
+hugo v0.122.0-b9a03bd59d5f71a529acb3e33f995e0ef332b3aa+extended darwin/arm64 BuildDate=2024-01-26T15:54:24Z VendorInfo=brew
+
+WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+
+                   | EN
+-------------------+------
+  Pages            |   5
+  Paginator pages  |   0
+  Non-page files   |   0
+  Static files     | 114
+  Processed images |   4
+  Aliases          |   0
+  Sitemaps         |   1
+  Cleaned          |   0
+
+Built in 617 ms
+Environment: "development"
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:53031/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+
+```
 
 ## License
 
