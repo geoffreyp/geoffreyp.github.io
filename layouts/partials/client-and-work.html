@@ -10,13 +10,27 @@
           {{ range .Site.Data.homepage.client_and_work.clients }}
           <div class="clients__item">
             <a href="https://radity.com">
-              <img
-                class="lozad img-responsive"
-                src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-                data-src="{{ .logo.x | absURL }}"
-                data-srcset="{{ .logo.x | absURL }} 1x, {{ .logo._2x | absURL }} 2x"
-                alt="{{ .alt }}"
-              />
+              
+              {{ $img := resources.Get .logo.x }}
+              {{ $img2x := resources.Get .logo._2x }}
+              {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Height $img.Width) }}
+              {{ $img2xWebp := $img2x.Resize (printf "%dx%d webp q75 Lanczos picture" $img2x.Height $img2x.Width) }}
+            
+              <picture>
+                <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
+                <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
+                <img
+                  width="{{ $img.Width }}"
+                  height="{{ $img.Height }}"
+                  class="lozad img-responsive"
+                  src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
+                  srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+                  data-src="{{ $img.RelPermalink }}"
+                  data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+                  alt="{{ .alt }}"
+                />
+              </picture>
+
             </a>
           </div>
           {{ end }}
@@ -38,13 +52,26 @@
         ></a>
       </div>
       <div class="col-12 col-md-7 pl-md-0 text-right">
-        <img
-          class='lozad img-responsive {{ cond (eq ( mod $index 4) 0) "img-clip-left-backward" "img-clip-left-forward" }}'
-          src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-          data-src="{{ .image.x | absURL }}"
-          data-srcset="{{ .image.x | absURL }} 1x, {{ .image._2x | absURL }} 2x"
-          alt="{{ .title }}"
-        />
+
+        {{ $img := resources.Get .image.x }}
+        {{ $img2x := resources.Get .image._2x }}
+        {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Height $img.Width) }}
+        {{ $img2xWebp := $img2x.Resize (printf "%dx%d webp q75 Lanczos picture" $img2x.Height $img2x.Width) }}
+        <picture>
+          <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
+          <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
+          <img
+            width="{{ $img.Width }}"
+            height="{{ $img.Height }}"
+            class="lozad img-responsive"
+            src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
+            srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+            data-src="{{ $img.RelPermalink }}"
+            data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+            alt="{{ .title }}"
+          />
+        </picture>
+
       </div>
       {{ else }}
       <div class="col-12 col-md-7 pl-md-0 text-right">
