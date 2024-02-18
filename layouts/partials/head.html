@@ -15,11 +15,6 @@
 
 {{ $cssResources := slice }}
 {{ range .Site.Params.plugins.css }}
-
-    {{/* for troubleshooting CSS bundling */}}
-    {{ warnf "Adding CSS file to bundle: %s \t\t[%#[2]v]" .URL math.Counter }}
-
-
     {{ if findRE "^http" .URL }}
         <link rel="stylesheet" href="{{ .URL | absURL }}">
     {{ else }}
