@@ -20,10 +20,10 @@
     {{ warnf "Adding CSS file to bundle: %s \t\t[%#[2]v]" .link math.Counter }}
 
 
-    {{ if findRE "^http" .link }}
+    {{ if findRE "^http" .URL }}
         <link rel="stylesheet" href="{{ .URL | absURL }}">
     {{ else }}
-        {{ $cssFile := resources.Get .link }}
+        {{ $cssFile := resources.Get .URL }}
         {{ $cssResources = $cssResources | append $cssFile }}
     {{ end }}
 {{ end }}
