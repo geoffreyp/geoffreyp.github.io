@@ -1,11 +1,11 @@
 # Adritian Free Hugo Theme
-###### Adritian Hugo Theme for Personal Websites
+###### Adritian Hugo Theme for Personal Websites or Professional minimalistic landing pages
 
 This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme created by Radity. It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
 
-The templates are based on Bootstrap (so it's responsive and mobile-first), and the main changes I have made have been upgrades on the web performance and accessibility of the template.
+The templates are based on Bootstrap (so they're responsive and mobile-first), and the main changes I have made have been upgrades on the web performance and accessibility of the template.
 
-Some of the best usages for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form that you can customize to your mail address, without setting up a backend (using https://formspree.io).
+Some of the best usages for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend (https://formspree.io).
 
 
 🚀 Improvements on this version:
@@ -21,6 +21,7 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 
 ![adrianmorenoinfo](https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png)
 
+You can see the source code for my website [in github too](https://github.com/zetxek/adrianmoreno.info), as well as the [demo site for the theme](https://github.com/zetxek/adrianmoreno.info) (a simpler version of the website).
 
 ## Download
 
