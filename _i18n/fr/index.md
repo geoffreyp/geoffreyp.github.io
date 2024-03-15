@@ -1,6 +1,6 @@
 Je suis [docteur](/fr/thesis) en informatique, diplômé de l'Université de Lille ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). 
 
-Je suis aujourd'hui Data Scientist dans la startup [Diag n' Grow]([https://www.inria.fr/en/inria-startup-studio](https://www.diagngrow.com/)). Mes travaux portent sur les données et l'intelligence artificielle dans un contexte d'actif immatériel avec des sujets variés comme la classification de brevets par exemple.
+Je suis aujourd'hui Data Scientist dans la startup [Diag n' Grow](https://www.diagngrow.com/). Mes travaux portent sur les données et l'intelligence artificielle dans un contexte d'actif immatériel avec des sujets variés comme la classification de brevets par exemple.
 
 J'ai été le porteur du projet de startup Optimo à l'[Inria Startup Studio](https://www.inria.fr/en/inria-startup-studio) de septembre 2021 à janvier 2023.
 
@@ -14,7 +14,7 @@ J'ai été le porteur du projet de startup Optimo à l'[Inria Startup Studio](ht
 
 ## Actualités
 
-- 07 Aou, 2023 : Je rejoins l'équipe de [Diag n' Grow]([https://www.inria.fr/en/inria-startup-studio](https://www.diagngrow.com/)) en tant que Data Scientist
+- 07 Aou, 2023 : Je rejoins l'équipe de [Diag n' Grow](https://www.diagngrow.com/) en tant que Data Scientist
 - 03 Déc, 2021 : Soutenance de thèse ! Je suis docteur en informatique de l'Université de Lille
 - 25-27 Nov, 2021 : Participation à la 2ème édition du [Hackatech](https://hackatechlille.inria.fr/) avec mon projet : Optimo
 - 01 Oct, 2021 : Intégration au [Inria Startup Studio](https://www.inria.fr/en/inria-startup-studio) avec le projet Optimo
