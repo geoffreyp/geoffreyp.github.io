@@ -1,5 +1,9 @@
 ## Enseignements
 
+`2018 - 2021`
+__Université de Lille__
+Doctorat en Informatique
+
 `2016 - 2018`
 __Université du Littoral Côte d'Opale__
 Master Informatique du logiciel libre

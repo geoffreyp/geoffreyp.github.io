@@ -1,5 +1,9 @@
 ## Education
 
+`2018 - 2021`
+__University of Lille__
+PhD in computer science
+
 `2016 - 2018`
 __University of Littoral Côte d'Opale__
 Master Degree specialized in Open Source
