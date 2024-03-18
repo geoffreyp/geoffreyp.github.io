@@ -1,6 +1,6 @@
 Je suis [docteur](/fr/thesis) en informatique, diplômé de l'Université de Lille ([Cristal](https://www.cristal.univ-lille.fr/?rubrique27&eid=47) / [Inria](https://www.inria.fr/equipes/bonus)). 
 
-Je suis aujourd'hui Data Scientist dans la startup [Diag n' Grow](https://www.diagngrow.com/). Mes travaux portent sur les données et l'intelligence artificielle dans un contexte d'actif immatériel avec des sujets variés comme la classification de brevets par exemple.
+Je suis aujourd'hui Data Scientist dans la startup [Diag n' Grow](https://www.diagngrow.com/). Mes travaux portent sur l'analyse de données et le développement de modèles d'intelligence artificielle dans un contexte d'évaluation d'actifs immatériels avec des sujets variés comme la classification de brevets par exemple.
 
 J'ai été le porteur du projet de startup Optimo à l'[Inria Startup Studio](https://www.inria.fr/en/inria-startup-studio) de septembre 2021 à janvier 2023.
 
