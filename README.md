@@ -14,7 +14,8 @@ Some of the best usages for the theme are for minimalistic websites, single-page
 - upgrade of Bootstrap from v4 to v5
 - Hugo assets pipeline support
 - some (basic) i18n features
-- added more pages/templates
+- added more pages/templates (experience, blog)
+
 - upgrade loading performance (100 score in [Google Page Speed Insights](https://pagespeed.web.dev))
 
 You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website), as well as in this screenshot for reference:
