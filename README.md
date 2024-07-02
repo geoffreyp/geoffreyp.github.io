@@ -115,6 +115,15 @@ If you have improvements for the theme, you are very welcome to make a PR if you
 
 The project is offered "as is", and it's a hobby project. Support is given whenever life allows - you can create an issue [create an issue](https://github.com/zetxek/adritian-free-hugo-theme/issues) so anyone else could also help, or the author.
 
+## Showcase
+
+Have you used the theme in your website? Send a PR to add it to the list for inspiration! (Extra points if the repo is open source :-)
+
+- [demo site](https://adritian.vercel.app)
+- [adrian moreno's personal site](https://www.adrianmoreno.info)
+- add your website here!
+
+
 ## License
 
 - Copyright 2020 Radity (https://radity.com/), 2022 Adrián Moreno Peña (https://www.adrianmoreno.info)
