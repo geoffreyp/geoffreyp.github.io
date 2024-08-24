@@ -96,7 +96,7 @@ _(optional, if you want to use the contact form)_ edit line 212 in your `homepag
 
 ##### Blog
 
-<img width="1449" alt="SCR-20240624-uajc" src="https://github.com/zetxek/adritian-free-hugo-theme/assets/240085/7540f5f0-f753-48f8-bc69-1aa9c715a6d7">
+<img width="1271" alt="image" src="https://github.com/user-attachments/assets/1821a3b7-f572-4958-8c4f-bd1687cc8f71">
 
 
 To use the blog, you can use the content type "blog", and render it in the URL `/blog`.
