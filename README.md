@@ -20,6 +20,7 @@ Some of the best applications for the theme are for minimalistic websites, singl
 - some (basic) i18n features
 - added more pages/templates (experience, blog)
 - upgrade loading performance (100 score in [Google Page Speed Insights](https://pagespeed.web.dev))
+- dark theme support (based on system/browser settings)
 - support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
 - support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
 
