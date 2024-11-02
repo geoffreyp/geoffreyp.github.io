@@ -59,26 +59,35 @@ jobs:
           # Setup the committers identity.
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions - update theme submodule"
+          git config pull.rebase false
 
           # Create a new feature branch for the changes.
           git checkout -b $BRANCH_NAME
 
+          # Initialize and update the submodules.
+          echo "Initializing and updating submodules..."
+          git submodule update --init --recursive
+
           # Update the script files to the latest version.
+          echo "Updating theme to $LATEST_TAG..."
           cd themes/adritian-free-hugo-theme
           git checkout main
+          git pull origin main
           cd ../..
           git add themes/adritian-free-hugo-theme
           echo "Updated submodule. Comitting changes."
 
           # Commit the changes and push the feature branch to origin
           git config --global --add --bool push.autoSetupRemote true
-          echo "Adding all changes - updating theme to $LATEST_TAG"
+          echo "🔄 Adding all changes - updating theme to $LATEST_TAG"
           git add --all
-          echo "Changes added. Comitting and pushing."
+          echo "✉️ Changes added. Comitting and pushing."
 
           COMMIT_MSG_THEME='chore: update theme submodule to `'"$LATEST_TAG"'`'
           echo 'Committing theme: '"$COMMIT_MSG_THEME"
           git commit -am "$COMMIT_MSG_THEME" && git push --force || echo "No changes to theme"
+
+          tree themes/adritian-free-hugo-theme -r
 
           # Copy content
           cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
