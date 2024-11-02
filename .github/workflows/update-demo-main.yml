@@ -83,7 +83,7 @@ jobs:
           echo 'Committing theme: '"$COMMIT_MSG_THEME"
           git commit -am "$COMMIT_MSG_THEME" && git push --force || echo "No changes to theme"
 
-          ls themes/
+          tree themes/adritian-free-hugo-theme -r
 
           # Copy content
           cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
