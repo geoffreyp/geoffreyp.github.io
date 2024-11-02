@@ -64,6 +64,10 @@ jobs:
           # Create a new feature branch for the changes.
           git checkout -b $BRANCH_NAME
 
+          # Initialize and update the submodules.
+          echo "Initializing and updating submodules..."
+          git submodule update --init --recursive
+
           # Update the script files to the latest version.
           echo "Updating theme to $LATEST_TAG..."
           cd themes/adritian-free-hugo-theme
