@@ -68,14 +68,17 @@ jobs:
           git checkout -b $BRANCH_NAME
 
           # Update the script files to the latest version.
-          git submodule update --init --recursive
-          git submodule update --recursive --remote
-          echo "Updated submodules. Setting up git."
+          cd themes/adritian-free-hugo-theme
+          git checkout main
+          cd ../..
+          git add themes/adritian-free-hugo-theme
+          echo "Updated submodule. Comitting changes."
 
           # Commit the changes and push the feature branch to origin
           git config --global --add --bool push.autoSetupRemote true
-          echo "Committing all changes."
+          echo "Adding all changes - updating theme to $LATEST_TAG"
           git add --all
+          echo "Changes added. Comitting and pushing."
 
           COMMIT_MSG_THEME='chore: update theme submodule to `'"$LATEST_TAG"'`'
           echo 'Committing theme: '"$COMMIT_MSG_THEME"
