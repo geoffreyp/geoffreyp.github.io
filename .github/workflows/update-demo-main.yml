@@ -22,10 +22,6 @@ jobs:
           token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
 
-      - name: Pull & update submodules recursively
-        run: |
-          git pull --recurse-submodules
-          git submodule update --remote --recursive
 
       - name: Print submodule status
         run: |
@@ -35,7 +31,7 @@ jobs:
         run: |
           git diff --submodule=diff
 
-      - name: Send pull-request
+      - name: Update & send pull-request
         run: |
           LATEST_TAG=$(git describe --tags --always)  
           LATEST_COMMIT=$(git rev-parse HEAD)
