@@ -10356,6 +10356,7 @@ textarea:focus {
     align-items: center;
 }
 .footer__right {
+    color: white;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: end;
@@ -10901,6 +10902,9 @@ aside.content-browser{
     }
     .contact__info h3{
         color: #bebdbd;
+    }
+    .section--contact {
+       background-image: url(../img/contact-bg-dark.png);
     }
     .btn-primary{
         background-color: #fff;

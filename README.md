@@ -12,17 +12,17 @@ The templates are based on Bootstrap (so they're responsive and mobile-first), a
 Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend (https://formspree.io).
 
 
-🚀 Some of the improvements (vs the original theme):
+🚀 What can you expect:
 
-- removal of jQuery
-- upgrade of Bootstrap from v4 to v5
+- fast, minimalistic code (no jQuery)
+- Bootstrap from v5 as css framework
 - Hugo assets pipeline support
-- some (basic) i18n features
-- added more pages/templates (experience, blog)
-- upgrade loading performance (100 score in [Google Page Speed Insights](https://pagespeed.web.dev))
-- dark theme support (based on system/browser settings)
-- support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
-- support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
+- Multi-language (i18n) support
+- Support for custom content types (experience, blog)
+- Very high performance (100$ score in [Google Page Speed Insights](https://pagespeed.web.dev))
+- Dark theme support (based on system/browser settings)
+- Support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
+- Support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
 
   <img width="1536" alt="SCR-20240814-ihfs" src="https://github.com/user-attachments/assets/38553a02-48d0-48f4-a69a-ed4f7e32e092">
 
@@ -74,16 +74,17 @@ hugo v0.122.0-b9a03bd59d5f71a529acb3e33f995e0ef332b3aa+extended darwin/arm64 Bui
 
 WARN  found no layout file for "html" for kind "taxonomy": You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
 
-                   | EN
--------------------+------
-  Pages            |   5
-  Paginator pages  |   0
-  Non-page files   |   0
-  Static files     | 114
-  Processed images |   4
-  Aliases          |   0
-  Sitemaps         |   1
-  Cleaned          |   0
+                   | EN | ES | FR
+-------------------+----+----+-----
+  Pages            | 23 | 11 |  8
+  Paginator pages  |  0 |  0 |  0
+  Non-page files   |  0 |  0 |  0
+  Static files     | 87 | 87 | 87
+  Processed images | 28 |  0 |  0
+  Aliases          |  1 |  0 |  0
+  Cleaned          |  0 |  0 |  0
+
+
 
 Built in 617 ms
 Environment: "development"
@@ -93,6 +94,18 @@ Web Server is available at http://localhost:53031/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 
 ```
+
+#### Multi-language support
+
+https://github.com/user-attachments/assets/030e765a-275f-4141-88e0-b854ebe551da
+
+The theme implements the [internationalization (i18n) system by Hugo](https://gohugo.io/content-management/multilingual/), to enable multilingual sites.
+
+See the content in `i18n` to edit the translations, and the configuration `hugo.toml` to define your active languages. The example site has 3 enabled languages (`en` for English, `es` for Spanish and `fr` for French).
+
+You can add additional languages, or disable the provided ones (by setting `disabled` to `true` on the languages you don't need).
+
+The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in upgrading.md.
 
 ## Dark theme
 
