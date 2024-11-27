@@ -2,6 +2,26 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.3.4
+
+In `config.toml`, replace
+```
+  [[params.plugins.css]]
+  URL = "css/rad-icons.css"
+```
+by 
+```
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+```
+
+In your config/content files, replace:
+- `icon-linkedin-fill` by `icon-linkedin`
+- `icon-smile-fill` by `icon-user`
+- `icon-arrow-right` by `icon-circle-arrow-right`
+- `icon-mail-fill` by `icon-email`
+
+
 ## v1.2.x to v1.3.x
 
 In `v1.3.x`, the [support for internationalization was added](https://github.com/zetxek/adritian-free-hugo-theme/pull/78).
