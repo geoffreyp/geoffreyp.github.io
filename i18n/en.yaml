@@ -70,10 +70,10 @@
   translation: "https://www.linkedin.com/in/adrianmoreno/"
 
 - id: "experience_button2"
-  translation: "Download my resume"
+  translation: "Download resume"
 
 - id: "experience_button2_url"
-  translation: "Download my resume"
+  translation: "/img/general/user-smile-fill.svg"
 
 - id: "experience_button3"
   translation: "View all"
