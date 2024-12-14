@@ -201,7 +201,7 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 - https://oldgo.fael.my.id/danielweb/ (https://github.com/burnblazter/danielweb)
 - add your website here!
 
-## Contributors
+## Contributors ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
 
 <!-- readme: collaborators,contributors -start -->
 <table>
