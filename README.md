@@ -19,7 +19,7 @@ Some of the best applications for the theme are for minimalistic websites, singl
 - Hugo assets pipeline support
 - Multi-language (i18n) support
 - Support for custom content types (experience, blog)
-- Very high performance (100$ score in [Google Page Speed Insights](https://pagespeed.web.dev))
+- Very high performance (100% score in [Google Page Speed Insights](https://pagespeed.web.dev))
 - Dark theme support (based on system/browser settings)
 - Support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
 - Support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
