@@ -189,8 +189,8 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 
 ## Contributors
 
-<!-- readme: contributors -start -->
-<!-- readme: contributors -end -->
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
 
 ## License
 
