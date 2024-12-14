@@ -185,6 +185,20 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 
 - [demo site](https://adritian.vercel.app)
 - [adrian moreno's personal site](https://www.adrianmoreno.info)
+- https://cwb.dk/ (https://github.com/C0DK/C0DK.github.io)
+- https://shaun.gg/ (https://github.com/shauncampbell/shaun_dot_gg)
+- https://trevorpiltch.com/ (https://github.com/trevorpiltch/trevorpiltch.github.io)
+- https://vega-2135.github.io/ (https://github.com/vega-2135/vega-2135.github.io)
+- https://talinashrotriya.com/ (https://github.com/Talina06/talina06.github.io)
+- https://loseardes77.github.io/hugo-portfolio/ (https://github.com/LOSEARDES77/hugo-portfolio)
+- https://chandanpasunoori.com/ (https://github.com/chandanpasunoori/www.chandanpasunoori.com)
+- https://sathvikracha.com/ (https://github.com/sathvikracha/sathvikracha.com)
+- https://jlruan.me/ (https://github.com/jlruan/jlruan.github.io)
+- https://chenyugu.com/ (https://github.com/ChyenGCY/ChyenGCY.github.io)
+- https://benjaminkoltermann.me/ (https://github.com/p4ck3t0/websites)
+- https://kaiasaoka.github.io/ (https://KaiAsaoka/KaiAsaoka.github.io.old)
+- https://guillaumebabik.github.io/ (https://github.com/guillaumebabik/guillaumebabik.github.io)
+- https://oldgo.fael.my.id/danielweb/ (https://github.com/burnblazter/danielweb)
 - add your website here!
 
 ## Contributors
