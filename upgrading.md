@@ -37,7 +37,7 @@ Add the following, under the `params.plugins.scss` section:
   URL = "scss/bootstrap/bootstrap.scss"
 ```
 
-
+See the contents of the [PR #94 in the demo site](https://github.com/zetxek/adritian-demo/pull/94/files) as an example.
 
 ## v1.3.4
 
