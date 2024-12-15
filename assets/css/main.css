@@ -1202,7 +1202,6 @@ textarea:focus {
 }
 @media (min-width: 992px) {
     .rad-showcase .platform-links {
-        margin-top: 0px;
         margin-right: -10px;
     }
 }
