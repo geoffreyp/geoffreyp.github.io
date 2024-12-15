@@ -1197,12 +1197,10 @@ textarea:focus {
     width: 100%;
 }
 .rad-showcase .platform-links {
-    margin-top: 40px;
     margin-right: -5px;
 }
 @media (min-width: 992px) {
     .rad-showcase .platform-links {
-        margin-top: 92px;
         margin-right: -10px;
     }
 }
@@ -1243,7 +1241,7 @@ textarea:focus {
         margin-bottom: 0;
     }
     .rad-showcase + section {
-        margin-top: -125px;
+        margin-top: -70px;
     }
 }
 
@@ -1475,7 +1473,7 @@ aside.content-browser{
     background-color: #adb5bd;
     display: block;
     margin-top: 20px;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
 }
 @media only screen and (max-width : 768px) {
     .header .navbar-brand{
@@ -1502,7 +1500,7 @@ aside.content-browser{
 
 @media only screen and (min-width : 992px) {    
     .rad-showcase{
-        padding-top: 40px;
+        padding-top: 140px;
     }    
 }
 
