@@ -185,6 +185,7 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 
 - [demo site](https://adritian.vercel.app)
 - [adrian moreno's personal site](https://www.adrianmoreno.info)
+- https://davidcorto.es/ (https://github.com/dcorto/dcorto.github.io) *⭐ theme contributor*
 - https://cwb.dk/ (https://github.com/C0DK/C0DK.github.io)
 - https://shaun.gg/ (https://github.com/shauncampbell/shaun_dot_gg)
 - https://trevorpiltch.com/ (https://github.com/trevorpiltch/trevorpiltch.github.io)
