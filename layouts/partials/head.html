@@ -26,7 +26,10 @@
 {{- end }}
 {{- range .Site.Params.plugins.scss }}  
   {{- $scss := resources.Get .URL }}
-  {{- $style := $scss | css.Sass | resources.Fingerprint }}
+  {{- $style := $scss | css.Sass }}
+  {{- if hugo.IsProduction }} 
+    {{- $style = $scss | css.Sass | resources.Minify | resources.Fingerprint }} 
+  {{- end }}
   <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
 {{- end }}
 
