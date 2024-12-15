@@ -14,13 +14,15 @@ Some of the best applications for the theme are for minimalistic websites, singl
 
 🚀 What can you expect:
 
-- fast, minimalistic code (no jQuery)
-- Bootstrap from v5 as css framework
-- Hugo assets pipeline support
-- Multi-language (i18n) support
-- Support for custom content types (experience, blog)
-- Very high performance (100% score in [Google Page Speed Insights](https://pagespeed.web.dev))
-- Dark theme support (based on system/browser settings)
+- 🏎️ fast, minimalistic code (no jQuery)
+- 🖼️ Bootstrap framework v5 available as Scss (customizable via variables)
+- 🚃 Hugo assets pipeline support
+- 📚 Multi-language (i18n) support
+- 🛠️ Support for custom content types (experience, blog)
+- 💯 100% score in Lighthouse [Google Page Speed Insights](https://pagespeed.web.dev) for Performance, Best Practices, Accessibility and SEO
+- 🌚 Dark theme support (based on system/browser settings)
+
+Also, the theme has been deployed and tested with Vercel. You can also find out of the box:
 - Support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
 - Support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
 
