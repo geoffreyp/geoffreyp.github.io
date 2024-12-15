@@ -127,3 +127,9 @@ br {
         margin-top: -2px;
     }
 }
+
+@media (min-width: 992px) {
+    .ml-lg-auto, .mx-lg-auto {
+        margin-left: auto !important;
+    }
+}
