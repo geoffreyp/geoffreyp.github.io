@@ -32,7 +32,7 @@
 
 {{- $cssBundle := $cssResources | resources.Concat "css/bundle.css" }}
 
-{{- $css := $cssBundle | css.PostCSS }} 
+{{- $css := $cssBundle }} 
 {{- if hugo.IsProduction }} 
     {{- $css = $css | minify | fingerprint | resources.PostProcess }} 
 {{- end }}
