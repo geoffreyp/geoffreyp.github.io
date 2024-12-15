@@ -3,46 +3,47 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <meta name="theme-color" content="#478079"/>
 
-{{ if .Site.Params.analytics.google_tag_manager.enabled }}
+{{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
-{{ end }}
+{{- end }}
 <!-- endinject -->
 <title>{{ i18n "head_title" }}</title>
 <meta name="description" content='{{ i18n "head_description" }}'>
 <meta name="generator-mode" content='{{ hugo.Environment }}'>
-{{ $critical := resources.Get "css/critical.css" | css.Sass | resources.Minify }}
+{{- $critical := resources.Get "css/critical.css" | css.Sass | resources.Minify }}
 <style data-generator="critical-css">
-{{ $critical.Content | safeCSS }}
+{{- $critical.Content | safeCSS }}
 </style>
 
-{{ $cssResources := slice }}
-{{ range .Site.Params.plugins.css }}
-    {{ if findRE "^http" .URL }}
+{{- $cssResources := slice }}
+{{- range .Site.Params.plugins.css }}
+    {{- if findRE "^http" .URL }}
         <link rel="stylesheet" href="{{ .URL | absURL }}">
-    {{ else }}
-        {{ $cssFile := resources.Get .URL }}
-        {{ $cssResources = $cssResources | append $cssFile }}
-    {{ end }}
-{{ end }}
-{{ range .Site.Params.plugins.scss }}  
-  {{ $scss := resources.Get .URL }}
-  {{ $style := $scss | css.Sass | resources.Fingerprint }}
+    {{- else }}
+        {{- $cssFile := resources.Get .URL }}
+        {{- $cssResources = $cssResources | append $cssFile }}
+    {{- end }}
+{{- end }}
+{{- range .Site.Params.plugins.scss }}  
+  {{- $scss := resources.Get .URL }}
+  {{- $style := $scss | css.Sass }}
+  {{- if hugo.IsProduction }} 
+    {{- $style = $scss | css.Sass | resources.Minify | resources.Fingerprint }} 
+  {{- end }}
   <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
-{{ end }}
+{{- end }}
 
-{{ $cssBundle := $cssResources | resources.Concat "css/bundle.css" }}
+{{- $cssBundle := $cssResources | resources.Concat "css/bundle.css" }}
 
-<!-- Purge CSS -->
-{{ $css := $cssBundle | css.PostCSS }} 
-{{ if hugo.IsProduction }} 
-    {{ $css = $css | minify | fingerprint | resources.PostProcess }} 
-{{ end }}
+{{- $css := $cssBundle }} 
+{{- if hugo.IsProduction }} 
+    {{- $css = $css | minify | fingerprint | resources.PostProcess }} 
+{{- end }}
 
 <link
   rel="preload"
   href="{{ $css.RelPermalink }}"
   as="style"
-  data-generator="purgeCSS"
   onload="this.onload=null;this.rel='stylesheet'"
   {{ if hugo.IsProduction -}} 
     integrity="{{ $css.Data.Integrity }}"
@@ -59,13 +60,13 @@
     {{- end }}
   />
 </noscript>
-{{ if .Site.Params.analytics.google_tag_manager.enabled }}
+{{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <!-- Google tag (gtag.js), google analytics -->
 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-465407-4"></script>
-{{ $analytics := resources.Get "js/gtag.js" | resources.Minify }}
+{{- $analytics := resources.Get "js/gtag.js" | resources.Minify }}
 <script defer src="{{ $analytics.Permalink }}"></script>
-{{ else }}
+{{- else }}
 <!-- no google tag displayed -->
-{{ end }}
+{{- end }}
 <script src='{{ "js/library/lozad.min.js" | absURL }}'></script>
 

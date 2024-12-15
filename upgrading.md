@@ -2,6 +2,43 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.4.0
+
+This version switches from the legacy, "embedded" Boostrap based on v4.3.1 (from the [original codebase](https://github.com/radity/raditian-free-hugo-theme/blob/daa341d4156986787611a01d075ca94233ff4d3b/static/css/main.css)) to the Scss-based version, [v5.3.3](https://getbootstrap.com/docs/5.3) (ast per december'24).
+
+This requires some small adjustments in the `config.toml` file.
+
+### Add build stats
+Add the following:
+```
+[build]
+  [build.buildStats]
+    disableClasses = false
+    disableIDs = false
+    disableTags = false
+    enable = true
+```
+
+### Add new `adritian.css` file
+
+Add the following, under the `params.plugins.css` section:
+
+```
+  [[params.plugins.css]]
+  URL = "css/adritian.css"
+```
+
+### ⚠️ Setup boostrap as Scss
+
+Add the following, under the `params.plugins.scss` section:
+
+```
+  [[params.plugins.scss]]
+  URL = "scss/bootstrap/bootstrap.scss"
+```
+
+See the contents of the [PR #94 in the demo site](https://github.com/zetxek/adritian-demo/pull/94/files) as an example.
+
 ## v1.3.4
 
 In `config.toml`, replace
