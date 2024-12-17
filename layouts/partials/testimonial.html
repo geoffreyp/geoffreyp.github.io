@@ -1,12 +1,12 @@
 {{ if .Site.Data.homepage.testimonial.enable }}
-<section class="section rad-animation-group section--border-bottom">
+<section id="testimonial" class="section rad-animation-group section--border-bottom">
     <div class="container">
         <h2 class="rad-fade-down">{{ i18n "testimonials_title" }}</h2>
         <div class="row row--padded mb-0 rad-fade-down">
             
             {{ $baseLangSite := .Sites.Default }}
             {{ $testimonials := (where .Site.RegularPages.ByDate "Type" "testimonial") }}
-            {{ $testimonials = $testimonials | lang.Merge (where $baseLangSite.RegularPages.ByDate "Type" "testimonia") }}   
+            {{ $testimonials = $testimonials | lang.Merge (where $baseLangSite.RegularPages.ByDate "Type" "testimonial") }}
             {{ range $testimonials }} 
 
             <div class="col-12 col-md-4 mb-5 mb-md-0 testimonial">
