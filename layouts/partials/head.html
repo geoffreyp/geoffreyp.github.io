@@ -10,7 +10,7 @@
 <title>{{ i18n "head_title" }}</title>
 <meta name="description" content='{{ i18n "head_description" }}'>
 <meta name="generator-mode" content='{{ hugo.Environment }}'>
-{{- $critical := resources.Get "css/critical.css" | css.Sass | resources.Minify }}
+{{- $critical := resources.Get "css/critical.css" | resources.Minify }}
 <style data-generator="critical-css">
 {{- $critical.Content | safeCSS }}
 </style>
