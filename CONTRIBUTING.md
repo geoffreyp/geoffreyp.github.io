@@ -1,6 +1,7 @@
 # Contribution Guidelines
 
-Thank you for considering contributing to our project! We appreciate your time and effort in helping us improve. To ensure a smooth collaboration, please follow these guidelines:
+Thank you for considering contributing to our project! Contributions are very welcome 🙏
+We appreciate your time and effort in helping us improve the project. To ensure a smooth collaboration, please follow these guidelines:
 
 ## Getting Started
 
