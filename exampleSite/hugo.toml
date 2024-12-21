@@ -160,8 +160,6 @@ theme = "adritian-free-hugo-theme"
   [[params.plugins.css]]
   URL = "css/main.css"
   [[params.plugins.css]]
-  URL = "css/adritian.css"
-  [[params.plugins.css]]
   URL = "css/adritian-icons.css"
   [[params.plugins.css]]
   URL = "css/custom.css"
@@ -176,9 +174,7 @@ theme = "adritian-free-hugo-theme"
 
   # SCSS Plugins
   [[params.plugins.scss]]
-  URL = "scss/menu.scss"
-  [[params.plugins.scss]]
-  URL = "scss/bootstrap/bootstrap.scss"
+  URL = "scss/adritian.scss"
 
 [params]
 
