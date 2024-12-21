@@ -1,3 +1,6 @@
+@import "./bootstrap/bootstrap.scss";
+@import "./menu.scss";
+
 .container {
     padding-left: 24px;
     padding-right: 24px
@@ -136,16 +139,20 @@ br {
 
 
 /* dark mode */
-@media (prefers-color-scheme: dark) {
+/** Media-query based color switching **/
+$color-mode-type: media-query;
+@include color-mode(dark) {
+
+    
     html body, body {
-        color: #fff;
+        color: #fff !important;
         background-color: #181818;
     }
     .header .navbar-brand span:nth-child(2){
-        color: #fff;
+        color: #fff !important;
     }
     .header .navbar .nav-item .nav-link::after{
-        background-color: #fff;
+        background-color: #fff !important;
     }
     .navbar-light .navbar-toggler-icon{
         background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
@@ -155,115 +162,115 @@ br {
     }
     @media (min-width: 992px) {
         .header .navbar .nav-item:hover .nav-link::after {
-            background-color: #fff;
+            background-color: #fff !important;
         }
     }
     
     @media only screen and (max-width : 990px) {
         .header .navbar .nav-item:first-child{
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1)  !important;
         }
         .header .navbar .nav-item{
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
         }    
     }
     .header--sticky-triggered{
-        background: #181818;
+        background: #181818  !important;
     }
     .header .navbar-light .navbar-nav .nav-link{
-        color: #fff;
+        color: #fff !important;
     }
     .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
-        color: #fff;
+        color: #fff !important;
     }
     .section li{
-        color: #a6a6a6
+        color: $light-text-emphasis-dark !important;
     }
     .section li::before{
-        background-color: #a6a6a6
+        background-color: $light-text-emphasis-dark !important;
     }
     .display-1{
-        color: #fff;
+        color: #fff !important;
     }
     .lead{
-        color: #fff;
+        color: #fff !important;
     }
     p a, span a{
-        color: #fff;
+        color: #fff !important;
     }
     p{
-        color: #a6a6a6;
+        color: $light-text-emphasis-dark !important;
     }
     .rad-showcase .platform-links [class^="icon-"]{
-        color: #fff;
+        color: #fff !important;
     }
     .experience a{
-        color: #fff;
+        color: #fff !important;
     }
     .experience__company{
-        color: #6EAFAA;
+        color: #6EAFAA !important;
     }
     .education__degree, .experience__date{
-        color: #a6a6a6;
+        color: #a6a6a6 !important;
     }
     .education__title{
-        color: #fff;
+        color: #fff !important;
     }
     .education__date{
-        color: #d5d5d5;
+        color: #d5d5d5 !important;
     }
     .education::before{
-        background-color: #202020;
+        background-color: #202020 !important;
     }
     .testimonial__author-info span{
-        color: #F18983;
+        color: #F18983 !important;
     }
     .section--contact .container{
-        background-color: #181818;
+        background-color: #181818 !important;
     }
     .contact__info span{
-        color: #fff;
+        color: #fff !important;
     }
     .contact__info h3{
-        color: #bebdbd;
+        color: #bebdbd !important;
     }
     .section--contact {
-       background-image: url(../img/contact-bg-dark.png);
+       background-image: url(../img/contact-bg-dark.png) !important;
     }
     .btn-primary{
-        background-color: #fff;
-        color: #000;
+        background-color: #fff !important;
+        color: #000 !important;
     }
     .btn-primary:hover{
-        border-color: #fff;
-        color: #fff;
+        border-color: #fff !important;
+        color: #fff !important;
     }
     .btn-frameless{
-        color: #fff;
-        border-color: #fff;
+        color: #fff !important;
+        border-color: #fff !important;
     }
     .btn-frameless.disabled, .btn-frameless.focus, .btn-frameless:disabled, .btn-frameless:focus, .btn-frameless:hover, .btn-frameless:not(:disabled):not(.disabled).active, .btn-frameless:not(:disabled):not(.disabled):active, .show > .btn-frameless.dropdown-toggle {
-        background-color: white;
-        border-color: #fff;
-        color: #181818;
+        background-color: white !important;
+        border-color: #fff !important;
+        color: #181818 !important;
     }
     input[type="text"], input[type="email"], textarea{
-        color: #fff;
-        border-bottom: 1px solid #fff;
-        background-color: #181818;
+        color: #fff !important;
+        border-bottom: 1px solid #fff !important;
+        background-color: #181818 !important;
     }
     input[type="text"]::placeholder, input[type="email"]::placeholder, textarea::placeholder{
-        color: #6e6e6e;
+        color: #6e6e6e !important;
     }
     input[type="text"]:focus, input[type="text"]:active, input[type="email"]:focus, input[type="email"]:active, textarea:focus, textarea:active{
-        border-bottom: 2px solid #fff;
+        border-bottom: 2px solid #fff !important;
     }
     .posts-list article.summary{
-        color: #c3c3c3;
+        color: #c3c3c3 !important;
     }
     .post-summary.post-content p,
     .post-summary.post-content *{
-        color: white;
+        color: white !important;
     }
 }
 /* end dark mode */
