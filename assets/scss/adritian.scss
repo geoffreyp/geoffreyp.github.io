@@ -268,6 +268,20 @@ $color-mode-type: media-query;
     input[type="text"]:focus, input[type="text"]:active, input[type="email"]:focus, input[type="email"]:active, textarea:focus, textarea:active{
         border-bottom: 2px solid #fff !important;
     }
+    .rad-subscription-group input, .rad-subscription-group textarea{
+        border: none !important;
+        background: none !important;
+    }
+    .rad-subscription-group input[type="text"]:focus, 
+    .rad-subscription-group input[type="email"]:focus, 
+    .rad-subscription-group input[type="password"]:focus, 
+    .rad-subscription-group textarea:focus{
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+
     .posts-list article.summary{
         color: #c3c3c3 !important;
     }
