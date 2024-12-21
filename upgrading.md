@@ -2,6 +2,54 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.4.5
+
+This version has aligned more the custom CSS with Bootstrap's extension capabilities.
+You will need to change the import of CSS files in your `config.toml` file, in the `Plugins` section.
+
+**Before:**
+
+```
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/main.css"
+  [[params.plugins.css]]
+  URL = "css/adritian.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+
+  (...)
+  
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/menu.scss"
+  [[params.plugins.scss]]
+  URL = "scss/bootstrap/bootstrap.scss"
+```
+
+**After:**
+```
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/main.css"
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/adritian.scss"
+```
+
 ## v1.4.0
 
 This version switches from the legacy, "embedded" Boostrap based on v4.3.1 (from the [original codebase](https://github.com/radity/raditian-free-hugo-theme/blob/daa341d4156986787611a01d075ca94233ff4d3b/static/css/main.css)) to the Scss-based version, [v5.3.3](https://getbootstrap.com/docs/5.3) (ast per december'24).
