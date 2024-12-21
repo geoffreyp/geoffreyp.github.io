@@ -203,7 +203,6 @@ br {
     .experience__company{
         color: #6EAFAA;
     }
-    
     .education__degree, .experience__date{
         color: #a6a6a6;
     }
@@ -261,6 +260,10 @@ br {
     }
     .posts-list article.summary{
         color: #c3c3c3;
+    }
+    .post-summary.post-content p,
+    .post-summary.post-content *{
+        color: white;
     }
 }
 /* end dark mode */
