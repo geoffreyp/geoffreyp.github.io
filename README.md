@@ -1,6 +1,9 @@
 # Adritian Free Hugo Theme
 ###### Adritian Hugo Theme for Personal Websites or Professional minimalistic landing pages
 
+[![Vercel Deploy](https://deploy-badge.vercel.app/vercel/adritian-demo?name=demo)
+](https://adritian-demo.vercel.app/)
+
 See it live at **[adritian-demo.vercel.app](https://adritian-demo.vercel.app/)** (simple demo site, vanilla installation) or **[adrianmoreno.info](https://www.adrianmoreno.info)** (my personal site, running on this theme)
 
 This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme originally created by [Radity](https://github.com/radity). It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
