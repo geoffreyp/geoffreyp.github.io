@@ -30,12 +30,15 @@ You will need to change the import of CSS files in your `config.toml` file, in t
 ```
 
 **After:**
+(note that `adritian.css` gets moved to the `scss` section, and it's not needed to import `bootstrap.scss` or `menu.scss` manually - as they are not included in `adritian.scss`)
 ```
   # CSS Plugins
   [[params.plugins.css]]
   URL = "css/main.css"
   [[params.plugins.css]]
   URL = "css/custom.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
 
   # JS Plugins
   [[params.plugins.js]]
