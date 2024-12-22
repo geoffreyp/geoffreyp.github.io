@@ -1403,7 +1403,7 @@ body.home div.experience{
 .experience:active a > .experience__company,
 .experience a:hover > .experience__company,
 .experience a:active > .experience__company{
-    color: white;
+    color: white !important;
 }
 
 .all-experience-container{
