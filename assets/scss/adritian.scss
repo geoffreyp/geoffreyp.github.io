@@ -1,7 +1,5 @@
 @import "./bootstrap/bootstrap.scss";
 @import "./menu.scss";
-@import "../css/adritian-icons.css";
-@import "../css/custom.css";
 
 
 .container {
@@ -145,7 +143,6 @@ br {
 /** Media-query based color switching **/
 $color-mode-type: media-query;
 @include color-mode(dark) {
-
     
     html body, body {
         color: #fff !important;
