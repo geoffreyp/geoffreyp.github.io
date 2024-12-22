@@ -114,20 +114,34 @@ jobs:
           echo "Logging in to GitHub CLI."
           gh auth login --with-token < token.txt
 
-          echo "Creating pull-request..."
-          PR_TITLE='preview: update theme to `'$SOURCE_BRANCH_NAME'`'
-          echo 'PR title: '$PR_TITLE
-          PR_BODY="⚠️ The source PR is not merged yet - this is a preview PR.
-          🤖 This automated PR updates the theme submodule to a PR in the source repo: $PR_URL.
-          🔗 Triggered by https://github.com/zetxek/adritian-free-hugo-theme/actions/workflows/update-demo-pr.yml"
-          echo "PR body: "$PR_BODY
+          # Check if the PR already exists
+          PR_EXISTS=$(gh pr list --state open --base $BASE_BRANCH --head $BRANCH_NAME --json number | jq '.[0].number')
+          # If the PR exists, update it
+          if [ -n "$PR_EXISTS" ]; then
+            echo "PR Exists. Updating pull-request..."
+            gh pr view
+            
+            echo "✅ Pull-request created - done! "
+            
+          # Else, we create it
+          else
+            echo "Creating pull-request..."
+            PR_TITLE='preview: update theme to `'$SOURCE_BRANCH_NAME'`'
+            echo 'PR title: '$PR_TITLE
+            PR_BODY="⚠️ The source PR is not merged yet - this is a preview PR.
+            🤖 This automated PR updates the theme submodule to a PR in the source repo: $PR_URL.
+            🔗 Triggered by https://github.com/zetxek/adritian-free-hugo-theme/actions/workflows/update-demo-pr.yml"
+            echo "PR body: "$PR_BODY
 
-          gh pr create \
-            --title "$PR_TITLE" \
-            --body "$PR_BODY" \
-            --head $BRANCH_NAME \
-            --base $BASE_BRANCH \
-            --assignee $ASSIGNEE \
-            --label preview
+            gh pr create \
+              --title "$PR_TITLE" \
+              --body "$PR_BODY" \
+              --head $BRANCH_NAME \
+              --base $BASE_BRANCH \
+              --assignee $ASSIGNEE \
+              --label preview
 
-          echo "✅ Pull-request created - done! "
+            echo "✅ Pull-request created - done! "
+          fi
+
+          
