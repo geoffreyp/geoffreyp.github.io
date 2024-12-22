@@ -288,7 +288,7 @@ $color-mode-type: media-query;
     }
 
     .text-muted{
-        color: $secondary-text-emphasis-dark !important;
+        color: rgba(255, 255, 255, .6) !important;
     }
 }
 /* end dark mode */
