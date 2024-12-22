@@ -1,5 +1,5 @@
 # Workflow to verify that the exampleSite runs ok
-name: Verify example site
+name: Dry-run example site
 
 on:
     # Runs on pull requests targeting the default branch
