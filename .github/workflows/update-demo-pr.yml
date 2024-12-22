@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update:
+  update-demo:
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }} # PR branch name
       PR_NUMBER: ${{ github.event.number }}
@@ -126,7 +126,7 @@ jobs:
             
           # Else, we create it
           else
-            echo "Creating pull-request..."
+            echo "✨PR Does not exist yet. Creating pull-request..."
             PR_TITLE='preview: update theme to `'$SOURCE_BRANCH_NAME'`'
             echo 'PR title: '$PR_TITLE
             PR_BODY="⚠️ The source PR is not merged yet - this is a preview PR.
