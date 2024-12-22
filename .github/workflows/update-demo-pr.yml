@@ -116,6 +116,7 @@ jobs:
 
           # Check if the PR already exists
           PR_EXISTS=$(gh pr list --state open --base $BASE_BRANCH --head $BRANCH_NAME --json number | jq '.[0].number')
+          echo "PR_EXISTS: $PR_EXISTS"
           # If the PR exists, update it
           if [ -n "$PR_EXISTS" ]; then
             echo "PR Exists. Updating pull-request..."
