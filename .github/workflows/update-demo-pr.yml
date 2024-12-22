@@ -119,8 +119,8 @@ jobs:
           # If the PR exists, update it
           if [ -n "$PR_EXISTS" ]; then
             echo "PR Exists. Updating pull-request..."
-            gh pr update $PR_EXISTS --title "$PR_TITLE" --body "$PR_BODY"
-
+            gh pr view
+            
             echo "✅ Pull-request created - done! "
             
           # Else, we create it
