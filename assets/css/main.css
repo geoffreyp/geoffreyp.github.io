@@ -1430,6 +1430,9 @@ body.home div.experience{
 article.post.summary h2{
     font-size: 24px
 }
+.post-summary{
+    margin-top: 20px;
+}
 .post-content{
     margin-bottom: 20px;
 }
@@ -1452,12 +1455,16 @@ article.post.summary h2{
 #blog-single #meta section{
     font-weight: lighter;
 }
-#blog-single #meta h4{
+#blog-single #meta h4,
+article.summary .post-meta h4
+{
     font-size: 16px;
     font-weight: light;
     display: inline;
 }
-#blog-single #meta h5{
+#blog-single #meta h5,
+article.summary .post-meta h5
+{
     font-size: 14px;
     font-weight: light;
     display: inline;
