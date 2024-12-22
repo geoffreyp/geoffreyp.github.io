@@ -114,10 +114,10 @@ jobs:
           echo "Logging in to GitHub CLI."
           gh auth login --with-token < token.txt
 
-          # Check if the PR already exists
-          PR_EXISTS=$(gh pr list --state open --base $BASE_BRANCH --head $BRANCH_NAME --json number | jq '.[0].number')
+          # Check if the PR already exists - if there's no "number" returned, we default to empty string
+          PR_EXISTS=$(gh pr list --state open --base $BASE_BRANCH --head $BRANCH_NAME --json number | jq '.[0].number // empty')
           echo "PR_EXISTS: $PR_EXISTS"
-          # If the PR exists, update it
+          # Check if there's a PR number. If the PR exists, update it (empty = it doesn't exist)
           if [ -n "$PR_EXISTS" ]; then
             echo "PR Exists. Updating pull-request..."
             gh pr view
