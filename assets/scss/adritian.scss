@@ -286,5 +286,9 @@ $color-mode-type: media-query;
     .post-summary.post-content *{
         color: white !important;
     }
+
+    .text-muted{
+        color: $secondary-text-emphasis-dark !important;
+    }
 }
 /* end dark mode */
