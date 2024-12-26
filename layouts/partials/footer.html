@@ -18,6 +18,11 @@
       </ul>
     </div>
     <div class="footer__right">
+      <button type="button" id="dark-toggle" class="dark-selector">
+        <span class="light">☀️</span>   
+        <span class="dark">🌑</span>    
+      </button>
+            
       {{ if hugo.IsMultilingual }}
       <nav class="language-selector">
         <ul>
@@ -42,3 +47,6 @@
     </div>
   </div>
 </footer>
+<!-- Dark theme selector -->
+{{- $darkToggle := resources.Get "js/dark-toggle.js" | resources.Minify }}
+<script defer src="{{ $darkToggle.Permalink }}"></script>

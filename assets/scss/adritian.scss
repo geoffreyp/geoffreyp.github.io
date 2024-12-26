@@ -138,10 +138,23 @@ br {
     }
 }
 
-
+html[data-bs-theme="dark"] {
+    #dark-toggle {
+        span.dark{ 
+            display: none;
+        }
+    }
+}
+html[data-bs-theme="light"] {
+    #dark-toggle {
+        span.light{ 
+            display: none;
+        }
+    }
+}
 /* dark mode */
 /** Media-query based color switching **/
-$color-mode-type: media-query;
+// $color-mode-type: media-query;
 @include color-mode(dark) {
     
     html body, body {
