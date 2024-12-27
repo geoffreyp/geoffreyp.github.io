@@ -181,8 +181,6 @@ theme = "adritian-free-hugo-theme"
 
   # CSS Plugins
   [[params.plugins.css]]
-  URL = "css/main.css"
-  [[params.plugins.css]]
   URL = "css/custom.css"
   [[params.plugins.css]]
   URL = "css/adritian-icons.css"
