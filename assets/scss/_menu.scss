@@ -7,4 +7,19 @@ $transition: 280ms all 120ms ease-out;
   li.choice {
     padding-left: 22px;
   }
+
+  .label {
+    color: $color;
+  }
+
+  .dropdown-toggle::after {
+    color: $color;
+  }
+}
+
+#footer-color-selector {
+    .dropdown-toggle::after {
+      color: $color;
+    }
+  
 }

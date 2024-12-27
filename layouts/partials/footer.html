@@ -17,7 +17,7 @@
     </div>
     <div class="footer__right">
       {{ if hugo.IsMultilingual }}
-      <nav class="language-selector nav-item dropdown dropup">
+      <nav id="footer-language-selector" class="language-selector nav-item dropdown dropup">
           {{ range .Site.Languages }} 
             {{ if eq . $.Site.Language }}
               <button
@@ -52,7 +52,7 @@
             </ul>
       </nav>
       {{ end }}
-      <div class="nav-item dropdown dropup">
+      <div id="footer-color-selector" class="nav-item dropdown dropup">
         <button
           class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
           id="bd-theme"
