@@ -63,7 +63,7 @@
           aria-label="Toggle theme (light)"
         >
           ☀️
-          <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+          <span class="d-lg-none ms-2" id="bd-theme-text">{{ i18n "toggle_theme" }}</span>
         </button>
         <ul
           class="dropdown-menu dropdown-menu-end dropup"
@@ -77,7 +77,8 @@
               data-bs-theme-value="light"
               aria-pressed="true"
             >
-              ☀️ Light
+              {{ i18n "theme_light" }}
+              
             </button>
           </li>
           <!-- dark theme picker (dark/light/auto )-->
@@ -88,7 +89,7 @@
               data-bs-theme-value="dark"
               aria-pressed="false"
             >
-              🌑 Dark
+              {{ i18n "theme_dark" }}
             </button>
           </li>
           <li>
@@ -98,7 +99,7 @@
               data-bs-theme-value="auto"
               aria-pressed="false"
             >
-              ✨ Auto
+              {{ i18n "theme_auto" }}
             </button>
           </li>
         </ul>
