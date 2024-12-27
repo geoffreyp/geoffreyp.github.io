@@ -1,6 +1,19 @@
 @import "./bootstrap/bootstrap.scss";
 @import "navbar";
 @import "menu";
+@import "raditian";
+
+/** main style **/
+.header .navbar-brand span:first-child{
+    color: #478079;
+}
+.header .container{
+    padding-left: 10px;
+}
+
+html body ::selection{
+    background-color:#488079;color:#fff
+}
 
 
 .container {
