@@ -18,17 +18,12 @@
       </ul>
     </div>
     <div class="footer__right">
-      <button type="button" id="dark-toggle" class="dark-selector">
-        <span class="light">☀️</span>   
-        <span class="dark">🌑</span>    
-      </button>
-            
       {{ if hugo.IsMultilingual }}
       <nav class="language-selector">
         <ul>
           {{ range .Site.Languages }}
             {{ if eq . $.Site.Language }}
-            <li class="dropdown">
+            <li class="dropdown-css">
               <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="languages-dropdown">
                 <span class="label">{{ i18n "language" }}</span>    
               </button>
@@ -44,9 +39,58 @@
         </ul>
       </nav>
       {{ end }}
+<div class="nav-item dropdown dropup">
+              <button
+                class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show "
+                id="bd-theme"
+                type="button"
+                aria-expanded="true"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-label="Toggle theme (light)"
+              >
+                ☀️
+                <span class="d-lg-none ms-2" id="bd-theme-text"
+                  >Toggle theme</span
+                >
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end dropup"
+                aria-labelledby="bd-theme-text"
+                data-bs-popper="static"
+              >
+                <li>
+                  <button
+                    type="button"
+                    class="dropdown-item d-flex align-items-center active"
+                    data-bs-theme-value="light"
+                    aria-pressed="true"
+                  >☀️ Light
+                  </button>
+                </li>
+                <!-- dark theme picker (dark/light/auto )-->
+                <li>
+                  <button
+                    type="button"
+                    class="dropdown-item d-flex align-items-center"
+                    data-bs-theme-value="dark"
+                    aria-pressed="false"
+                  >
+                    🌑Dark
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    class="dropdown-item d-flex align-items-center"
+                    data-bs-theme-value="auto"
+                    aria-pressed="false"
+                  >
+                    ✨ Auto
+                  </button>
+                </li>
+              </ul>
+            </div>
     </div>
   </div>
 </footer>
-<!-- Dark theme selector -->
-{{- $darkToggle := resources.Get "js/dark-toggle.js" | resources.Minify }}
-<script defer src="{{ $darkToggle.Permalink }}"></script>

@@ -24,14 +24,6 @@
         {{- $cssResources = $cssResources | append $cssFile }}
     {{- end }}
 {{- end }}
-{{- range .Site.Params.plugins.scss }}  
-  {{- $scss := resources.Get .URL }}
-  {{- $style := $scss | css.Sass }}
-  {{- if hugo.IsProduction }} 
-    {{- $style = $scss | css.Sass | resources.Minify | resources.Fingerprint }} 
-  {{- end }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
-{{- end }}
 
 {{- $cssBundle := $cssResources | resources.Concat "css/bundle.css" }}
 
@@ -39,7 +31,6 @@
 {{- if hugo.IsProduction }} 
     {{- $css = $css | minify | fingerprint | resources.PostProcess }} 
 {{- end }}
-
 <link
   rel="preload"
   href="{{ $css.RelPermalink }}"
@@ -60,6 +51,21 @@
     {{- end }}
   />
 </noscript>
+{{- range .Site.Params.plugins.scss }}
+  {{- $scss := resources.Get .URL }}
+  {{- $style := $scss | css.Sass }}
+  {{- if hugo.IsProduction }} 
+    {{- $style = $scss | css.Sass | resources.Minify | resources.Fingerprint }} 
+  {{- end }}
+<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
+{{- end }}
+
+{{- $colorModesScript := resources.Get "js/color-modes.js" }}
+{{- if hugo.IsProduction }}
+    {{- $colorModesScript = $colorModesScript | resources.Minify | resources.Fingerprint }}
+{{- end }}
+<script defer src="{{ $colorModesScript.Permalink }}"></script>
+
 {{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <!-- Google tag (gtag.js), google analytics -->
 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-465407-4"></script>
