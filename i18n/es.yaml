@@ -12,7 +12,7 @@
 - id: "language"
   translation: "Idioma"
 
-  - id: "toggle_theme"
+- id: "toggle_theme"
   translation: "Selectionar esquema de color"
 
 - id: "theme_light"
