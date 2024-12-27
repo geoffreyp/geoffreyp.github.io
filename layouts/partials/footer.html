@@ -17,6 +17,7 @@
     </div>
     <div class="footer__right">
       {{ if hugo.IsMultilingual }}
+      {{ if not .Site.Params.languages.selector.disable.footer }}
       <nav id="footer-language-selector" class="language-selector nav-item dropdown dropup">
           {{ range .Site.Languages }} 
             {{ if eq . $.Site.Language }}
@@ -52,6 +53,8 @@
             </ul>
       </nav>
       {{ end }}
+      {{ end }}
+      {{ if not .Site.Params.colorTheme.selector.disable.footer }}
       <div id="footer-color-selector" class="nav-item dropdown dropup">
         <button
           class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
@@ -104,6 +107,7 @@
           </li>
         </ul>
       </div>
+      {{ end }}
     </div>
   </div>
 </footer>

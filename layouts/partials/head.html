@@ -60,11 +60,17 @@
 <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
 {{- end }}
 
+
+<!-- printed only it not disabled -->
+{{- if not .Site.Params.colorTheme.auto.disable }}
 {{- $colorModesScript := resources.Get "js/color-modes.js" }}
 {{- if hugo.IsProduction }}
     {{- $colorModesScript = $colorModesScript | resources.Minify | resources.Fingerprint }}
 {{- end }}
 <script defer src="{{ $colorModesScript.Permalink }}"></script>
+{{- else }}
+<!-- disabled color theme selector -->
+{{- end  }}
 
 {{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <!-- Google tag (gtag.js), google analytics -->
