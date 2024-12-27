@@ -17,22 +17,30 @@
     </div>
     <div class="footer__right">
       {{ if hugo.IsMultilingual }}
-      <nav class="language-selector">
-        <ul>
-          {{ range .Site.Languages }} {{ if eq . $.Site.Language }}
-          <li class="dropdown-css">
-            <button
-              type="button"
-              class="dropdown__title"
-              aria-expanded="false"
-              aria-controls="languages-dropdown"
-            >
-              <span class="label">{{ i18n "language" }}</span>
-            </button>
-            <ul class="dropdown__menu" id="languages-dropdown">
-              <li class="current"><span>✔️ {{ .LanguageName }}</span></li>
-              {{ end }} {{ end }} {{ range $.Translations }}
-              <li>
+      <nav class="language-selector nav-item dropdown dropup">
+          {{ range .Site.Languages }} 
+            {{ if eq . $.Site.Language }}
+              <button
+                type="button"
+                class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
+                aria-expanded="false"
+                aria-controls="languages-dropdown"
+                aria-expanded="true"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-label="Select language"
+              >
+                <span class="label">{{ i18n "language" }}</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropup" 
+                  id="languages-dropdown"
+                  data-bs-popper="static"
+              >
+                <li class="current"><span>✔️ {{ .LanguageName }}</span></li>
+              {{ end }} 
+            {{ end }} 
+            {{ range $.Translations }}
+              <li class="choice">
                 <a
                   class="translation"
                   title="{{ .Language.LanguageName }}"
@@ -40,10 +48,8 @@
                   >{{ .Language.LanguageName }}</a
                 >
               </li>
-              {{ end }}
+            {{ end }}
             </ul>
-          </li>
-        </ul>
       </nav>
       {{ end }}
       <div class="nav-item dropdown dropup">
