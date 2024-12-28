@@ -2,7 +2,7 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
-## v1.4.6
+## v1.4.8
 
 This version continues to align with Bootstrap extension capabilities.
 You will need to change the import of CSS files in your `config.toml` file, in the `Plugins` section.
