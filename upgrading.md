@@ -4,6 +4,13 @@ This documentation is meant to help you upgrade across versions, when potentiall
 
 ## v1.4.8
 
+### Change 1: new translations keys
+
+Added for the color switcher in the footer
+- theme color switcher (`toggle_theme`) and themes (`theme_light`, `theme_dark`, `theme_auto`).
+
+### Change 2: css files refactor
+
 This version continues to align with Bootstrap extension capabilities.
 You will need to change the import of CSS files in your `config.toml` file, in the `Plugins` section.
 
