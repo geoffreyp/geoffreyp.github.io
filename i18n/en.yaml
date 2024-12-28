@@ -34,6 +34,13 @@
 - id: "theme_auto"
   translation: "✨ Auto"
 
+- id: "theme_light_short"
+  translation: "☀️"
+- id: "theme_dark_short"
+  translation: "🌑"
+- id: "theme_auto_short"
+  translation: "✨"
+
 ## Homepage head title
 - id: "head_title"
   translation: "Demo site for Adritian - a high performance hugo theme by Adrián Moreno"

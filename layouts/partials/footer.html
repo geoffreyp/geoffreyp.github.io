@@ -65,7 +65,11 @@
           data-bs-display="static"
           aria-label="Toggle theme (light)"
         >
-          ☀️
+          <span class="theme-icon light d-none">{{ i18n "theme_light_short" }}</span>
+          <span class="theme-icon dark d-none">{{ i18n "theme_dark_short" }}</span>
+          <span class="theme-icon dark">{{ i18n "theme_auto_short" }}</span>
+
+          {{ i18n "theme_auto" }}
           <span class="d-lg-none ms-2" id="bd-theme-text">{{ i18n "toggle_theme" }}</span>
         </button>
         <ul
