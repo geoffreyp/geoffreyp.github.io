@@ -65,12 +65,9 @@
           data-bs-display="static"
           aria-label="Toggle theme (light)"
         >
-          <span class="theme-icon light d-none">{{ i18n "theme_light_short" }}</span>
-          <span class="theme-icon dark d-none">{{ i18n "theme_dark_short" }}</span>
-          <span class="theme-icon dark">{{ i18n "theme_auto_short" }}</span>
-
-          {{ i18n "theme_auto" }}
-          <span class="d-lg-none ms-2" id="bd-theme-text">{{ i18n "toggle_theme" }}</span>
+          <span class="theme-icon auto d-none" aria-hidden="true">{{ i18n "theme_auto_short" }}</span>
+          <span class="current-theme">{{ i18n "theme_auto" }}</span>
+          <span class="d-lg-none ms-2 visually-hidden" id="bd-theme-text">{{ i18n "toggle_theme" }}</span>
         </button>
         <ul
           class="dropdown-menu dropdown-menu-end dropup"
@@ -85,7 +82,6 @@
               aria-pressed="true"
             >
               {{ i18n "theme_light" }}
-              
             </button>
           </li>
           <!-- dark theme picker (dark/light/auto )-->
@@ -97,6 +93,7 @@
               aria-pressed="false"
             >
               {{ i18n "theme_dark" }}
+            <span class="theme-icon dark d-none"  aria-hidden="true">{{ i18n "theme_dark_short" }}</span>
             </button>
           </li>
           <li>
@@ -107,6 +104,7 @@
               aria-pressed="false"
             >
               {{ i18n "theme_auto" }}
+            <span class="theme-icon light d-none" aria-hidden="true">{{ i18n "theme_light_short" }}</span>
             </button>
           </li>
         </ul>
