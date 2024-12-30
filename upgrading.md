@@ -2,7 +2,7 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
-## v1.4.8
+## v1.4.9
 
 ### Change 1: new translations keys
 
