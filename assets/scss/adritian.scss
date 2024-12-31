@@ -1,5 +1,19 @@
 @import "./bootstrap/bootstrap.scss";
-@import "./menu.scss";
+@import "navbar";
+@import "menu";
+@import "raditian";
+
+/** main style **/
+.header .navbar-brand span:first-child{
+    color: #478079;
+}
+.header .container{
+    padding-left: 10px;
+}
+
+html body ::selection{
+    background-color:#488079;color:#fff
+}
 
 
 .container {
@@ -138,10 +152,23 @@ br {
     }
 }
 
-
+html[data-bs-theme="dark"] {
+    #dark-toggle {
+        span.dark{ 
+            display: none;
+        }
+    }
+}
+html[data-bs-theme="light"] {
+    #dark-toggle {
+        span.light{ 
+            display: none;
+        }
+    }
+}
 /* dark mode */
 /** Media-query based color switching **/
-$color-mode-type: media-query;
+// $color-mode-type: media-query;
 @include color-mode(dark) {
     
     html body, body {

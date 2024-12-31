@@ -2,6 +2,84 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.4.9
+
+### Change 1: new translations keys
+
+Added for the color switcher in the footer
+- theme color switcher (`toggle_theme`) and themes (`theme_light`, `theme_dark`, `theme_auto`).
+
+### Change 2: css files refactor
+
+This version continues to align with Bootstrap extension capabilities.
+You will need to change the import of CSS files in your `config.toml` file, in the `Plugins` section.
+
+**Before:**
+```
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/main.css"
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/adritian.scss"
+```
+
+**After:**
+
+See that the `main.css` file is gone from CSS:
+```
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/adritian.scss"
+```
+
+Also, added new parameters in `config.toml`:
+
+```
+# theme/color style 
+[params.colorTheme]
+
+## the following configuration would disable automatic theme selection
+#  [params.colorTheme.auto]
+#    disable = true
+#  [params.colorTheme.forced]
+#    theme = "dark"
+
+## the following parameter will disable theme override in the footer
+#  [params.colorTheme.selector.disable]
+#  footer = true
+
+
+## by default we allow override AND automatic selection
+```
+
 ## v1.4.5
 
 This version has aligned more the custom CSS with Bootstrap's extension capabilities.

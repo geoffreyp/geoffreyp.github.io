@@ -12,6 +12,16 @@
 - id: "language"
   translation: "Langue"
 
+- id: "toggle_theme"
+  translation: "Changer le thème"
+
+- id: "theme_light"
+  translation: "☀️ Clair"
+- id: "theme_dark"
+  translation: "🌑 Sombre"
+- id: "theme_auto"
+  translation: "✨ Auto"
+
 ## Homepage head title
 - id: "head_title"
   translation: "Site de démonstration pour Adritian - un thème Hugo haute performance par Adrián Moreno"

@@ -1,9 +1,21 @@
+## Meta tags
+- id: "meta_title"
+  translation: "Adritian - a high performance hugo theme by Adrián Moreno"
+- id: "meta_description"
+  translation: "This hugo theme (Adritian) is based on Bootstrap and has features that make it suitable for a personal site, a portfolio or other kind of Single Page Applications."
+- id: "meta_keywords"
+  translation: "hugo, theme, bootstrap, adritian, adrian moreno, personal site, portfolio, single page application"
+- id: "meta_author"
+  translation: "Adrián Moreno Peña"
+- id: "meta_image"
+  translation: "/img/general/og-image.jpg"
+
 ## Header
 - id: "logo_text1"
-  translation: "Cool"
+  translation: "Adritian"
 
 - id: "logo_text2"
-  translation: "Name"
+  translation: "Demo"
 
 ## Footer
 - id: "footer_notice"
@@ -11,6 +23,16 @@
 
 - id: "language"
   translation: "Language"
+
+- id: "toggle_theme"
+  translation: "Toggle theme"
+
+- id: "theme_light"
+  translation: "☀️ Light"
+- id: "theme_dark"
+  translation: "🌑 Dark"
+- id: "theme_auto"
+  translation: "✨ Auto"
 
 ## Homepage head title
 - id: "head_title"
@@ -21,13 +43,13 @@
 
 ## Homepage showcase
 - id: "showcase_title"
-  translation: "Hello, I’m Cool."
+  translation: "Welcome the demo"
 
 - id: "showcase_subtitle"
-  translation: "This is my title"
+  translation: "Let's dive into an example"
 
 - id: "showcase_description"
-  translation: "This is a good place to start with an introduction about yourself. Maybe a mention to the place <a target='_blank' href='https://www.adrianmoreno.info/'>where you work</a>. You can also mention where you live, your background and what's the purpose of the site. <br>You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, and see it live <a target='_blank' href='https://adritian-demo.vercel.app//'>as a demo site</a> or <a target='_blank' href='https://www.adrianmoreno.info'>a real one</a>.<br>You can find this content to edit in the theme.yaml file."
+  translation: "This is a high performance theme for the Hugo static site generator. This sample content can be edited in the locale files (as the theme supports translations). <br>You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, and see it live <a target='_blank' href='https://adritian-demo.vercel.app/'>as a demo site</a> or <a target='_blank' href='https://www.adrianmoreno.info'>a real one</a>.<br>You can find this content to edit in the theme.yaml file."
 
 - id: "showcase_button"
   translation: "Contact"
