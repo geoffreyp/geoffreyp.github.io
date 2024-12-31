@@ -293,6 +293,15 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/lukasulc">
+                    <img src="https://avatars.githubusercontent.com/u/68392977?v=4" width="100;" alt="lukasulc"/>
+                    <br />
+                    <sub><b>Luka Šulc</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
                 <a href="https://github.com/evolutionise">
                     <img src="https://avatars.githubusercontent.com/u/6320469?v=4" width="100;" alt="evolutionise"/>
                     <br />
