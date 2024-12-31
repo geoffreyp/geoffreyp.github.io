@@ -1,6 +1,6 @@
-<footer class="footer">
+<footer class="footer w-100">
   <div class="container">
-    <div class="row">
+    <div class="row w-100">
       <div class="footer__left col-4">
         <div class="footer__copy">{{ i18n "footer_notice" | safeHTML }}</div>
       </div>
@@ -18,7 +18,8 @@
           {{ end }}
         </ul>
       </div>
-      <div class="footer__right col-2 text-end">
+      <!-- make this column float to the right -->
+      <div class="footer__right col-2 text-end ms-auto">
         <div class="row">
           {{ if hugo.IsMultilingual }} {{ if not
           .Site.Params.languages.selector.disable.footer }}
