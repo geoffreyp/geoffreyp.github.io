@@ -1,124 +1,128 @@
 <footer class="footer">
   <div class="container">
-    <div class="footer__left">
-      <div class="footer__copy">{{ i18n "footer_notice" | safeHTML }}</div>
-    </div>
-    <div class="footer__links">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ .Site.BaseURL | absURL }}">🏠 HOME</a>
-        </li>
-        {{ range .Site.Menus.footer }}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ .URL | relURL }}">{{ .Name | upper }}</a>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-    <div class="footer__right">
-      <div class="navbar-nav">
-        {{ if hugo.IsMultilingual }} {{ if not
-        .Site.Params.languages.selector.disable.footer }}
-        <nav
-          id="footer-language-selector"
-          class="language-selector nav-item dropdown dropup col"
-        >
-          {{ range .Site.Languages }} {{ if eq . $.Site.Language }}
-          <button
-            type="button"
-            class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
-            aria-expanded="false"
-            aria-controls="languages-dropdown"
-            aria-expanded="true"
-            data-bs-toggle="dropdown"
-            data-bs-display="static"
-            aria-label="Select language"
-          >
-            <span class="label">{{ i18n "language" }}</span>
-          </button>
-          <ul
-            class="dropdown-menu dropdown-menu-end dropup"
-            id="languages-dropdown"
-            data-bs-popper="static"
-          >
-            <li class="current"><span>✔️ {{ .LanguageName }}</span></li>
-            {{ end }} {{ end }} {{ range $.Translations }}
-            <li class="choice">
-              <a
-                class="translation"
-                title="{{ .Language.LanguageName }}"
-                href="{{ .Permalink }}"
-                >{{ .Language.LanguageName }}</a
-              >
-            </li>
-            {{ end }}
-          </ul>
-        </nav>
-        {{ end }} {{ end }} {{ if not
-        .Site.Params.colorTheme.selector.disable.footer }}
-        <div id="footer-color-selector" class="nav-item dropdown dropup col">
-          <button
-            class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
-            id="bd-theme"
-            type="button"
-            aria-expanded="true"
-            data-bs-toggle="dropdown"
-            data-bs-display="static"
-            aria-label="Toggle theme (light)"
-          >
-            <span class="theme-icon auto d-none" aria-hidden="true"
-              >{{ i18n "theme_auto_short" }}</span
+    <div class="row">
+      <div class="footer__left col-4">
+        <div class="footer__copy">{{ i18n "footer_notice" | safeHTML }}</div>
+      </div>
+      <div class="footer__links col-6">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .Site.BaseURL | absURL }}">🏠 HOME</a>
+          </li>
+          {{ range .Site.Menus.footer }}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .URL | relURL }}"
+              >{{ .Name | upper }}</a
             >
-            <span class="current-theme">{{ i18n "theme_auto" }}</span>
-            <span class="d-lg-none ms-2 visually-hidden" id="bd-theme-text"
-              >{{ i18n "toggle_theme" }}</span
-            >
-          </button>
-          <ul
-            class="dropdown-menu dropdown-menu-end dropup"
-            aria-labelledby="bd-theme-text"
-            data-bs-popper="static"
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="footer__right col-2 text-end">
+        <div class="row">
+          {{ if hugo.IsMultilingual }} {{ if not
+          .Site.Params.languages.selector.disable.footer }}
+          <nav
+            id="footer-language-selector"
+            class="language-selector nav-item dropdown dropup col-6"
           >
-            <li>
-              <button
-                type="button"
-                class="dropdown-item d-flex align-items-center active"
-                data-bs-theme-value="light"
-                aria-pressed="true"
-              >
-                {{ i18n "theme_light" }}
-              </button>
-            </li>
-            <!-- dark theme picker (dark/light/auto )-->
-            <li>
-              <button
-                type="button"
-                class="dropdown-item d-flex align-items-center"
-                data-bs-theme-value="dark"
-                aria-pressed="false"
-              >
-                {{ i18n "theme_dark" }}
-                <span class="theme-icon dark d-none" aria-hidden="true"
-                  >{{ i18n "theme_dark_short" }}</span
+            {{ range .Site.Languages }} {{ if eq . $.Site.Language }}
+            <button
+              type="button"
+              class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
+              aria-expanded="false"
+              aria-controls="languages-dropdown"
+              aria-expanded="true"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Select language"
+            >
+              <span class="label">{{ i18n "language" }}</span>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end dropup"
+              id="languages-dropdown"
+              data-bs-popper="static"
+            >
+              <li class="current"><span>✔️ {{ .LanguageName }}</span></li>
+              {{ end }} {{ end }} {{ range $.Translations }}
+              <li class="choice">
+                <a
+                  class="translation"
+                  title="{{ .Language.LanguageName }}"
+                  href="{{ .Permalink }}"
+                  >{{ .Language.LanguageName }}</a
                 >
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                class="dropdown-item d-flex align-items-center"
-                data-bs-theme-value="auto"
-                aria-pressed="false"
+              </li>
+              {{ end }}
+            </ul>
+          </nav>
+          {{ end }} {{ end }} {{ if not
+          .Site.Params.colorTheme.selector.disable.footer }}
+          <div id="footer-color-selector" class="nav-item dropdown dropup col-6">
+            <button
+              class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
+              id="bd-theme"
+              type="button"
+              aria-expanded="true"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-label="Toggle theme (light)"
+            >
+              <span class="theme-icon auto d-none" aria-hidden="true"
+                >{{ i18n "theme_auto_short" }}</span
               >
-                {{ i18n "theme_auto" }}
-                <span class="theme-icon light d-none" aria-hidden="true"
-                  >{{ i18n "theme_light_short" }}</span
+              <span class="current-theme">{{ i18n "theme_auto" }}</span>
+              <span class="d-lg-none ms-2 visually-hidden" id="bd-theme-text"
+                >{{ i18n "toggle_theme" }}</span
+              >
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end dropup"
+              aria-labelledby="bd-theme-text"
+              data-bs-popper="static"
+            >
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item d-flex align-items-center active"
+                  data-bs-theme-value="light"
+                  aria-pressed="true"
                 >
-              </button>
-            </li>
-          </ul>
+                  {{ i18n "theme_light" }}
+                </button>
+              </li>
+              <!-- dark theme picker (dark/light/auto )-->
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item d-flex align-items-center"
+                  data-bs-theme-value="dark"
+                  aria-pressed="false"
+                >
+                  {{ i18n "theme_dark" }}
+                  <span class="theme-icon dark d-none" aria-hidden="true"
+                    >{{ i18n "theme_dark_short" }}</span
+                  >
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="dropdown-item d-flex align-items-center"
+                  data-bs-theme-value="auto"
+                  aria-pressed="false"
+                >
+                  {{ i18n "theme_auto" }}
+                  <span class="theme-icon light d-none" aria-hidden="true"
+                    >{{ i18n "theme_light_short" }}</span
+                  >
+                </button>
+              </li>
+            </ul>
+          </div>
+          {{ end }}
         </div>
-        {{ end }}
       </div>
     </div>
   </div>
