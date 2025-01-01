@@ -1,11 +1,11 @@
 <footer class="footer w-100">
   <div class="container">
     <div class="row w-100">
-      <div class="footer__left col-4">
+      <div class="footer_left col-12 col-lg-4 mb-3 mb-lg-0 text-center text-lg-start align-middle">
         <div class="footer__copy">{{ i18n "footer_notice" | safeHTML }}</div>
       </div>
-      <div class="footer__links col-6">
-        <ul class="navbar-nav">
+      <div class="footer_links col-12 col-lg-6 mb-3 mb-lg-0 text-center text-lg-start">
+        <ul class="navbar-nav align-items-center justify-content-center justify-content-lg-start">
           <li class="nav-item">
             <a class="nav-link" href="{{ .Site.BaseURL | absURL }}">🏠 HOME</a>
           </li>
@@ -18,8 +18,8 @@
           {{ end }}
         </ul>
       </div>
-      <div class="footer__right col-2 text-end ms-auto">
-        <div class="row">
+      <div class="footer_right col-12 col-lg-2 text-center text-lg-end">
+        <div class="row justify-content-center">
           {{ if hugo.IsMultilingual }} {{ if not
           .Site.Params.languages.selector.disable.footer }}
           <nav
