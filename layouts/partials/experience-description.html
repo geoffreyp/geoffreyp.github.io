@@ -4,6 +4,7 @@
     <p class="lead">{{ i18n "experience_description" }}</p>
   </div>
   <div class="row">
+    {{ if .Site.Data.homepage.experience.button.enable }}
     <div class="col-12 col-lg-4">
       <a
         href="{{ .Site.Data.homepage.experience.button.URL | absURL }}"
@@ -18,6 +19,8 @@
         <i class="icon-arrow-right"></i
       ></a>
     </div>
+    {{ end }}
+    {{ if .Site.Data.homepage.experience.button2.enable }}
     <div class="col-12 col-lg-4">
       <a
         href='{{ i18n "experience_button2_url" | absURL }}'
@@ -31,6 +34,8 @@
         {{ i18n "experience_button2" }}
       </a>
     </div>
+    {{ end }}
+    {{ if .Site.Data.homepage.experience.button3.enable }}
     <div class="col-12 col-lg-4">
       <a
         href='{{ i18n "experience_button3_url" | absURL }}'
@@ -43,5 +48,6 @@
         {{ i18n "experience_button3" }}
       </a>
     </div>
+    {{ end }}
   </div>
 </div>

@@ -4,6 +4,8 @@ This documentation is meant to help you upgrade across versions, when potentiall
 
 ## v1.4.13
 
+### Analytics section re-organized
+
 In the [PR #121](https://github.com/zetxek/adritian-free-hugo-theme/pull/121), we moved the analytics config to a new section in the configuration for better extensibility and clarity.
 
 Before:
@@ -42,6 +44,31 @@ After:
 ```
 
 See the theme's [`exampleSite` hugo.toml](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/hugo.toml) file for an example configuration.
+
+### "Experience buttons" can be hidden
+
+A new configuration option has been added to the experience buttons. 
+
+Before:
+```
+experience:
+  button:
+    enable: true
+    icon: "icon-linkedin"
+    ## the url and text are localized, fill them in the i18n file
+    ## keys: experience_button, experience_button_url
+```
+
+After:
+```
+experience:
+  enable: true
+  button:
+    enable: true
+    icon: "icon-linkedin"
+    ## the url and text are localized, fill them in the i18n file
+    ## keys: experience_button, experience_button_url
+```
 
 ## v1.4.9
 
