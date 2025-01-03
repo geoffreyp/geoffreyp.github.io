@@ -7,15 +7,15 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 {{- end }}
 
-{{- if .Site.Params.analytics.google_analytics.enabled }}
+{{- if .Site.Params.analytics.googleAnalytics.enabled }}
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.google_analytics.code }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.googleAnalytics.code }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ .Site.Params.analytics.google_analytics.code}} ');
+  gtag('config', '{{ .Site.Params.analytics.googleAnalytics.code}} ');
 </script>
 {{- end }}
 
