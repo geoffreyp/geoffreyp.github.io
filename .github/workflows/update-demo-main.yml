@@ -19,7 +19,6 @@ jobs:
       - uses: actions/checkout@v4
         with: 
           repository: zetxek/adritian-demo
-          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
 
 
