@@ -52,7 +52,7 @@ jobs:
           LATEST_COMMIT=$(git rev-parse HEAD)
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
           REPOSITORY="zetxek/adritian-demo"
-          REPO_NAME=${{ github.event.repository.full_name }}
+          REPO_NAME=${{ github.event.pull_request.head.repo.full_name }}
           FOLDER="bin/$REPOSITORY"
           PR_URL="https://github.com/$SOURCE_REPOSITORY/pull/$PR_NUMBER"
           BRANCH_NAME="theme-update/update-theme-to-$LATEST_TAG"
