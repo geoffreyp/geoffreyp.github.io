@@ -21,16 +21,27 @@ Before:
 
 After:
 ```
-  [params.analytics.vercelPageInsights] = false
-  [params.analytics.vercelAnalytics] = false
+[params.analytics]
+  ## Analytics parameters.
+  ### Supported so far: Vercel (Page Insights, Analytics)
+  ### And Google (Tag Manager, Analytics)
 
-  [params.analytics.googleAnalytics]
+  # controls vercel page insights - disabled by default
+  # to enable, just set to true
+  vercelPageInsights = false
+  vercelAnalytics = false
+  
+  # google analytics and tag manager. to enable, set "enabled" to true
+  # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
+  [google_analytics]
       code = "UA-XXXXX-Y"
       enabled = false
-  [params.analytics.googleTagManager]
+  [google_tag_manager]
       code = "GTM-XXXXX"
       enabled = false
 ```
+
+See the theme's [`exampleSite` hugo.toml](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/hugo.toml) file for an example configuration.
 
 ## v1.4.9
 
