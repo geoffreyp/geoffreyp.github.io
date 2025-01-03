@@ -6,7 +6,19 @@
 {{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
 {{- end }}
-<!-- endinject -->
+
+{{- if .Site.Params.analytics.google_analytics.enabled }}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.google_analytics.code }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ .Site.Params.analytics.google_analytics.code}} ');
+</script>
+{{- end }}
+
 <title>{{ i18n "head_title" }}</title>
 <meta name="description" content='{{ i18n "head_description" }}'>
 <meta name="generator-mode" content='{{ hugo.Environment }}'>
@@ -74,7 +86,7 @@
 
 {{- if .Site.Params.analytics.google_tag_manager.enabled }}
 <!-- Google tag (gtag.js), google analytics -->
-<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-465407-4"></script>
+<script defer src="https://www.googletagmanager.com/gtag/js?id={{.Site.Params.analytics.google_tag_manager.code}}"></script>
 {{- $analytics := resources.Get "js/gtag.js" | resources.Minify }}
 <script defer src="{{ $analytics.Permalink }}"></script>
 {{- else }}
