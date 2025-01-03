@@ -40,13 +40,19 @@ jobs:
         run: |
           git diff --submodule=diff
 
+      - name: Dump github context
+        run:   echo "$GITHUB_CONTEXT"
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+
       - name: Send pull-request
         run: |
           LATEST_TAG=$(git describe --tags --always)  
           LATEST_COMMIT=$(git rev-parse HEAD)
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
           REPOSITORY="zetxek/adritian-demo"
-          REPO_NAME=${{ github.event.repository.name }}
+          REPO_NAME=${{ github.event.repository }}
           FOLDER="bin/$REPOSITORY"
           PR_URL="https://github.com/$SOURCE_REPOSITORY/pull/$PR_NUMBER"
           BRANCH_NAME="theme-update/update-theme-to-$LATEST_TAG"
