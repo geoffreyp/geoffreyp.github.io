@@ -6,17 +6,6 @@
 {{- if .Site.Params.analytics.googleTagManager.enabled }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
 {{- end }}
-
-
-.Site.Params.analytics.googleAnalytics.enabled=
-{{ .Site.Params.analytics.googleAnalytics.enabled }}
-
-.Site.Params.analytics.googleAnalytics=
-{{ .Site.Params.analytics.googleAnalytics }}
-
-
-vercel={{ .Site.Params.analytics.vercelPageInsights }}
-
 {{- if .Site.Params.analytics.googleAnalytics.enabled }}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.googleAnalytics.code }}"></script>
