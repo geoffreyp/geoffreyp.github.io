@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 {{- end }}
 {{- if .Site.Params.analytics.googleAnalytics.enabled }}
+{{- if .Site.Params.analytics.googleAnalytics.code}}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.googleAnalytics.code }}"></script>
 <script>
@@ -16,6 +17,7 @@
 
   gtag('config', '{{ .Site.Params.analytics.googleAnalytics.code}} ');
 </script>
+{{- end }}
 {{- end }}
 
 <title>{{ i18n "head_title" }}</title>
