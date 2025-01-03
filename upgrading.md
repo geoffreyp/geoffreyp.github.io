@@ -2,6 +2,36 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.4.13
+
+In the [PR #121](https://github.com/zetxek/adritian-free-hugo-theme/pull/121), we moved the analytics config to a new section in the configuration for better extensibility and clarity.
+
+Before:
+```
+  vercelPageInsights = false
+  vercelAnalytics = false
+
+  [params.google_analytics]
+      code = "UA-XXXXX-Y"
+      enabled = false
+  [params.google_tag_manager]
+      code = "GTM-XXXXX"
+      enabled = false
+```
+
+After:
+```
+  [params.analytics.vercelPageInsights] = false
+  [params.analytics.vercelAnalytics] = false
+
+  [params.analytics.googleAnalytics]
+      code = "UA-XXXXX-Y"
+      enabled = false
+  [params.analytics.googleTagManager]
+      code = "GTM-XXXXX"
+      enabled = false
+```
+
 ## v1.4.9
 
 ### Change 1: new translations keys
