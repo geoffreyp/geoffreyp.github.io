@@ -79,6 +79,7 @@ jobs:
           git checkout -b $BRANCH_NAME
 
           # Set submodule repo
+          echo "Setting submodule URL: $REPO_NAME"
           git submodule set-url -- $SUBMODULE_PATH $REPO_NAME
 
           # Set submodule branch
