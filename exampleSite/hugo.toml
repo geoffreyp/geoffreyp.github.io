@@ -23,10 +23,10 @@ theme = "adritian-free-hugo-theme"
   
   # google analytics and tag manager. to enable, set "enabled" to true
   # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
-  [google_analytics]
+  [params.analytics.googleAnalytics]
       code = "UA-XXXXX-Y"
       enabled = false
-  [google_tag_manager]
+  [params.analytics.googleTagManager]
       code = "GTM-XXXXX"
       enabled = false
 

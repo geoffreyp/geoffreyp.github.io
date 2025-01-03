@@ -3,9 +3,19 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <meta name="theme-color" content="#478079"/>
 
-{{- if .Site.Params.analytics.google_tag_manager.enabled }}
+{{- if .Site.Params.analytics.googleTagManager.enabled }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
 {{- end }}
+
+
+.Site.Params.analytics.googleAnalytics.enabled=
+{{ .Site.Params.analytics.googleAnalytics.enabled }}
+
+.Site.Params.analytics.googleAnalytics=
+{{ .Site.Params.analytics.googleAnalytics }}
+
+
+vercel={{ .Site.Params.analytics.vercelPageInsights }}
 
 {{- if .Site.Params.analytics.googleAnalytics.enabled }}
 <!-- Google tag (gtag.js) -->

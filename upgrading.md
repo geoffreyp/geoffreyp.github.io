@@ -21,7 +21,7 @@ Before:
 
 After:
 ```
-[params.analytics]
+  [params.analytics]
   ## Analytics parameters.
   ### Supported so far: Vercel (Page Insights, Analytics)
   ### And Google (Tag Manager, Analytics)
@@ -33,10 +33,10 @@ After:
   
   # google analytics and tag manager. to enable, set "enabled" to true
   # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
-  [google_analytics]
+  [params.analytics.googleAnalytics]
       code = "UA-XXXXX-Y"
-      enabled = false
-  [google_tag_manager]
+      enabled = true
+  [params.analytics.googleTagManager]
       code = "GTM-XXXXX"
       enabled = false
 ```
