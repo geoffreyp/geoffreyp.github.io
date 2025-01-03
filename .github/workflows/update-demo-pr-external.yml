@@ -46,6 +46,7 @@ jobs:
           LATEST_COMMIT=$(git rev-parse HEAD)
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
           REPOSITORY="zetxek/adritian-demo"
+          REPO_NAME=${{ github.event.repository.name }}
           FOLDER="bin/$REPOSITORY"
           PR_URL="https://github.com/$SOURCE_REPOSITORY/pull/$PR_NUMBER"
           BRANCH_NAME="theme-update/update-theme-to-$LATEST_TAG"
@@ -77,7 +78,10 @@ jobs:
           echo "Working branch: $BRANCH_NAME"
           git checkout -b $BRANCH_NAME
 
-          # Set branch
+          # Set submodule repo
+          git submodule set-url -- $SUBMODULE_PATH $REPO_NAME
+
+          # Set submodule branch
           echo "Submodule branch: $SOURCE_BRANCH_NAME"
           git submodule set-branch --branch $SOURCE_BRANCH_NAME $SUBMODULE_PATH
 
