@@ -7,7 +7,7 @@
     {{ if .Site.Data.homepage.experience.button.enable }}
     <div class="col-12 col-lg-4">
       <a
-        href="{{ .Site.Data.homepage.experience.button.URL | absURL }}"
+        href='{{ i18n "experience_button_url" | absURL }}'
         class="btn btn-primary btn-block w-100"
         target="_blank"
         rel="noopener noreferrer"
