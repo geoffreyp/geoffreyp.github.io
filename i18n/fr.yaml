@@ -172,3 +172,11 @@
 
 - id: "continue_reading"
   translation: "Continuer à lire"
+
+## 404 Page
+- id: "404_title"
+  translation: "Page non trouvée"
+- id: "404_description"
+  translation: "Désolé, mais la page que vous recherchez est introuvable."
+- id: "404_button"
+  translation: "Retour à l'accueil"
