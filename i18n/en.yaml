@@ -180,3 +180,11 @@
 
 - id: "continue_reading"
   translation: "Continue reading"
+
+## 404 Page
+- id: "404_title"
+  translation: "Page not found"
+- id: "404_description"  
+  translation: "Sorry, but the page you were looking for could not be found."
+- id: "404_button"
+  translation: "Back to homepage"

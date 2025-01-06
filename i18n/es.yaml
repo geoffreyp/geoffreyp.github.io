@@ -167,3 +167,11 @@
 
 - id: "continue_reading"
   translation: "Continuar leyendo"
+
+## 404 Page
+- id: "404_title"  
+  translation: "Página no encontrada"
+- id: "404_description"
+  translation: "Lo sentimos, pero la página que buscabas no pudo ser encontrada."
+- id: "404_button"
+  translation: "Volver al inicio"
