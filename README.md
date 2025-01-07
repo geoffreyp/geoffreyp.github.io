@@ -119,7 +119,7 @@ The introduction of i18n support was done in the version `v1.3.0` and it has bre
 
 The theme has a dark mode, that is enabled automatically based on system settings:
 
-![dark-mode](./images/screenshot-dark.png)
+![dark-mode](./images/screenshot-dark-fullscroll.jpeg)
 
 
 #### Additional configuration
