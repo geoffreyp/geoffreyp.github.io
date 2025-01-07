@@ -32,11 +32,24 @@ Also, the theme has been deployed and tested with Vercel. You can also find out 
   <img width="1536" alt="SCR-20240814-ihfs" src="https://github.com/user-attachments/assets/38553a02-48d0-48f4-a69a-ed4f7e32e092">
 
 
-## Live demo
+## Live demo & Preview
 
-You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website), as well as in this screenshot for reference:
+You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website), as well as in these screenshots of the homepage, in the dark and light variations of the theme:
 
-![adrianmorenoinfo](https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png)
+<table>
+	<tbody>
+	<tr>
+		<td>
+			<img src="https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png" alt="Light version of the Hugo theme Adritian"/>
+</td>
+		<td>
+			<img src="./images/screenshot-dark-fullscroll.jpeg" alt="Dark version of the Hugo theme Adritian"/>
+</td>
+	</tr>
+	</tbody>
+</table>
+
+The dark theme is selected automatically based on browser settings, and there's a color switcher available in the footer.
 
 You have two reference implementations of the theme:
 1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info)
@@ -115,11 +128,6 @@ You can add additional languages, or disable the provided ones (by setting `disa
 
 The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in upgrading.md.
 
-## Dark theme
-
-The theme has a dark mode, that is enabled automatically based on system settings:
-
-![dark-mode](./images/screenshot-dark-fullscroll.jpeg)
 
 
 #### Additional configuration
