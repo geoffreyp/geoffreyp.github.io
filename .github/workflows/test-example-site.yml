@@ -5,9 +5,13 @@ on:
     # Runs on pull requests targeting the default branch
     pull_request:
         branches: ["main"]
-  
+    # Runs on push to the development branch 
+    push:
+        branches: ["134-bug-playwright-runs-in-github-actions-dont-save-screenshots"]
     # Allows you to run this workflow manually from the Actions tab
     workflow_dispatch:
+env:
+  CI: true
 
 jobs:
   # Build job
@@ -29,8 +33,24 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: lts/*
 
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+        
+      - name: Cache Playwright Binaries
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
+          
       - name: Install dependencies
         run: npm ci
 
@@ -51,17 +71,59 @@ jobs:
           pwd
           echo "Current directory contents:"
           ls -la
-          echo "Playwright report directory:"
-          ls -la playwright-report || echo "playwright-report not found"
           echo "Test results directory:"
           ls -la test-results || echo "test-results not found"
+          echo "Playwright report directory:"
+          ls -la playwright-report || echo "playwright-report not found"
+      - name: Get the failure count
+        id: tests
+        run: |
+          export count=$(cat ./playwright-report/result.txt | grep Failed | cut -d ':' -f 2 | tr -d ' ') 
+          echo "fail_count=$count" >> "$GITHUB_OUTPUT"
+          echo $count
+      
+#      - uses: mshick/add-pr-comment@v2
+#        if: always()
+#        with:
+#            message-path: |
+#              ./playwright-report/result.txt
+#            message-failure: |
+#              Workflow failed
 
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          name: playwright-results
-          path: |
-            ${{ github.workspace }}/playwright-report
-            ${{ github.workspace }}/test-results
+          name: playwright-report
+          path: playwright-report/
           retention-days: 30
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact for pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+              path: "./playwright-report"
+     
+#      - name: Fail the job if there any failed case
+#        if:  steps.tests.outputs.fail_count != '0' 
+#        run : |
+#            exit 1
+    outputs:
+      fail_count: ${{ steps.tests.outputs.fail_count }}
+
+  publish-reports:
+    # if: ${{ contains(github.ref,'main') &&  (contains(fromJSON('[ "push"]'), github.event_name))}}
+    needs: [ build-and-test ]
+    runs-on: ubuntu-latest
+    permissions: 
+        pages: write
+        id-token: write
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4  
