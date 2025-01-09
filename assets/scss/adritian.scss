@@ -7,6 +7,12 @@
 .header .navbar-brand span:first-child{
     color: #478079;
 }
+
+/* navigation items when tabbing */
+.header .navbar-light .navbar-nav .nav-link:focus,
+.footer .navbar-nav .nav-item .nav-link:focus{
+    text-decoration: underline !important;
+}
 .header .container{
     padding-left: 10px;
 }
