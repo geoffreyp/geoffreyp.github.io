@@ -9,25 +9,25 @@ test.describe('Language switching functionality', () => {
     
     // Verify initial English state
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-    await expect(page.getByText('Language')).toBeVisible();
+    await expect(page.getByText('Language').last()).toBeVisible();
     await expect(page.getByText('Experience').first()).toBeVisible();
 
     // Switch to Spanish
     await page.locator('nav#footer-language-selector button').click();
-    await page.getByText('Español').click();
+    await page.getByText('Español').last().click();
 
     // Verify Spanish
     await expect(page.locator('html')).toHaveAttribute('lang', 'es');
-    await expect(page.getByText('Idioma')).toBeVisible();
+    await expect(page.getByText('Idioma').last()).toBeVisible();
     await expect(page.getByText('Experiencia').first()).toBeVisible();
 
     // Switch to French
     await page.locator('nav#footer-language-selector button').click();
-    await page.getByText('Français').click();
+    await page.getByText('Français').last().click();
 
     // Verify French
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
-    await expect(page.getByText('Langue')).toBeVisible();
+    await expect(page.getByText('Langue').last()).toBeVisible();
     await expect(page.getByText('Expérience').first()).toBeVisible();
   });
 
@@ -54,10 +54,10 @@ test.describe('Language switching functionality', () => {
     await expect(page.getByText('Expérience').first()).toBeVisible();
     
     // Navigate to home
-    await page.getByText('🏠 HOME').click();
+    await page.getByText('ACCUEIL').click();
     
     // Verify language maintained
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
-    await expect(page.getByText('Langue').first()).toBeVisible();
+    await expect(page.getByText('Langue').last()).toBeVisible();
   });
 });
