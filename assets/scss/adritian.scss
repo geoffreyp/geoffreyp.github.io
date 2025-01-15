@@ -159,6 +159,10 @@ br {
     }
 }
 
+.dropdown-item.selected{
+    font-weight: bold;
+}
+
 #mobile-header-language-selector,
 #mobile-header-color-selector
 {
@@ -362,6 +366,13 @@ footer_links .nav-item .nav-link::after {
 
     .text-muted{
         color: rgba(255, 255, 255, .6) !important;
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active,
+    .dropdown-item:focus,
+    .dropdown-item:hover{
+        background-color: #478079
     }
 }
 /* end dark mode */
