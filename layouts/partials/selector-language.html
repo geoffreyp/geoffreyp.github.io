@@ -6,7 +6,7 @@
     {{ if eq . $.Site.Language }}
     <button
       type="button"
-      class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
+      class="btn btn-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show"
       aria-expanded="false"
       aria-controls="languages-dropdown-{{ $placement }}"
       aria-expanded="true"
@@ -21,7 +21,7 @@
       id="languages-dropdown-{{ $placement }}"
       data-bs-popper="static"
     >
-      <li class="dropdown-item current active">
+      <li class="dropdown-item current selected">
         <span>✔️ {{ .LanguageName }}</span>
       </li>
       {{ end }} 
@@ -29,7 +29,7 @@
       {{ range $.Translations }}
       <li class="dropdown-item choice">
         <a
-          class="translation btn-link nav-link show"
+          class="dropdown-item translation btn-link nav-link show"
           title="{{ .Language.LanguageName }}"
           href="{{ .Permalink }}"
           >{{ .Language.LanguageName }}</a
