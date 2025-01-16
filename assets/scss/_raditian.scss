@@ -1009,7 +1009,9 @@ textarea:focus {
         padding: 0;
     }
 }
-.header .navbar-light .navbar-nav .nav-link {
+.header .navbar-light .navbar-nav .nav-link,
+.header .navbar-light .navbar-nav .btn-link
+ {
     color: #000;
 }
 .header--sticky-triggered {
