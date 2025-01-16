@@ -253,7 +253,9 @@ footer_links .nav-item .nav-link::after {
     .header--sticky-triggered{
         background: #181818  !important;
     }
-    .header .navbar-light .navbar-nav .nav-link{
+    .header .navbar-light .navbar-nav .nav-link,
+    .header .navbar-light .navbar-nav .btn-link
+    {
         color: #fff !important;
     }
     .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
