@@ -17,7 +17,7 @@
                 {{ end }}
                 {{ range first $totalCount (sort $xp "Date" "desc") }}
                 <div class="experience">
-                    <a href="{{.Permalink | relLangURL }}">
+                    <a href="{{.Permalink | relURL }}">
                         {{/* The context, ".", is now each one of the pages as it goes
                         through the loop */}}
                         <div class="experience__date">{{ .Params.duration }}</div>
