@@ -182,6 +182,10 @@ li.dropdown-item.choice a{
     padding-left: 30px;
 }
 
+.dropdown-menu button[aria-pressed="true"]{
+    font-weight: bold;
+}
+
 html[data-bs-theme="dark"] {
     #dark-toggle {
         span.dark{ 
