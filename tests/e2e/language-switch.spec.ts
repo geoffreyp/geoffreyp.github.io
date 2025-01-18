@@ -13,7 +13,7 @@ test.describe('Language switching functionality', () => {
     await expect(page.getByText('Experience').first()).toBeVisible();
 
     // Switch to Spanish
-    await page.locator('nav#footer-language-selector button').click();
+    await page.locator('div#footer-language-selector button').click();
     await page.getByText('Español').last().click();
 
     // Verify Spanish
@@ -22,7 +22,7 @@ test.describe('Language switching functionality', () => {
     await expect(page.getByText('Experiencia').first()).toBeVisible();
 
     // Switch to French
-    await page.locator('nav#footer-language-selector button').click();
+    await page.locator('div#footer-language-selector button').click();
     await page.getByText('Français').last().click();
 
     // Verify French

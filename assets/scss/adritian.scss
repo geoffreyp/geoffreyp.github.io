@@ -173,6 +173,14 @@ br {
 {
     font-size: inherit;
 }
+a.dropdown-item.translation,
+li.dropdown-item.current.selected {
+    width: 100%;
+    padding: 4px 10px;
+}
+li.dropdown-item.choice a{
+    padding-left: 30px;
+}
 
 html[data-bs-theme="dark"] {
     #dark-toggle {
