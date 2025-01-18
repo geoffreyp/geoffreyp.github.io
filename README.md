@@ -288,6 +288,13 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/raulalmeidatarazona">
+                    <img src="https://avatars.githubusercontent.com/u/61455658?v=4" width="100;" alt="raulalmeidatarazona"/>
+                    <br />
+                    <sub><b>Raul Almeida</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/Ceesaxp">
                     <img src="https://avatars.githubusercontent.com/u/67934?v=4" width="100;" alt="Ceesaxp"/>
                     <br />
@@ -315,6 +322,8 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
                     <sub><b>Jesper Højgaard</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/LeahWilleke">
                     <img src="https://avatars.githubusercontent.com/u/60404112?v=4" width="100;" alt="LeahWilleke"/>
@@ -322,8 +331,6 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
                     <sub><b>LeahWilleke</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/lukasulc">
                     <img src="https://avatars.githubusercontent.com/u/68392977?v=4" width="100;" alt="lukasulc"/>
