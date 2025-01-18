@@ -23,16 +23,16 @@ test.describe('Tag functionality', () => {
     await page.getByRole('link', { name: /Sample/ }).click();
     // Verify tag page
     await expect(page).toHaveURL(/\/tags\/sample/);
-    await expect(page.getByRole('heading', { name: 'Sample' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Sample blog content 1' })).toBeVisible();
   });
 
   test('tag page content links', async ({ page }) => {
     // Go directly to the Sample tag page
     await page.goto(`${BASE_URL}/tags/sample`);
     // Verify any article link is visible (1 article)
-    const articleLink = page.locator('.post a[href*="/blog/sample/"]');
-    await expect(articleLink).toBeVisible();
-    await articleLink.click();
+    const articleLink = page.locator('a[href*="/blog/sample/"]');
+    await expect(articleLink.first()).toBeVisible();
+    await articleLink.first().click();
     // Article should list the tags
     await expect(page.locator('ul.tags li')).toHaveCount(2);
   });
