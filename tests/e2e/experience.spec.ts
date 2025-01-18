@@ -41,8 +41,8 @@ test.describe('Experience items functionality', () => {
     
     // Verify URL and French content
     await expect(page).toHaveURL(/\/fr\/experience\/job-2\/?$/);
-    await expect(page.getByText('Internet Affairs Inc.')).toHaveCount(3);
-    await expect(page.getByText('Stavanger')).toHaveCount(3);
+    await expect(page.getByText('Internet Affairs Inc.')).toHaveCount(4);
+    await expect(page.getByText('Stavanger')).toHaveCount(4);
     await expect(page.getByText('2023-2024')).toBeVisible();
     await expect(page.getByText('Réparer le monde, un octet à la fois')).toBeVisible();
   });
@@ -53,7 +53,7 @@ test.describe('Experience items functionality', () => {
     
     // Verify multiple experience items are visible
     const experienceItems = page.locator('.experience');
-    await expect(experienceItems).toHaveCount(3);
+    await expect(experienceItems).toHaveCount(4);
     
     // Verify specific job titles are present
     await expect(page.getByText('Chief Intern')).toBeVisible();
