@@ -62,6 +62,39 @@ You have two reference implementations of the theme:
 
 ## Installation
 
+### As a Hugo Module (recommended)
+
+1. Initialize Hugo Module system in your site if you haven't already:
+
+```bash
+hugo mod init github.com/username/your-site
+```
+
+2. Add the theme as a dependency in your site's `hugo.toml`:
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/zetxek/adritian-free-hugo-theme"
+```
+
+3. Get the module:
+```bash
+hugo mod get -u
+```
+
+4. Start Hugo with:
+```bash
+hugo server
+```
+
+### Traditional Installation (as git submodule)
+
+If you prefer not to use Hugo Modules, you can still install the theme as a git submodule:
+
+```bash
+git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
+```
+
 #### Install Hugo
 
 To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
