@@ -18,8 +18,6 @@ features = [
     "dark-mode"
 ]
 
-min_version = "0.123.0"
-
 [author]
 name = "Adrián Moreno Peña"
 homepage = "https://www.adrianmoreno.info"
