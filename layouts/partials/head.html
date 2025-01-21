@@ -65,7 +65,7 @@
   />
 </noscript>
 {{- range .Site.Params.plugins.scss }}
-  {{- # no external scss processing - as they need to be processed by the theme }}
+  {{/* no external scss processing - as they need to be processed by the theme */}}
   {{- $scss := resources.Get .URL }}
   {{- $style := $scss | css.Sass }}
   {{- if hugo.IsProduction }} 
