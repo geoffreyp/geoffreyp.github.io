@@ -95,11 +95,14 @@ If you prefer not to use Hugo Modules, you can still install the theme as a git 
 git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
 ```
 
+** PENDING **: this would lead to missing bootstrap files? 
+
 #### Install Hugo
 
 To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
 
 #### Setting up
+
 As a pre-requirement, you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
 
 The theme has been tested with the version `0.136` of Hugo. If you get errors regarding missing functionalities, check if you have the last version of Hugo available.
