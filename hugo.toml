@@ -25,6 +25,10 @@
     source = "static"
     target = "static"
 
+  ## Bootstrap is disabled as a direct dependency
+  ## and instead included embedded in the theme 
+  ## See https://github.com/zetxek/adritian-free-hugo-theme/discussions/158
+
   # [[module.mounts]]
   #   source = "assets/scss/bootstrap/_vendor"
   #   target = "assets/scss/bootstrap/vendor"
