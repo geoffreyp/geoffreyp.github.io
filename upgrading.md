@@ -9,6 +9,14 @@ This is now the recommended way to install the theme, as it allows for easier up
 
 See https://github.com/zetxek/adrianmoreno.info/pull/270 for an example of how to update an existing site to switch from git submodule to Hugo module.
 
+Some key steps:
+- initialize the module in your site: `hugo mod init github.com/username/your-site`
+- add the module to your `hugo.toml` file: `[[module.imports]] path = "github.com/zetxek/adritian-free-hugo-theme"`
+- get the module: `hugo mod get -u`
+
+To use a specific version of the theme, you can add the version to the module import: `[[module.imports]] path = "github.com/zetxek/adritian-free-hugo-theme@v2.0.0"`
+To use an unpublished version of the theme, you can add the git reference to the `go.mod` file: `require github.com/zetxek/adritian-free-hugo-theme <any-git-reference>`, and then execute `hugo mod get -u`.
+
 ## v1.4.13
 
 ### Analytics section re-organized
