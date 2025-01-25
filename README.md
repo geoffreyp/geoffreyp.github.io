@@ -53,6 +53,8 @@ Alternatively, you can also [download the theme as a zip file](https://github.co
 
 ### As a Hugo Module (recommended)
 
+> **Note:** Ensure you have **Go** and **Hugo** installed, and that you have created a new Hugo project before proceeding.
+
 1. Initialize Hugo Module system in your site if you haven't already:
 
 ```bash
