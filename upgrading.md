@@ -17,6 +17,10 @@ Some key steps:
 To use a specific version of the theme, you can add the version to the module import: `[[module.imports]] path = "github.com/zetxek/adritian-free-hugo-theme@v2.0.0"`
 To use an unpublished version of the theme, you can add the git reference to the `go.mod` file: `require github.com/zetxek/adritian-free-hugo-theme <any-git-reference>`, and then execute `hugo mod get -u`.
 
+
+**Note**: if you use vercel to host your site, you will need to make sure that `go` is installed in the vercel build environment.
+You can do this by adding the following to your `vercel.json` file: `"installCommand": "dnf -y install golang",`.
+
 ## v1.4.13
 
 ### Analytics section re-organized
