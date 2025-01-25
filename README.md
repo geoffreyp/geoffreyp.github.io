@@ -1,38 +1,24 @@
 # Adritian Free Hugo Theme
-###### Adritian Hugo Theme for Personal Websites or Professional landing pages - with blog and portfolio included
+A modern Hugo theme for personal websites and professional landing pages - with blog and portfolio support
 
 [![Vercel Deploy](https://deploy-badge.vercel.app/vercel/adritian-demo?name=demo)
 ](https://adritian-demo.vercel.app/)
 
-See it live at **[adritian-demo.vercel.app](https://adritian-demo.vercel.app/)** (simple demo site, vanilla installation) or **[adrianmoreno.info](https://www.adrianmoreno.info)** (my personal site, running on this theme)
+## 🚀 Key Features
 
-This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme originally created by [Radity](https://github.com/radity). It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
-
-It focuses on accessibility, high performance and usability. It's extendable by adding your own styles or content types, with a solid foundation you can built on.
-
-The templates are based on Bootstrap (so they're responsive and mobile-first), and the main changes I have made have been upgrades on the web performance and accessibility of the template. 
-__Technical note on Bootstrap__: the theme includes Bootstrap embedded in the codebase - it's not imported as a module to facilitate the use of the theme in any way (Hugo module, git submodule, or copying the files to an existing site).
-
-
-Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend (https://formspree.io).
-
-
-🚀 What can you expect:
-
-- 🏎️ fast, minimalistic code (no jQuery)
-- 🖼️ Bootstrap framework v5 available as Scss (customizable via variables)
-- 🚃 Hugo assets pipeline support
+- 🏎️ Fast, minimalistic code (no jQuery)
+- 🖼️ Bootstrap v5 (`v5.3.3`) framework with Scss customization
 - 📚 Multi-language (i18n) support
-- 🛠️ Support for custom content types (experience, blog)
-- 💯 100% score in Lighthouse [Google Page Speed Insights](https://pagespeed.web.dev) for Performance, Best Practices, Accessibility and SEO
-- 🌚 Dark theme support (based on system/browser settings)
+- 🛠️ Custom content types (work experience, blog)
+- 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
+- 🌚 Automatic dark/light theme switching
+- ⚡ Vercel-ready with Analytics & Speed Insights support
 
-Also, the theme has been deployed and tested with Vercel. You can also find out of the box:
-- Support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
-- Support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
+The theme focuses on accessibility, high performance and usability (being very easy to get started). It's extendable by adding your own styles or content types, with a solid foundation you can built on.
 
-  <img width="1536" alt="SCR-20240814-ihfs" src="https://github.com/user-attachments/assets/38553a02-48d0-48f4-a69a-ed4f7e32e092">
+Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend.
 
+__Technical note on Bootstrap__: the theme includes Bootstrap embedded in the codebase - it's not imported as a module to facilitate the use of the theme in any way (Hugo module, git submodule, or copying the files to an existing site).
 
 ## Live demo & Preview
 
@@ -54,15 +40,12 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 The dark color variation is selected automatically based on browser settings, and there's a color switcher available in the footer to allow the visitors to override.
 
 You have two reference implementations of the theme provided:
+
 1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info)
 2. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)).
 
-## Download
 
-- Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
-[Download from ](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip)GitHub.
-
-## Installation
+## Quickstart
 
 We support two installation methods: as a [Hugo module](https://gohugo.io/hugo-modules/), or as a [git submodule](https://gohugo.io/getting-started/quick-start/#create-a-site). 
 
@@ -101,6 +84,15 @@ The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-
 ```bash
 git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
 ```
+
+## Download
+
+Note: we recommend using the [Hugo module method](#as-a-hugo-module-recommended) for installation.
+
+You can get the theme files in two ways:
+- (Best if you intend to contribute to the theme) Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
+- [Download from](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip) GitHub.
+
 
 #### Install Hugo
 
