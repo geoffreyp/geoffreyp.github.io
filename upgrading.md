@@ -2,6 +2,13 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v2.0.0
+
+The theme has been updated to support Hugo modules.
+This is now the recommended way to install the theme, as it allows for easier updates and contributions.
+
+See https://github.com/zetxek/adrianmoreno.info/pull/270 for an example of how to update an existing site to switch from git submodule to Hugo module.
+
 ## v1.4.13
 
 ### Analytics section re-organized
