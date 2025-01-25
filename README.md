@@ -1,36 +1,24 @@
 # Adritian Free Hugo Theme
-###### Adritian Hugo Theme for Personal Websites or Professional minimalistic landing pages
+A modern Hugo theme for personal websites and professional landing pages - with blog and portfolio support
 
 [![Vercel Deploy](https://deploy-badge.vercel.app/vercel/adritian-demo?name=demo)
 ](https://adritian-demo.vercel.app/)
 
-See it live at **[adritian-demo.vercel.app](https://adritian-demo.vercel.app/)** (simple demo site, vanilla installation) or **[adrianmoreno.info](https://www.adrianmoreno.info)** (my personal site, running on this theme)
+## 🚀 Key Features
 
-This free Hugo theme is a fork of [Raditian Theme](https://github.com/radity/raditian-free-hugo-theme) - a great Hugo theme originally created by [Radity](https://github.com/radity). It's called __Adritian__ because I, the author, am called Adrián - and if you shuffle Raditian and Adrián letters you get... Adritian 😅
-
-It focuses on accessibility, high performance and usability. It's extendable by adding your own styles or content types, with a solid foundation.
-
-The templates are based on Bootstrap (so they're responsive and mobile-first), and the main changes I have made have been upgrades on the web performance and accessibility of the template.
-
-Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend (https://formspree.io).
-
-
-🚀 What can you expect:
-
-- 🏎️ fast, minimalistic code (no jQuery)
-- 🖼️ Bootstrap framework v5 available as Scss (customizable via variables)
-- 🚃 Hugo assets pipeline support
+- 🏎️ Fast, minimalistic code (no jQuery)
+- 🖼️ Bootstrap v5 (`v5.3.3`) framework with Scss customization
 - 📚 Multi-language (i18n) support
-- 🛠️ Support for custom content types (experience, blog)
-- 💯 100% score in Lighthouse [Google Page Speed Insights](https://pagespeed.web.dev) for Performance, Best Practices, Accessibility and SEO
-- 🌚 Dark theme support (based on system/browser settings)
+- 🛠️ Custom content types (work experience, blog)
+- 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
+- 🌚 Automatic dark/light theme switching
+- ⚡ Vercel-ready with Analytics & Speed Insights support
 
-Also, the theme has been deployed and tested with Vercel. You can also find out of the box:
-- Support for [Vercel Speed Insights](https://vercel.com/docs/speed-insights/quickstart) (via the parameter `vercelPageInsights` in `hugo.toml`, disabled by default)
-- Support for [Vercel Analytics](https://vercel.com/docs/analytics/quickstart) (via the parameter `vercelAnalytics` in `hugo.toml`, disabled by default)
+The theme focuses on accessibility, high performance and usability (being very easy to get started). It's extendable by adding your own styles or content types, with a solid foundation you can built on.
 
-  <img width="1536" alt="SCR-20240814-ihfs" src="https://github.com/user-attachments/assets/38553a02-48d0-48f4-a69a-ed4f7e32e092">
+Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend.
 
+__Technical note on Bootstrap__: the theme includes Bootstrap embedded in the codebase - it's not imported as a module to facilitate the use of the theme in any way (Hugo module, git submodule, or copying the files to an existing site).
 
 ## Live demo & Preview
 
@@ -49,29 +37,76 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 	</tbody>
 </table>
 
-The dark theme is selected automatically based on browser settings, and there's a color switcher available in the footer.
+The dark color variation is selected automatically based on browser settings, and there's a color switcher available in the footer to allow the visitors to override.
 
-You have two reference implementations of the theme:
+You have two reference implementations of the theme provided:
+
 1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info)
 2. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)).
 
+
+## Quickstart
+
+We support two installation methods: as a [Hugo module](https://gohugo.io/hugo-modules/), or as a [git submodule](https://gohugo.io/getting-started/quick-start/#create-a-site). 
+
+Alternatively, you can also [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
+
+### As a Hugo Module (recommended)
+
+> **Note:** Ensure you have **Go** and **Hugo** installed, and that you have created a new Hugo project before proceeding.
+
+1. Initialize Hugo Module system in your site if you haven't already:
+
+```bash
+hugo mod init github.com/username/your-site
+```
+
+2. Add the theme as a dependency in your site's `hugo.toml`:
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/zetxek/adritian-free-hugo-theme"
+```
+
+3. Get the module:
+```bash
+hugo mod get -u
+```
+
+4. Start Hugo with:
+```bash
+hugo server
+```
+
+### Traditional Installation (as git submodule)
+
+If you prefer not to use Hugo Modules, you can still install the theme as a git submodule.
+The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-started/quick-start/#create-a-site), just changing the theme URL in the `git submodule add` command: 
+
+```bash
+git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
+```
+
 ## Download
 
-- Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
-[Download from ](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip)GitHub.
+Note: we recommend using the [Hugo module method](#as-a-hugo-module-recommended) for installation.
 
-## Installation
+You can get the theme files in two ways:
+- (Best if you intend to contribute to the theme) Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
+- [Download from](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip) GitHub.
+
 
 #### Install Hugo
 
 To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
 
 #### Setting up
+
 As a pre-requirement, you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
 
 The theme has been tested with the version `0.136` of Hugo. If you get errors regarding missing functionalities, check if you have the last version of Hugo available.
 
-Note: the theme has **not** been migrated to Hugo Modules yet. To install it, you need to set it up by copying the theme files to your website project (either as a sub-module [recommend] or by copying the files). You can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
+Note: the theme supports both Hugo modules and git submodules. To install the theme in the cleanest way you can use Hugo modules, but if you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
 
 - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 - Enter the newly created folder: `cd <your website's name>/`
@@ -127,7 +162,6 @@ See the content in `i18n` to edit the translations, and the configuration `hugo.
 You can add additional languages, or disable the provided ones (by setting `disabled` to `true` on the languages you don't need).
 
 The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in upgrading.md.
-
 
 
 #### Additional configuration

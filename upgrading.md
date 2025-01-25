@@ -2,6 +2,25 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v2.0.0
+
+The theme has been updated to support Hugo modules.
+This is now the recommended way to install the theme, as it allows for easier updates and contributions.
+
+See https://github.com/zetxek/adrianmoreno.info/pull/270 for an example of how to update an existing site to switch from git submodule to Hugo module.
+
+Some key steps:
+- initialize the module in your site: `hugo mod init github.com/username/your-site`
+- add the module to your `hugo.toml` file: `[[module.imports]] path = "github.com/zetxek/adritian-free-hugo-theme"`
+- get the module: `hugo mod get -u`
+
+To use a specific version of the theme, you can add the version to the module import: `[[module.imports]] path = "github.com/zetxek/adritian-free-hugo-theme@v2.0.0"`
+To use an unpublished version of the theme, you can add the git reference to the `go.mod` file: `require github.com/zetxek/adritian-free-hugo-theme <any-git-reference>`, and then execute `hugo mod get -u`.
+
+
+**Note**: if you use vercel to host your site, you will need to make sure that `go` is installed in the vercel build environment.
+You can do this by adding the following to your `vercel.json` file: `"installCommand": "dnf -y install golang",`.
+
 ## v1.4.13
 
 ### Analytics section re-organized
