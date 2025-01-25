@@ -66,7 +66,7 @@ You have two reference implementations of the theme provided:
 
 We support two installation methods: as a [Hugo module](https://gohugo.io/hugo-modules/), or as a [git submodule](https://gohugo.io/getting-started/quick-start/#create-a-site). 
 
-Alternatively, you can also download the theme as a zip file and copy the files to your site - but that will lead to your site being "stuck in time" and more difficult to upgrade. This is not recommended or supported directly.
+Alternatively, you can also [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
 
 ### As a Hugo Module (recommended)
 
