@@ -11,8 +11,6 @@ on:
 
 jobs:
   update-demo:
-    # Only run if the test-example-site workflow succeeded
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }} # PR branch name
       PR_NUMBER: ${{ github.event.number }}
