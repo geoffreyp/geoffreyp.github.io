@@ -16,12 +16,19 @@ jobs:
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }} # PR branch name
       PR_NUMBER: ${{ github.event.number }}
+      HUGO_VERSION: 0.141.0
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: 
           repository: zetxek/adritian-demo
           token: ${{ secrets.PRIVATE_TOKEN_GITHUB }} 
+     
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
      
       - name: Send pull-request
         shell: bash        
