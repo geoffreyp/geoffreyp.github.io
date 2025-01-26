@@ -33,6 +33,10 @@
     source = "node_modules/bootstrap/dist/js"
     target = "assets/js/bootstrap"
 
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    target = "assets/js/vendor/bootstrap.bundle.min.js"
+
   ## Bootstrap is disabled as a direct dependency
   ## and instead included embedded in the theme 
   ## See https://github.com/zetxek/adritian-free-hugo-theme/discussions/158
