@@ -3,11 +3,10 @@
 
 name: PR demo site (on PR)
 ## This will open a PR which will open a vercel preview URL in the demo site
+
 on:
-  workflow_run:
-    workflows: ["test-example-site"]
-    types:
-      - completed
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -66,18 +65,19 @@ jobs:
           # Create feature branch
           git checkout -b $BRANCH_NAME
 
-          # Initialize Hugo module if needed
+          # Update hugo.toml to point to the PR branch
+          sed -i -e 's/\[\[module\.imports\]\].*$/[[module.imports]]\n  path = "github.com\/zetxek\/adritian-free-hugo-theme"\n  branch = "'$SOURCE_BRANCH_NAME'"/' hugo.toml
+
+          # Initialize and update Hugo modules
           if [ ! -f "go.mod" ]; then
             hugo mod init github.com/zetxek/adritian-demo
           fi
-
-          # Get the specific commit of the theme
-          hugo mod get github.com/zetxek/adritian-free-hugo-theme@$LATEST_COMMIT
+          hugo mod get -u
           hugo mod tidy
 
           # Commit changes
-          git add go.mod go.sum
-          COMMIT_MSG="preview: update theme module to commit \`$LATEST_COMMIT\`"
+          git add hugo.toml go.mod go.sum
+          COMMIT_MSG="preview: update theme module to branch \`$SOURCE_BRANCH_NAME\`"
           git commit -m "$COMMIT_MSG" && git push --force || echo "No changes to commit"
 
           # Push branch
@@ -97,7 +97,7 @@ jobs:
             echo "✅ Pull-request updated!"
           else
             echo "✨ Creating new pull-request..."
-            PR_TITLE="preview: update theme to commit \`$LATEST_COMMIT\`"
+            PR_TITLE="preview: update theme to \`$SOURCE_BRANCH_NAME\`"
             PR_BODY="⚠️ The source PR is not merged yet - this is a preview PR.
             🤖 This automated PR updates the theme module to a PR in the source repo: $PR_URL.
             🔗 Triggered by https://github.com/zetxek/adritian-free-hugo-theme/actions/workflows/update-demo-pr.yml"

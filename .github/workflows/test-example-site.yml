@@ -126,26 +126,3 @@ jobs:
         - name: Deploy to GitHub Pages
           id: deployment
           uses: actions/deploy-pages@v4  
-
-  trigger-demo-update:
-    needs: [build-and-test]
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger demo update workflow
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const ref = context.payload.pull_request ? 
-              context.payload.pull_request.head.sha : 
-              context.sha;
-            
-            console.log('Using ref:', ref);
-            
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'update-demo-pr-external.yml',
-              ref: ref
-            });
