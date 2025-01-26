@@ -2,27 +2,26 @@
 ## taken from https://stackoverflow.com/a/68213855/570087
 
 name: PR demo site (on PR)
+## This will open a PR which will open a vercel preview URL in the demo site
+
 on:
-  workflow_run:
-    workflows: ["test-example-site"]
-    types:
-      - completed
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   update-demo:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       PR_NUMBER: ${{ github.event.number }}
-      HUGO_VERSION: 0.123.6
+      HUGO_VERSION: 0.141.0
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: 
           repository: zetxek/adritian-demo
-          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
-
+          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }} 
+     
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
