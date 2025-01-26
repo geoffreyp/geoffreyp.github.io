@@ -32,7 +32,7 @@ jobs:
         shell: bash        
         run: |
           LATEST_TAG=$(git describe --tags --always)  
-          LATEST_COMMIT=$(git rev-parse HEAD)
+          LATEST_COMMIT=${GITHUB_SHA:-$(git rev-parse HEAD)}
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
           REPOSITORY="zetxek/adritian-demo"
           FOLDER="bin/$REPOSITORY"
