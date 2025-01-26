@@ -137,9 +137,15 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const ref = context.payload.pull_request ? 
+              context.payload.pull_request.head.sha : 
+              context.sha;
+            
+            console.log('Using ref:', ref);
+            
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'update-demo-pr-external.yml',
-              ref: context.ref
-            });  
+              ref: ref
+            });
