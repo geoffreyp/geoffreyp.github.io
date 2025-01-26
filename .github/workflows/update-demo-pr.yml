@@ -32,8 +32,8 @@ jobs:
         shell: bash        
         run: |
           LATEST_TAG=$(git describe --tags --always)  
-          LATEST_COMMIT=${GITHUB_SHA:-$(git rev-parse HEAD)}
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
+          LATEST_COMMIT=${{ github.event.pull_request.head.sha || github.sha }}
           REPOSITORY="zetxek/adritian-demo"
           FOLDER="bin/$REPOSITORY"
           PR_URL="https://github.com/$SOURCE_REPOSITORY/pull/$PR_NUMBER"
