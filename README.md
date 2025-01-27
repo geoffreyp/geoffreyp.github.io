@@ -87,7 +87,7 @@ The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-
 git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
 ```
 
-## Download
+### Download
 
 Note: we recommend using the [Hugo module method](#as-a-hugo-module-recommended) for installation.
 
@@ -95,6 +95,23 @@ You can get the theme files in two ways:
 - (Best if you intend to contribute to the theme) Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
 - [Download from](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip) GitHub.
 
+## Installing dependencies
+
+Copy (at least) the following file from the themes `exampleSite` to the root folder of your site.
+
+- themes/adritian-free-hugo-theme/exampleSite/package.json
+
+For ease you can run from the command line:
+
+```
+cp themes/adritian-free-hugo-theme/exampleSite/package.json .
+```
+
+After that, run this command to install dependencies (requires `node.js`).
+
+```
+npm install
+```
 
 #### Install Hugo
 
