@@ -2,7 +2,7 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
-## v2.0.0
+## v1.5.0
 
 The theme has been updated to support Hugo modules.
 This is now the recommended way to install the theme, as it allows for easier updates and contributions.
