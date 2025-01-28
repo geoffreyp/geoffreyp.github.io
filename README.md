@@ -95,6 +95,8 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   description = 'Your website description'
   sections = ["showcase", "about", "education", "experience", "client-and-work", "testimonial", "contact", "newsletter"]
 
+  # If you want to display an image logo in the header, you can add it here
+  # logo = '/img/hugo.svg'
   homepageExperienceCount = 6
 
   [params.analytics]

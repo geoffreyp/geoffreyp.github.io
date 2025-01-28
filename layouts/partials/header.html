@@ -19,6 +19,11 @@
     <nav class="navbar bd-navbar navbar-expand-lg navbar-light p-0">
       <div class="container-fluid">
         <a class="navbar-brand mx-auto" href="{{ .Site.BaseURL | relLangURL }}">
+          <img
+            src="{{ .Site.Params.logo | absURL }}"
+            alt="{{ i18n "logo_alt" }}"
+            class="logo"
+          />
           <span>{{ i18n "logo_text1" }}</span>
           <span>{{ i18n "logo_text2" }}</span>
         </a>
