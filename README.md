@@ -70,38 +70,260 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 
 1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 1. Enter the newly created folder: `cd <your website's name>/`
-1. Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` **you don't need to host your website on github, you can add anything as a name**
-1. Add the theme as a dependency: add the following to your site's `hugo.toml`: 
+1. Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on github, you can add anything as a name_)
+1. Replace the contents of your config file (`hugo.toml`) file by these: 
+
+
+<details>
+<summary>hugo.toml configuration</summary>
 
 ```
-[[module.imports]] 
-    path="github.com/zetxek/adritian-free-hugo-theme"
+baseURL = "<your website url>"
+languageCode = "en"
+
+[module]
+[module.hugoVersion]
+# We use hugo.Deps to list dependencies, which was added in Hugo 0.92.0
+min = "0.92.0"
+
+[[module.imports]]
+path="github.com/zetxek/adritian-free-hugo-theme"
+
+[params]
+
+  title = 'Your website title'
+  description = 'Your website description'
+  sections = ["showcase", "about", "education", "experience", "client-and-work", "testimonial", "contact", "newsletter"]
+
+  homepageExperienceCount = 6
+
+  [params.analytics]
+  ## Analytics parameters.
+  ### Supported so far: Vercel (Page Insights, Analytics)
+  ### And Google (Tag Manager, Analytics)
+
+  # controls vercel page insights - disabled by default
+  # to enable, just set to true
+  vercelPageInsights = false
+  vercelAnalytics = false
+  
+  # google analytics and tag manager. to enable, set "enabled" to true
+  # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
+  [params.analytics.googleAnalytics]
+      code = "UA-XXXXX-Y"
+      enabled = false
+  [params.analytics.googleTagManager]
+      code = "GTM-XXXXX"
+      enabled = false
+
+[build]
+  [build.buildStats]
+    disableClasses = false
+    disableIDs = false
+    disableTags = false
+    enable = true
+
+[params.languages.selector.disable]
+  footer = false
+
+[languages]
+  [languages.en]
+    disabled = false
+    languageCode = 'en'
+    languageDirection = 'ltr'
+    languageName = 'English'
+    title = ''
+    weight = 0
+
+    [languages.en.menus]
+      [[languages.en.menus.header]]
+        name = 'About'
+        URL = '#about'
+        weight = 2
+      [[languages.en.menus.header]]
+        name = 'Portfolio'
+        URL = '#portfolio'
+        weight = 3
+      #  [[languages.en.menus.header]]
+      #  name = "Experience"
+      #  URL = "#experience"
+      #  weight = 4
+
+      [[languages.en.menus.header]]
+        name = "Blog"
+        URL = "/blog"
+        weight = 5
+
+      [[languages.en.menus.header]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 6
+
+      [[languages.en.menus.footer]]
+        name = "About"
+        URL = "#about"
+        weight = 2
+
+      [[languages.en.menus.footer]]
+        name = "Portfolio"
+        URL = "#portfolio"
+        weight = 3
+
+      [[languages.en.menus.footer]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 4
+
+
+  [languages.es]
+    disabled = false
+    languageCode = 'es'
+    languageDirection = 'ltr'
+    languageName = 'Español'
+    title = ''
+    weight = 0
+      [[languages.es.menus.header]]
+        name = 'Sobre mi'
+        URL = '/es/#about'
+        weight = 2
+      [[languages.es.menus.header]]
+        name = 'Portfolio'
+        URL = '/es/#portfolio'
+        weight = 3
+
+      #  [[languages.es.menus.header]]
+      #  name = "Experiencia"
+      #  URL = "/es/#experience"
+      #  weight = 4
+
+      [[languages.es.menus.header]]
+        name = "Blog"
+        URL = "/es/blog"
+        weight = 5
+
+      [[languages.es.menus.header]]
+        name = "Contacto"
+        URL = "/es/#contact"
+        weight = 6
+
+      [[languages.es.menus.footer]]
+        name = "Sobre mi"
+        URL = "/es/#about"
+        weight = 2
+
+      [[languages.es.menus.footer]]
+        name = "Portfolio"
+        URL = "/es/#portfolio"
+        weight = 3
+
+      [[languages.es.menus.footer]]
+        name = "Contact"
+        URL = "/es/#contact"
+        weight = 4
+
+  [languages.fr]
+    disabled = false
+    languageCode = 'fr'
+    languageDirection = 'ltr'
+    languageName = 'Français'
+    title = ''
+    weight = 0
+
+    [languages.fr.menus]
+      [[languages.fr.menus.header]]
+        name = 'About'
+        URL = '#about'
+        weight = 2
+      [[languages.fr.menus.header]]
+        name = 'Portfolio'
+        URL = '#portfolio'
+        weight = 3
+      #  [[languages.fr.menus.header]]
+      #  name = "Experience"
+      #  URL = "#experience"
+      #  weight = 4
+
+      [[languages.fr.menus.header]]
+        name = "Blog"
+        URL = "/blog"
+        weight = 5
+
+      [[languages.fr.menus.header]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 6
+
+      [[languages.fr.menus.footer]]
+        name = "About"
+        URL = "#about"
+        weight = 2
+
+      [[languages.fr.menus.footer]]
+        name = "Portfolio"
+        URL = "#portfolio"
+        weight = 3
+
+      [[languages.fr.menus.footer]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 4
+
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+  
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/adritian.scss"
+
+
+# theme/color style 
+[params.colorTheme]
+
+## the following configuration would disable automatic theme selection
+#  [params.colorTheme.auto]
+#    disable = true
+#  [params.colorTheme.forced]
+#    theme = "dark"
+
+## the following parameter will disable theme override in the footer
+#  [params.colorTheme.selector.disable]
+#  footer = true
+
+
+## by default we allow override AND automatic selection
+
+[params.blog]
+layout = "default" # options: default, sidebar
+sidebarWidth = "25" # percentage width of the sidebar
+showCategories = true
+showRecentPosts = true
+recentPostCount = 5
+listStyle = "summary" # options: simple, summary
 ```
-5. Add the following to your site's `hugo.toml` configuration file:
+</details>
 
-```
-# The following mounts are required for the theme to be able to load bootstrap
-# Remember also to copy the theme's `package.json` to your site, and run `npm install`
-[[module.mounts]]
-  source = "node_modules/bootstrap/scss"
-  target = "assets/scss/bootstrap"
-
-[[module.mounts]]
-  source = "node_modules/bootstrap/dist/js"
-  target = "assets/js/bootstrap"
-
-[[module.mounts]]
-  source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-  target = "assets/js/vendor/bootstrap.bundle.min.js"
-```
-
-This will allow the theme to load the bootstrap files from the node_modules folder (that you will install in the next steps).
-Note: see the `exampleSite` folder for more configuration options.
+This configuration allows you to have a base to edit and adapt to your site, and see the available functionalities.
+Make sure to edit `baseURL`, `title` and `description`. You can edit the header links, as well as the languages to your needs.
 
 1. Get the module: `hugo mod get -u`
 1. Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
 1. Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
-1. Start Hugo with `hugo server`
+1. (Optional, to override the defaults) Create a file `data/homepage.yml` with the contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml) file, and customize to your needs.
+1. Start Hugo with `hugo server`...
 1. 🎉 The theme is alive on http://localhost:1313/
 
 </details>
