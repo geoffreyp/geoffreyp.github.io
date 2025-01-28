@@ -68,16 +68,16 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 <details>
 <summary>Instructions to setup the theme as a hugo module</summary>
 
-- Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
-- Enter the newly created folder: `cd <your website's name>/`
-- Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` **you don't need to host your website on github, you can add anything as a name**
-- Add the theme as a dependency: add the following to your site's `hugo.toml`: 
+1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
+1. Enter the newly created folder: `cd <your website's name>/`
+1. Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` **you don't need to host your website on github, you can add anything as a name**
+1. Add the theme as a dependency: add the following to your site's `hugo.toml`: 
 
 ```
 [[module.imports]] 
     path="github.com/zetxek/adritian-free-hugo-theme"
 ```
-- Add the following to your site's `hugo.toml` configuration file:
+5. Add the following to your site's `hugo.toml` configuration file:
 
 ```
 # The following mounts are required for the theme to be able to load bootstrap
@@ -98,11 +98,11 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 This will allow the theme to load the bootstrap files from the node_modules folder (that you will install in the next steps).
 Note: see the `exampleSite` folder for more configuration options.
 
-- Get the module: `hugo mod get -u`
-- Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
-- Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
-- Start Hugo with `hugo server`
-- 🎉 The theme is alive on http://localhost:1313/
+1. Get the module: `hugo mod get -u`
+1. Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
+1. Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
+1. Start Hugo with `hugo server`
+1. 🎉 The theme is alive on http://localhost:1313/
 
 </details>
 
@@ -140,6 +140,7 @@ hugo server --themesDir ../..
 The output for the `serve` command will be something like this:
 <details>
 <summary>Example output for the serve command</summary>
+
 ```
 adritian-demo git:(master) ✗ hugo server -D
 Watching for changes in /Users/adrianmorenopena/tmp/theme-test/themes/adritian-free-hugo-theme/{archetypes,assets,data,exampleSite,i18n,layouts,static}
