@@ -64,15 +64,6 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:e2e
 
-      - name: Debug directory structure
-        run: |
-          pwd
-          echo "Current directory contents:"
-          ls -la
-          echo "Test results directory:"
-          ls -la test-results || echo "test-results not found"
-          echo "Playwright report directory:"
-          ls -la playwright-report || echo "playwright-report not found"
       - name: Get the failure count
         id: tests
         run: |
