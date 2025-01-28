@@ -2,6 +2,11 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.5.2
+
+Added a new (optional) parameter, "logo", to display an image in the header.
+See the [related PR #179](https://github.com/zetxek/adritian-free-hugo-theme/pull/179) for more information.
+
 ## v1.5.1
 
 The theme uses bootstrap as a dependency, installed from npm.

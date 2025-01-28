@@ -820,7 +820,7 @@ textarea:focus {
 }
 .header .navbar-brand img {
     width: 117px;
-    max-height: 50px;
+    max-height: 40px;
     -o-object-fit: contain;
     object-fit: contain;
     -o-object-position: center center;
@@ -839,7 +839,7 @@ textarea:focus {
 @media (min-width: 768px) {
     .header .navbar-brand img {
         width: 156px;
-        max-height: 70px;
+        max-height: 40px;
     }
     .header .navbar-brand span:first-child {
         font-size: 32.9px;
