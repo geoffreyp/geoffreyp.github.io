@@ -427,7 +427,7 @@ Two layouts are available for the blog:
 
 | Default Layout | Sidebar Layout |
 |---------------|----------------|
-| ![Default blog layout with full width content](./images/blog-default.jpeg) | ![Blog layout with sidebar showing recent posts](./images/blog-sidebar.jpeg) |
+| ![Default blog layout with full width content](https://github.com/zetxek/adritian-free-hugo-theme/raw/main/images/blog-default.jpeg) | ![Blog layout with sidebar showing recent posts](https://github.com/zetxek/adritian-free-hugo-theme/raw/main/images/blog-sidebar.jpeg) |
 | Full width posts | Posts with left sidebar |
 | Clean, focused reading experience | Shows recent posts and categories |
 | Maximizes content area | 25% width sidebar by default |
