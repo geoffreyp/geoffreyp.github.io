@@ -18,8 +18,6 @@ The theme focuses on accessibility, high performance and usability (being very e
 
 Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend.
 
-__Technical note on Bootstrap__: the theme includes Bootstrap embedded in the codebase - it's not imported as a module to facilitate the use of the theme in any way (Hugo module, git submodule, or copying the files to an existing site).
-
 ## Live demo & Preview
 
 You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (my personal website), as well as in these screenshots of the homepage, in the dark and light variations of the theme:
