@@ -1,0 +1,54 @@
+name: Test Module Init
+
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    test-module-init:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Setup Hugo
+              uses: peaceiris/actions-hugo@v2
+              with:
+                hugo-version: 'latest'
+                extended: true
+
+            - name: Create test site
+              run: |
+                  hugo new site test-site
+                  cd test-site
+                    
+            - name: Initialize Hugo module
+              working-directory: ./test-site
+              run: |
+                    hugo mod init github.com/zetxek/test-site
+                    hugo mod get github.com/zetxek/adritian-free-hugo-theme
+                
+            - name: Copy theme configuration
+              working-directory: ./test-site
+              run: |
+                    curl -O https://raw.githubusercontent.com/zetxek/adritian-free-hugo-theme/refs/heads/main/exampleSite/hugo.toml
+ 
+            - name: Download modules
+              working-directory: ./test-site
+              run: |
+                    hugo mod get -u
+
+            - name: Pack dependencies
+              working-directory: ./test-site
+              run: |
+                    hugo mod npm pack
+
+            - name: Npm install (bootstrap)
+              working-directory: ./test-site
+              run: |
+                    npm install
+
+            - name: Run build
+              working-directory: ./test-site
+              run: hugo

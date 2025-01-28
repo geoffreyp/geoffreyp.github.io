@@ -47,66 +47,295 @@ You have two reference implementations of the theme provided:
 
 ## Quickstart
 
-We support two installation methods: as a [Hugo module](https://gohugo.io/hugo-modules/), or as a [git submodule](https://gohugo.io/getting-started/quick-start/#create-a-site). 
+#### Install Hugo
 
-Alternatively, you can also [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
+To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
+
+We recommend installing the theme as a [Hugo module](https://gohugo.io/hugo-modules/) (recommended, and explained below).
+
+Other alternative is to use [git submodules](https://gohugo.io/getting-started/quick-start/#create-a-site), or to [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
 
 ### As a Hugo Module (recommended)
 
 > **Note:** Ensure you have **Go** and **Hugo** installed, and that you have created a new Hugo project before proceeding.
 
-1. Initialize Hugo Module system in your site if you haven't already:
+As a pre-requirement, you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
 
-```bash
-hugo mod init github.com/username/your-site
+The theme has been tested with the version `0.136` of Hugo. If you get errors regarding missing functionalities, check if you have the last version of Hugo available.
+
+Note: the theme supports both Hugo modules and git submodules. To install the theme in most maintanable way you should use Hugo modules. If you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
+
+<details>
+<summary>Instructions to setup the theme as a hugo module</summary>
+
+1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
+1. Enter the newly created folder: `cd <your website's name>/`
+1. Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on github, you can add anything as a name_)
+1. Replace the contents of your config file (`hugo.toml`) file by these: 
+
+
+<details>
+<summary>hugo.toml configuration</summary>
+
 ```
+baseURL = "<your website url>"
+languageCode = "en"
 
-2. Add the theme as a dependency in your site's `hugo.toml`:
-```toml
 [module]
-  [[module.imports]]
-    path = "github.com/zetxek/adritian-free-hugo-theme"
-```
+[module.hugoVersion]
+# We use hugo.Deps to list dependencies, which was added in Hugo 0.92.0
+min = "0.92.0"
 
-3. Get the module:
-```bash
-hugo mod get -u
-```
+[[module.imports]]
+path="github.com/zetxek/adritian-free-hugo-theme"
 
-4. Start Hugo with:
-```bash
-hugo server
+[params]
+
+  title = 'Your website title'
+  description = 'Your website description'
+  sections = ["showcase", "about", "education", "experience", "client-and-work", "testimonial", "contact", "newsletter"]
+
+  homepageExperienceCount = 6
+
+  [params.analytics]
+  ## Analytics parameters.
+  ### Supported so far: Vercel (Page Insights, Analytics)
+  ### And Google (Tag Manager, Analytics)
+
+  # controls vercel page insights - disabled by default
+  # to enable, just set to true
+  vercelPageInsights = false
+  vercelAnalytics = false
+  
+  # google analytics and tag manager. to enable, set "enabled" to true
+  # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
+  [params.analytics.googleAnalytics]
+      code = "UA-XXXXX-Y"
+      enabled = false
+  [params.analytics.googleTagManager]
+      code = "GTM-XXXXX"
+      enabled = false
+
+[build]
+  [build.buildStats]
+    disableClasses = false
+    disableIDs = false
+    disableTags = false
+    enable = true
+
+[params.languages.selector.disable]
+  footer = false
+
+[languages]
+  [languages.en]
+    disabled = false
+    languageCode = 'en'
+    languageDirection = 'ltr'
+    languageName = 'English'
+    title = ''
+    weight = 0
+
+    [languages.en.menus]
+      [[languages.en.menus.header]]
+        name = 'About'
+        URL = '#about'
+        weight = 2
+      [[languages.en.menus.header]]
+        name = 'Portfolio'
+        URL = '#portfolio'
+        weight = 3
+      #  [[languages.en.menus.header]]
+      #  name = "Experience"
+      #  URL = "#experience"
+      #  weight = 4
+
+      [[languages.en.menus.header]]
+        name = "Blog"
+        URL = "/blog"
+        weight = 5
+
+      [[languages.en.menus.header]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 6
+
+      [[languages.en.menus.footer]]
+        name = "About"
+        URL = "#about"
+        weight = 2
+
+      [[languages.en.menus.footer]]
+        name = "Portfolio"
+        URL = "#portfolio"
+        weight = 3
+
+      [[languages.en.menus.footer]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 4
+
+
+  [languages.es]
+    disabled = false
+    languageCode = 'es'
+    languageDirection = 'ltr'
+    languageName = 'Español'
+    title = ''
+    weight = 0
+      [[languages.es.menus.header]]
+        name = 'Sobre mi'
+        URL = '/es/#about'
+        weight = 2
+      [[languages.es.menus.header]]
+        name = 'Portfolio'
+        URL = '/es/#portfolio'
+        weight = 3
+
+      #  [[languages.es.menus.header]]
+      #  name = "Experiencia"
+      #  URL = "/es/#experience"
+      #  weight = 4
+
+      [[languages.es.menus.header]]
+        name = "Blog"
+        URL = "/es/blog"
+        weight = 5
+
+      [[languages.es.menus.header]]
+        name = "Contacto"
+        URL = "/es/#contact"
+        weight = 6
+
+      [[languages.es.menus.footer]]
+        name = "Sobre mi"
+        URL = "/es/#about"
+        weight = 2
+
+      [[languages.es.menus.footer]]
+        name = "Portfolio"
+        URL = "/es/#portfolio"
+        weight = 3
+
+      [[languages.es.menus.footer]]
+        name = "Contact"
+        URL = "/es/#contact"
+        weight = 4
+
+  [languages.fr]
+    disabled = false
+    languageCode = 'fr'
+    languageDirection = 'ltr'
+    languageName = 'Français'
+    title = ''
+    weight = 0
+
+    [languages.fr.menus]
+      [[languages.fr.menus.header]]
+        name = 'About'
+        URL = '#about'
+        weight = 2
+      [[languages.fr.menus.header]]
+        name = 'Portfolio'
+        URL = '#portfolio'
+        weight = 3
+      #  [[languages.fr.menus.header]]
+      #  name = "Experience"
+      #  URL = "#experience"
+      #  weight = 4
+
+      [[languages.fr.menus.header]]
+        name = "Blog"
+        URL = "/blog"
+        weight = 5
+
+      [[languages.fr.menus.header]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 6
+
+      [[languages.fr.menus.footer]]
+        name = "About"
+        URL = "#about"
+        weight = 2
+
+      [[languages.fr.menus.footer]]
+        name = "Portfolio"
+        URL = "#portfolio"
+        weight = 3
+
+      [[languages.fr.menus.footer]]
+        name = "Contact"
+        URL = "#contact"
+        weight = 4
+
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "css/custom.css"
+  [[params.plugins.css]]
+  URL = "css/adritian-icons.css"
+  
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "js/rad-animations.js"
+  [[params.plugins.js]]
+  URL = "js/sticky-header.js"
+  [[params.plugins.js]]
+  URL = "js/library/fontfaceobserver.js"
+
+  # SCSS Plugins
+  [[params.plugins.scss]]
+  URL = "scss/adritian.scss"
+
+
+# theme/color style 
+[params.colorTheme]
+
+## the following configuration would disable automatic theme selection
+#  [params.colorTheme.auto]
+#    disable = true
+#  [params.colorTheme.forced]
+#    theme = "dark"
+
+## the following parameter will disable theme override in the footer
+#  [params.colorTheme.selector.disable]
+#  footer = true
+
+
+## by default we allow override AND automatic selection
+
+[params.blog]
+layout = "default" # options: default, sidebar
+sidebarWidth = "25" # percentage width of the sidebar
+showCategories = true
+showRecentPosts = true
+recentPostCount = 5
+listStyle = "summary" # options: simple, summary
 ```
+</details>
+
+This configuration allows you to have a base to edit and adapt to your site, and see the available functionalities.
+Make sure to edit `baseURL`, `title` and `description`. You can edit the header links, as well as the languages to your needs.
+
+1. Get the module: `hugo mod get -u`
+1. Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
+1. Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
+1. (Optional, to override the defaults) Create a file `data/homepage.yml` with the contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml) file, and customize to your needs.
+1. Start Hugo with `hugo server`...
+1. 🎉 The theme is alive on http://localhost:1313/
+
+</details>
+
 
 ### Traditional Installation (as git submodule)
 
 If you prefer not to use Hugo Modules, you can still install the theme as a git submodule.
 The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-started/quick-start/#create-a-site), just changing the theme URL in the `git submodule add` command: 
 
-```bash
-git submodule add https://github.com/zetxek/adritian-free-hugo-theme.git themes/adritian-free-hugo-theme
-```
-
-## Download
-
-Note: we recommend using the [Hugo module method](#as-a-hugo-module-recommended) for installation.
-
-You can get the theme files in two ways:
-- (Best if you intend to contribute to the theme) Clone the repo: `git clone https://github.com/zetxek/adritian-free-hugo-theme.git`.
-- [Download from](https://github.com/zetxek/adritian-free-hugo-theme/archive/main.zip) GitHub.
-
-
-#### Install Hugo
-
-To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
-
-#### Setting up
-
-As a pre-requirement, you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
-
-The theme has been tested with the version `0.136` of Hugo. If you get errors regarding missing functionalities, check if you have the last version of Hugo available.
-
-Note: the theme supports both Hugo modules and git submodules. To install the theme in the cleanest way you can use Hugo modules, but if you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
+<details>
+<summary>Old instructions for git submodules</summary>
 
 - Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 - Enter the newly created folder: `cd <your website's name>/`
@@ -125,6 +354,13 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 - Start Hugo with `hugo server -D`
 - 🎉 The theme is alive on http://localhost:1313/
 
+</details>
+
+
+---
+
+After this, you can start adding your own content to the site, and customize the configuration.
+
 _Optional:_
 if you want to preview the theme with the example content before deciding if it's what you are looking for, you can run the theme with the example content:
 ```
@@ -132,8 +368,10 @@ cd themes/adritian-free-hugo-theme/exampleSite
 hugo server --themesDir ../..
 ```
 
+The output for the `serve` command will be something like this:
+<details>
+<summary>Example output for the serve command</summary>
 
-The output for the `serve` command will be something like
 ```
 adritian-demo git:(master) ✗ hugo server -D
 Watching for changes in /Users/adrianmorenopena/tmp/theme-test/themes/adritian-free-hugo-theme/{archetypes,assets,data,exampleSite,i18n,layouts,static}
@@ -159,6 +397,7 @@ Running in Fast Render Mode. For full rebuilds on change: hugo server --disableF
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
+</details>
 
 #### Multi-language support
 
