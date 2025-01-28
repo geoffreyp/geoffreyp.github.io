@@ -5,7 +5,7 @@ This documentation is meant to help you upgrade across versions, when potentiall
 ## v1.5.2
 
 Added a new (optional) parameter, "logo", to display an image in the header.
-See https://github.com/zetxek/adritian-free-hugo-theme/compare/176-img-logo for more information.
+See the [related PR #179](https://github.com/zetxek/adritian-free-hugo-theme/pull/179) for more information.
 
 ## v1.5.1
 
