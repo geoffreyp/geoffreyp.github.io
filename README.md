@@ -31,7 +31,7 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 			<img src="https://user-images.githubusercontent.com/240085/230632835-74349170-d610-4731-8fac-62c413e6b3f5.png" alt="Light version of the Hugo theme Adritian"/>
 </td>
 		<td>
-			<img src="./images/screenshot-dark-fullscroll.jpeg" alt="Dark version of the Hugo theme Adritian"/>
+			<img src="https://raw.githubusercontent.com/zetxek/adritian-free-hugo-theme/main/images/screenshot-dark-fullscroll.jpeg" alt="Dark version of the Hugo theme Adritian"/>
 </td>
 	</tr>
 	</tbody>
