@@ -7,7 +7,6 @@
                 {{ $xp := (where .Site.RegularPages.ByDate "Type" "experience") }}
                 {{ $xp = $xp | lang.Merge (where $baseLangSite.RegularPages.ByDate.Reverse "Type" "experience") }}
                 
-                
                 {{ $xpCount := len $xp }}
                 {{/* in the homepage we limit to the homepageExperienceCount param (6 by default) in the inner page (experience) we display the all */}}
                 {{ $totalCount := .Site.Params.homepageExperienceCount }}
@@ -18,12 +17,24 @@
                 {{ range first $totalCount (sort $xp "Date" "desc") }}
                 <div class="experience">
                     <a href="{{.Permalink | relURL }}">
-                        {{/* The context, ".", is now each one of the pages as it goes
-                        through the loop */}}
-                        <div class="experience__date">{{ .Params.duration }}</div>
-                        <div class="experience__title">{{ .Params.jobTitle }}</div>
-                        <div class="experience__company">{{ .Params.company }}. <span class="experience__location">
-                            {{ .Params.location }}</span></div>
+                        <div class="experience__header">
+                            {{ $img := resources.Get .Params.companyLogo }}
+                            {{ with $img }}
+                            {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
+                            <img 
+                                src="{{ $imgWebp.RelPermalink }}" 
+                                alt="{{ .Params.company }} logo"
+                                class="experience__company-logo"
+                                loading="lazy"
+                            >
+                            {{ end }}
+                            <div class="experience__meta">
+                                <div class="experience__date">{{ .Params.duration }}</div>
+                                <div class="experience__title">{{ .Params.jobTitle }}</div>
+                                <div class="experience__company">{{ .Params.company }}. <span class="experience__location">
+                                    {{ .Params.location }}</span></div>
+                            </div>
+                        </div>
                     </a>
                 </div>
                 {{ end }}

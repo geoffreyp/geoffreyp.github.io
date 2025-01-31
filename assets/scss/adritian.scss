@@ -3,7 +3,7 @@
 @import "menu";
 @import "raditian";
 @import "blog";
-
+@import "experience";
 /** main style **/
 .header .navbar-brand span:first-child{
     color: #478079;
@@ -294,13 +294,9 @@ footer_links .nav-item .nav-link::after {
     .rad-showcase .platform-links [class^="icon-"]{
         color: #fff !important;
     }
-    .experience a{
-        color: #fff !important;
-    }
-    .experience__company{
-        color: #6EAFAA !important;
-    }
-    .education__degree, .experience__date{
+    
+    .education__degree, 
+    .experience__date{
         color: #a6a6a6 !important;
     }
     .education__title{

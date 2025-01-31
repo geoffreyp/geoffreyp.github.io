@@ -461,22 +461,7 @@ html body {
         margin-right: 0;
     }
 }
-.experience__title {
-    position: relative;
-    font-size: 20px;
-    font-weight: 600;
-    z-index: 2;
-}
-@media (min-width: 992px) {
-    .experience__title {
-        font-size: 24px;
-    }
-}
-.experience__company {
-    font-size: 14px;
-    font-weight: 700;
-    color: #AE1B13;
-}
+
 .clients {
     display: -webkit-box;
     display: flex;
@@ -1381,57 +1366,6 @@ li.book-content p{
     object-fit: contain;
 }
 
-.experience__company{
-    color: #478079;
-}
-
-.experience__location{
-    font-weight: normal;
-}
-
-.experience+.experience{
-    padding-top: 0;
-}
-
-body.home div.experience{
-    padding-top: 50px;
-}
-
-.experience a {
-    display: block;
-    padding: 20px;
-    text-decoration: none;
-    color: inherit;
-}
-
-.experience.selected a,
-.experience:hover a,
-.experience:active a,
-.experience a:hover, 
-.experience a:active{
-    display: block;
-    background-color: #488079;
-}
-.experience.selected a > .experience__company,
-.experience:hover a > .experience__company,
-.experience:active a > .experience__company,
-.experience a:hover > .experience__company,
-.experience a:active > .experience__company{
-    color: white !important;
-}
-
-.experience.selected a > .experience__date,
-.experience:hover a > .experience__date,
-.experience:active a > .experience__date,
-.experience a:hover > .experience__date,
-.experience a:active > .experience__date{
-    color: white !important;
-}
-
-
-.all-experience-container{
-    margin-top: 50px;
-}
 .footer__copy a{
     color: white;
 }

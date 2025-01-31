@@ -6,6 +6,7 @@ jobTitle: "Junior Intern"
 company: "Internet Affairs Inc. "
 location: "Stavanger, Norway"
 duration: "2022-2024"
+companyLogo: "images/experience/internet-affairs.png"
 
 ---
 ### Fixing the world, one byte at a time
