@@ -2,6 +2,12 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.5.3
+
+A new parameter, `showJobCard`, has been added to the `experience` section in the `config.toml` file.
+This allows you to hide the job card on the experience page.
+See the [related PR #271](https://github.com/zetxek/adritian-free-hugo-theme/pull/181) for more information.
+
 ## v1.5.2
 
 Added a new (optional) parameter, "logo", to display an image in the header.
