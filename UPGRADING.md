@@ -6,7 +6,7 @@ This documentation is meant to help you upgrade across versions, when potentiall
 
 A new parameter, `showJobCard`, has been added to the `experience` section in the `config.toml` file.
 This allows you to hide the job card on the experience page.
-See the [related PR #271](https://github.com/zetxek/adritian-free-hugo-theme/pull/181) for more information.
+See the [related PR #271](https://github.com/zetxek/adritian-free-hugo-theme/pull/182) for more information.
 
 ## v1.5.2
 
