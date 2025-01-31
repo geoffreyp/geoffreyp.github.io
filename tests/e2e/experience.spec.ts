@@ -60,4 +60,21 @@ test.describe('Experience items functionality', () => {
     await expect(page.getByText('Chief Intern')).toBeVisible();
     await expect(page.getByText('Junior Intern')).toBeVisible();
   });
+
+  test('verifies job-card content and structure', async ({ page }) => {
+    await page.goto(`${BASE_URL}/experience/job-2`);
+    
+    // Verify the job-card container exists
+    const jobCard = page.locator('.job-card');
+    await expect(jobCard).toBeVisible();
+
+    // Verify header content
+    await expect(page.getByRole('heading', { name: 'Chief Intern' })).toBeVisible();
+    await expect(page.locator('.text-muted', { hasText: 'Internet Affairs Inc.' })).toBeVisible();
+    
+    // Verify metadata
+    await expect(page.locator('.job-card__dates')).toHaveText('2023-2024');
+    await expect(page.locator('.job-card__location')).toContainText('Stavanger, Norway');
+    
+  });
 });
