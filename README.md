@@ -47,11 +47,13 @@ You have two reference implementations of the theme provided:
 
 #### Install Hugo
 
-To use `adritian-free-hugo-theme` you need to install Hugo by following https://gohugo.io/getting-started/installing/.
+This is a theme for the website generator Hugo - so to use it you need to install Hugo by following https://gohugo.io/getting-started/installing/.
 
-We recommend installing the theme as a [Hugo module](https://gohugo.io/hugo-modules/) (recommended, and explained below).
+**We recommend installing the theme as a [Hugo module](https://gohugo.io/hugo-modules/) (recommended, and explained below).**
 
-Other alternative is to use [git submodules](https://gohugo.io/getting-started/quick-start/#create-a-site), or to [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
+Other alternative is to use [git submodules](https://gohugo.io/getting-started/quick-start/#create-a-site), or to [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site`*`. But that will lead to your site being "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
+
+> **On the release files:** `*` from the version `v1.5.4` the theme available as a zip file in the [releases page](https://github.com/zetxek/adritian-free-hugo-theme/releases) contains the `node_modules` folder, so you don't need to install it separately. This is provided as a convenience for edge cases that might have problems installing the theme as a module, or downloading many files.__
 
 ### As a Hugo Module (recommended)
 
