@@ -110,12 +110,13 @@ body.home div.experience {
     padding: 1.5rem;
     border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    @media (prefers-color-scheme: dark) {
+
+    html[data-bs-theme="dark"] & {
         background-color: #2d2d2d;
         color: white;
-        
+
         .experience__title,
         .experience__company,
         .experience__date,
@@ -128,6 +129,3 @@ body.home div.experience {
 .company-logo {
     object-fit: contain;
 }
-
-
-
