@@ -23,6 +23,10 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
   target = "assets/js/vendor/bootstrap.bundle.min.js"
 
+  [[module.mounts]]
+    source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+    target = "assets/css/bootstrap-print.css"
+
 [params]
 
   title = 'Adritian - a high performance hugo theme by Adrián Moreno'
@@ -216,6 +220,10 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   URL = "css/custom.css"
   [[params.plugins.css]]
   URL = "css/adritian-icons.css"
+  ## Print css
+  [[params.plugins.css]]
+  URL = "css/bootstrap-print.css"
+
   
   # JS Plugins
   [[params.plugins.js]]

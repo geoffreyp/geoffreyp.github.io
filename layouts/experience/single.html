@@ -39,7 +39,7 @@
             </div>
             {{ end }}
           </div>
-          <div class="col-12 col-md-7 mt-7 mt-sm-0">
+          <div class="col-12 col-md-7 mt-7 mt-sm-0 d-print-block">
             {{ if (default true .Site.Params.experience.showJobCard) }}
             <div class="job-card mb-5">
               <div class="d-flex align-items-center mb-3">
@@ -54,8 +54,10 @@
               </div>
             </div>
             {{ end }}
-            <h1></h1>{{ .Params.title }}</h1>
-            {{ .Content | safeHTML }}
+            <div class="experience-content">
+              <h1>{{ .Params.title }}</h1>
+              {{ .Content | safeHTML }}
+            </div>
           </div>
         </div>
       </div>
