@@ -1,0 +1,22 @@
+@media print {
+
+    .bd-navbar {
+        box-shadow: none !important;
+    }
+
+    * {
+        box-shadow: none !important;
+    }
+
+    .experience__meta{
+        flex: 0 0 300px;
+    }
+    .experience__description{
+        flex: 1 0 800px;
+    }
+
+    .experience__list{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
