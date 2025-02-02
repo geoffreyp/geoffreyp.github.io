@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{- $.Lang }}">
-<head>
-  {{ partial "head.html" . }}
-  {{ partial "head_custom.html" . }}
-</head>
-
-<body>
-  {{ partial "header.html" . }}
-
+  {{ define "main" }}
   <main id="main-content" class="blog flex-grow-1">
     <div class="container section">
       <div class="row {{ if eq .Site.Params.blog.layout "sidebar" }}has-sidebar{{ end }}">
@@ -31,8 +22,4 @@
       </div>
     </div>
   </main>
-
-  {{ partial "footer.html" . }}
-  {{ partial "base-foot.html" . }}
-</body>
-</html>
+  {{ end }}

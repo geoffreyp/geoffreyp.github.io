@@ -1,13 +1,4 @@
-<!-- inject:../components/baseHead/baseHeadStart.html -->
-<!DOCTYPE html>
-<html lang="{{- $.Lang }}">
-  <head>
-    {{ partial "head.html" . }} {{ partial "head_custom.html" . }}
-  </head>
-
-  <body>
-    {{ partial "header.html" . }}
-
+    {{ define "main" }}
     <section
       id="experience"
       class="section section--border-bottom rad-animation-group flex-grow-1"
@@ -62,8 +53,4 @@
         </div>
       </div>
     </section>
-
-    {{ partial "footer.html" . }} {{ partial "base-foot.html" . }}
-  </body>
-</html>
-<!-- endinject -->
+    {{ end }}
