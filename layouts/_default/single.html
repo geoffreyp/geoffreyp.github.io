@@ -7,34 +7,4 @@
       </article>
     </div>
   </section>
-  <aside id="meta" class="light-border-botton">
-    <div>
-      <section>
-        {{ i18n "published_on" }} <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4> ·
-        <h4 id="wordcount"> {{ .WordCount }} Words</h4>
-      </section>
-      {{ with .GetTerms "topics" }}
-        <ul id="topics">
-          {{ range . }}
-            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-          {{ end }}
-        </ul>
-      {{ end }}
-      {{ with .GetTerms "tags" }}
-        <ul class="tags">
-          {{ range . }}
-            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-          {{ end }}
-        </ul>
-      {{ end }}
-    </div>
-    <div>
-      {{ with .PrevInSection }}
-        <a class="previous" href="{{ .RelPermalink }}"> {{ .LinkTitle }}</a>
-      {{ end }}
-      {{ with .NextInSection }}
-        <a class="next" href="{{ .RelPermalink }}"> {{ .LinkTitle }}</a>
-      {{ end }}
-    </div>
-  </aside>
 {{ end }}
