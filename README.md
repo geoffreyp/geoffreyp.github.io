@@ -89,6 +89,26 @@ min = "0.92.0"
 [[module.imports]]
 path="github.com/zetxek/adritian-free-hugo-theme"
 
+## Base mounts - so your site's assets are available
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"
+
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+  [[module.mounts]]
+    source = "i18n"
+    target = "i18n"
+
+  [[module.mounts]]
+    source = "layouts" 
+    target = "layouts"
+
+  [[module.mounts]]
+    source = "static"
+    target = "static"
 
 # The following mounts are required for the theme to be able to load bootstrap
 # Remember also to copy the theme's `package.json` to your site, and run `npm install`
