@@ -9,14 +9,32 @@
     }
 
     .experience__meta{
-        flex: 0 0 300px;
+        flex: 0 0 200px;
     }
     .experience__description{
-        flex: 1 0 800px;
+        flex: 1 1 400px;
     }
 
     .experience__list{
         display: flex;
         flex-wrap: wrap;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+    p, section{
+        page-break-after: avoid;
+        break-after: avoid;
+        break-before: avoid;
+    }
+    p{
+        break-inside: avoid;
+    }
+
+    header {
+        display: none;
+    }
 }
+
