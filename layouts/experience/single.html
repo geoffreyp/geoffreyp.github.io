@@ -27,16 +27,18 @@
               <a href="{{.Permalink | relURL}}">
                 {{/* The context, ".", is now each one of the pages as it goes
                 through the loop */}}
-                <div class="experience__header">
-                  {{ $img := resources.Get .Params.companyLogo }}
-                  {{ with $img }}
-                  {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
+                {{ $img := resources.Get .Params.companyLogo }}
+                {{ with $img }}
+                {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}  
+                <div class="experience__header  with-company-logo">
                   <img
                           src="{{ $imgWebp.RelPermalink }}"
                           alt="{{ .Params.company }} logo"
                           class="experience__company-logo"
                           loading="lazy"
                   >
+                  {{ else }}
+                  <div class="experience__header  no-company-logo">
                   {{ end }}
                   <div class="experience__meta">
                     <div class="experience__date">{{ .Params.duration }}</div>
@@ -52,11 +54,13 @@
           <div class="col-12 col-md-7 mt-7 mt-sm-0">
             {{ if (default true .Site.Params.experience.showJobCard) }}
             <div class="job-card mb-5">
-              <div class="d-flex align-items-center mb-3">
-                {{ $img := resources.Get .Params.companyLogo }}
+              {{ $img := resources.Get .Params.companyLogo }}
                 {{ with $img }}
+              <div class="with-company-logo d-flex align-items-center mb-3">
                 {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
                   <img src="{{ $imgWebp.RelPermalink }}" alt="{{ $.Params.company }} logo" class="company-logo me-3" style="max-height: 50px;">
+                {{ else }}
+                <div class="no-company-logo d-flex align-items-center mb-3">
                 {{ end }}
                 <div>
                   <h2 class="h4 mb-1">{{ .Params.jobTitle }}</h2>
