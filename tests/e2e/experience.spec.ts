@@ -75,6 +75,13 @@ test.describe('Experience items functionality', () => {
     // Verify metadata
     await expect(page.locator('.job-card__dates')).toHaveText('2023-2024');
     await expect(page.locator('.job-card__location')).toContainText('Stavanger, Norway');
+  });
+
+  test('verifies company logo is visible on job page', async ({ page }) => {
+    await page.goto(`${BASE_URL}/experience/job-1`);
     
+    // Verify the company logo is visible
+    const companyLogo = page.locator('.company-logo');
+    await expect(companyLogo).toBeVisible();
   });
 });
