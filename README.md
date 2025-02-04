@@ -46,6 +46,8 @@ You have three reference implementations of the theme provided that you can see 
 
 💡 For more inspiration, check this document's [showcase section](#showcase).
 
+✨ This theme is entirely free and open source. We welcome your ideas, feedback, and contributions! If you find it useful, please give it a GitHub star to show your support.
+
 ## Quickstart
 
 #### Install Hugo
