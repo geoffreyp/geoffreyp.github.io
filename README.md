@@ -1,5 +1,5 @@
 # Adritian Free Hugo Theme
-A modern Hugo theme for personal websites and professional landing pages - with blog and portfolio support
+A modern, fast and extensible Hugo theme for personal websites and professional landing pages - with blog and portfolio support
 
 [![Vercel Deploy](https://deploy-badge.vercel.app/vercel/adritian-demo?name=demo)
 ](https://adritian-demo.vercel.app/)
@@ -14,7 +14,7 @@ A modern Hugo theme for personal websites and professional landing pages - with 
 - 🌚 Automatic dark/light theme switching
 - ⚡ Vercel-ready with Analytics & Speed Insights support
 
-The theme focuses on accessibility, high performance and usability (being very easy to get started). It's extendable by adding your own styles or content types, with a solid foundation you can built on.
+The theme focuses on accessibility, high performance, and usability (it's very easy to get started). It's extendable by adding your own styles or content types, and it has a solid foundation on which to build.
 
 Some of the best applications for the theme are for minimalistic websites, single-page applications, and personal portfolios. It has a contact form you can customize to your mail address without setting up a backend.
 
@@ -35,13 +35,15 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 	</tbody>
 </table>
 
-The dark color variation is selected automatically based on browser settings, and there's a color switcher available in the footer to allow the visitors to override.
+The dark color variation is selected automatically based on browser settings, and a color switcher is available in the footer and the mobile menu for visitors to override.
 
-You have two reference implementations of the theme provided:
+You have three reference implementations of the theme provided that you can see for a demo, or to explore the source code:
 
 1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info)
 2. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)).
+3. The same demo site, in a [git submodules integration](https://github.com/zetxek/adritian-git-submodule-demo).
 
+💡 For more inspiration, check this document's [showcase section](#showcase).
 
 ## Quickstart
 
@@ -70,7 +72,7 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 
 1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 1. Enter the newly created folder: `cd <your website's name>/`
-1. Initialize Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on github, you can add anything as a name_)
+1. Initialize Hugo's Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on github, you can add anything as a name_)
 1. Replace the contents of your config file (`hugo.toml`) file by these: 
 
 
@@ -524,11 +526,16 @@ If you have improvements for the theme, you are very welcome to make a PR if you
 
 ## Getting help
 
-The project is offered "as is", and it's a hobby project that powers my personal website. Support is given whenever life allows - you can create an issue [create an issue](https://github.com/zetxek/adritian-free-hugo-theme/issues) so anyone else could also help, or the author.
+The project is offered "as is", and it's a side project that powers my personal website. Support is given whenever life allows, and it's not offered in private e-mails: please use the public issue trackers in GitHub so others benefit from the conversation.
+
+- 🐛 For bugs or errors (either in the code or documentation): create an issue [create an issue](https://github.com/zetxek/adritian-free-hugo-theme/issues).
+- 💡 For ideas, discussion or open conversations: create a topic in the [discussion board for the theme](https://github.com/zetxek/adritian-free-hugo-theme/discussions).
+
+Are you confused about the difference? Discussions allow a more open chat about the topics, so they fit well unstructured conversations, such as brainstorming on ideas or requests on "how could I...?", where the issues fit better more straightforward threads ("this is broken and should work like this").
 
 ## Showcase
 
-Have you used the theme in your website? Send a PR to add it to the list for inspiration! (Extra points if the repo is open source :-)
+Have you used the theme on your website? Send a PR to add it to the list for inspiration! (Extra points if the repo is open source :-)
 
 - [demo site](https://adritian.vercel.app)
 - [adrian moreno's personal site](https://www.adrianmoreno.info)
@@ -548,7 +555,7 @@ Have you used the theme in your website? Send a PR to add it to the list for ins
 - https://guillaumebabik.github.io/ (https://github.com/guillaumebabik/guillaumebabik.github.io)
 - https://oldgo.fael.my.id/danielweb/ (https://github.com/burnblazter/danielweb)
 - https://www.davidfreitag.com/ (https://github.com/dkfreitag/davidfreitag-com)
-- add your website here!
+- add your website here [by editing the theme README](https://github.com/zetxek/adritian-free-hugo-theme/edit/main/README.md)!
 
 ## Contributors ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
 
