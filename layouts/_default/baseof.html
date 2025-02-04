@@ -10,7 +10,7 @@
     {{ partial "head_custom.html" . }}
 </head>
 
-<body class="{{ if .IsHome }}home{{ end }}">
+<body class="{{- if .IsHome }}home{{- end }}{{- with .File }} page-{{- .ContentBaseName }}{{- end }}">
     {{ partial "header.html" . }}
 
     <main class="container">
