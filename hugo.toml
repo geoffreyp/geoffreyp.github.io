@@ -36,3 +36,7 @@
   [[module.mounts]]
     source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
     target = "assets/js/vendor/bootstrap.bundle.min.js"
+
+  [[module.mounts]]
+    source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+    target = "assets/css/bootstrap-print.css"

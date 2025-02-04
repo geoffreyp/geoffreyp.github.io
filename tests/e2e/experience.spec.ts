@@ -57,8 +57,8 @@ test.describe('Experience items functionality', () => {
     await expect(experienceItems).toHaveCount(4);
     
     // Verify specific job titles are present
-    await expect(page.getByText('Chief Intern')).toBeVisible();
-    await expect(page.getByText('Junior Intern')).toBeVisible();
+    await expect(page.locator('.experience__title', { hasText: 'Chief Intern' })).toBeVisible();
+    await expect(page.locator('.experience__title', { hasText: 'Junior Intern' })).toBeVisible();
   });
 
   test('verifies job-card content and structure', async ({ page }) => {

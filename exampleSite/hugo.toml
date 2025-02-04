@@ -44,6 +44,10 @@ target = "assets/js/bootstrap"
 source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 target = "assets/js/vendor/bootstrap.bundle.min.js"
 
+[[module.mounts]]
+source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+target = "assets/css/bootstrap-print.css"
+
 [params]
 
 title = 'Adritian - a high performance hugo theme by Adrián Moreno'
@@ -245,6 +249,18 @@ weight = 4
 URL = "css/custom.css"
 [[params.plugins.css]]
 URL = "css/adritian-icons.css"
+## Print css
+[[params.plugins.css]]
+URL = "css/bootstrap-print.css"
+
+
+# JS Plugins
+[[params.plugins.js]]
+URL = "js/rad-animations.js"
+[[params.plugins.js]]
+URL = "js/sticky-header.js"
+[[params.plugins.js]]
+URL = "js/library/fontfaceobserver.js"
 
 # JS Plugins
 [[params.plugins.js]]
