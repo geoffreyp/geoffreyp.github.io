@@ -76,8 +76,8 @@ jobs:
           npm install
 
           # Update config file
-          cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
-          sed -i -e "s/\"https\:\/\/www\.adrianmoreno\.info\"/\"https\:\/\/adritian-demo\.vercel\.app\/\"/g" hugo.toml
+          # cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
+          # sed -i -e "s/\"https\:\/\/www\.adrianmoreno\.info\"/\"https\:\/\/adritian-demo\.vercel\.app\/\"/g" hugo.toml
 
           # Commit the changes and push the feature branch to origin
           git config --global --add --bool push.autoSetupRemote true
