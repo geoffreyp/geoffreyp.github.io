@@ -124,6 +124,10 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
   target = "assets/js/vendor/bootstrap.bundle.min.js"
 
+## Optional, if you want print improvements (to PDF/printed)
+[[module.mounts]]
+source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+target = "assets/css/bootstrap-print.css"
 
 [params]
 
@@ -314,6 +318,9 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   URL = "css/custom.css"
   [[params.plugins.css]]
   URL = "css/adritian-icons.css"
+  ## Optional, if you want print improvements (to PDF/printed)
+  [[params.plugins.css]]
+  URL = "css/bootstrap-print.css"
   
   # JS Plugins
   [[params.plugins.js]]

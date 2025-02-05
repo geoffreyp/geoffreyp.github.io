@@ -2,6 +2,26 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.5.7
+
+In order to have the (optional) print improvements for the CV, you need to add the following to your `config.toml` file:
+
+In the mounts section:
+```
+[[module.mounts]]
+source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+target = "assets/css/bootstrap-print.css"
+```
+
+In the `params` section, under the `plugins` section, add the following:
+
+```
+  [[params.plugins.css]]
+  URL = "css/bootstrap-print.css"
+```
+
+Note: this will add about 1.1Kb to the total size of the CSS loaded.
+
 ## v1.5.3
 
 A new parameter, `showJobCard`, has been added to the `experience` section in the `config.toml` file.
