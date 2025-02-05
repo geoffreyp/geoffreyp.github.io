@@ -20,8 +20,6 @@ jobs:
         with: 
           repository: zetxek/adritian-demo
           token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
-          submodules: true
-
 
       - name: Print submodule status
         run: |
@@ -53,39 +51,43 @@ jobs:
             --branch=main \
             https://some-user:${{ secrets.PRIVATE_TOKEN_GITHUB }}@github.com/$REPOSITORY \
             $FOLDER
-
-          cd $FOLDER
-
+          
           # Setup the committers identity.
           git config user.email "actions@github.com"
-          git config user.name "GitHub Actions - update theme submodule"
+          git config user.name "GitHub Actions - update theme module"
           git config pull.rebase false
 
           # Create a new feature branch for the changes.
           git checkout -b $BRANCH_NAME
 
-          # Initialize and update the submodules.
-          echo "Initializing and updating submodules..."
-          git submodule update --init --recursive
+          # Initialize Hugo modules only if not already initialized
+          echo "Checking Hugo modules status..."
+          if [ ! -f "go.mod" ]; then
+            echo "Initializing Hugo modules..."
+            hugo mod init github.com/$REPOSITORY
+          fi
 
-          # Update the script files to the latest version.
-          echo "Updating theme to $LATEST_TAG..."
-          cd themes/adritian-free-hugo-theme
-          git checkout main
-          git pull origin main
-          cd ../..
-          git add themes/adritian-free-hugo-theme
-          echo "Updated submodule. Comitting changes."
+          # Update Hugo modules
+          echo "Updating Hugo modules..."
+          hugo mod get -u github.com/zetxek/adritian-free-hugo-theme@main
+          hugo mod tidy
+
+          # Copy content from module
+          hugo mod npm pack
+          npm install
+
+          # Update config file
+          cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
+          sed -i -e "s/\"https\:\/\/www\.adrianmoreno\.info\"/\"https\:\/\/adritian-demo\.vercel\.app\/\"/g" hugo.toml
 
           # Commit the changes and push the feature branch to origin
           git config --global --add --bool push.autoSetupRemote true
           echo "🔄 Adding all changes - updating theme to $LATEST_TAG"
           git add --all
-          echo "✉️ Changes added. Comitting and pushing."
-
-          COMMIT_MSG_THEME='chore: update theme submodule to `'"$LATEST_TAG"'`'
-          echo 'Committing theme: '"$COMMIT_MSG_THEME"
-          git commit -am "$COMMIT_MSG_THEME" && git push --force || echo "No changes to theme"
+          
+          COMMIT_MSG="chore: update theme module to `$LATEST_TAG`"
+          echo "✉️ Committing changes: $COMMIT_MSG"
+          git commit -m "$COMMIT_MSG" && git push --force || echo "No changes to commit"
 
           tree themes/adritian-free-hugo-theme -r
 
