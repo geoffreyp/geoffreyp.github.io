@@ -95,7 +95,7 @@ jobs:
             echo "✅ Pull-request updated!"
             # TODO: update the PR body with the latest commit
             # Add a comment to the PR with the update
-            gh pr comment $PR_EXISTS --body "Last commit: \`$LATEST_COMMIT\`"
+            gh pr comment $PR_EXISTS --body "Updated PR to last commit in source repo: \`$LATEST_COMMIT\`"
           else
             echo "✨ Creating new pull-request..."
             PR_TITLE="preview: theme PR #$PR_NUMBER"
