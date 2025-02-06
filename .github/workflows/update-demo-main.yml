@@ -25,11 +25,10 @@ jobs:
             https://api.github.com/repos/zetxek/adritian-demo/actions/workflows/update-hugo-module.yml/dispatches \
             -d '{"ref":"main"}'
         
-            - name: Trigger Update Git Submodule workflow
-            run: |
-              curl -X POST \
-                -H "Authorization: token ${{ secrets.PRIVATE_TOKEN_GITHUB }}" \
-                -H "Accept: application/vnd.github.v3+json" \
-                https://github.com/zetxek/adritian-git-submodule-demo/actions/workflows/update-hugo-module.yml/dispatches \
-                -d '{"ref":"main"}'
-      
+      - name: Trigger Update Git Submodule workflow
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.PRIVATE_TOKEN_GITHUB }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://github.com/zetxek/adritian-git-submodule-demo/actions/workflows/update-hugo-module.yml/dispatches \
+            -d '{"ref":"main"}'
