@@ -100,9 +100,8 @@ jobs:
             echo "✨ Creating new pull-request..."
             PR_TITLE="preview: theme PR #$PR_NUMBER"
             PR_BODY="⚠️ The source PR is not merged yet - this is a preview PR created to test the theme update with a vercel preview URL.
-            - Last commit: \`$LATEST_COMMIT\` \
+            - Last commit: \`$LATEST_COMMIT\`
             - Source PR: $PR_URL
-            - 🤖 This automated PR updates the theme module to a PR in the source repo: $PR_URL.
             - 🔗 Triggered by https://github.com/zetxek/adritian-free-hugo-theme/actions/workflows/update-demo-pr.yml"
 
             PR_RESULT=$(gh pr create \
