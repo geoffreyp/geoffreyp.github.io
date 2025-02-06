@@ -1,7 +1,7 @@
 ## Updates demo site (https://github.com/zetxek/adritian-demo)
-## taken from https://stackoverflow.com/a/68213855/570087
-
-name: Update demo site (on main update)
+## triggers the update-hugo-module workflow in adritian-demo
+## and the update-git-submodule workflow in the git-submodule-demo site
+name: Update demo repos
 on:
   push:
     ## run on push to main or a new semantic tag (ie: v1.2.3)
@@ -24,5 +24,12 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/zetxek/adritian-demo/actions/workflows/update-hugo-module.yml/dispatches \
             -d '{"ref":"main"}'
-
+        
+            - name: Trigger Update Git Submodule workflow
+            run: |
+              curl -X POST \
+                -H "Authorization: token ${{ secrets.PRIVATE_TOKEN_GITHUB }}" \
+                -H "Accept: application/vnd.github.v3+json" \
+                https://github.com/zetxek/adritian-git-submodule-demo/actions/workflows/update-hugo-module.yml/dispatches \
+                -d '{"ref":"main"}'
       
