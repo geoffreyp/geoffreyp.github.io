@@ -83,8 +83,8 @@ jobs:
           git add --all
           echo "✉️ Changes added. Comitting and pushing."
 
-          COMMIT_MSG_THEME='chore: update theme submodule to `'"$LATEST_TAG"'`'
-          echo 'Committing theme: '"$COMMIT_MSG_THEME"
+          COMMIT_MSG_THEME="chore: update theme submodule to '${LATEST_TAG}'"
+          echo "Committing theme: $COMMIT_MSG_THEME"
           git commit -am "$COMMIT_MSG_THEME" && git push --force || echo "No changes to theme"
 
           tree themes/adritian-free-hugo-theme -r
@@ -94,7 +94,7 @@ jobs:
           # Update URL
           sed -i -e "s/\"https\:\/\/www\.adrianmoreno\.info\"/\"https\:\/\/adritian-demo\.vercel\.app\/\"/g" hugo.toml
 
-          COMMIT_MSG_CONFIG='chore: update config/content submodule to `'"$LATEST_TAG"'` from https://github.com/zetxek/adritian-free-hugo-theme'
+          COMMIT_MSG_CONFIG="chore: update config/content submodule to '${LATEST_TAG}' from https://github.com/zetxek/adritian-free-hugo-theme"
           echo "Committing content/config: $COMMIT_MSG_CONFIG"
           git commit -am "$COMMIT_MSG_CONFIG"  && git push --force || echo "No changes to config"
 
@@ -111,8 +111,8 @@ jobs:
           gh auth login --with-token < token.txt
 
           echo "Creating pull-request..."
-          PR_TITLE='chore: update theme to `'$LATEST_TAG'`'
-          echo 'PR title: '$PR_TITLE
+          PR_TITLE="chore: update theme to '${LATEST_TAG}'"
+          echo "PR title: $PR_TITLE"
           PR_BODY="🤖 This automated PR updates the theme submodule to the latest version: https://github.com/zetxek/adritian-free-hugo-theme/commit/$LATEST_COMMIT.
           🔗 Triggered by https://github.com/zetxek/adritian-free-hugo-theme/actions/workflows/update-demo-pr.yml"
           echo "PR body: "$PR_BODY
