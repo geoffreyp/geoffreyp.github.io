@@ -53,6 +53,11 @@ jobs:
               working-directory: ./test-site
               run: hugo
 
+            - name: Print index.html
+              working-directory: ./test-site/public
+              run: |
+                    cat index.html
+
             # Validate HTML syntax with https://github.com/marketplace/actions/html5-validator
             - name: Validate HTML syntax
               uses: Cyb3r-Jak3/html5validator-action@v7.2.0
