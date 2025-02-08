@@ -15,14 +15,14 @@
         >{{ i18n "theme_auto_short" }}</span
       >
       <span class="current-theme">{{ i18n "theme_auto" }}</span>
-      <span class="d-lg-none ms-2 visually-hidden" id="bd-theme-text"
+      <span class="d-lg-none ms-2 visually-hidden bd-theme-text" id="bd-theme-text-{{ $placement }}"
         >{{ i18n "toggle_theme" }}</span
       >
     </button>
     <ul
       id="theme-dropdown-{{ $placement }}"
       class="dropdown-menu dropdown-menu-end dropup"
-      aria-labelledby="bd-theme-text"
+      aria-labelledby="bd-theme-text-{{ $placement }}"
       data-bs-popper="static"
     >
       <li>

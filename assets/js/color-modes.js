@@ -41,7 +41,7 @@
         return
       }
   
-      const themeSwitcherText = document.querySelector('#bd-theme-text')
+      const themeSwitcherText = document.querySelectorAll('.bd-theme-text')
       const activeTheme = document.querySelectorAll('.current-theme')
       const btnToActive = document.querySelectorAll(`[data-bs-theme-value="${theme}"]`)
       //const iconOfActiveBtn = btnToActive.querySelector('span.theme-icon')
@@ -57,7 +57,7 @@
       for (const element of activeTheme) {
         element.textContent = btnToActive[0].textContent
       }
-      const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive[0].dataset.bsThemeValue})`
+      const themeSwitcherLabel = `${themeSwitcherText[0].textContent} (${btnToActive[0].dataset.bsThemeValue})`
       for (const element of themeSwitcher) {
         element.setAttribute('aria-label', themeSwitcherLabel)
       }
