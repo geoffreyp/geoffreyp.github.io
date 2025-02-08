@@ -52,3 +52,9 @@ jobs:
             - name: Run build
               working-directory: ./test-site
               run: hugo
+
+            # Validate HTML syntax with https://github.com/marketplace/actions/html5-validator
+            - name: Validate HTML syntax
+              uses: Cyb3r-Jak3/html5validator-action
+              with:
+                root: ./test-site/public
