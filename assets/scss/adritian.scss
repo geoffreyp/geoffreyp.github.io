@@ -93,7 +93,6 @@ h4 {
     }
 }
 p {
-    margin-bottom: 30px;
     font-size: 16px;
     font-weight: 300;
     line-height: 28px;
@@ -274,9 +273,6 @@ footer_links .nav-item .nav-link::after {
     }
     .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
         color: #fff !important;
-    }
-    .section li{
-        color: $light-text-emphasis-dark !important;
     }
     .section li::before{
         background-color: $light-text-emphasis-dark !important;

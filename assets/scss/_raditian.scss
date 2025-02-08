@@ -681,22 +681,25 @@ textarea:focus {
     display: block;
     position: relative;
     padding-left: 15px;
-    font-size: 16px;
     font-weight: 300;
-    color: rgba(0, 0, 0, 0.6);
     line-height: 1.24;
     margin-bottom: 12px;
     text-align: left;
 }
+.section ol, 
+.section ul{
+    padding-left: 1.2rem;
+}
+
 .section li::before {
     content: "";
     display: block;
     position: absolute;
     left: 0;
-    top: 10px;
-    width: 4px;
-    height: 4px;
-    border-radius: 2px;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
     background-color: #000;
 }
 .header.collapse.show::before,
