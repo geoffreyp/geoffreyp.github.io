@@ -53,7 +53,14 @@
                 >{{ .Name | upper }}</a
               >
             </li>
+
+            
             {{ end }}
+            {{ .Scratch.Set "selectorPlacement" "header" }}
+            <li class="nav-item dropdown">
+            {{ partial "selector-language.html" . }}
+            </li>
+            
             {{ .Scratch.Set "selectorPlacement" "mobile-header" }}
             
             {{- if hugo.IsMultilingual }} 
