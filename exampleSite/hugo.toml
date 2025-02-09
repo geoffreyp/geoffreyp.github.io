@@ -98,6 +98,7 @@ enable = true
 [params.languages.selector.disable]
 footer = false
 header = false
+mobileHeader = false
 
 [languages]
 [languages.en]
@@ -293,7 +294,7 @@ URL = "scss/adritian.scss"
 [params.colorTheme.selector.disable]
 footer = false
 header = false
-
+mobileHeader = false
 ## by default we allow override AND automatic selection
 
 [params.blog]
