@@ -28,6 +28,7 @@
             {{- if hugo.IsMultilingual }} 
             {{- if not .Site.Params.languages.selector.disable.footer }}
             {{ .Scratch.Set "selectorPlacement" "footer" }}
+            {{ .Scratch.Set "dropdownDirection" "up" }}
             {{ partial "selector-language.html" . }}
             {{- end }} 
             {{- end }}

@@ -47,31 +47,28 @@
                 >{{ i18n "nav_home" }}</a
               >
             </li>
-            {{ range .Site.Menus.header }}
+            {{- range .Site.Menus.header }}
             <li class="nav-item">
               <a data-scroll class="nav-link" href="{{ .URL | relURL }}"
                 >{{ .Name | upper }}</a
               >
             </li>
-
-            
-            {{ end }}
-            {{ .Scratch.Set "selectorPlacement" "header" }}
-            <li class="nav-item dropdown">
-            {{ partial "selector-language.html" . }}
-            </li>
-            
-            {{ .Scratch.Set "selectorPlacement" "mobile-header" }}
+            {{- end }}
             
             {{- if hugo.IsMultilingual }} 
-            {{- if not .Site.Params.languages.selector.disable.footer }}
-            <li class="nav-item">
+            {{- if not .Site.Params.languages.selector.disable.header }}
+            {{ .Scratch.Set "selectorPlacement" "header" }}
+            {{ .Scratch.Set "dropdownDirection" "down" }}
+         
+            <li class="dropdown language-selector">
             {{ partial "selector-language.html" . }}
             </li>
             {{- end }}
             {{- end }}
-            <li class="nav-item">
-            {{ partial "selector-theme.html" . }}
+            <li class="dropdown theme-selector">
+              {{ .Scratch.Set "selectorPlacement" "header" }}
+              {{ .Scratch.Set "dropdownDirection" "down" }}  
+              {{ partial "selector-theme.html" . }}
             </li>
           </ul>
         </div>

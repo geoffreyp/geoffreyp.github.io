@@ -1,7 +1,8 @@
 {{/* indicates where the partial is placed 
   so far the placement can either be header or footer */}}
 {{- $placement := .Scratch.Get "selectorPlacement" }}
-<div id='{{ .Scratch.Get "selectorPlacement" }}-color-selector' class='nav-item dropdown dropup {{ if eq $placement "mobile-header" }}nav-link{{ end }}'>
+{{- $direction := .Scratch.Get "dropdownDirection" }}
+<div id='{{ .Scratch.Get "selectorPlacement" }}-color-selector' class='dropdown {{ if eq $direction "up" }}dropup{{ end }} {{ if eq $placement "mobile-header" }}nav-link{{ end }}'>
     <button
       class="btn btn-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center show bd-theme-selector"
       id='bd-theme-{{ .Scratch.Get "selectorPlacement" }}'
@@ -21,7 +22,7 @@
     </button>
     <ul
       id="theme-dropdown-{{ $placement }}"
-      class="dropdown-menu dropdown-menu-end dropup"
+      class="dropdown-menu dropdown-menu-end {{ if eq $direction "up" }}dropup{{ end }}"
       aria-labelledby="bd-theme-text-{{ $placement }}"
       data-bs-popper="static"
     >
