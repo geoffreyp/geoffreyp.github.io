@@ -58,18 +58,19 @@
             {{- if hugo.IsMultilingual }} 
             {{- if not .Site.Params.languages.selector.disable.header }}
             {{ .Scratch.Set "selectorPlacement" "header" }}
-            {{ .Scratch.Set "dropdownDirection" "down" }}
-         
+            {{ .Scratch.Set "dropdownDirection" "down" }}         
             <li class="dropdown language-selector">
             {{ partial "selector-language.html" . }}
             </li>
             {{- end }}
             {{- end }}
+            {{- if not .Site.Params.colorTheme.selector.disable.header }}
             <li class="dropdown theme-selector">
               {{ .Scratch.Set "selectorPlacement" "header" }}
               {{ .Scratch.Set "dropdownDirection" "down" }}  
               {{ partial "selector-theme.html" . }}
             </li>
+            {{- end }}
           </ul>
         </div>
 

@@ -2,6 +2,10 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.5.12
+
+The options to control how the language and theme selectors are displayed in the header and footer have been refactored, to enable control over each placement individually (footer and header).
+
 ## v1.5.7
 
 In order to have the (optional) print improvements for the CV, you need to add the following to your `config.toml` file:
