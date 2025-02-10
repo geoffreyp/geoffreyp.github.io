@@ -4,6 +4,8 @@ const BASE_URL = 'http://localhost:1313';
 
 test.describe('Language switching functionality', () => {
   test('switches between languages and verifies lang attribute', async ({ page }) => {
+    test.skip(process.env.TEST_NO_MENUS === 'true', 'Skipping test because TEST_NO_MENUS is true');
+
     // Go to homepage
     await page.goto(BASE_URL);
     
@@ -46,6 +48,8 @@ test.describe('Language switching functionality', () => {
   });
 
   test('preserves translations across page types', async ({ page }) => {
+    test.skip(process.env.TEST_NO_MENUS === 'true', 'Skipping test because TEST_NO_MENUS is true');
+
     // Go to French experience page
     await page.goto(`${BASE_URL}/fr/experience`);
     
