@@ -24,7 +24,7 @@
           </ul>
         </div>
         <div class="footer_right col-12 col-lg-2 mb-3 mb-lg-0 text-center text-lg-end">
-          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-2">
+          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-2 d-grid col-12 ">
             {{- if hugo.IsMultilingual }} 
             {{- if not .Site.Params.languages.selector.disable.footer }}
             {{ .Scratch.Set "selectorPlacement" "footer" }}
