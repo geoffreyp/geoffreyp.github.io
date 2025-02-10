@@ -55,6 +55,15 @@ jobs:
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
+      - name: Build site (no menus)
+        run: |
+          cd exampleSite
+          hugo server --themesDir ../.. --buildDrafts --buildFuture --bind 0.0.0.0 --config hugo.toml,hugo.disablemenu.toml &
+          sleep 10
+
+      - name: Run Playwright tests (no menus)
+        run: npm run test:e2e:no-menus
+
       - name: Build and serve demo site
         run: |
           cd exampleSite
@@ -68,14 +77,6 @@ jobs:
         run: |
           killall hugo
 
-      - name: Build site (no menus)
-        run: |
-          cd exampleSite
-          hugo server --themesDir ../.. --buildDrafts --buildFuture --bind 0.0.0.0 --config hugo.toml,hugo.disablemenu.toml &
-          sleep 10
-
-      - name: Run Playwright tests (no menus)
-        run: npm run test:e2e:no-menus
 
       - name: Get the failure count
         id: tests
