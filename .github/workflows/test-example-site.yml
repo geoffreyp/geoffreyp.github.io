@@ -64,18 +64,20 @@ jobs:
       - name: Run Playwright tests (no menus)
         run: npm run test:e2e:no-menus
 
-      - name: Build and serve demo site
+      - name: Stop hugo server
+        run: |
+          killall hugo
+
+      - name: Build and serve demo site (default; with menus)
         run: |
           cd exampleSite
           hugo server --themesDir ../.. --buildDrafts --buildFuture --bind 0.0.0.0 &
           sleep 10
 
-      - name: Run Playwright tests
+      - name: Run Playwright tests (default; with menus)
         run: npm run test:e2e
 
-      - name: Stop hugo server
-        run: |
-          killall hugo
+
 
 
       - name: Get the failure count
