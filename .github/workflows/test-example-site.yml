@@ -64,6 +64,10 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:e2e
 
+      - name: Stop hugo server
+        run: |
+          killall hugo
+
       - name: Build site (no menus)
         run: |
           cd exampleSite
