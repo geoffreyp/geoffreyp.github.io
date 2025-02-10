@@ -6,6 +6,23 @@ This documentation is meant to help you upgrade across versions, when potentiall
 
 The options to control how the language and theme selectors are displayed in the header and footer have been refactored, to enable control over each placement individually (footer and header).
 
+There are 3 placements that can be controlled. For the color selector, it's always available; for the languae selector, it's available if the site is multilingual.
+
+The configuration syntax is as follows:
+```
+[params.languages.selector.disable]
+footer = false
+header = false
+mobileHeader = false
+
+[params.colorTheme.selector.disable]
+footer = false
+header = false
+mobileHeader = false
+```
+
+The default value is assumed to be `false` for all placements, meaning that the selector is displayed in all placements by default.
+
 ## v1.5.7
 
 In order to have the (optional) print improvements for the CV, you need to add the following to your `config.toml` file:
