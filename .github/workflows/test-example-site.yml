@@ -64,6 +64,15 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:e2e
 
+      - name: Build site (no menus)
+        run: |
+          cd exampleSite
+          hugo server --themesDir ../.. --buildDrafts --buildFuture --bind 0.0.0.0 --config hugo.toml,hugo.disablemenu.toml &
+          sleep 10
+
+      - name: Run Playwright tests (no menus)
+        run: npm run test:e2e:no-menus
+
       - name: Get the failure count
         id: tests
         run: |

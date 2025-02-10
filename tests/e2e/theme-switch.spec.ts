@@ -11,6 +11,8 @@ const FOOTER_THEME_AUTO = `${FOOTER_THEME_CONTAINER} .dropdown-item[data-bs-them
 
 test.describe('Theme switching functionality', () => {
   test('verifies bold styling of selected theme and updates on switch', async ({ page }) => {
+    test.skip(process.env.TEST_NO_MENUS === 'true', 'Skipping test because TEST_NO_MENUS is true');
+
     // Go to homepage
     await page.goto(BASE_URL);
     
@@ -41,6 +43,8 @@ test.describe('Theme switching functionality', () => {
   });
 
   test('theme selection persists after page reload', async ({ page }) => {
+    test.skip(process.env.TEST_NO_MENUS === 'true', 'Skipping test because TEST_NO_MENUS is true');
+
     // Go to homepage
     await page.goto(BASE_URL);
     
