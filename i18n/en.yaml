@@ -87,7 +87,9 @@
   \"contact\",
   \"newsletter\",
   ]</code><br/> 
-  The content of each section is defined in the <code>data/homepage.yml</code> file (ie: links to social sites, mail, ...)."
+  The content of each section is defined in the <code>data/homepage.yml</code> file (ie: links to social sites, mail, ...).
+  <br/>
+  If you scroll this page you will see some hints on where the content comes from - all the way to the footer menu. These links come from the site config file (<code>hugo.toml</code>), look for the <code>[[languages.en.menus.footer]]</code> section."
 
 - id: "showcase_button"
   translation: "Contact"
