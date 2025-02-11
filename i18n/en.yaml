@@ -63,7 +63,31 @@
   translation: "Let's dive into an example"
 
 - id: "showcase_description"
-  translation: "This is a high performance theme for the Hugo static site generator. This sample content can be edited in the locale files (as the theme supports translations). <br>You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, and see it live <a target='_blank' href='https://adritian-demo.vercel.app/'>as a demo site</a> or <a target='_blank' href='https://www.adrianmoreno.info'>a real one</a>.<br>You can find this content to edit in the theme.yaml file."
+  translation: "This is a high performance theme for the Hugo static site generator. 
+    This sample content can be edited in the locale files (as the theme supports translations).
+    <br>
+    You can download this theme from <a target='_blank' href='https://github.com/zetxek/adritian-free-hugo-theme'>github</a>, 
+    and see it live <a target='_blank' href='https://adritian-demo.vercel.app/'>as a demo site</a> 
+    or <a target='_blank' href='https://www.adrianmoreno.info'>a real one</a>.
+    <br>
+    The content you see so far in the homepage is:
+    <ul>
+      <li>Site logo/name: site config file (<code>hugo.toml</code>)</li>
+      <li>Site top menu: site config file (<code>hugo.toml</code>), look for the <code>[[languages.en.menus.header]]</code> section</li>
+      <li>This paragraph: <code>i18n/en.yaml</code> (for English)</li>
+    </ul>
+    Additionally, the order of the items in the homepage is configured in the <code>sections</code> array in the <code>hugo.toml</code> file:
+    <code>sections = [
+  \"showcase\",
+  \"about\",
+  \"education\",
+  \"experience\",
+  \"client-and-work\",
+  \"testimonial\",
+  \"contact\",
+  \"newsletter\",
+  ]</code><br/> 
+  The content of each section is defined in the <code>data/homepage.yml</code> file (ie: links to social sites, mail, ...)."
 
 - id: "showcase_button"
   translation: "Contact"
