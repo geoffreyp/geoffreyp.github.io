@@ -1,7 +1,7 @@
 <div class="container-experience">
   <div class="row">
     <h2>{{ i18n "experience_title" }}</h2>
-    <p class="lead">{{ i18n "experience_description" }}</p>
+    <p class="lead">{{ i18n "experience_description" | safeHTML }}</p>
   </div>
   <div class="row">
     {{ if .Site.Data.homepage.experience.button.enable }}
