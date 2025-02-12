@@ -15,7 +15,7 @@ test.describe('Tag functionality', () => {
 
     // Each item shows how many articles
     // e.g. "Lorem-Ipsum (1)" or "Sample (1)"
-    await expect(page.getByText('Sample (1)')).toBeVisible();
+    await expect(page.getByText('Sample (2)')).toBeVisible();
   });
 
   test('click on a tag -> renders the tag page', async ({ page }) => {

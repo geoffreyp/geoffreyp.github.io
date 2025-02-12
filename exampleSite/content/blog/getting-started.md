@@ -4,11 +4,11 @@ date: 2025-02-11T14:38:33+02:00
 draft: false
 type: 'blog'
 tags: 
-  - sample
-  - lorem-ipsum
+  - adritian
+  - guide
 ---
 
-One of the most common questions is how to get started with the theme. 
+This article is a guide to help you create your own version of the site using [Adritian](https://github.com/zetxek/adritian-free-hugo-theme). It will cover the main steps to get started with the theme, and how to customize it to your needs.
 
 ### Creating a site
 
