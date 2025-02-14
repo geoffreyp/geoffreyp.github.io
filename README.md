@@ -75,6 +75,11 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 1. Enter the newly created folder: `cd <your website's name>/`
 1. Initialize the Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on GitHub, you can add anything as a name_)
+1. Install the theme as a module: `hugo mod get -u github.com/zetxek/adritian-free-hugo-theme`
+1. Install the theme helper: `hugo mod npm pack`
+1. Install the dependencies: `npm install`
+1. Run the demo content downloader: `./node_modules/adritian-theme-helper/dist/scripts/download-content.js`. This will download the demo content from the [adritian-demo](https://github.com/zetxek/adritian-demo) repository and copy it to your site, for a quick start.
+
 1. Replace the contents of your config file (`hugo.toml`) file by these: 
 
 
