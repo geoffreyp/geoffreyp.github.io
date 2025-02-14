@@ -465,8 +465,13 @@ The introduction of i18n support was done in the version `v1.3.0` and it has bre
 
 #### Additional configuration
 
+<img width="1395" alt="image" src="https://github.com/user-attachments/assets/270c4445-5354-441a-ab23-21d91762e33c" />
+
+
+You can check the repository [adritian-demo](https://github.com/zetxek/adritian-demo) for a reference implementation, as well as the [theme website](https://adritian-demo.vercel.app/) (https://adritian-demo.vercel.app/), to get a visual guide on how to edit the content. 
+
 ##### Contact form
-_(optional, if you want to use the contact form)_ edit line 212 in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
+_(optional, if you want to use the contact form)_ edit the key `contact` in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
 
 ##### Blog
 
