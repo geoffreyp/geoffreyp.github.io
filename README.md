@@ -12,7 +12,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 🛠️ Custom content types (work experience, blog)
 - 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
 - 🌚 Automatic dark/light theme switching
-- 🖨️ Print-ready CV template 
+- 🖨️ Print-friendly CV template 
 - ⚡ Vercel-ready with Analytics & Speed Insights support
 
 The theme focuses on accessibility, high performance, and usability (it's very easy to get started). It's extendable by adding your own styles or content types, and it has a solid foundation on which to build.
@@ -371,7 +371,7 @@ Make sure to edit `baseURL`, `title` and `description`. You can edit the header 
 1. Get the module: `hugo mod get -u`
 1. Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
 1. Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
-1. (Optional, to override the defaults) Create a file `data/homepage.yml` with the contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml) file, and customize to your needs.
+1. (Optional, to override the defaults) Create a file `data/homepage.yml` with the contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml) file, and customize to your needs (__note: this file is not included in your theme if you use hugo modules, download it manually from the repository__)
 1. Start Hugo with `hugo server`...
 1. 🎉 The theme is alive on http://localhost:1313/
 
