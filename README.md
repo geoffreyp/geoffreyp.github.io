@@ -419,8 +419,7 @@ Note: The `exampleSite` is not downloaded when installing the Hugo module. That'
 
 After this, you can start adding your own content to the site, and customize the configuration.
 
-
-The output for the `serve` command will be something like this:
+If everything has gone well asn you have the right configuration, the output for the `serve` command will be something like this:
 <details>
 <summary>Example output for the serve command</summary>
 
