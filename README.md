@@ -467,8 +467,18 @@ The introduction of i18n support was done in the version `v1.3.0` and it has bre
 
 <img width="1395" alt="image" src="https://github.com/user-attachments/assets/270c4445-5354-441a-ab23-21d91762e33c" />
 
+##### Editing the theme content
 
 You can check the repository [adritian-demo](https://github.com/zetxek/adritian-demo) for a reference implementation, as well as the [theme website](https://adritian-demo.vercel.app/) (https://adritian-demo.vercel.app/), to get a visual guide on how to edit the content. 
+
+##### Shortcodes
+
+The theme has two shortcodes available for use in the content:
+
+- education-list
+- experience-list
+
+You can see them in effect in the [demo site CV page](https://adritian-demo.vercel.app/cv). 
 
 ##### Contact form
 _(optional, if you want to use the contact form)_ edit the key `contact` in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
