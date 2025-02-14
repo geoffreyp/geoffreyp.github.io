@@ -403,6 +403,15 @@ The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-
 - Start Hugo with `hugo server -D`
 - 🎉 The theme is alive on http://localhost:1313/
 
+
+_Optional, and only for git submodule or when you download the whole repo:_
+if you want to preview the theme with the example content before deciding if it's what you are looking for, you can run the theme with the example content:
+```
+cd themes/adritian-free-hugo-theme/exampleSite
+hugo server --themesDir ../..
+```
+
+Note: The `exampleSite` is not downloaded when installing the Hugo module. That's why this works only as git submodule or full repo download. 
 </details>
 
 
@@ -410,12 +419,6 @@ The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-
 
 After this, you can start adding your own content to the site, and customize the configuration.
 
-_Optional:_
-if you want to preview the theme with the example content before deciding if it's what you are looking for, you can run the theme with the example content:
-```
-cd themes/adritian-free-hugo-theme/exampleSite
-hugo server --themesDir ../..
-```
 
 The output for the `serve` command will be something like this:
 <details>
