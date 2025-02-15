@@ -112,6 +112,7 @@ p + p {
         font-size: 60px;
     }
 }
+.lead a,
 p a,
 span a {
     color: #000;
@@ -120,6 +121,7 @@ span a {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     transition: all 0.5s;
 }
+.lead a:hover,
 p a:hover,
 span a:hover {
     color: #478079;
@@ -283,7 +285,7 @@ footer_links .nav-item .nav-link::after {
     .lead{
         color: #fff !important;
     }
-    p a, span a{
+    .lead a, p a, span a{
         color: #fff !important;
     }
     p{
