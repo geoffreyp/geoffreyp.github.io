@@ -246,7 +246,9 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
 - https://guillaumebabik.github.io/ (https://github.com/guillaumebabik/guillaumebabik.github.io)
 - https://oldgo.fael.my.id/danielweb/ (https://github.com/burnblazter/danielweb)
 - https://www.davidfreitag.com/ (https://github.com/dkfreitag/davidfreitag-com)
-- add your website here [by editing the theme README](https://github.com/zetxek/adritian-free-hugo-theme/edit/main/README.md)!
+
+➕ add your website here [by editing the theme README](https://github.com/zetxek/adritian-free-hugo-theme/edit/main/README.md).
+🔎 find other websites using the theme [searching in github](https://github.com/search?q=%22theme+%3D+%5C%22adritian-free-hugo-theme%5C%22%22&type=code).
 
 ## Contributors ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
 
