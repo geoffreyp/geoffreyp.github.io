@@ -5,6 +5,6 @@
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
-    "adritian-theme-helper": "^1.0.3"
+    "@zetxek/adritian-theme-helper": "^1.0.3"
   }
 }
