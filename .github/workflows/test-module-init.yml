@@ -34,10 +34,20 @@ jobs:
               run: |
                     hugo mod npm pack
 
+            - name: (debug) Cat package.json
+              working-directory: ./test-site
+              run: |
+                    cat package.json
+
             - name: Npm install (bootstrap)
               working-directory: ./test-site
               run: |
                     npm install
+
+            - name: (debug) ls node_modules
+              working-directory: ./test-site
+              run: |
+                    ls node_modules
 
             - name: Run helper script (copy config and content)
               working-directory: ./test-site
