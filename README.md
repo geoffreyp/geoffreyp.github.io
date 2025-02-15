@@ -38,11 +38,12 @@ You can see it live at [www.adrianmoreno.info](https://www.adrianmoreno.info) (m
 
 The dark color variation is selected automatically based on browser settings, and a color switcher is available in the footer and the mobile menu for visitors to override.
 
-You have three reference implementations of the theme provided that you can see for a demo, or to explore the source code:
+Other relevant repositories related to this theme are:
 
-1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info)
-2. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)).
-3. The same demo site, in a [git submodules integration](https://github.com/zetxek/adritian-git-submodule-demo).
+1. [adritian-theme-helper](https://github.com/zetxek/adritian-theme-helper): npm package helper, used to bootstrap the theme. It helps initialize a site with the right content and configuration files.
+1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info), so you can see how the theme can look real-life (including deployment scripts).
+1. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)), where the demo content comes from.
+1. The same demo site, in a [git submodules integration](https://github.com/zetxek/adritian-git-submodule-demo).
 
 💡 For more inspiration, check this document's [showcase section](#showcase).
 
@@ -70,385 +71,44 @@ The theme has been tested with Hugo version `0.136`. If you get errors regarding
 Note: the theme supports both Hugo modules and git submodules. To install the theme in the most maintainable way, you should use Hugo modules. If you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
 
 <details>
-<summary>Instructions to setup the theme as a hugo module</summary>
+<summary>Step-by-step instructions to setup the theme as a hugo module</summary>
 
 1. Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
 1. Enter the newly created folder: `cd <your website's name>/`
 1. Initialize the Hugo Module system in your site if you haven't already: `hugo mod init github.com/username/your-site` (_you don't need to host your website on GitHub, you can add anything as a name_)
-1. Replace the contents of your config file (`hugo.toml`) file by these: 
-
-
-<details>
-<summary>hugo.toml configuration</summary>
+1. Install the theme as a module: `hugo mod get -u github.com/zetxek/adritian-free-hugo-theme`
+1. Add the following to your `hugo.toml`, to set the theme as active: 
 
 ```
-baseURL = "<your website url>"
-languageCode = "en"
-
 [module]
-[module.hugoVersion]
-# We use hugo.Deps to list dependencies, which was added in Hugo 0.92.0
-min = "0.92.0"
-
 [[module.imports]]
-path="github.com/zetxek/adritian-free-hugo-theme"
-
-## Base mounts - so your site's assets are available
-  [[module.mounts]]
-    source = "archetypes"
-    target = "archetypes"
-
-  [[module.mounts]]
-    source = "assets"
-    target = "assets"
-
-  [[module.mounts]]
-    source = "i18n"
-    target = "i18n"
-
-  [[module.mounts]]
-    source = "layouts" 
-    target = "layouts"
-
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-
-# The following mounts are required for the theme to be able to load bootstrap
-# Remember also to copy the theme's `package.json` to your site, and run `npm install`
-[[module.mounts]]
-  source = "node_modules/bootstrap/scss"
-  target = "assets/scss/bootstrap"
-
-[[module.mounts]]
-  source = "node_modules/bootstrap/dist/js"
-  target = "assets/js/bootstrap"
-
-[[module.mounts]]
-  source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-  target = "assets/js/vendor/bootstrap.bundle.min.js"
-
-## Optional, if you want print improvements (to PDF/printed)
-[[module.mounts]]
-source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
-target = "assets/css/bootstrap-print.css"
-
-[params]
-
-  title = 'Your website title'
-  description = 'Your website description'
-  sections = ["showcase", "about", "education", "experience", "client-and-work", "testimonial", "contact", "newsletter"]
-
-  # If you want to display an image logo in the header, you can add it here
-  # logo = '/img/hugo.svg'
-  homepageExperienceCount = 6
-
-  [params.analytics]
-  ## Analytics parameters.
-  ### Supported so far: Vercel (Page Insights, Analytics)
-  ### And Google (Tag Manager, Analytics)
-
-  # controls vercel page insights - disabled by default
-  # to enable, just set to true
-  vercelPageInsights = false
-  vercelAnalytics = false
-  
-  # google analytics and tag manager. to enable, set "enabled" to true
-  # and add the tracking code (UA-something for analytics, GTM-something for tag manager)
-  [params.analytics.googleAnalytics]
-      code = "UA-XXXXX-Y"
-      enabled = false
-  [params.analytics.googleTagManager]
-      code = "GTM-XXXXX"
-      enabled = false
-
-[build]
-  [build.buildStats]
-    disableClasses = false
-    disableIDs = false
-    disableTags = false
-    enable = true
-
-[params.languages.selector.disable]
-  footer = false
-
-[languages]
-  [languages.en]
-    disabled = false
-    languageCode = 'en'
-    languageDirection = 'ltr'
-    languageName = 'English'
-    title = ''
-    weight = 0
-
-    [languages.en.menus]
-      [[languages.en.menus.header]]
-        name = 'About'
-        URL = '#about'
-        weight = 2
-      [[languages.en.menus.header]]
-        name = 'Portfolio'
-        URL = '#portfolio'
-        weight = 3
-      #  [[languages.en.menus.header]]
-      #  name = "Experience"
-      #  URL = "#experience"
-      #  weight = 4
-
-      [[languages.en.menus.header]]
-        name = "Blog"
-        URL = "/blog"
-        weight = 5
-
-      [[languages.en.menus.header]]
-        name = "Contact"
-        URL = "#contact"
-        weight = 6
-
-      [[languages.en.menus.footer]]
-        name = "About"
-        URL = "#about"
-        weight = 2
-
-      [[languages.en.menus.footer]]
-        name = "Portfolio"
-        URL = "#portfolio"
-        weight = 3
-
-      [[languages.en.menus.footer]]
-        name = "Contact"
-        URL = "#contact"
-        weight = 4
-
-
-  [languages.es]
-    disabled = false
-    languageCode = 'es'
-    languageDirection = 'ltr'
-    languageName = 'Español'
-    title = ''
-    weight = 0
-      [[languages.es.menus.header]]
-        name = 'Sobre mi'
-        URL = '/es/#about'
-        weight = 2
-      [[languages.es.menus.header]]
-        name = 'Portfolio'
-        URL = '/es/#portfolio'
-        weight = 3
-
-      #  [[languages.es.menus.header]]
-      #  name = "Experiencia"
-      #  URL = "/es/#experience"
-      #  weight = 4
-
-      [[languages.es.menus.header]]
-        name = "Blog"
-        URL = "/es/blog"
-        weight = 5
-
-      [[languages.es.menus.header]]
-        name = "Contacto"
-        URL = "/es/#contact"
-        weight = 6
-
-      [[languages.es.menus.footer]]
-        name = "Sobre mi"
-        URL = "/es/#about"
-        weight = 2
-
-      [[languages.es.menus.footer]]
-        name = "Portfolio"
-        URL = "/es/#portfolio"
-        weight = 3
-
-      [[languages.es.menus.footer]]
-        name = "Contact"
-        URL = "/es/#contact"
-        weight = 4
-
-  [languages.fr]
-    disabled = false
-    languageCode = 'fr'
-    languageDirection = 'ltr'
-    languageName = 'Français'
-    title = ''
-    weight = 0
-
-    [languages.fr.menus]
-      [[languages.fr.menus.header]]
-        name = 'About'
-        URL = '#about'
-        weight = 2
-      [[languages.fr.menus.header]]
-        name = 'Portfolio'
-        URL = '#portfolio'
-        weight = 3
-      #  [[languages.fr.menus.header]]
-      #  name = "Experience"
-      #  URL = "#experience"
-      #  weight = 4
-
-      [[languages.fr.menus.header]]
-        name = "Blog"
-        URL = "/blog"
-        weight = 5
-
-      [[languages.fr.menus.header]]
-        name = "Contact"
-        URL = "#contact"
-        weight = 6
-
-      [[languages.fr.menus.footer]]
-        name = "About"
-        URL = "#about"
-        weight = 2
-
-      [[languages.fr.menus.footer]]
-        name = "Portfolio"
-        URL = "#portfolio"
-        weight = 3
-
-      [[languages.fr.menus.footer]]
-        name = "Contact"
-        URL = "#contact"
-        weight = 4
-
-# Plugins
-[params.plugins]
-
-  # CSS Plugins
-  [[params.plugins.css]]
-  URL = "css/custom.css"
-  [[params.plugins.css]]
-  URL = "css/adritian-icons.css"
-  ## Optional, if you want print improvements (to PDF/printed)
-  [[params.plugins.css]]
-  URL = "css/bootstrap-print.css"
-  
-  # JS Plugins
-  [[params.plugins.js]]
-  URL = "js/rad-animations.js"
-  [[params.plugins.js]]
-  URL = "js/sticky-header.js"
-  [[params.plugins.js]]
-  URL = "js/library/fontfaceobserver.js"
-
-  # SCSS Plugins
-  [[params.plugins.scss]]
-  URL = "scss/adritian.scss"
-
-
-# theme/color style 
-[params.colorTheme]
-
-## the following configuration would disable automatic theme selection
-#  [params.colorTheme.auto]
-#    disable = true
-#  [params.colorTheme.forced]
-#    theme = "dark"
-
-## the following parameter will disable theme override in the footer
-#  [params.colorTheme.selector.disable]
-#  footer = true
-
-
-## by default we allow override AND automatic selection
-
-[params.blog]
-layout = "default" # options: default, sidebar
-sidebarWidth = "25" # percentage width of the sidebar
-showCategories = true
-showRecentPosts = true
-recentPostCount = 5
-listStyle = "summary" # options: simple, summary
+path = "github.com/zetxek/adritian-free-hugo-theme"
 ```
+
+1. Prepare the `package.json` file: `hugo mod npm pack`
+1. Install the dependencies: `npm install`. This will include Bootstrap (needed for styling) and the helper script [adritian-theme-helper](https://github.com/zetxek/adritian-theme-helper). 
+1. Run the initial content downloader: `./node_modules/adritian-theme-helper/dist/scripts/download-content.js`. This will download the demo content from the [adritian-demo](https://github.com/zetxek/adritian-demo) repository and copy it to your site, for a quick start (including translations, images, configuration and content)
 </details>
 
-This configuration allows you to have a base to edit and adapt to your site, and see the available functionalities.
-Make sure to edit `baseURL`, `title` and `description`. You can edit the header links, as well as the languages to your needs.
 
-1. Get the module: `hugo mod get -u`
-1. Execute `hugo mod npm pack` - this will generate a `package.json` file in the root folder of your site, with the dependencies for the theme.
-1. Execute `npm install` - this will install the dependencies for the theme (including bootstrap)
-1. (Optional, to override the defaults) Create a file `data/homepage.yml` with the contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml) file, and customize to your needs (__note: this file is not included in your theme if you use hugo modules, download it manually from the repository__)
+### Running the site
+
+The initial configuration allows you to have a base to edit and adapt to your site, and see the available functionalities.
+**Make sure to edit `baseURL`, `title` and `description`**. You can edit the header links, as well as the languages to your needs.
+
+After you have installed the `npm` packages and setup the initial contents, you can
+
 1. Start Hugo with `hugo server`...
 1. 🎉 The theme is alive on http://localhost:1313/
 
-</details>
+For next steps and guidance on where to customize your content, [check the demo site](https://adritian-demo.vercel.app/). 
+For other installation methods (as submodule, or manual configuration) you can check the demo site help page. 
 
+### Additional features and configuration
 
-### Traditional Installation (as git submodule)
+The theme is extensible and customizable in multiple areas, and it can be tricky to figure what to exactly edit. This is a guide (that is complemented by the [demo site](https://adritian-demo.vercel.app/)).
 
-If you prefer not to use Hugo Modules, you can still install the theme as a git submodule.
-The guide is very similar to [official "Quick Start"](https://gohugo.io/getting-started/quick-start/#create-a-site), just changing the theme URL in the `git submodule add` command: 
-
-<details>
-<summary>Old instructions for git submodules</summary>
-
-- Create a new Hugo site (this will create a new folder): `hugo new site <your website's name>`
-- Enter the newly created folder: `cd <your website's name>/`
-- Initialize hugo modules: `hugo mod init github.com/<your_user>/<your_project>`
-- Install PostCSS: execute `npm i -D postcss postcss-cli autoprefixer` from the top-level site folder [check [Hugo's official docs](https://gohugo.io/hugo-pipes/postcss/)].
-- Add adritian-free-hugo-theme as a module dependency, by adding
-  ```
-  [module]
-  [[module.imports]]
-    path = 'github.com/zetxek/adritian-free-hugo-theme'
-  ```
-  To your `hugo.toml` file, and executing `hugo mod get -u`
-  
-- Replace the `hugo.toml` file in the project's root directory with the contents of [themes/adritian-free-hugo-theme/exampleSite/config.toml](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/hugo.toml). If you are using the git submodules, you can execute `cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml` (*executed from the website root folder*), otherwise just copy and paste the contents.
-- Create the file `data/homepage.yml`, with the initial contents of the [`exampleSite/data/homepage.yml`](https://github.com/zetxek/adritian-free-hugo-theme/blob/main/exampleSite/data/homepage.yml). This will serve as your starting point to customize your home content ✍️
-- Start Hugo with `hugo server -D`
-- 🎉 The theme is alive on http://localhost:1313/
-
-
-_Optional, and only for git submodule or when you download the whole repo:_
-if you want to preview the theme with the example content before deciding if it's what you are looking for, you can run the theme with the example content:
-```
-cd themes/adritian-free-hugo-theme/exampleSite
-hugo server --themesDir ../..
-```
-
-Note: The `exampleSite` is not downloaded when installing the Hugo module. That's why this works only as git submodule or full repo download. 
-</details>
-
-
----
-
-After this, you can start adding your own content to the site, and customize the configuration.
-
-If everything has gone well asn you have the right configuration, the output for the `serve` command will be something like this:
-<details>
-<summary>Example output for the serve command</summary>
-
-```
-adritian-demo git:(master) ✗ hugo server -D
-Watching for changes in /Users/adrianmorenopena/tmp/theme-test/themes/adritian-free-hugo-theme/{archetypes,assets,data,exampleSite,i18n,layouts,static}
-Watching for config changes in /Users/adrianmorenopena/tmp/theme-test/themes/adritian-free-hugo-theme/exampleSite/hugo.toml
-Start building sites …
-hugo v0.136.2+extended darwin/arm64 BuildDate=2024-10-17T14:30:05Z VendorInfo=brew
-
-
-                   | EN | ES | FR
--------------------+----+----+-----
-  Pages            | 24 | 10 |  8
-  Paginator pages  |  0 |  0 |  0
-  Non-page files   |  0 |  0 |  0
-  Static files     | 90 | 90 | 90
-  Processed images | 24 |  0 |  0
-  Aliases          |  1 |  0 |  0
-  Cleaned          |  0 |  0 |  0
-
-Built in 1788 ms
-Environment: "development"
-Serving pages from disk
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
-```
-</details>
+<img width="1395" alt="image" src="https://github.com/user-attachments/assets/270c4445-5354-441a-ab23-21d91762e33c" />
 
 #### Multi-language support
 
@@ -462,16 +122,11 @@ You can add additional languages, or disable the provided ones (by setting `disa
 
 The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in [UPGRADING.md](UPGRADING.md).
 
-
-#### Additional configuration
-
-<img width="1395" alt="image" src="https://github.com/user-attachments/assets/270c4445-5354-441a-ab23-21d91762e33c" />
-
-##### Editing the theme content
+#### Editing the theme content
 
 You can check the repository [adritian-demo](https://github.com/zetxek/adritian-demo) for a reference implementation, as well as the [theme website](https://adritian-demo.vercel.app/) (https://adritian-demo.vercel.app/), to get a visual guide on how to edit the content. 
 
-##### Shortcodes
+#### Shortcodes
 
 The theme has two shortcodes available for use in the content:
 
@@ -480,10 +135,10 @@ The theme has two shortcodes available for use in the content:
 
 You can see them in effect in the [demo site CV page](https://adritian-demo.vercel.app/cv). 
 
-##### Contact form
+#### Contact form
 _(optional, if you want to use the contact form)_ edit the key `contact` in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
 
-##### Blog
+#### Blog
 
 Two layouts are available for the blog:
 - `default` (full-width for posts)
@@ -507,7 +162,7 @@ The posts will be markdown files stored in the `content/blog` folder.
 
 The layout can be configured in the `hugo.toml` file, under the `[params.blog]` section.
 
-##### Experience
+#### (Job) Experience
 
 This functionality and content is especially suited for personal professional sites, showcasing the work experience: 
 
@@ -560,7 +215,7 @@ Make sure that you have the dependencies installed. Check the troubleshooting st
 
 - The site renders in a weird-looking way, or you miss content. Check that the content of your site's config file (`hugo.toml`) contain what is mentioned [in the guide](https://github.com/zetxek/adritian-free-hugo-theme?tab=readme-ov-file#as-a-hugo-module-recommended), especially the `mount` sections. 
 
-## Getting help
+### Getting help
 
 The project is offered "as is", and it's a side project that powers my personal website. Support is given whenever life allows, and it's not offered in private e-mails: please use the public issue trackers in GitHub so others benefit from the conversation.
 

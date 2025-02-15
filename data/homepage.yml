@@ -61,6 +61,9 @@ showcase:
 
     - icon: "cloud-arrow-down"
       URL: "https://www.adrianmoreno.info/"
+
+    - icon: "square-xing"
+      URL: "https://www.adrianmoreno.info/"
 # about
 about:
   enable: true
@@ -115,10 +118,14 @@ testimonial:
 contact:
   enable: true
   form:
-    action: "#"
+    action: "/"
+    method: "GET"
   button:
     icon: "icon-email"
 
 # newsletter
 newsletter:
   enable: true
+  form:
+    action: "/"
+    method: "GET"

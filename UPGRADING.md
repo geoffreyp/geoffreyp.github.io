@@ -2,6 +2,21 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.6.0
+
+This version introduces the usage of [@zetxek/adritian-theme-helper](https://www.npmjs.com/package/adritian-theme-helper) to help initialize a site with the theme. This is not of much use to existing setups - but good to know.
+
+Additionally, there are a number of [changes in HTML structure](https://github.com/zetxek/adritian-free-hugo-theme/pull/217/files) to ensure that the content is valid, including class renaming and change of element types.
+
+Some of the changes are listed here in a an attempt to help you edit your custom CSS in case you depended on it:
+
+- Prevent `p.lead` usage, preferring `div.lead` instead. This is done to prevent nested `<p>` elements or broken paragraphs, using a wrapping `div` instead.
+- Fixed nested `main` elements in the `/blog` page, using instead `<main><div#main-content>`. 
+- Prevented duplicated usage of the `#experience` id, by renaming it to `#experience-single` in `layouts/partials/experience.html` and `#experience-list` in `layouts/shortcodes/experience-list.html`.
+- Removed wrapping `<p>` element in `layouts/partials/testimonial.html`.
+
+I hope this doesn't cause too much trouble in your existing sites - and allows for a smooth transition to `v1.6.0` 🤞
+
 ## v1.5.12
 
 The options to control how the language and theme selectors are displayed in the header and footer have been refactored, to enable control over each placement individually (footer and header).

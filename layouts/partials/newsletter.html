@@ -5,7 +5,9 @@
     <div class="col-12 text-center">
       <h2>{{ i18n "newsletter_title" }}</h2>
       <div class="rad-subscription-group">
-        <form id="rad-subscription" action="">
+        <form id="rad-subscription"
+          action="{{ .Site.Data.homepage.newsletter.form.action }}" 
+          method="{{ .Site.Data.homepage.newsletter.form.method }}" >
           <input
             id="rad-subscription-email"
             type="email"
