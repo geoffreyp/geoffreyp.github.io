@@ -27,7 +27,7 @@ jobs:
               working-directory: ./test-site
               run: |
                     hugo mod init github.com/zetxek/test-site
-                    hugo mod get -u github.com/zetxek/adritian-free-hugo-theme@d3853b613a5cc5a7fb2029d49b1e6bc37a9e8694
+                    hugo mod get -u github.com/zetxek/adritian-free-hugo-theme@776523ec0e0254b7877496ca7067de1a7f435592
 
             - name: Configure Hugo module in hugo.toml
               working-directory: ./test-site
