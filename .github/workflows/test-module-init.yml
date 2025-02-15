@@ -59,7 +59,7 @@ jobs:
             - name: Run helper script (copy config and content)
               working-directory: ./test-site
               run: |
-                    ./node_modules/adritian-theme-helper/dist/scripts/download-content.js
+                    ./node_modules/@zetxek/adritian-theme-helper/dist/scripts/download-content.js
 
             - name: Run build
               working-directory: ./test-site
