@@ -1,8 +1,8 @@
 ---
-name: Customization issue
-about: Trouble setting up your own version of the site
-title: "[customization]"
-labels: customization
+name: Setup issue
+about: Trouble getting your own version of the theme running
+title: "[setup]"
+labels: setup
 assignees: ''
 
 ---
