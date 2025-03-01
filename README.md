@@ -378,6 +378,13 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/n0rthdev">
+                    <img src="https://avatars.githubusercontent.com/u/7472943?v=4" width="100;" alt="n0rthdev"/>
+                    <br />
+                    <sub><b>Martin Weber</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/evolutionise">
                     <img src="https://avatars.githubusercontent.com/u/6320469?v=4" width="100;" alt="evolutionise"/>
                     <br />
