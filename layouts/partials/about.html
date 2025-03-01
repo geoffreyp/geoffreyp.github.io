@@ -1,48 +1,95 @@
-{{ if .Site.Data.homepage.about.enable }}
-<section id="about" class="section rad-animation-group pb-0" >
+{{- $contextType := printf "%T" . -}}
+{{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
+
+{{/* ---------------------------------------------------------------------------
+     TITLE AND CONTENT
+     --------------------------------------------------------------------------- */}}
+{{- $title := "" -}}
+{{- $content := "" -}}
+
+{{- if $isShortcode }}
+  {{- $title = .Get "title" | default ( i18n "about_title" ) -}}
+  {{- $content = .Get "content" | default ( i18n "about_content" ) | safeHTML -}}
+{{ else }}
+  {{- $title = i18n "about_title" -}}
+  {{- $content = i18n "about_content" | safeHTML -}}
+{{ end }}
+
+{{/* ---------------------------------------------------------------------------
+     IMAGES
+     --------------------------------------------------------------------------- */}}
+{{- $imgX := "" -}}
+{{- $img2x := "" -}}
+
+{{- if $isShortcode }}
+  {{- $imgX = .Get "image" | default .Site.Data.homepage.about.image.x -}}
+  {{- $img2x = .Get "image2x" | default .Site.Data.homepage.about.image._2x -}}
+{{ else }}
+  {{- $imgX = .Site.Data.homepage.about.image.x -}}
+  {{- $img2x = .Site.Data.homepage.about.image._2x -}}
+{{ end }}
+
+{{/* ---------------------------------------------------------------------------
+     BUTTON
+     --------------------------------------------------------------------------- */}}
+{{- $btnURL := "" -}}
+{{- $btnIcon := "" -}}
+{{- $btnText := "" -}}
+
+{{- if $isShortcode }}
+  {{- $btnURL = .Get "button_url" | default .Site.Data.homepage.about.button.URL -}}
+  {{- $btnIcon = .Get "button_icon" | default .Site.Data.homepage.about.button.icon -}}
+  {{- $btnText = .Get "button_text" | default false -}}
+{{ else }}
+  {{- $btnURL = .Site.Data.homepage.about.button.URL -}}
+  {{- $btnIcon = .Site.Data.homepage.about.button.icon -}}
+  {{- $btnText = i18n "about_button" -}}
+{{ end }}
+
+{{- $img := resources.Get $imgX -}}
+{{- $img2x := resources.Get $img2x -}}
+
+<section id="about" class="section rad-animation-group pb-0">
   <div class="container rad-fade-down">
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="about__profile-picture col-12 col-md-6">
-        {{ $img := resources.Get .Site.Data.homepage.about.image.x }}
-        {{ $img2x := resources.Get .Site.Data.homepage.about.image._2x }}      
-        
         {{ with $img }}
-        {{ with $img2x}}
-              
-        {{/* ⚠️ If the image is not found, it will not be displayed - this whole block will be skipped */}} 
-
-        {{ $imgWebp := $img.Resize (printf "%dx%d webp" $img.Width $img.Height) }}
-        {{ $img2xWebp := $img.Resize (printf "%dx%d webp" $img2x.Width $img2x.Height) }}
-        <picture>
-          <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
-          <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
-          <img
-            width="{{ $img.Width }}"
-            height="{{ $img.Height }}"
-            class="lozad img-responsive image-left-overflow"
-            src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-            srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            data-src="{{ $img.RelPermalink }}"
-            data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            alt='{{ i18n "about_image_alt" }}'
-          />
-        </picture>
-        {{ end }}
+          {{ with $img2x }}
+            {{ $imgWebp := .Resize (printf "%dx%d webp" .Width .Height) }}
+            {{ $img2xWebp := .Resize (printf "%dx%d webp" $img2x.Width $img2x.Height) }}
+            <picture>
+              <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
+              <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
+              <img
+                width="{{ $img.Width }}"
+                height="{{ $img.Height }}"
+                class="lozad img-responsive image-left-overflow"
+                src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
+                srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+                data-src="{{ $img.RelPermalink }}"
+                data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
+                alt='{{ i18n "about_image_alt" }}'
+              />
+            </picture>
+          {{ else }}
+            {{ warnf "about.html: 2x image not found: %q" $img2x }}
+          {{ end }}
+        {{ else }}
+          {{ warnf "about.html: Image not found: %q" $imgX }}
         {{ end }}
       </div>
       <div class="col-12 col-md-6 my-auto my-auto">
-        <h2>{{ i18n "about_title" }}</h2>
-        {{ i18n "about_content" | safeHTML }}
-        <a
-          href="{{ .Site.Data.homepage.about.button.URL | absURL }}"
-          target="_blank"
-          class="btn btn-primary"
-        >
-          <i class="{{ .Site.Data.homepage.about.button.icon }}"></i>
-          {{ i18n "about_button" }}
-        </a>
+        <h2>{{ $title }}</h2>
+        <div class="about-me content lead">
+          {{ $content }}
+        </div>
+        {{ if $btnText }}
+          <a href="{{ $btnURL | absURL }}" target="_blank" class="btn btn-primary">
+            <i class="{{ $btnIcon }}"></i>
+            {{ $btnText }}
+          </a>
+        {{ end }}
       </div>
     </div>
   </div>
 </section>
-{{ end }}

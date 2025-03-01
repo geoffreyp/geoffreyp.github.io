@@ -2,6 +2,30 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.0
+
+This version introduces a brand new way of managing pages, and leveraging the existing the styles in different contexts, so they can be used in other pages than the homepage.
+
+The main changes are:
+
+- deprecation of `homepage.yml`. Stopped using some of its values (such as `.Site.Data.homepage.newsletter.enable`, given that the shortcodes can be rendered in any page, not only the home)
+- introduction of numerous shortcodes, to replicate the same experience (in any page)
+
+Aside from that:
+- "education" comes now from its own content type
+- fixed bugs where some buttons couldn't be hidden by not passing content
+- deprecated dynamic content in `i18n` files - in favour of storing it in markdown files. For example, your page headings or descriptions won't be stored in these files anymore.
+
+As usual, I have "dog-fed" the theme into my own website first. You can [see the PR showing the change](https://github.com/zetxek/adrianmoreno.info/pull/291) it took to migrate. The most significant file (that you can "copy-paste") is [home.md](https://github.com/zetxek/adrianmoreno.info/pull/291/files#diff-34cdd7812bb042723b4068c4df80283586271078662d619aa33f88e8e62d6fd2
+).
+
+You can also find a detailed PR for the demo site with [all the shortcodes in action](https://github.com/zetxek/adritian-demo/pull/182).
+
+
+Note: I have tried to keep backwards compatibility up to a point. But **I recommend considering migrating your site to shortcodes**, if you want to keep updated with the upstream version. Support for `homepage.yml` will be less prioritary, and retired at some point, because of the complexity in mantaining multiple ways of passing content to the theme.
+
+🛑 Alternatively, fix your theme to the last version `v1.6.1`, to prevent upgrading (losing the new features and improvements).
+
 ## v1.6.0
 
 This version introduces the usage of [@zetxek/adritian-theme-helper](https://www.npmjs.com/package/adritian-theme-helper) to help initialize a site with the theme. This is not of much use to existing setups - but good to know.

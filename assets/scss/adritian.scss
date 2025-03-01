@@ -120,6 +120,11 @@ p + p {
     color: #000;
 }
 
+.showcase-section .platform-links.shortcode{
+    /* align to the left margin */
+    margin-left: -40px;
+}
+
 @media (min-width: 992px) {
     .display-1 {
         font-size: 60px;
@@ -311,7 +316,7 @@ footer_links .nav-item .nav-link::after {
     p {
         color: $light-text-emphasis-dark !important;
     }
-    .rad-showcase .platform-links [class^="icon-"] {
+    .platform-links [class^="icon-"]{
         color: #fff !important;
     }
 

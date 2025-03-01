@@ -9,9 +9,10 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 🏎️ Fast, minimalistic code (no jQuery or other javascript frameworks)
 - 🖼️ Bootstrap v5 (`v5.3.3`) CSS framework with Scss customization
 - 📚 Multi-language (i18n) support
-- 🛠️ Custom content types (work experience, blog)
+- 🛠️ Custom content types (work experience, education, projects/work showcase, testimonials, blog)
+- 🧰 Multiple shortcodes to customize your landing page in any way you want
 - 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
-- 🌚 Automatic dark/light theme switching
+- 🌚 Automatic dark/light theme switching, with manual override
 - 🖨️ Print-friendly CV template 
 - ⚡ Vercel-ready with Analytics & Speed Insights support
 
@@ -55,9 +56,9 @@ Other relevant repositories related to this theme are:
 
 This is a theme for the website generator Hugo. To use it, you must install Hugo by following [the official guide](https://gohugo.io/getting-started/installing/).
 
-**We recommend installing the theme as a [Hugo module](https://gohugo.io/hugo-modules/) (recommended, and explained below).**
+**We recommend installing the theme as a [Hugo module](https://gohugo.io/hugo-modules/) (recommended, and explained below).** This is the most powerful way to install the theme, will allow you to combine it with other modules, and is probably the easiest way to update across theme versions.
 
-Other alternative is to use [git submodules](https://gohugo.io/getting-started/quick-start/#create-a-site), or to [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases), and copy the files to your site`*`. But that will make your site "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
+Another alternative is to use [git submodules](https://gohugo.io/getting-started/quick-start/#create-a-site) or to [download the theme as a zip file](https://github.com/zetxek/adritian-free-hugo-theme/releases) and copy the files to your site`*`. But that will make your site "stuck in time" and more difficult to upgrade. **This is not recommended or supported directly**.
 
 > **On the release files:** `*` from the version `v1.5.4` the theme available as a zip file in the [releases page](https://github.com/zetxek/adritian-free-hugo-theme/releases) contains the `node_modules` folder, so you don't need to install it separately. This is a convenience for edge cases that might have problems installing the theme as a module or downloading many files.__
 
@@ -66,9 +67,9 @@ Other alternative is to use [git submodules](https://gohugo.io/getting-started/q
 > **Note:** Before proceeding, **Ensure you have Go and Hugo installed** and that you have created a new Hugo project.
 As a pre-requirement, you will need Hugo set up and running. You can follow [the official guide for it](https://gohugo.io/categories/installation/).
 
-The theme has been tested with Hugo version `0.136`. If you get errors regarding missing functionalities, check if you have the latest version of Hugo available.
+The theme has been tested with Hugo version `0.136` (extended version). If you get errors regarding missing functionalities, check if you have the latest version of Hugo available.
 
-Note: the theme supports both Hugo modules and git submodules. To install the theme in the most maintainable way, you should use Hugo modules. If you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
+**Note:** as mentioned, the theme supports both Hugo modules and git submodules. You should use Hugo modules to install the theme in the most maintainable way. If you prefer git submodules you can follow these [older instructions](https://gohugobrasil.netlify.app/themes/installing-and-using-themes/) or the next ones as help:
 
 <details>
 <summary>Step-by-step instructions to setup the theme as a hugo module</summary>
@@ -85,9 +86,9 @@ Note: the theme supports both Hugo modules and git submodules. To install the th
 path = "github.com/zetxek/adritian-free-hugo-theme"
 ```
 
-1. Prepare the `package.json` file: `hugo mod npm pack`
-1. Install the dependencies: `npm install`. This will include Bootstrap (needed for styling) and the helper script [adritian-theme-helper](https://github.com/zetxek/adritian-theme-helper). 
-1. Run the initial content downloader: `./node_modules/@zetxek/adritian-theme-helper/dist/scripts/download-content.js`. This will download the demo content from the [adritian-demo](https://github.com/zetxek/adritian-demo) repository and copy it to your site, for a quick start (including translations, images, configuration and content)
+6. Prepare the `package.json` file: `hugo mod npm pack`
+7. Install the dependencies: `npm install`. This will include Bootstrap (needed for styling) and the helper script [adritian-theme-helper](https://github.com/zetxek/adritian-theme-helper). 
+8. Run the initial content downloader: `./node_modules/@zetxek/adritian-theme-helper/dist/scripts/download-content.js`. This will download the demo content from the [adritian-demo](https://github.com/zetxek/adritian-demo) repository and copy it to your site, for a quick start (including translations, images, configuration and content)
 </details>
 
 
@@ -102,11 +103,11 @@ After you have installed the `npm` packages and setup the initial contents, you 
 1. 🎉 The theme is alive on http://localhost:1313/
 
 For next steps and guidance on where to customize your content, [check the demo site](https://adritian-demo.vercel.app/). 
-For other installation methods (as submodule, or manual configuration) you can check the demo site help page. 
+You can check the demo site help page for other installation methods (such as submodules or manual configuration). 
 
 ### Additional features and configuration
 
-The theme is extensible and customizable in multiple areas, and it can be tricky to figure what to exactly edit. This is a guide (that is complemented by the [demo site](https://adritian-demo.vercel.app/)).
+The theme is extensible and customizable in multiple areas, and it can be tricky to figure out exactly what to edit. This is a guide (that is complemented by the [demo site](https://adritian-demo.vercel.app/)).
 
 <img width="1395" alt="image" src="https://github.com/user-attachments/assets/270c4445-5354-441a-ab23-21d91762e33c" />
 
@@ -116,27 +117,36 @@ https://github.com/user-attachments/assets/030e765a-275f-4141-88e0-b854ebe551da
 
 The theme implements the [internationalization (i18n) system by Hugo](https://gohugo.io/content-management/multilingual/), to enable multilingual sites.
 
-See the content in `i18n` to edit the translations, and the configuration `hugo.toml` to define your active languages. The example site has 3 enabled languages (`en` for English, `es` for Spanish and `fr` for French).
+See the content in the  `i18n` folder to edit the translations, and the configuration `hugo.toml` to define your active languages. The example site has 3 enabled languages (`en` for English, `es` for Spanish and `fr` for French).
 
 You can add additional languages, or disable the provided ones (by setting `disabled` to `true` on the languages you don't need).
 
-The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in [UPGRADING.md](UPGRADING.md).
+Most of the content is expected to be translated via the content system of Hugo:
+
+- [by file name](https://gohugo.io/content-management/multilingual/#translation-by-file-name)
+- [by content directory](https://gohugo.io/content-management/multilingual/#translation-by-content-directory) 
+
+Note: The introduction of i18n support was done in the version `v1.3.0` and it has breaking changes due to the way in which the content was managed. You can read about the upgrade path in [UPGRADING.md](UPGRADING.md). In the version `v1.7.0` the usage of Hugo's content management was expanded, to use less `i18n` strings and more file name/content directory based translations.
 
 #### Editing the theme content
 
 You can check the repository [adritian-demo](https://github.com/zetxek/adritian-demo) for a reference implementation, as well as the [theme website](https://adritian-demo.vercel.app/) (https://adritian-demo.vercel.app/), to get a visual guide on how to edit the content. 
 
+Following the initial setup instructions you will get a "ready-to-use" version of the site, with sample content for you to edit and customize.
+
 #### Shortcodes
 
-The theme has two shortcodes available for use in the content:
+The theme has multiple shortcodes available for use in the content, so you can customize your homepage (or any other page) as you want. You can read about them in the [shortcodes page](https://adritian-demo.vercel.app/blog/shortcodes). Since version `v1.7.0,` this is the preferred way to set up your theme content and translations, as that's the most flexible system.
 
-- education-list
-- experience-list
+You can see the shortcodes in use in the demo site's pages, like
 
-You can see them in effect in the [demo site CV page](https://adritian-demo.vercel.app/cv). 
+- [home page](https://adritian-demo.vercel.app/) [`(source)`](https://raw.githubusercontent.com/zetxek/adritian-demo/refs/heads/main/content/home/home.md)
+- [CV page](https://adritian-demo.vercel.app/cv) [`(source)`](https://raw.githubusercontent.com/zetxek/adritian-demo/refs/heads/main/content/cv.md)
 
 #### Contact form
 _(optional, if you want to use the contact form)_ edit the key `contact` in your `homepage.yml` file, to customize your mail address. Sign up in [formspree](https://formspree.io) to redirect mails to your own.
+
+It can be rendered in any page via the `contact-section` shortcode.
 
 #### Blog
 
@@ -168,7 +178,7 @@ This functionality and content is especially suited for personal professional si
 
 <img width="1444" alt="SCR-20240624-uaoi" src="https://github.com/zetxek/adritian-free-hugo-theme/assets/240085/9ea86d6a-62c6-4c4f-96ba-8450fa24dd68">
 
-It can be used to render job experience, projects or clients. Each experience/project has a duration, job title, company name, location and description/excerpt as well as a longer text. 
+It can be used to render job experience, projects and/or clients. Each experience/project has a duration, job title, company name, location and description/excerpt as well as a longer text. 
 
 The experience is managed through a specific content type (see `content/experience` for an example).
 You can use `hugo new experience/experience-name.md` (replacing `experience-name` by the name of the job experience).
@@ -193,11 +203,13 @@ duration: "2022-2024"
 The beginning of a great career. 
 ```
 
-The experience is displayed in several locations:
+The experience can be displayed in several locations and different styles:
 
-1. Homepage, with a limited number of experiences (controlled by the config parameter `homepageExperienceCount` in the file `hugo.toml`). The summary is displayed. 
-2. Experience page, in `/experience`, with a list of all experiences (no limit). The summary is displayed for each item.
-3. Individual experience page, where all details are displayed
+| Shortcode usage | Experience page | Single experience item | Print-friendly list |
+|---------------|----------------|----------------|----------------|
+| ![Experience list with shortcode](https://github.com/user-attachments/assets/7e974632-824c-494c-9dbc-67bb96992517) | ![Experience page](https://github.com/user-attachments/assets/ad53f815-2bd4-4723-a9a1-28be2c01461a) | ![Single experience page](https://github.com/user-attachments/assets/97a20b98-df5c-4e07-9b2e-d7aba75ec81b) | ![CV Experience](https://github.com/user-attachments/assets/7d2d7e4b-a23c-4be7-9617-da7232ea11a7) |
+| Experience list rendered via shortcode | Experience list in /experience | Experience item in in single page | Full-width print-friendly experience 
+| [🔗](https://adritian-demo.vercel.app/#experience-single) By using the shortcode `experience-section`: in a page (such as your homepage), with a limited number of experiences (controlled by the config parameter `homepageExperienceCount` in the file `hugo.toml`). The summary is displayed, as well as an introduction text and optional links | [🔗](https://adritian-demo.vercel.app/experience) Automatically, in the **Experience page**, in `/experience`, with a list of all experiences (no limit). The summary is displayed for each item, as well as a introduction text and optional links. | [🔗](https://adritian-demo.vercel.app/experience/job-1/) Individual experience page (such as `/experience/job-1`), where all details are displayed, and links to the other descriptions are available to navigate. | [🔗](https://adritian-demo.vercel.app/cv) Using the shortcode `experience-list` you can generate a list of experience that is not interactive - good for print-friendly layouts.
 
 ## Troubleshooting
 
@@ -213,7 +225,7 @@ Error: error building site: TOCSS: failed to transform "/scss/adritian.scss" (te
 ```
 Make sure that you have the dependencies installed. Check the troubleshooting steps in the [following issue](https://github.com/zetxek/adritian-free-hugo-theme/issues/194#issuecomment-2634193132).
 
-- The site renders in a weird-looking way, or you miss content. Check that the content of your site's config file (`hugo.toml`) contain what is mentioned [in the guide](https://github.com/zetxek/adritian-free-hugo-theme?tab=readme-ov-file#as-a-hugo-module-recommended), especially the `mount` sections. 
+- The site renders in a weird-looking way, or you miss content. Check that the content of your site's config file (`hugo.toml`) contains what is mentioned [in the guide](https://github.com/zetxek/adritian-free-hugo-theme?tab=readme-ov-file#as-a-hugo-module-recommended), especially the `mount` sections. 
 
 ### Getting help
 
