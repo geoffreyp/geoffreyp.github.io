@@ -37,6 +37,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           DATE=$(date +'%Y-%m-%d')
-          PR_TITLE="${DATE} ExampleSite update"
-          PR_BODY="This PR updates the example site with the latest content.\\n\\nOverview of changes:\\n\\n$(git diff --stat HEAD~1)"
-          gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head ${{ github.ref_name }}
+          PR_TITLE="ExampleSite content update (${DATE})"
+          PR_BODY="This automated PR updates the example site with the latest content from [adritian-demo](https://github.com/zetxek/adritian-demo).
+          Overview of changes:
+          $(git diff --stat HEAD~1)"
+          gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head ${{ github.ref_name }} --label "auto-update"
