@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 0'  # Every Sunday at midnight
-  push:
-    branches:
-      - update/exampleSite
+
 jobs:
   update-example-site:
     runs-on: ubuntu-latest
