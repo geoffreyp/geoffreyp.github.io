@@ -41,8 +41,8 @@ jobs:
           PR_BODY="This automated PR updates the example site with the latest content from [adritian-demo](https://github.com/zetxek/adritian-demo).
           
           **Overview of changes:**
-          
-          ```
+
+          <code>
           $(git diff --stat HEAD~1)
-          ```"
+          </code>"
           gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base main --head ${{ github.ref_name }}
