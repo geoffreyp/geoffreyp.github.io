@@ -2,6 +2,14 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.3
+
+The theme has got rid of the `2x` strategy for responsive images. 
+They are now generated automatically from the large resolution picture.
+
+This means that the partials using `2x` accept only one image now. 
+See the [PR #244 for more context](https://github.com/zetxek/adritian-free-hugo-theme/pull/244), and the TODO/pending PR in the demo repo for the content changes. 
+
 ## v1.7.0
 
 This version introduces a brand new way of managing pages, and leveraging the existing the styles in different contexts, so they can be used in other pages than the homepage.
