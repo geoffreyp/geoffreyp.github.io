@@ -17,7 +17,9 @@
     {{- $buttonIcon := "" -}}
     {{- $buttonText := "" -}}
     {{- $imgSrc := "" -}}
-    {{- $imgScale := "" -}}
+    {{- $imgWidth := 0 -}}
+    {{- $imgHeight := 0 -}}
+    {{- $imgScale := 0.5 -}}
     {{- $socialLinks := "" -}}
 
     {{- if $isShortcode }}
@@ -29,6 +31,8 @@
       {{- $buttonIcon = .Get "button_icon" | default .Site.Data.homepage.showcase.button.icon -}}
       {{- $buttonText = .Get "button_text" | default false -}}
       {{- $imgSrc = .Get "imgSrc" | default .Site.Data.homepage.showcase.image.src -}}
+      {{- $imgWidth = .Get "imgWidth" | default .Site.Data.homepage.showcase.image.width -}}
+      {{- $imgHeight = .Get "imgHeight" | default .Site.Data.homepage.showcase.image.height -}}
       {{- $imgScale = .Get "imgScale" | default .Site.Data.homepage.showcase.image.scale -}}
       {{- $socialLinks = .Get "social_links" -}}
     {{ else }}
@@ -40,6 +44,8 @@
       {{- $buttonIcon = .Site.Data.homepage.showcase.button.icon -}}
       {{- $buttonText = i18n "showcase_button" -}}
       {{- $imgSrc = .Site.Data.homepage.showcase.image.src -}}
+      {{- $imgWidth = .Site.Data.homepage.showcase.image.width -}}
+      {{- $imgHeight = .Site.Data.homepage.showcase.image.height -}}
       {{- $imgScale = .Site.Data.homepage.showcase.image.scale -}}
       {{- $socialLinks = .Site.Data.homepage.showcase.socialLinks -}}
     {{ end }}
@@ -68,7 +74,7 @@
         {{ end }}
       </div>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 profile-image">
-        {{ partial "lazypicture" (dict "src" $imgSrc "scale" $imgScale "class" "")}}
+        {{ partial "lazypicture" (dict "src" $imgSrc "width" $imgWidth "height" $imgHeight "scale" $imgScale "class" "")}}
 
 <!-- future "right text -->
 

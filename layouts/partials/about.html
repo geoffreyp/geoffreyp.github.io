@@ -19,13 +19,19 @@
      IMAGES
      --------------------------------------------------------------------------- */}}
 {{- $imgSrc := "" -}}
+{{- $imgWidth := 0 -}}
+{{- $imgHeight := 0 -}}
 {{- $imgScale := 0.5 -}}
 
 {{- if $isShortcode }}
   {{- $imgSrc = .Get "imgSrc" | default .Site.Data.homepage.about.image.src -}}
+  {{- $imgWidth = .Get "imgWidth" | default .Site.Data.homepage.about.image.width -}}
+  {{- $imgHeight = .Get "imgHeight" | default .Site.Data.homepage.about.image.height -}}
   {{- $imgScale = .Get "imgScale" | default .Site.Data.homepage.about.image.scale -}}
 {{ else }}
   {{- $imgSrc = .Site.Data.homepage.about.image.src -}}
+  {{- $imgWidth = .Site.Data.homepage.about.image.width -}}
+  {{- $imgHeight = .Site.Data.homepage.about.image.height -}}
   {{- $imgScale = .Site.Data.homepage.about.image.scale -}}
 {{ end }}
 
@@ -51,7 +57,7 @@
   <div class="container rad-fade-down">
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="about__profile-picture col-12 col-md-6">
-        {{ partial "lazypicture" (dict "src" $imgSrc "scale" $imgScale "class" "image-left-overflow")}}
+        {{ partial "lazypicture" (dict "src" $imgSrc "width" $imgWidth "height" $imgHeight "scale" $imgScale "class" "image-left-overflow")}}
       </div>
       <div class="col-12 col-md-6 my-auto my-auto">
         <h2>{{ $title }}</h2>
