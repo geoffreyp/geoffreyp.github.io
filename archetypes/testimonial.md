@@ -8,8 +8,7 @@ position: "" # from-to, for example "2022-2024". Fill-in.
 
 params:
     logo:
-        x: "" # example: "images/clients/asgardia.png"
-        _2x: "" # example: "images/clients/asgardia@2x.png"
+        src: "" # example: "images/clients/asgardia.png"
 
 ## For the content, you can use markdown
 ##
