@@ -41,32 +41,10 @@
           {{ range $clients }}
           <div class="clients__item">
             <a href="{{ .Params.link }}" aria-label="Link to the client site for {{ .Params.title }} (opens in a new window)" target="_blank">
-              
-              {{ $img := resources.Get .Params.logo.x }}
-              {{ $img2x := resources.Get .Params.logo._2x }}
-              {{ with $img }}
-              {{ with $img2x}}
-              
-              {{/* ⚠️ If the image is not found, it will not be displayed - this whole block will be skipped */}} 
+              {{ $img := resources.Get .Params.logo }}
+              {{ $height :=  math.Div $img.Height 2 }}
 
-                {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
-                {{ $img2xWebp := $img2x.Resize (printf "%dx%d webp q75 Lanczos picture" $img2x.Width $img2x.Height) }}
-              
-                <picture class="picture clients">
-                  <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
-                  <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
-                  <img
-                    class="portfolio-project img-responsive"
-                    src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-                    srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-                    data-src="{{ $img.RelPermalink }}"
-                    data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-                    alt="{{ .Params.title }}"
-                  />
-                </picture>
-              {{ end }}
-              {{ end }}
-
+              {{ partial "lazypicture" (dict "src" $img "height" $height "classes" "portfolio-project img-responsive")}} 
             </a>
           </div>
           {{ end }}
@@ -93,50 +71,14 @@
       </div>
       <div class="col-12 col-md-7 pl-md-0 text-right">
 
-        {{ $img := resources.Get .Params.image.x }}
-        {{ $img2x := resources.Get .Params.image._2x }}
-        {{ with $img }}
-        {{ with $img2x}}
-        {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
-        {{ $img2xWebp := $img2x.Resize (printf "%dx%d webp q75 Lanczos picture" $img2x.Width $img2x.Height) }}
-        <picture class="picture-works even">
-          <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
-          <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
-          <img
-            class="lozad img-responsive"
-            src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-            srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            data-src="{{ $img.RelPermalink }}"
-            data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            alt="{{ .Params.title }}"
-          />
-        </picture>
-        {{ end }}
-        {{ end }}
+        {{ $img := resources.Get .Params.image }}
+        {{ partial "lazypicture" (dict "src" $img "height" (math.Div $img.Height 2) "classes" "picture-works even")}}
 
       </div>
       {{ else }}
       <div class="col-12 col-md-7 pl-md-0 text-right not-even">
-        {{ $img := resources.Get .Params.image.x }}
-        {{ $img2x := resources.Get .Params.image._2x }}
-        {{ with $img }}
-        {{ with $img2x}}
-        {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
-        {{ $img2xWebp := $img2x.Resize (printf "%dx%d webp q75 Lanczos picture" $img2x.Width $img2x.Height) }}
-        <picture class="picture-works odd">
-          <source srcset="{{ $imgWebp.RelPermalink }} 1x, {{ $img2xWebp.RelPermalink }} 2x" type="image/webp" />
-          <source srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x" type="image/webp">
-          <img
-            class="lozad img-responsive"
-            src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
-            srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            data-src="{{ $img.RelPermalink }}"
-            data-srcset="{{ $img.RelPermalink }} 1x, {{ $img2x.RelPermalink }} 2x"
-            alt="{{ .Params.title }}"
-          />
-        </picture>
-        {{ end }}
-        {{ end }}
+        {{ $img := resources.Get .Params.image }}
+        {{ partial "lazypicture" (dict "src" $img "height" (math.Div $img.Height 2) "classes" "picture-works odd")}} 
       </div>
       <div class="col-12 col-md-5 mt-4 mt-md-0 my-md-auto">
         <h3>{{ .Params.title }}</h3>
