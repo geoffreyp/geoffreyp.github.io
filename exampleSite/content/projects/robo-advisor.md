@@ -11,7 +11,7 @@ params:
         btnText: "Case Study"
         URL: "https://www.adrianmoreno.info"
     image:
-        src: "images/works/robo-advisor@2x.jpg"
+        src: "images/works/robo-advisor.jpg"
         scale: 0.5
     
 

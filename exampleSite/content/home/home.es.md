@@ -9,7 +9,7 @@ draft = false
     subtitle="Subtítulo - proviene de <code>home.md</code>"
     buttonText="Correo"
     description="Texto en <strong>negrita</strong> y normal. Esto viene de <code>home.md</code>. ¿No proporcionado? se usa i18n por defecto (por ahora, para ofrecer compatibilidad con versiones >1.7.0)"
-    imgSrc="images/showcase/showcase@2x.png"
+    imgSrc="images/showcase/showcase.png"
     imgScale="0.5"
  >}}
 
@@ -44,7 +44,7 @@ draft = false
     button_icon="info"
     button_text="Puedes editar esto"
     button_url="https://www.google.com"
-    imgSrc="images/about/user-picture@2x.png"
+    imgSrc="images/about/user-picture.png"
     imgScale="0.5"
  >}}
 

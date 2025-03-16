@@ -9,7 +9,7 @@ draft = false
     subtitle="Sous-titre - vient de <code>home.md</code>"
     buttonText="Courriel"
     description="Texte en <strong>gras</strong> et normal. Ceci provient de <code>home.md</code>. Non fourni ? i18n par défaut (pour compatibilité versions >1.7.0)"
-    imgSrc="images/showcase/showcase@2x.png"
+    imgSrc="images/showcase/showcase.png"
     imgScale="0.5"
 >}}
 
@@ -43,7 +43,7 @@ draft = false
     button_icon="info"
     button_text="Vous pouvez modifier ceci"
     button_url="https://www.google.com"
-    imgSrc="images/about/user-picture@2x.png"
+    imgSrc="images/about/user-picture.png"
     imgScale="0.5"
 >}}
 

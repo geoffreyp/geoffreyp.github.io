@@ -8,7 +8,7 @@ position: "Butterfly collector" # from-to, for example "2022-2024". Fill-in.
 
 params:
     image:
-        src: "images/testimonials/testimonial3@2x.png" # example: "images/clients/asgardia@2x.png"
+        src: "images/testimonials/testimonial3.png" # example: "images/clients/asgardia.png"
         scale: 0.5
 
 ## For the content, you can use markdown

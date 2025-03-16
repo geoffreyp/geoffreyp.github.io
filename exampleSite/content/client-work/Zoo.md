@@ -7,7 +7,7 @@ link: "https://www.adrianmoreno.info" # optional URL to link the logo to
 
 params:
     logo:
-        src: "images/clients/zoo-tv@2x.png"
+        src: "images/clients/zoo-tv.png"
         scale: 0.5
 
 ## The content is not used (yet). If you have ideas on how to use it, 

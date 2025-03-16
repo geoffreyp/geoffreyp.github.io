@@ -8,7 +8,7 @@ The theme has got rid of the `2x` strategy for responsive images.
 They are now generated automatically from the large resolution picture.
 
 This means that the partials using `2x` accept only one image now. 
-See the [PR #244 for more context](https://github.com/zetxek/adritian-free-hugo-theme/pull/244), and the TODO/pending PR in the demo repo for the content changes. 
+See the [PR #244 for more context](https://github.com/zetxek/adritian-free-hugo-theme/pull/244), and the [#198 PR in the demo repo for the content changes only](https://github.com/zetxek/adritian-demo/pull/198). 
 
 ## v1.7.0
 

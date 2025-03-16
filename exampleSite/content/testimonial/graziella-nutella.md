@@ -8,7 +8,7 @@ position: "Nutcracker" # from-to, for example "2022-2024". Fill-in.
 
 params:
     image:
-        src: "images/testimonials/testimonial1@2x.png" # example: "images/clients/asgardia@2x.png"
+        src: "images/testimonials/testimonial1.png" # example: "images/clients/asgardia.png"
         scale: 0.5
 
 ## For the content, you can use markdown
@@ -25,6 +25,6 @@ position: "Nutcracker" # from-to, for example "2022-2024". Fill-in.
 
 params:
     image:
-        src: "images/testimonials/testimonial1.png" # example: "images/clients/asgardia@2x.png"
+        src: "images/testimonials/testimonial1.png" # example: "images/clients/asgardia.png"
         scale: 0.5
 ```

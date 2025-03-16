@@ -11,7 +11,7 @@ params:
         btnText: "Case Study"
         URL: "https://www.adrianmoreno.info"
     image:
-        src: "images/works/swissfintech@2x.jpg"
+        src: "images/works/swissfintech.jpg"
         scale: 0.5
     
 
@@ -34,7 +34,7 @@ params:
         btnText: "Case Study"
         URL: "https://www.adrianmoreno.info"
     image:  
-        src: "images/works/swissfintech@2x.jpg"
+        src: "images/works/swissfintech.jpg"
         scale: 0.5
         
 ```
