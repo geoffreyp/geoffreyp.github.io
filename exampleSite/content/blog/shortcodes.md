@@ -81,8 +81,8 @@ The shortcodes can be customized with different arguments:
 
 - `client-and-work-section`: this shortcode doesn't use as many arguments - as much of the content comes from other content pages.
   - `title`: The title of the client and work section.
-  - `clients`: A list of clients, coming from the `client` content type (each with `title`, `link`, `logo.x`, `logo_.2x`)
-  - `projects`: A list of projects, coming from the `project` content type (each with `title`, `content`, `button.URL`, `button.btnText`, `button.icon`, `image.x`, `image._2x`).
+  - `clients`: A list of clients, coming from the `client` content type (each with `title`, `link`, `logo`)
+  - `projects`: A list of projects, coming from the `project` content type (each with `title`, `content`, `button.URL`, `button.btnText`, `button.icon`, `image`).
 
 - `about-section`:
   - Content Arguments
