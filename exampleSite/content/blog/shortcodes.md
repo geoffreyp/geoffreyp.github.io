@@ -92,7 +92,7 @@ The shortcodes can be customized with different arguments:
 
     - `imgSrc` - Specifies the path to the image displayed in the about section. Falls back to the image defined in site data if not provided.
  
-    - `imgScale` - Specifies the scale used for the image.
+    - `imgScale` - Specifies the scale used for the image (for example, `0.5` if the high resolution image is double the size of the smaller one)
 
     - Primary Button Arguments
       - `button1_enable` - Boolean value to show or hide the primary button. Defaults to the value from site data.
@@ -134,7 +134,7 @@ The shortcodes can be customized with different arguments:
     - `button_url`: Target URL for the button. Falls back to the URL from site data.
   - **Image Configuration**:
     - `imgSrc`: Specifies the path to the image displayed in the showcase section. Falls back to the image defined in site data.
-    - `imgScale` - Specifies the scale used for the image.
+    - `imgScale` - Specifies the scale used for the image (for example, `0.5` if the high resolution image is double the size of the smaller one)
   - **Social Media**:
     - `social_links`: Array of social media platform links to display at the bottom of the showcase. Each item should have a URL and icon property.
   - **Inner Content**:
