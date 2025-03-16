@@ -16,7 +16,8 @@
     {{- $buttonURL := "" -}}
     {{- $buttonIcon := "" -}}
     {{- $buttonText := "" -}}
-    {{- $imageX := "" -}}
+    {{- $imgSrc := "" -}}
+    {{- $imgScale := "" -}}
     {{- $socialLinks := "" -}}
 
     {{- if $isShortcode }}
@@ -27,7 +28,8 @@
       {{- $buttonURL = .Get "button_url" | default .Site.Data.homepage.showcase.button.URL -}}
       {{- $buttonIcon = .Get "button_icon" | default .Site.Data.homepage.showcase.button.icon -}}
       {{- $buttonText = .Get "button_text" | default false -}}
-      {{- $imageX = .Get "image" | default .Site.Data.homepage.showcase.image.x -}}
+      {{- $imgSrc = .Get "imgSrc" | default .Site.Data.homepage.showcase.image.src -}}
+      {{- $imgScale = .Get "imgScale" | default .Site.Data.homepage.showcase.image.scale -}}
       {{- $socialLinks = .Get "social_links" -}}
     {{ else }}
       {{/* Fallback site or i18n */}}
@@ -37,12 +39,13 @@
       {{- $buttonURL = .Site.Data.homepage.showcase.button.URL -}}
       {{- $buttonIcon = .Site.Data.homepage.showcase.button.icon -}}
       {{- $buttonText = i18n "showcase_button" -}}
-      {{- $imageX = .Site.Data.homepage.showcase.image.x -}}
+      {{- $imgSrc = .Site.Data.homepage.showcase.image.src -}}
+      {{- $imgScale = .Site.Data.homepage.showcase.image.scale -}}
       {{- $socialLinks = .Site.Data.homepage.showcase.socialLinks -}}
     {{ end }}
 
 
-        {{ warnf "showcase.html: Image x: %q" $imageX }}
+        {{ warnf "showcase.html: Image x: %q" $imgSrc }}
 
     <div class="showcase-section row flex-column-reverse flex-md-row rad-fade-down rad-waiting rad-animate">
       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -65,7 +68,7 @@
         {{ end }}
       </div>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 profile-image">
-        {{ partial "lazypicture" (dict "src" $imageX "height" 790 "classes" "")}}
+        {{ partial "lazypicture" (dict "src" $imgSrc "scale" $imgScale "class" "")}}
 
 <!-- future "right text -->
 

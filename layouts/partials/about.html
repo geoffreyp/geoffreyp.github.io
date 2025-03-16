@@ -18,12 +18,15 @@
 {{/* ---------------------------------------------------------------------------
      IMAGES
      --------------------------------------------------------------------------- */}}
-{{- $imgX := "" -}}
+{{- $imgSrc := "" -}}
+{{- $imgScale := 0.5 -}}
 
 {{- if $isShortcode }}
-  {{- $imgX = .Get "image" | default .Site.Data.homepage.about.image.x -}}
+  {{- $imgSrc = .Get "imgSrc" | default .Site.Data.homepage.about.image.src -}}
+  {{- $imgScale = .Get "imgScale" | default .Site.Data.homepage.about.image.scale -}}
 {{ else }}
-  {{- $imgX = .Site.Data.homepage.about.image.x -}}
+  {{- $imgSrc = .Site.Data.homepage.about.image.src -}}
+  {{- $imgScale = .Site.Data.homepage.about.image.scale -}}
 {{ end }}
 
 {{/* ---------------------------------------------------------------------------
@@ -48,7 +51,7 @@
   <div class="container rad-fade-down">
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="about__profile-picture col-12 col-md-6">
-        {{ partial "lazypicture" (dict "src" $imgX "height" 561 "classes" "image-left-overflow")}}
+        {{ partial "lazypicture" (dict "src" $imgSrc "scale" $imgScale "class" "image-left-overflow")}}
       </div>
       <div class="col-12 col-md-6 my-auto my-auto">
         <h2>{{ $title }}</h2>

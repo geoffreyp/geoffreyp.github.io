@@ -41,10 +41,8 @@
           {{ range $clients }}
           <div class="clients__item">
             <a href="{{ .Params.link }}" aria-label="Link to the client site for {{ .Params.title }} (opens in a new window)" target="_blank">
-              {{ $img := resources.Get .Params.logo }}
-              {{ $height :=  math.Div $img.Height 2 }}
 
-              {{ partial "lazypicture" (dict "src" $img "height" $height "classes" "portfolio-project img-responsive")}} 
+              {{ partial "lazypicture" (dict "src" .Params.logo.src "scale" .Params.logo.scale "class" "portfolio-project img-responsive")}}
             </a>
           </div>
           {{ end }}
@@ -71,14 +69,14 @@
       </div>
       <div class="col-12 col-md-7 pl-md-0 text-right">
 
-        {{ $img := resources.Get .Params.image }}
-        {{ partial "lazypicture" (dict "src" $img "height" (math.Div $img.Height 2) "classes" "picture-works even")}}
+
+        {{ partial "lazypicture" (dict "src" .Params.image.src "scale" .Params.image.scale "class" "picture-works even")}}
 
       </div>
       {{ else }}
       <div class="col-12 col-md-7 pl-md-0 text-right not-even">
-        {{ $img := resources.Get .Params.image }}
-        {{ partial "lazypicture" (dict "src" $img "height" (math.Div $img.Height 2) "classes" "picture-works odd")}} 
+
+        {{ partial "lazypicture" (dict "src" .Params.image.src "scale" .Params.image.scale "class" "picture-works odd")}}
       </div>
       <div class="col-12 col-md-5 mt-4 mt-md-0 my-md-auto">
         <h3>{{ .Params.title }}</h3>
