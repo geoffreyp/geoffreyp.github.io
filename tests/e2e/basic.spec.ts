@@ -117,7 +117,9 @@ test('should load all homepage images correctly', async ({ page }) => {
     const elements = page.locator(selector);
     const count = await elements.count();
     
-    expect(count).toBeGreaterThan(0, `Expected to find at least one element matching "${selector}"`);
+    console.log(`Checking images with selector "${selector}" - found ${count} elements`);
+    await expect(count).toBeGreaterThan(0);
+    if (count === 0) throw new Error(`Expected to find at least one element matching "${selector}"`);
     
     for (let i = 0; i < count; i++) {
       const element = elements.nth(i);
@@ -133,7 +135,8 @@ test('should load all homepage images correctly', async ({ page }) => {
       } else {
         // For regular images, check naturalWidth
         const naturalWidth = await element.evaluate(el => (el as HTMLImageElement).naturalWidth);
-        expect(naturalWidth).toBeGreaterThan(0, 'Image should have loaded (naturalWidth > 0)');
+        await expect(naturalWidth).toBeGreaterThan(0);
+        if (naturalWidth === 0) throw new Error('Image should have loaded (naturalWidth > 0)');
       }
     }
   };
@@ -151,6 +154,6 @@ test('should load all homepage images correctly', async ({ page }) => {
     await checkImageElements('.image-left-overflow img');
   }
   
-  await checkImageElements('.client-works-container .picture img');
+  await checkImageElements('.client-works-container picture img');
   await checkImageElements('.testimonial__author .picture img');
 });
