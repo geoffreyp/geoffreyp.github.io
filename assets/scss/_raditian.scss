@@ -1074,7 +1074,7 @@ a.nav-link::after {
     left: var(--bs-navbar-nav-link-padding-x);
     bottom: 5px;
     height: 1px;
-    width: calc(100% - 2* (var(--bs-navbar-nav-link-padding-x)):);
+    width: calc(100% - 2 * (var(--bs-navbar-nav-link-padding-x)));
     background-color: rgba(0, 0, 0, 0.6);
     will-change: transform;
     -webkit-transform-origin: 0 50%;
@@ -1390,7 +1390,6 @@ a.nav-link::after {
 }
 
 @media (min-width: 1200px) {
-
     .rad-showcase {
         min-height: 870px;
         padding-top: 0;
