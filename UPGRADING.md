@@ -2,6 +2,12 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.4
+
+The "home" item in the navigation (footer and header) is managed now in the configuration file (`hugo.toml`), instead of a hardcoded item (which couldn't be hidden).
+
+See the PR [#249 for the content change](https://github.com/zetxek/adritian-free-hugo-theme/pull/249), in case you want to add the home item back (or edit its name/title or translations).
+
 ## v1.7.3
 
 The theme has got rid of the `2x` strategy for responsive images. 
