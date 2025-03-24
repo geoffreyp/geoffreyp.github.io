@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'adritian-icons';
-  src: url('../fonts/adritian-icons.eot?87809070');
-  src: url('../fonts/adritian-icons.eot?87809070#iefix') format('embedded-opentype'),
-       url('../fonts/adritian-icons.woff2?87809070') format('woff2'),
-       url('../fonts/adritian-icons.woff?87809070') format('woff'),
-       url('../fonts/adritian-icons.ttf?87809070') format('truetype'),
-       url('../fonts/adritian-icons.svg?87809070#adritian-icons') format('svg');
+  src: url('../fonts/adritian-icons.eot?22428792');
+  src: url('../fonts/adritian-icons.eot?22428792#iefix') format('embedded-opentype'),
+       url('../fonts/adritian-icons.woff2?22428792') format('woff2'),
+       url('../fonts/adritian-icons.woff?22428792') format('woff'),
+       url('../fonts/adritian-icons.ttf?22428792') format('truetype'),
+       url('../fonts/adritian-icons.svg?22428792#adritian-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'adritian-icons';
-    src: url('../fonts/adritian-icons.svg?87809070#adritian-icons') format('svg');
+    src: url('../fonts/adritian-icons.svg?22428792#adritian-icons') format('svg');
   }
 }
 */
@@ -75,6 +75,7 @@
 .icon-square-arrow-up-right:before { content: '\f14c'; } /* '' */
 .icon-youtube:before { content: '\f167'; } /* '' */
 .icon-square-xing:before { content: '\f169'; } /* '' */
+.icon-stack-overflow:before { content: '\f16c'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-dribbble:before { content: '\f17d'; } /* '' */
 .icon-behance:before { content: '\f1b4'; } /* '' */
@@ -82,4 +83,5 @@
 .icon-codepen:before { content: '\f1cb'; } /* '' */
 .icon-yelp:before { content: '\f1e9'; } /* '' */
 .icon-medium:before { content: '\f23a'; } /* '' */
+.icon-meetup:before { content: '\f2e0'; } /* '' */
 .icon-cloud-arrow-down:before { content: '\f381'; } /* '' */

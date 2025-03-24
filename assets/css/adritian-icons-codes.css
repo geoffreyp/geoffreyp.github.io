@@ -20,6 +20,7 @@
 .icon-square-arrow-up-right:before { content: '\f14c'; } /* '' */
 .icon-youtube:before { content: '\f167'; } /* '' */
 .icon-square-xing:before { content: '\f169'; } /* '' */
+.icon-stack-overflow:before { content: '\f16c'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
 .icon-dribbble:before { content: '\f17d'; } /* '' */
 .icon-behance:before { content: '\f1b4'; } /* '' */
@@ -27,4 +28,5 @@
 .icon-codepen:before { content: '\f1cb'; } /* '' */
 .icon-yelp:before { content: '\f1e9'; } /* '' */
 .icon-medium:before { content: '\f23a'; } /* '' */
+.icon-meetup:before { content: '\f2e0'; } /* '' */
 .icon-cloud-arrow-down:before { content: '\f381'; } /* '' */

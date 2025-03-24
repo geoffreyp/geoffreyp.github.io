@@ -58,7 +58,7 @@ test.describe('Language switching functionality', () => {
     await expect(page.getByText('Expérience').first()).toBeVisible();
     
     // Navigate to home
-    await page.getByText('ACCUEIL').click();
+    await page.getByText('ACCUEIL').first().click();
     
     // Verify language maintained
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
