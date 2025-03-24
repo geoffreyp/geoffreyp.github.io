@@ -20,9 +20,6 @@
 - id: "logo_text2"
   translation: "Demo"
 
-- id: "nav_home"
-  translation: "INICIO"
-
 ## General
 - id: "skipToMainContent"
   translation: "Saltar al contenido principal"
