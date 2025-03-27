@@ -118,7 +118,7 @@ jobs:
       fail_count: ${{ steps.tests.outputs.fail_count }}
 
   publish-reports:
-    # if: ${{ contains(github.ref,'main') &&  (contains(fromJSON('[ "push"]'), github.event_name))}}
+    if: github.ref == 'refs/heads/main'
     continue-on-error: true
     needs: [ build-and-test ]
     runs-on: ubuntu-latest
