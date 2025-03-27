@@ -223,7 +223,7 @@ weight = 0
 [languages.fr.menus]
 [[languages.fr.menus.header]]
 name = "ACCUEIL"
-URL = "/"
+URL = "/fr/"
 weight = 1
 [[languages.fr.menus.header]]
 name = 'About'
@@ -250,7 +250,7 @@ weight = 6
 
 [[languages.fr.menus.footer]]
 name = "ACCUEIL"
-URL = "/"
+URL = "/fr/"
 weight = 1
 
 [[languages.fr.menus.footer]]
