@@ -166,7 +166,7 @@ title = ''
 weight = 0
 [[languages.es.menus.header]]
 name = "INICIO"
-URL = "/"
+URL = "/es/"
 weight = 1
 [[languages.es.menus.header]]
 name = 'Sobre mi'
