@@ -262,7 +262,7 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
 ➕ add your website here [by editing the theme README](https://github.com/zetxek/adritian-free-hugo-theme/edit/main/README.md).
 🔎 find other websites using the theme [searching in github](https://github.com/search?q=%22theme+%3D+%5C%22adritian-free-hugo-theme%5C%22%22&type=code).
 
-## Contributors ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
+## Contributors and collaborators ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
 
 <!-- readme: collaborators,contributors -start -->
 <table>
