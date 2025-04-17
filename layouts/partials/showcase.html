@@ -1,5 +1,5 @@
 <section id="showcase" class="rad-showcase rad-showcase--index rad-animation-group rad-fade-down">
-  <div id="main-content" class="container">
+  <div id="main-content" class="">
     {{- $contextType := printf "%T" . -}}
     {{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
     {{- $inner := (.Scratch.Get "Inner") -}}

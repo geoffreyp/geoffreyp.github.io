@@ -67,7 +67,8 @@ draft = false
 
 ## Experience (as list)
 
-{{< experience-list >}}
+{{< experience-list
+    padding="false" >}}
 
 {{< client-and-work-section
     title="A selection of my work" >}} 
