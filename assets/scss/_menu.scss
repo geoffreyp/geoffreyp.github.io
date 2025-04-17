@@ -26,14 +26,12 @@ $transition: 280ms all 120ms ease-out;
 }
 
 
-html[data-bs-theme="light"] {
-    // footer button
-    .footer_right button.btn{
-        color: white;
-    }
+// footer button
+.footer_right button.btn{
+    color: white;
+}
 
-    // dropdown item links
-    .footer_right .btn-link .dropdown-item {
-        color: $color;
-    }
+// dropdown item links
+.footer_right .btn-link .dropdown-item {
+    color: $color;
 }
