@@ -766,6 +766,7 @@ textarea:focus {
     background-image: url(../img/contact-bg.png);
     background-repeat: repeat-x;
     background-position: 0 100%;
+    background-color: white;
 }
 
 .section--contact .container {
@@ -1139,10 +1140,13 @@ a.nav-link::after {
 }
 
 .footer {
-    padding-top: 60px;
     padding-bottom: 60px;
     background-color: #000;
     color: $white;
+}
+
+.footer .items{
+    padding-top: 60px;
 }
 
 .footer {
