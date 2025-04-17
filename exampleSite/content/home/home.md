@@ -77,5 +77,17 @@ draft = false
     title="What they say about me" >}}
 
 
-## Extra content
-Additional content added after the `section` blocks. Here you could freestyle, add other shortcodes, ...  Or just let the content empty, and rely on the shortcode sections alone.
+## Extra home content
+
+Additional content added after the `section` blocks, in the `home.md` file. 
+
+Here you could freestyle, add other shortcodes, ...  Or just let the content empty, and rely on the shortcode sections alone.
+
+{{< text-section
+title="Extra (centered) content"
+centered="true"
+>}}
+
+You can also use the `text-section` shortcode to add centered texts
+
+{{< /text-section >}}
