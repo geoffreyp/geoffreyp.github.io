@@ -2,6 +2,12 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.8
+
+This version introduces the `footer` content type to customize the content at the bottom of the page, allowing for sections (such as `contact-section` or `newsletter-section`) as well as content. 
+
+A new shortcode (`text-section`) is introduced, to enable nicely wrapped text in some places such as the homepage or the footer.
+
 ## v1.7.4
 
 The "home" item in the navigation (footer and header) is managed now in the configuration file (`hugo.toml`), instead of a hardcoded item (which couldn't be hidden).
