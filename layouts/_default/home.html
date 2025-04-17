@@ -58,7 +58,9 @@
     {{ else }}
     {{ range (sort $home "Date" "desc") }}
         {{ warnf "Adritian: Using 'home' content type to render homepage." }}
+        <div class="container home-container">
         {{ .Content | safeHTML }}
+        </div>
     {{ end }}
     {{ end }}
 

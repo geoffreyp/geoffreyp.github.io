@@ -1142,7 +1142,25 @@ a.nav-link::after {
     padding-top: 60px;
     padding-bottom: 60px;
     background-color: #000;
+    color: $white;
 }
+
+.footer {
+    p, h1, h2, h3, h4, h5, h6 {
+        color: $white;
+    }
+
+    .text-muted{
+        color: var(--bs-secondary-bg) !important;
+    }
+}
+
+.contact{
+    h1, h2, h3, h4, h5, h6 {
+        color: $black;
+    }
+}
+
 
 .footer .container {
     display: -webkit-box;

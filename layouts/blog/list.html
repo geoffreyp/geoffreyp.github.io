@@ -1,6 +1,6 @@
   {{ define "main" }}
   <div id="main-content" class="blog flex-grow-1">
-    <div class="container section">
+    <div class="section">
       <div class="row {{ if eq .Site.Params.blog.layout "sidebar" }}has-sidebar{{ end }}">
         {{ if eq .Site.Params.blog.layout "sidebar" }}
         <div class="col-sidebar" style="width: {{ .Site.Params.blog.sidebarWidth }}%">

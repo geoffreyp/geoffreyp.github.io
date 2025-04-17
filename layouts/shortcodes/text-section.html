@@ -1,0 +1,35 @@
+{{ $title := .Get "title" | default "" }}
+{{ $subtitle := .Get "subtitle" | default "" }}
+{{ $padding := .Get "padding" | default "true" }}
+{{ $centered := .Get "centered" | default "false" }}
+{{ $containerClass := "" }}
+{{ $paddingClass := "" }}
+{{ $columnClass := "col-12" }}
+
+{{ if eq $padding "true" }}
+    {{ $containerClass = "container" }}
+    {{ $paddingClass = "section--padding" }}
+{{ end }}
+
+{{ if eq $centered "true" }}
+    {{ $containerClass = printf "%s %s" $containerClass "d-flex justify-content-center align-items-center" }}
+    {{ $columnClass = printf "%s %s" $columnClass "text-center" }}
+{{ end }}
+
+<section class="section section--border-bottom rad-animation-group {{ $paddingClass }}">
+    <div class="{{ $containerClass }}">
+        <div class="row rad-fade-down">
+            <div class="{{ $columnClass }}">
+                {{ if $title }}
+                <h2 class="section__title">{{ $title }}</h2>
+                {{ end }}
+                {{ if $subtitle }}
+                <p class="section__subtitle">{{ $subtitle }}</p>
+                {{ end }}
+                <div class="text-section__content">
+                    {{ .Inner | markdownify }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
