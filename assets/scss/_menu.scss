@@ -25,8 +25,14 @@ $transition: 280ms all 120ms ease-out;
     }
 }
 
+
+// footer button
 .footer_right button.btn,
-.footer_right .btn-link:hover,
-.footer_right .btn-link:focus {
+.footer_right button.btn:active{
     color: white;
+}
+
+// dropdown item links
+.footer_right .btn-link .dropdown-item {
+    color: $color;
 }

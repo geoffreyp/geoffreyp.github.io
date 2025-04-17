@@ -140,8 +140,10 @@ p a,
 span a {
     color: #000;
     font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+    text-underline-position: from-font;
+    text-decoration-style: solid;
+    text-decoration-thickness: 1px;
     transition: all 0.5s;
 }
 
@@ -149,7 +151,6 @@ span a {
 p a:hover,
 span a:hover {
     color: $base-color;
-    text-decoration: none;
 }
 
 .lead {
