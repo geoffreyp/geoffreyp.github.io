@@ -11,7 +11,7 @@
 
             {{ $xpCount := len $xp }}
 
-            {{ range first $xpCount (sort $xp "Date" "desc") }}
+            {{ range $index, $element := first $xpCount (sort $xp "Date" "desc") }}
             <div class="experience row">
                 <div class="experience__header col-12 col-md-3 d-flex align-items-start">
                     {{ $img := resources.Get .Params.companyLogo }}
@@ -32,6 +32,10 @@
                     {{ .Content | safeHTML }}
                 </div>
             </div>
+            {{ if ne $index (sub $xpCount 1) }}
+            <!-- Separator between experiences for mobile -->
+            <hr class="d-block d-md-none my-4">
+            {{ end }}
             {{ end }}
         </div>
     </div>
