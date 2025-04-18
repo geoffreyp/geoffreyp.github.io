@@ -91,6 +91,48 @@
             }
         }
     }
+
+    // Featured posts styling
+    .featured-post-container {
+        width: 100%;
+        .p-4 {
+            padding: 2rem !important;
+        }
+
+        .col-lg-8 {
+            max-width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            
+            .p-md-5 {
+                padding: 3rem !important;
+            }
+            
+            .col-lg-8 {
+                max-width: 90%;
+            }
+        }
+    }
+
+    // Featured post thumbnail styling
+    .featured-thumbnail {
+        max-height: 300px;
+        width: auto;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        @media (min-width: 992px) {
+            max-height: 350px;
+        }
+    }
+
+    // Secondary featured posts image styling
+    .secondary-featured-img {
+        width: 200px;
+        height: 250px;
+        object-fit: cover;
+    }
 }
 
 @include color-mode(dark) {

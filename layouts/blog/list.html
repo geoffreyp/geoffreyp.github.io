@@ -24,9 +24,21 @@
 
           <!-- Main Featured Post - Full Width Design -->
           <div class="featured-post-container">
-            {{ $featuredPost := where .Pages ".Params.featured" true | first 1 }}
-            {{ if $featuredPost }}
-              {{ range $featuredPost }}
+            {{ $featuredPosts := where .Pages ".Params.featured" true }}
+            {{ if isset .Site.Params "blog" }}
+              {{ if isset .Site.Params.blog "featured_sort_by_weight" }}
+                {{ if .Site.Params.blog.featured_sort_by_weight }}
+                  {{ $featuredPosts = sort $featuredPosts "Weight" }}
+                {{ end }}
+              {{ else }}
+                {{ $featuredPosts = sort $featuredPosts "Date" "desc" }}
+              {{ end }}
+            {{ else }}
+              {{ $featuredPosts = sort $featuredPosts "Date" "desc" }}
+            {{ end }}
+            {{ $mainFeaturedPost := first 1 $featuredPosts }}
+            {{ if $mainFeaturedPost }}
+              {{ range $mainFeaturedPost }}
                 <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
                   <div class="row align-items-center">
                     <div class="col-lg-8 px-0">
@@ -42,113 +54,80 @@
                         </a>
                       </p>
                     </div>
-                    {{ with .Params.images }}
-                      {{ with .featured_image }}
-                        <div class="col-lg-4 d-flex justify-content-center align-items-center mt-4 mt-lg-0">
-                          <img src="{{ . }}" alt="{{ $.Title }}" class="featured-thumbnail img-fluid rounded">
-                        </div>
+                    {{ if isset .Params "images" }}
+                      {{ with .Params.images }}
+                        {{ if isset . "featured_image" }}
+                          <div class="col-lg-4 d-flex justify-content-center align-items-center mt-4 mt-lg-0">
+                            <img src="{{ .featured_image }}" alt="{{ $.Title }}" class="featured-thumbnail img-fluid rounded">
+                          </div>
+                        {{ end }}
                       {{ end }}
                     {{ end }}
                   </div>
                 </div>
               {{ end }}
             {{ else }}
-              <!-- Fallback if no featured post is found -->
-              <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-                <div class="col-lg-8 px-0">
-                  <h1 class="display-4 fst-italic">
-                    No Featured Post Available
-                  </h1>
-                  <p class="lead my-3">
-                    Add a featured post by setting featured = true in your post's front matter.
-                  </p>
-                </div>
-              </div>
+              <!-- no featured post is found -->
             {{ end }}
           </div>
 
           <div class="row mb-2">
-            <!-- other featured posts -->
-            <div class="col-md-6">
-              <div
-                class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-primary-emphasis">
-                    World
-                  </strong>
-                  <h3 class="mb-0">Featured post</h3>
-                  <div class="mb-1 text-body-secondary">Nov 12</div>
-                  <p class="card-text mb-auto">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content.
-                  </p>
-                  <a
-                    href="#"
-                    class="icon-link gap-1 icon-link-hover stretched-link">
-                    Continue reading
-                    <svg class="bi" aria-hidden="true">
-                      <use xlink:href="#chevron-right"></use>
-                    </svg>
-                  </a>
+            <!-- Secondary featured posts (2-3rd featured posts) -->
+            {{ $secondaryFeaturedPosts := after 1 $featuredPosts | first 2 }}
+            
+            {{ if $secondaryFeaturedPosts }}
+              {{ range $secondaryFeaturedPosts }}
+                <div class="col-md-6">
+                  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      {{ with .GetTerms "topics" }}
+                        {{ range first 1 . }}
+                          <strong class="d-inline-block mb-2 text-primary-emphasis">
+                            {{ .LinkTitle }}
+                          </strong>
+                        {{ end }}
+                      {{ end }}
+                      <h3 class="mb-0">{{ .Title }}</h3>
+                      <div class="mb-1 text-body-secondary">{{ .Date.Format "Jan 2" }}</div>
+                      <p class="card-text mb-auto">
+                        {{ .Summary | truncate 120 }}
+                      </p>
+                      <a href="{{ .RelPermalink }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg class="bi" aria-hidden="true">
+                          <use xlink:href="#chevron-right"></use>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                      {{ if isset .Params "images" }}
+                        {{ with .Params.images }}
+                          {{ if isset . "featured_image" }}
+                            <img src="{{ .featured_image }}" width="200" height="250" alt="{{ $.Title }}" class="secondary-featured-img">
+                          {{ else }}
+                            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" 
+                                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice">
+                              <title>Placeholder</title>
+                              <rect width="100%" height="100%" fill="#55595c"></rect>
+                              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                            </svg>
+                          {{ end }}
+                        {{ end }}
+                      {{ else }}
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" 
+                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice">
+                          <title>Placeholder</title>
+                          <rect width="100%" height="100%" fill="#55595c"></rect>
+                          <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                        </svg>
+                      {{ end }}
+                    </div>
+                  </div>
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                  <svg
-                    class="bd-placeholder-img"
-                    width="200"
-                    height="250"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Thumbnail"
-                    preserveAspectRatio="xMidYMid slice">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                      Thumbnail
-                    </text>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-success-emphasis">
-                    Design
-                  </strong>
-                  <h3 class="mb-0">Post title</h3>
-                  <div class="mb-1 text-body-secondary">Nov 11</div>
-                  <p class="mb-auto">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content.
-                  </p>
-                  <a
-                    href="#"
-                    class="icon-link gap-1 icon-link-hover stretched-link">
-                    Continue reading
-                    <svg class="bi" aria-hidden="true">
-                      <use xlink:href="#chevron-right"></use>
-                    </svg>
-                  </a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                  <svg
-                    class="bd-placeholder-img"
-                    width="200"
-                    height="250"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Thumbnail"
-                    preserveAspectRatio="xMidYMid slice">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                      Thumbnail
-                    </text>
-                  </svg>
-                </div>
-              </div>
-            </div>
+              {{ end }}
+              
+            
+            {{ end }}
           </div>
 
           <div class="posts-list">
