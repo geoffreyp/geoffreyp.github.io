@@ -15,6 +15,7 @@
         }
     }
 
+    // Add specific ordering for sidebar right layout
     .col-sidebar {
         width: 100%;
 
@@ -67,6 +68,27 @@
                     color: var(--bs-gray-600);
                 }
             }
+            
+            &.categories {
+                ul.tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    
+                    li {
+                        margin-bottom: 8px;
+                        
+                        a {
+                            color: $black;
+                            display: inline-block;
+                            padding: 4px 10px;
+                            border-radius: 4px;
+                            font-size: 14px;
+                            transition: all 0.2s ease;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -81,9 +103,10 @@
                     color: var(--bs-white);
                 }
 
-                ul li a {
+                /* Remove the general black color for all links */
+                /* ul li a {
                     color: black;
-                }
+                } */
 
                 &.recent-posts {
                     a {
@@ -92,6 +115,16 @@
 
                     .post-date {
                         color: var(--bs-gray-500);
+                    }
+                }
+                
+                &.categories {
+                    ul.tags {
+                        li {
+                            a {
+                                text-shadow: none; /* Prevent any text-shadow */
+                            }
+                        }
                     }
                 }
             }
