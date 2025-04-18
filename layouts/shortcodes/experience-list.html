@@ -1,4 +1,5 @@
 {{ $padding := .Get "padding" }}
+{{ $title := .Get "title" | default "" }}
 {{ $containerClass := "" }}
 {{ if eq $padding "true" }}
     {{ $containerClass = "container" }}
@@ -7,13 +8,17 @@
 <section id="experience-list-shortcode" class="section-experience section section--border-bottom rad-animation-group flex-grow-1 {{ $containerClass }}">
     <div class="row flex-column-reverse flex-md-row rad-fade-down">
         <div class="experience-list col-12 mt-5 mt-sm-0">
+            {{ if $title }}
+            <h2 class="section__title mb-4">{{ $title }}</h2>
+            {{ end }}
+            
             {{ $xp := (where .Site.RegularPages.ByDate "Type" "experience") }}
 
             {{ $xpCount := len $xp }}
 
-            {{ range first $xpCount (sort $xp "Date" "desc") }}
+            {{ range $index, $element := first $xpCount (sort $xp "Date" "desc") }}
             <div class="experience row">
-                <div class="experience__header col-3 d-flex align-items-start">
+                <div class="experience__header col-12 col-md-3 d-flex align-items-start">
                     {{ $img := resources.Get .Params.companyLogo }}
                     {{ with $img }}
                     {{ $imgWebp := $img.Resize (printf "%dx%d webp q75 Lanczos picture" $img.Width $img.Height) }}
@@ -27,11 +32,15 @@
                                 {{ .Params.location }}</span></div>
                     </div>
                 </div>
-                <div class="experience__description d-print-block col-9">
+                <div class="experience__description d-print-block col-12 col-md-9 mt-3 mt-md-0">
                     <h1>{{ .Params.title }}</h1>
                     {{ .Content | safeHTML }}
                 </div>
             </div>
+            {{ if ne $index (sub $xpCount 1) }}
+            <!-- Separator between experiences for mobile -->
+            <hr class="d-block d-md-none my-4">
+            {{ end }}
             {{ end }}
         </div>
     </div>

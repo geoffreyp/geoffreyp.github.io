@@ -65,9 +65,8 @@ draft = false
     button3_url="/experience"
 >}}
 
-## Experience (as list)
-
 {{< experience-list
+    title="Experience (as list)"
     padding="false" >}}
 
 {{< client-and-work-section
@@ -76,12 +75,15 @@ draft = false
 {{< testimonial-section
     title="What they say about me" >}}
 
+{{< spacer size="large" >}}
 
 ## Extra home content
 
 Additional content added after the `section` blocks, in the `home.md` file. 
 
 Here you could freestyle, add other shortcodes, ...  Or just let the content empty, and rely on the shortcode sections alone.
+
+{{< spacer size="small" >}}
 
 {{< text-section
 title="Extra (centered) content"

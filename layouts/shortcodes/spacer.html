@@ -1,0 +1,14 @@
+{{ $size := .Get "size" | default "medium" }}
+{{ $class := "" }}
+
+{{ if eq $size "small" }}
+    {{ $class = "pt-3" }}
+{{ else if eq $size "medium" }}
+    {{ $class = "pt-5" }}
+{{ else if eq $size "large" }}
+    {{ $class = "pt-5 mt-4" }}
+{{ else if eq $size "xlarge" }}
+    {{ $class = "pt-5 mt-5" }}
+{{ end }}
+
+<div class="spacer {{ $class }}"></div>

@@ -26,6 +26,7 @@ The theme provides custom shortcodes to allow you to customize your landing page
 - `testimonial-section`: Adds references from customers, colleagues, etc.
 - `showcase`: two-column block with a full-width image to the left, and a text snippet to the right. Great for a call to action or introduction of the person (assuming it's a personal website).
 - `text-section`: utility shortcode used to render text in some parts of the theme where it would otherwise be full-width, appearing "too floaty". See [the github issue #260 for context](https://github.com/zetxek/adritian-free-hugo-theme/issues/260).
+- `spacer`: Adds vertical spacing before the next element.
 
 The shortcodes can be customized with different arguments:
 
@@ -34,8 +35,10 @@ The shortcodes can be customized with different arguments:
   - `items`: A list of educational qualifications, they're provided by the `education` content type pages. From each, the `year`, `university`, and `degree` will be used.  
 
 - `experience-list`:
-  - `title`: The title of the experience section.
+  - `title`: The title of the experience section (optional). When provided, an h2 heading is added above the list.
+  - `padding`: Controls whether the section has padding. Set to "true" by default.
   - `items`: A list of professional experiences, coming from the `experience` content type. For each of them, the `companyLogo`, `duration`, `jobTitle`, `location`, and `Content` are used.
+  - **Note**: On mobile devices, a separator line is automatically added between experience entries for better readability.
 
 - `platform-links`:
   - `platforms`: A container to place social links inside. Usually you'll want to use it with a list of `link` nested (see below) 
@@ -144,6 +147,8 @@ The shortcodes can be customized with different arguments:
     - `imgScale` - Specifies the scale used for the image (for example, `0.5` if the high resolution image is double the size of the smaller one) This is only considered if neither imgWidth nor imgHeight is used.
   - **Social Media**:
     - `social_links`: Array of social media platform links to display at the bottom of the showcase. Each item should have a URL and icon property.
+  - **Responsive Behavior**:
+    - The showcase uses a two-column layout on desktop devices (≥768px) and stacks columns vertically on mobile devices, with the image appearing above the text content.
   - **Inner Content**:
     - The shortcode can also accept inner content that will be rendered in a separate div with class "inner-content".
 
@@ -157,7 +162,14 @@ The shortcodes can be customized with different arguments:
   - **Inner Content**:
     - The shortcode accepts markdown-formatted inner content that will be rendered in the text section.
 
-
+- `spacer`: 
+  - **Size Options**:
+    - `size`: Controls the amount of vertical spacing. Accepts "small", "medium" (default), "large", or "xlarge".
+  - **Usage Examples**:
+    - `{{</* spacer */>}}`: Adds medium spacing (default)
+    - `{{</* spacer size="small" */>}}`: Adds minimal spacing
+    - `{{</* spacer size="large" */>}}`: Adds substantial spacing
+    - `{{</* spacer size="xlarge" */>}}`: Adds maximum spacing
 
 You can see them in effect in:
 - [the homepage](/) [`(see source)`](https://raw.githubusercontent.com/zetxek/adritian-demo/refs/heads/main/content/home.md).
