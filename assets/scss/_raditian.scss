@@ -1572,7 +1572,12 @@ li.book-content p {
 
 .posts-list article.summary .post-meta {
     font-weight: 500;
+
+    .post-meta-info{
+        margin-bottom: 10px;
+    }
 }
+
 
 article.post.summary h2 {
     font-size: 40px
@@ -1593,7 +1598,9 @@ ul.tags {
     padding: 0;
     list-style: none;
 
+
     li {
+        margin-bottom: 8px;
         position: relative;
         display: inline-block;
         padding: 0.4em 1.2em 0.4em 1.6em;
@@ -1601,6 +1608,17 @@ ul.tags {
         color: #333;
         font-size: 0.9rem;
         border-radius: 0.25rem;
+        border: 1px solid gray;
+
+        a{
+            color: $black;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        
+        }
 
         &::before {
             content: "";
@@ -1616,7 +1634,7 @@ ul.tags {
     }
 }
 
-#blog-single a{
+div.blog-single a{
     color: $base-color
 }
 #blog-single #meta{
