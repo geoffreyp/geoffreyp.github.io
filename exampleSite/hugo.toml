@@ -2,6 +2,8 @@ baseURL = "https://adritian-demo.vercel.app/"
 title = "Adritian Demo"
 languageCode = "en"
 
+
+ 
 [markup.goldmark.renderer]
 unsafe = true
 
@@ -88,7 +90,10 @@ code = "GTM-XXXXX"
 enabled = false
 
 [build]
+writeStats = true
+
 [build.buildStats]
+enabledFor = ["scss"]
 disableClasses = false
 disableIDs = false
 disableTags = false
