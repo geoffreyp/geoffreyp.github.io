@@ -88,9 +88,9 @@
                         {{ end }}
                       {{ end }}
                       <h3 class="mb-0">{{ .Title }}</h3>
-                      <div class="mb-1 text-body-secondary">{{ .Date.Format "Jan 2" }}</div>
+                      <div class="mb-1 text-body-secondary">{{ .Date.Format "Jan 2, 2006" }}</div>
                       <p class="card-text mb-auto">
-                        {{ .Summary | truncate 120 }}
+                        {{ .Summary | plainify | truncate 120 }}
                       </p>
                       <a href="{{ .RelPermalink }}" class="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading

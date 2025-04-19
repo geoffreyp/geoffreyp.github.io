@@ -25,7 +25,7 @@
     </div>
   </header>
   <div class="post-summary post-content">
-  {{ .Summary }}
+  {{ .Summary | safeHTML }}
   </div>
 
   <footer class="">
