@@ -1,0 +1,5 @@
+{{/*  
+  This is an empty template for footer section RSS feeds.
+  It intentionally does not generate any XML output.
+  This prevents the generation of index.xml for the footer section.
+*/}}

@@ -15,6 +15,7 @@
         }
     }
 
+    // Add specific ordering for sidebar right layout
     .col-sidebar {
         width: 100%;
 
@@ -67,7 +68,70 @@
                     color: var(--bs-gray-600);
                 }
             }
+            
+            &.categories {
+                ul.tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    
+                    li {
+                        margin-bottom: 8px;
+                        
+                        a {
+                            color: $black;
+                            display: inline-block;
+                            padding: 4px 10px;
+                            border-radius: 4px;
+                            font-size: 14px;
+                            transition: all 0.2s ease;
+                        }
+                    }
+                }
+            }
         }
+    }
+
+    // Featured posts styling
+    .featured-post-container {
+        width: 100%;
+        .p-4 {
+            padding: 2rem !important;
+        }
+
+        .col-lg-8 {
+            max-width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            
+            .p-md-5 {
+                padding: 3rem !important;
+            }
+            
+            .col-lg-8 {
+                max-width: 90%;
+            }
+        }
+    }
+
+    // Featured post thumbnail styling
+    .featured-thumbnail {
+        max-height: 300px;
+        width: auto;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
+        @media (min-width: 992px) {
+            max-height: 350px;
+        }
+    }
+
+    // Secondary featured posts image styling
+    .secondary-featured-img {
+        width: 200px;
+        height: 250px;
+        object-fit: cover;
     }
 }
 
@@ -81,9 +145,10 @@
                     color: var(--bs-white);
                 }
 
-                ul li a {
+                /* Remove the general black color for all links */
+                /* ul li a {
                     color: black;
-                }
+                } */
 
                 &.recent-posts {
                     a {
@@ -92,6 +157,16 @@
 
                     .post-date {
                         color: var(--bs-gray-500);
+                    }
+                }
+                
+                &.categories {
+                    ul.tags {
+                        li {
+                            a {
+                                text-shadow: none; /* Prevent any text-shadow */
+                            }
+                        }
                     }
                 }
             }
