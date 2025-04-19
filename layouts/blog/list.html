@@ -45,9 +45,9 @@
                       <h2 class="display-4 fst-italic">
                         {{ .Title }}
                       </h2>
-                      <p class="lead my-3">
+                      <div class="lead my-3">
                         {{ .Summary | safeHTML }}
-                      </p>
+                      </div>
                       <p class="lead mb-0">
                         <a href="{{ .RelPermalink }}" class="text-body-emphasis fw-bold">
                           Continue reading...
@@ -89,9 +89,9 @@
                       {{ end }}
                       <h3 class="mb-0">{{ .Title }}</h3>
                       <div class="mb-1 text-body-secondary">{{ .Date.Format "Jan 2, 2006" }}</div>
-                      <p class="card-text mb-auto">
+                      <div class="card-text mb-auto">
                         {{ .Summary | plainify | truncate 120 }}
-                      </p>
+                      </div>
                       <a href="{{ .RelPermalink }}" class="icon-link gap-1 icon-link-hover stretched-link">
                         Continue reading
                         <svg class="bi" aria-hidden="true" width="16" height="16" focusable="false">
