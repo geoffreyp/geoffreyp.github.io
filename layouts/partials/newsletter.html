@@ -39,7 +39,7 @@
               aria-describedby="emailHelp"
               placeholder='{{ if $isShortcode }} {{ .Get "newsletter_placeholder" }} {{ else }} {{ i18n "newsletter_placeholder" }} {{ end }}'
               aria-label='{{ if $isShortcode }} {{ .Get "newsletter_placeholder" }} {{ else }} {{ i18n "newsletter_placeholder" }} {{ end }}'
-            />
+            >
             <button type="submit" id="rad-subscription-submit" class="btn btn-light btn-rounded">
               {{ if $isShortcode }} 
                 {{ .Get "newsletter_button" }} 

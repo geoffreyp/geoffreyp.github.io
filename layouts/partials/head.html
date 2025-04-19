@@ -1,7 +1,7 @@
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-<meta name="theme-color" content="#478079"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="theme-color" content="#478079">
 
 {{- if .Site.Params.analytics.googleTagManager.enabled }}
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -54,7 +54,7 @@
       integrity="{{ $css.Data.Integrity }}" 
       crossorigin="anonymous"
       {{ end }}
-    />
+    >
     <noscript>
       <link 
         rel="stylesheet"
@@ -63,7 +63,7 @@
         integrity="{{ $css.Data.Integrity }}" 
         crossorigin="anonymous"
         {{ end }}
-      />
+      >
     </noscript>
 {{- end }}
 {{- range .Site.Params.plugins.scss }}
@@ -79,7 +79,7 @@
     {{- $style = $scss | css.Sass | resources.Minify | resources.Fingerprint }} 
   {{- end }}
 {{- if $style }}
-<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"/>
+<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
 {{- end }}
 {{- end }}
 
