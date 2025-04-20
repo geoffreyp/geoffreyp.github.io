@@ -151,8 +151,13 @@ URL = "/blog"
 weight = 5
 
 [[languages.en.menus.header]]
-name = "Contact"
+name = "✉️"
 URL = "#contact"
+weight = 6
+
+[[languages.en.menus.header]]
+name = "🔎"
+URL = "/search"
 weight = 6
 
 [[languages.en.menus.footer]]
