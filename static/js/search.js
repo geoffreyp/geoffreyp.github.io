@@ -99,7 +99,7 @@ function param(name) {
 function render(templateString, data) {
   var conditionalMatches,conditionalPattern,copy;
   conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
-  //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
+  //since loop below depends on re.lastIndex, we use a copy to capture any manipulations whilst inside the loop
   copy = templateString;
   while ((conditionalMatches = conditionalPattern.exec(templateString)) !== null) {
     if(data[conditionalMatches[1]]){
