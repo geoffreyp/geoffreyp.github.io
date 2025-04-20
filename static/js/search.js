@@ -16,33 +16,32 @@ var fuseOptions = {
   ]
 };
 
-
 var searchQuery = param("s");
 if(searchQuery){
-  $("#search-query").val(searchQuery);
+  document.getElementById("search-query").value = searchQuery;
   executeSearch(searchQuery);
 }else {
-  $('#search-results').append("<p>Please enter a word or phrase above</p>");
+  document.getElementById('search-results').insertAdjacentHTML("beforeend", "<p>Please enter a word or phrase above</p>");
 }
 
-
-
 function executeSearch(searchQuery){
-  $.getJSON( "/index.json", function( data ) {
-    var pages = data;
-    var fuse = new Fuse(pages, fuseOptions);
-    var result = fuse.search(searchQuery);
-    console.log({"matches":result});
-    if(result.length > 0){
-      populateResults(result);
-    }else{
-      $('#search-results').append("<p>No matches found</p>");
-    }
-  });
+  fetch("/index.json")
+    .then(response => response.json())
+    .then(data => {
+      var pages = data;
+      var fuse = new Fuse(pages, fuseOptions);
+      var result = fuse.search(searchQuery);
+      console.log({"matches":result});
+      if(result.length > 0){
+        populateResults(result);
+      }else{
+        document.getElementById('search-results').insertAdjacentHTML("beforeend", "<p>No matches found</p>");
+      }
+    });
 }
 
 function populateResults(result){
-  $.each(result,function(key,value){
+  result.forEach(function(value, key){
     var contents= value.item.contents;
     var snippet = "";
     var snippetHighlights=[];
@@ -50,12 +49,12 @@ function populateResults(result){
     if( fuseOptions.tokenize ){
       snippetHighlights.push(searchQuery);
     }else{
-      $.each(value.matches,function(matchKey,mvalue){
+      value.matches && value.matches.forEach(function(mvalue){
         if(mvalue.key == "tags" || mvalue.key == "categories" ){
           snippetHighlights.push(mvalue.value);
         }else if(mvalue.key == "contents"){
-          start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
-          end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
+          var start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
+          var end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
           snippet += contents.substring(start,end);
           snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
         }
@@ -66,15 +65,18 @@ function populateResults(result){
       snippet += contents.substring(0,summaryInclude*2);
     }
     //pull template from hugo templarte definition
-    var templateDefinition = $('#search-result-template').html();
+    var templateDefinition = document.getElementById('search-result-template').innerHTML;
     //replace values
     var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
-    $('#search-results').append(output);
+    document.getElementById('search-results').insertAdjacentHTML("beforeend", output);
 
-    $.each(snippetHighlights,function(snipkey,snipvalue){
-      $("#summary-"+key).mark(snipvalue);
+    snippetHighlights.forEach(function(snipvalue){
+      var summaryElem = document.getElementById("summary-"+key);
+      if(summaryElem && typeof Mark !== 'undefined'){
+        var markInstance = new Mark(summaryElem);
+        markInstance.mark(snipvalue);
+      }
     });
-
   });
 }
 
