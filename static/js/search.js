@@ -1,5 +1,5 @@
 summaryInclude=60;
-var fuseOptions = {
+const fuseOptions = {
   shouldSort: true,
   includeMatches: true,
   threshold: 0.0,
@@ -9,14 +9,14 @@ var fuseOptions = {
   maxPatternLength: 32,
   minMatchCharLength: 1,
   keys: [
-    {name:"title",weight:0.8},
+    {name:"title",weight:0.9},
     {name:"contents",weight:0.5},
     {name:"tags",weight:0.3},
     {name:"categories",weight:0.3}
   ]
 };
 
-var searchQuery = param("s");
+const searchQuery = param("s");
 if(searchQuery){
   document.getElementById("search-query").value = searchQuery;
   executeSearch(searchQuery);
@@ -28,9 +28,9 @@ function executeSearch(searchQuery){
   fetch("/index.json")
     .then(response => response.json())
     .then(data => {
-      var pages = data;
-      var fuse = new Fuse(pages, fuseOptions);
-      var result = fuse.search(searchQuery);
+      const pages = data;
+      const fuse = new Fuse(pages, fuseOptions);
+      const result = fuse.search(searchQuery);
       console.log({"matches":result});
       if(result.length > 0){
         populateResults(result);
@@ -41,43 +41,55 @@ function executeSearch(searchQuery){
 }
 
 function populateResults(result){
-  result.forEach(function(value, key){
-    var contents= value.item.contents;
-    var snippet = "";
-    var snippetHighlights=[];
-    var tags =[];
+  for (const [key, value] of result.entries()) {
+    const contents= value.item.contents;
+    let snippet = "";
+    const snippetHighlights=[];
+    const tags =[];
+    let start;
+    let end;
+    
     if( fuseOptions.tokenize ){
       snippetHighlights.push(searchQuery);
     }else{
-      value.matches && value.matches.forEach(function(mvalue){
-        if(mvalue.key == "tags" || mvalue.key == "categories" ){
-          snippetHighlights.push(mvalue.value);
-        }else if(mvalue.key == "contents"){
-          var start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
-          var end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
-          snippet += contents.substring(start,end);
-          snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
+      if (value.matches) {
+        for (const mvalue of value.matches) {
+          if(mvalue.key === "tags" || mvalue.key === "categories" ){
+            snippetHighlights.push(mvalue.value);
+          }else if(mvalue.key === "contents"){
+            start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
+            end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
+            snippet += contents.substring(start,end);
+            snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
+          }
         }
-      });
+      }
     }
 
     if(snippet.length<1){
       snippet += contents.substring(0,summaryInclude*2);
     }
     //pull template from hugo templarte definition
-    var templateDefinition = document.getElementById('search-result-template').innerHTML;
-    //replace values
-    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
-    document.getElementById('search-results').insertAdjacentHTML("beforeend", output);
-
-    snippetHighlights.forEach(function(snipvalue){
-      var summaryElem = document.getElementById("summary-"+key);
+    const templateDefinition = document.getElementById('search-result-template').innerHTML;
+    for (const snipvalue of snippetHighlights) {
+      const summaryElem = document.getElementById(`summary-${key}`);
       if(summaryElem && typeof Mark !== 'undefined'){
-        var markInstance = new Mark(summaryElem);
+        const markInstance = new Mark(summaryElem);
         markInstance.mark(snipvalue);
       }
+    }
+    
+    // Insert the templated result
+    const output = render(templateDefinition, {
+      key: key,
+      title: value.item.title,
+      link: value.item.permalink,
+      tags: value.item.tags,
+      categories: value.item.categories,
+      snippet: snippet
     });
-  });
+    document.getElementById('search-results').insertAdjacentHTML("beforeend", output);
+  }
 }
 
 function param(name) {
