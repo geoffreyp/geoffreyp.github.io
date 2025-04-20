@@ -44,6 +44,7 @@ You can see them rendered here:
 - {{< link icon="stack-overflow" url="https://example.com" >}} `stack-overflow`
 - {{< link icon="meetup" url="https://example.com" >}} `meetup`
 - {{< link icon="tiktok" url="https://example.com" >}} `tiktok`
+- {{< link icon="search" url="https://example.com" >}} `search`
 
 Do you need more icons?
 You can check this github issue to check how to [add your own](https://github.com/zetxek/adritian-free-hugo-theme/pull/169), or if it's relevant for the community you can request one [via the issue tracker like @klangborste did](https://github.com/zetxek/adritian-free-hugo-theme/issues/168).
