@@ -4,8 +4,15 @@
 {{ end }}
 
 {{ define "main" }}
-<section class="resume-section p-3 p-lg-5 d-flex flex-column">
+<section id="main-content" class="resume-section p-3 p-lg-5 d-flex flex-column">
   <div class="my-auto" >
+    <noscript>
+      <div class="alert alert-warning" role="alert">
+        JavaScript is required to use the search functionality, because the search takes place client-side in the web browser. 
+        <br/>
+        Please enable JavaScript in your browser to use this functionality.
+      </div>
+    </noscript>
     <form action="{{ "search" | absURL }}">
       <input id="search-query" name="s"/>
     </form>
