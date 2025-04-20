@@ -69,7 +69,7 @@ function populateResults(result){
     if(snippet.length<1){
       snippet += contents.substring(0,summaryInclude*2);
     }
-    //pull template from hugo templarte definition
+    //pull template from hugo template definition
     const templateDefinition = document.getElementById('search-result-template').innerHTML;
     for (const snipvalue of snippetHighlights) {
       const summaryElem = document.getElementById(`summary-${key}`);
