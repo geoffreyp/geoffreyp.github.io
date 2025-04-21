@@ -1,5 +1,5 @@
 summaryInclude = 60;
-import DOMPurify from "dompurify";
+
 const fuseOptions = {
   shouldSort: true,
   includeMatches: true,

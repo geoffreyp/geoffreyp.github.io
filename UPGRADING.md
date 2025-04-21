@@ -10,10 +10,13 @@ To be able to use the search functionality, you need to:
 1.  add a new `module.mount` in your `hugo.toml` file (in the same place where you reference bootstrap files):
 
 ```
-
+  ## Search & sanitization
   [[module.mounts]]
     source = "node_modules/fuse.js/dist/fuse.min.js"
     target = "static/js/fuse.min.js"
+  [[module.mounts]]
+    source = "node_modules/dompurify/dist/purify.min.js"
+    target = "static/js/purify.min.js"
 ```
 
 2. add the following to your `hugo.toml` file:
