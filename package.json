@@ -21,6 +21,7 @@
     "prettier-plugin-go-template": "^0.0.15"
   },
   "dependencies": {
-    "fuse.js": "^7.1.0"
+    "fuse.js": "^7.1.0",
+    "dompurify": "^3.2.5"
   }
 }

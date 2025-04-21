@@ -1,4 +1,5 @@
 summaryInclude = 60;
+import DOMPurify from "dompurify";
 const fuseOptions = {
   shouldSort: true,
   includeMatches: true,
@@ -20,7 +21,8 @@ const fuseOptions = {
 function displayError(message) {
   const searchResultsElement = document.getElementById("search-results");
   if (searchResultsElement) {
-    searchResultsElement.innerHTML = `<div class="alert alert-danger">${message}</div>`;
+    const sanitizedMessage = DOMPurify.sanitize(message);
+    searchResultsElement.innerHTML = `<div class="alert alert-danger">${sanitizedMessage}</div>`;
   } else {
     console.error("Search results container not found");
   }
