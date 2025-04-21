@@ -19,5 +19,9 @@
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
     "prettier-plugin-go-template": "^0.0.15"
+  },
+  "dependencies": {
+    "fuse.js": "^7.1.0",
+    "dompurify": "^3.2.5"
   }
 }

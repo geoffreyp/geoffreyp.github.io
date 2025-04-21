@@ -1,0 +1,49 @@
+{{ define "footerfiles" }}
+<script src="{{ "js/fuse.min.js" | absURL }}"></script>
+<script src="{{ "js/search.js" | absURL }}"></script>
+<script src="{{ "js/purify.min.js" | absURL }}"></script>
+
+{{ end }}
+
+{{ define "main" }}
+<section id="main-content" class="search-section p-3 p-lg-5 d-flex flex-column align-items-center bg-light rounded shadow-sm">
+  <div class="my-auto w-100" style="max-width: 760px;">
+    <h2 class="mb-4 text-center">Search the Site</h2>
+    
+    <noscript>
+      <div class="alert alert-warning" role="alert">
+        JavaScript is required to use the search functionality, because the search takes place client-side in the web browser. 
+        <br/>
+        Please enable JavaScript in your browser to use this functionality.
+      </div>
+    </noscript>
+    
+    <div class="mb-5">
+      <form action="{{ "search" | absURL }}">
+        <div class="input-group">
+          <input id="search-query" name="s" class="form-control form-control-lg" type="search" placeholder="Type to search..." autocomplete="off" aria-label="Search" />
+          <button type="submit" class="input-group-text">
+            <i class="icon-circle-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <div id="search-results" class="card border-0">
+      <div class="card-body">
+        <h3 class="card-title">Matching pages</h3>
+        <!-- Results will appear here -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
+<script id="search-result-template" type="text/x-js-template">
+  <div id="summary-${key}" class="mb-4 p-3 border-bottom">
+    <h4 class="mb-1"><a href="${link}" class="text-decoration-none">${title}</a></h4>
+    <p class="mb-2 text-muted small">${snippet}</p>
+    ${ isset tags }<span class="badge bg-primary me-1">Tags: ${tags}</span>${ end }
+    ${ isset categories }<span class="badge bg-secondary">Categories: ${categories}</span>${ end }
+  </div>
+</script>
+{{ end }}

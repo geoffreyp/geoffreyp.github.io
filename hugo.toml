@@ -4,6 +4,7 @@
     extended = true
     min = "0.92.0"
 
+
 # Exclude content with type "footer" from being rendered as HTML pages
 [outputFormats]
   [outputFormats.footer]
@@ -12,12 +13,12 @@
     isPlainText = false
     noUgly = true
     permalinkable = false
-    path = ""
+    path = "footer"
 
 # Disable HTML generation for content with type "footer"
 [outputs]
   page = ["HTML"]
-  home = ["HTML"]
+  home = ["HTML", "RSS", "JSON"]
   section = ["HTML"]
   taxonomy = ["HTML"]
   term = ["HTML"]
@@ -66,3 +67,11 @@ disableKinds = ["footer"]
   [[module.mounts]]
     source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
     target = "assets/css/bootstrap-print.css"
+  
+  ## Search & sanitization
+  [[module.mounts]]
+    source = "node_modules/fuse.js/dist/fuse.min.js"
+    target = "static/js/fuse.min.js"
+  [[module.mounts]]
+    source = "node_modules/dompurify/dist/purify.min.js"
+    target = "static/js/purify.min.js"

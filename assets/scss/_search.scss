@@ -1,0 +1,114 @@
+// Search page styles
+.search-section {
+  padding: 4rem 0;
+}
+
+#search-results {
+  margin-top: 2rem;
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  // Style for the "Please enter a word or phrase above" message
+  .alert {
+    margin: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #cce5ff;
+    border-radius: 0.25rem;
+    background-color: #e6f2ff;
+    color: #004085;
+  }
+}
+
+// Style for the search form
+#search-query {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-text {
+  cursor: pointer;
+  background-color: $base-color;
+  color: white;
+  border-color: $base-color;
+
+  &:hover {
+    background-color: darken($base-color, 10%);
+  }
+}
+
+// Search result item styling
+#summary-template {
+  padding: 1rem 0;
+  border-bottom: 1px solid #dee2e6;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Dark mode overrides
+@include color-mode(dark) {
+  body {
+    background-color: #121212;
+  }
+  
+  #main-content {
+    background-color: #1e1e1e !important;
+    color: #f8f9fa;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+
+    h2, h3 {
+      color: #f8f9fa;
+    }
+    
+    .text-muted {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+  }
+
+  #search-query {
+    background-color: #222222;
+    border-color: #333333;
+    color: #f8f9fa;
+    
+    &::placeholder {
+      color: #8a8a8a;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($base-color, 0.25);
+      border-color: $base-color;
+    }
+  }
+
+  .input-group-text {
+    background-color: $base-color;
+    color: white;
+    border-color: $base-color;
+  }
+
+  #search-results {
+    background-color: #222222;
+    
+    .card-body {
+      background-color: #222222;
+      border-color: #333333;
+    }
+    
+    .alert {
+      background-color: transparent;
+      border-color: transparent;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 1.5rem;
+      border-radius: 0;
+      border-width: 0;
+    }
+  }
+
+  .border-bottom {
+    border-color: #333 !important;
+  }
+}
