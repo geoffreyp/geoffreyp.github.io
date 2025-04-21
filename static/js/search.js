@@ -21,7 +21,7 @@ if(searchQuery){
   document.getElementById("search-query").value = searchQuery;
   executeSearch(searchQuery);
 }else {
-  document.getElementById('search-results').insertAdjacentHTML("beforeend", "<div class='alert alert-info my-4 mx-3'>Please enter a word or phrase above</div>");
+  document.getElementById('search-results').insertAdjacentHTML("beforeend", "<div class='alert'>Please enter a word or phrase above</div>");
 }
 
 function executeSearch(searchQuery){
@@ -35,7 +35,7 @@ function executeSearch(searchQuery){
       if(result.length > 0){
         populateResults(result);
       }else{
-        document.getElementById('search-results').insertAdjacentHTML("beforeend", "<div class='alert alert-info my-4 mx-3'>No matches found</div>");
+        document.getElementById('search-results').insertAdjacentHTML("beforeend", "<div class='alert'>No matches found</div>");
       }
     });
 }
