@@ -11,6 +11,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 📚 Multi-language (i18n) support
 - 🛠️ Custom content types (work experience, education, projects/work showcase, testimonials, blog)
 - 🧰 Multiple shortcodes to customize your landing page in any way you want
+- 🔎 Lightning fast search (powered by [fuse.js](https://www.fusejs.io/))
 - 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
 - 🌚 Automatic dark/light theme switching, with manual override
 - 🖨️ Print-friendly CV template 
