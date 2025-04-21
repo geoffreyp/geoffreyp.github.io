@@ -1,0 +1,60 @@
+// Search page styles
+.search-section {
+  padding: 4rem 0;
+}
+
+#search-results {
+  margin-top: 2rem;
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  // Style for the "Please enter a word or phrase above" message
+  .alert {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+}
+
+// Style for the search form
+#search-query {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-text {
+  cursor: pointer;
+  background-color: $base-color;
+  color: white;
+  border-color: $base-color;
+
+  &:hover {
+    background-color: darken($base-color, 10%);
+  }
+}
+
+// Search result item styling
+#summary-template {
+  padding: 1rem 0;
+  border-bottom: 1px solid #dee2e6;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// Dark mode overrides
+@include color-mode(dark) {
+  #search-results {
+    .alert {
+      background-color: rgba(220, 53, 69, 0.2);
+      border-color: rgba(220, 53, 69, 0.3);
+      color: #f8d7da;
+    }
+  }
+}
