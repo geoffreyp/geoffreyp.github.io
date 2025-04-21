@@ -2,6 +2,40 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.12
+
+__Introducing 🔎Search__
+To be able to use the search functionality, you need to:
+
+1.  add a new `module.mount` in your `hugo.toml` file (in the same place where you reference bootstrap files):
+
+```
+
+  [[module.mounts]]
+    source = "node_modules/fuse.js/dist/fuse.min.js"
+    target = "static/js/fuse.min.js"
+```
+
+2. add the following to your `hugo.toml` file:
+
+```
+  home = ["HTML", "RSS", "JSON"]
+```
+Under the `outputs` area.
+
+3. add a new page to your site, `content/search.md`:
+
+```
+---
+title: "Search Results"
+sitemap:
+  priority : 0.1
+layout: "search"
+---
+```
+
+You can now test the search by visiting `/search` in your site. It should load a page [similar to what is displayed in GitHub](https://github.com/zetxek/adritian-free-hugo-theme/pull/272). If that's not the case, please [open a ticket in the theme issue tracker](https://github.com/zetxek/adritian-free-hugo-theme/issues).
+
 ## v1.7.8
 
 This version introduces the `footer` content type to customize the content at the bottom of the page, allowing for sections (such as `contact-section` or `newsletter-section`) as well as content. 
