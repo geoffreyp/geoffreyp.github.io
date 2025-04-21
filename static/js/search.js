@@ -73,7 +73,7 @@ function updateURL(query) {
 // Safe parameter extraction with error handling
 function param(name) {
   try {
-    const paramValue = (location.search.split(name + "=")[1] || "").split("&")[0];
+    const paramValue = (location.search.split(`${name}=`)[1] || "").split("&")[0];
     return paramValue ? decodeURIComponent(paramValue).replace(/\+/g, " ") : "";
   } catch (error) {
     console.error(`Error parsing URL parameter '${name}':`, error);
@@ -102,7 +102,7 @@ try {
 }
 
 // Add event listener for real-time searching
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   try {
     const searchInput = getElement("search-query");
     if (!searchInput) {
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Create debounced search function - 300ms is a good balance
-    const debouncedSearch = debounce(function (query) {
+    const debouncedSearch = debounce((query) => {
       // Update URL with current search query
       updateURL(query);
 
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle form submission to prevent page reload
     const searchForm = searchInput.closest("form");
     if (searchForm) {
-      searchForm.addEventListener("submit", function (e) {
+      searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query.length >= 2) {
@@ -361,7 +361,7 @@ function render(templateString, data) {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
         const value = data[key];
         if (value !== undefined && value !== null) {
-          const find = "\\$\\{\\s*" + key + "\\s*\\}";
+          const find = `\\$\\{\\s*${key}\\s*\\}`;
           const re = new RegExp(find, "g");
           result = result.replace(re, value);
         }
