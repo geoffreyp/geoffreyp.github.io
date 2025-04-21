@@ -119,7 +119,7 @@ test.describe('Search functionality', () => {
     await page.locator('#search-query').fill('ad');
     
     // Wait for search results to appear
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(500);
     
     // Should now show results
     await expect(page.locator('#search-results div[id^="summary-"]').first()).toBeVisible();
@@ -128,7 +128,7 @@ test.describe('Search functionality', () => {
     await page.locator('#search-query').fill('adri');
     
     // Wait for updated results
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(500);
     
     // Should still show results, potentially different count
     await expect(page.locator('#search-results div[id^="summary-"]').first()).toBeVisible();
