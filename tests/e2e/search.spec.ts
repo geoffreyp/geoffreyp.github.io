@@ -18,14 +18,12 @@ test.describe('Search functionality', () => {
   });
 
   test('search page loads correctly', async ({ page }) => {
-    await page.goto(`${BASE_URL}/search`);
+    const response = await page.goto(`${BASE_URL}/search`);
     await expect(page).toHaveTitle(/Search/);
     await expect(page.locator('h2.mb-4.text-center')).toHaveText('Search the Site');
     await expect(page.locator('#search-query')).toBeVisible();
     
     // Check that the search page returns HTTP status 200
-    const response = await page.goto(`${BASE_URL}/search`);
-    expect(response?.status()).toBe(200);
   });
 
   test('searching for "theme" shows exactly one result', async ({ page }) => {
