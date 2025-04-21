@@ -728,6 +728,59 @@ textarea:focus {
     margin-left: 0;
 }
 
+.section ul li {
+    display: block;
+    position: relative;
+    padding-left: 15px;
+    font-weight: 300;
+    line-height: 1.24;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.section ul li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+    background-color: #000;
+}
+
+/* Override styles for ordered lists */
+.section ol {
+    counter-reset: item;
+    padding-left: 2rem;
+}
+
+.section ol li {
+    display: list-item;
+    position: relative;
+    padding-left: 0;
+    list-style-position: outside;
+}
+
+.section ol li::before {
+    display: none;
+    content: none;
+}
+
+/* Override for ordered lists - must appear after general li styles to take precedence */
+.section ol li {
+  display: list-item !important;
+  padding-left: 0 !important;
+}
+
+.section ol li::before {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
 @media (min-width: 768px) {
     .img-clip-left-forward {
         -webkit-clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
