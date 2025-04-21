@@ -5,6 +5,7 @@ languageCode = "en"
  
 [markup.goldmark.renderer]
 unsafe = true
+
 # Exclude footer section from generating list pages (index.html and index.xml)
 [outputs]
   page = ["HTML"]
@@ -217,7 +218,7 @@ weight = 5
 [[languages.es.menus.header]]
 pre = "email"
 name = "Contacto"
-URL = "#contact"
+URL = "/es/#contact"
 weight = 6
 
 [[languages.es.menus.header]]
