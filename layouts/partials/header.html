@@ -45,7 +45,11 @@
             {{- range .Site.Menus.header }}
             <li class="nav-item">
               <a data-scroll class="nav-link" href="{{ .URL | relURL }}"
-                >{{ .Name | upper }}</a
+                >{{ if .Pre }}
+                  <i class="icon-{{ .Pre }}" aria-label="{{ or .Name .Pre }}"></i>
+                {{ else }}
+                  {{ .Name | upper }}
+                {{ end }}</a
               >
             </li>
             {{- end }}

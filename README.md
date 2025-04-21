@@ -15,6 +15,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 🌚 Automatic dark/light theme switching, with manual override
 - 🖨️ Print-friendly CV template 
 - ⚡ Vercel-ready with Analytics & Speed Insights support
+- 🖼️ Menus with icon support
 
 The theme focuses on accessibility, high performance, and usability (it's very easy to get started). It's extendable by adding your own styles or content types, and it has a solid foundation on which to build.
 

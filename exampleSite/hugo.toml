@@ -151,14 +151,16 @@ URL = "/blog"
 weight = 5
 
 [[languages.en.menus.header]]
-name = "✉️"
+pre = "email"
+name = "email"
 URL = "#contact"
 weight = 6
 
 [[languages.en.menus.header]]
-name = "🔎"
+pre = "search"
+name = "Search"
 URL = "/search"
-weight = 6
+weight = 7
 
 [[languages.en.menus.footer]]
 name = "Home"
@@ -211,10 +213,18 @@ name = "Blog"
 URL = "/es/blog"
 weight = 5
 
+
 [[languages.es.menus.header]]
+pre = "email"
 name = "Contacto"
-URL = "/es/#contact"
+URL = "#contact"
 weight = 6
+
+[[languages.es.menus.header]]
+pre = "search"
+name = "Buscar"
+URL = "/search"
+weight = 7
 
 [[languages.es.menus.footer]]
 name = "INICIO"
@@ -268,10 +278,16 @@ URL = "/blog"
 weight = 5
 
 [[languages.fr.menus.header]]
+pre = "email"
 name = "Contact"
 URL = "#contact"
 weight = 6
 
+[[languages.fr.menus.header]]
+pre = "search"
+name = "Recherche"
+URL = "/search"
+weight = 7
 [[languages.fr.menus.footer]]
 name = "ACCUEIL"
 URL = "/fr/"

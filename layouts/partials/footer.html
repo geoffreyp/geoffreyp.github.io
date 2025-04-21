@@ -23,7 +23,11 @@
             {{ range .Site.Menus.footer }}
             <li class="nav-item">
               <a class="nav-link" href="{{ .URL | relURL }}"
-                >{{ .Name | upper }}</a
+                >{{ if .Pre }}
+                  <i class="icon-{{ .Pre }}" aria-label="{{ or .Name .Pre }}"></i>
+                {{ else }}
+                  {{ .Name | upper }}
+                {{ end }}</a
               >
             </li>
             {{ end }}
