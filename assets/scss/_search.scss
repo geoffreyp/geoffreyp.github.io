@@ -50,14 +50,10 @@
 
 // Dark mode overrides
 @include color-mode(dark) {
-  body {
-    background-color: #121212;
-  }
   
-  #main-content {
-    background-color: #1e1e1e !important;
+  #main-content.search-section {
+    background-color: #181818 !important;
     color: #f8f9fa;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
 
     h2, h3 {
       color: #f8f9fa;
