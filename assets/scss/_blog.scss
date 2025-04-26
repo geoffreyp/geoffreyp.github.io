@@ -50,12 +50,13 @@
                     margin-bottom: 0.75rem;
 
                     a {
-                        color: var(--bs-gray-700);
-                        text-decoration: none;
+                        color: $sidebar-link-color;
                         transition: color 0.2s ease;
+                        font-weight: 300;;
 
                         &:hover {
                             color: var(--bs-primary);
+                            text-decoration: underline;
                         }
                     }
                 }
@@ -65,7 +66,7 @@
                 .post-date {
                     display: block;
                     font-size: 0.875rem;
-                    color: var(--bs-gray-600);
+                    color: var(--bs-gray-900);
                 }
             }
             

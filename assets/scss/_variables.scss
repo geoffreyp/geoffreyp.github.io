@@ -7,6 +7,7 @@ $dark-primary: #66b2a9; // Brighter primary color for dark mode - enhanced contr
 $link-color: $base-color;
 $link-hover-color: darken($base-color, 15%);
 $link-decoration: none;
+$sidebar-link-color: #000; // increased contrast
 
 // Create CSS custom properties for Bootstrap
 :root {

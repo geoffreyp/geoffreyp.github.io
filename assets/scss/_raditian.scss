@@ -1642,6 +1642,36 @@ article.post.summary h2 {
 
 .post-content {
     margin-bottom: 20px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    a {
+        color: $base-color;
+        text-decoration: underline;
+        transition: color 0.2s ease-in-out;
+        
+        &:hover {
+            color: darken($base-color, 20%);
+            text-decoration: underline;
+        }
+        
+        &:focus {
+            outline: 2px solid rgba($base-color, 0.5);
+            outline-offset: 2px;
+        }
+        
+        &.external {
+            &::after {
+                content: "\2197"; // Unicode for upward-right arrow
+                display: inline-block;
+                margin-left: 0.25em;
+                font-size: 0.8em;
+            }
+        }
+    }
 }
 
 ul.tags {
