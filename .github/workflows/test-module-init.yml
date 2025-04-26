@@ -153,5 +153,3 @@ jobs:
             uses: foo-software/lighthouse-check-action@v12.0.1
             with:
               urls: 'http://localhost:8080'
-              uploadArtifacts: true
-              temporaryPublicStorage: true
