@@ -51,7 +51,6 @@ jobs:
                 hugo mod verify
                 hugo mod graph
                 
-            
             - name: Upload test site
               uses: actions/upload-artifact@v4
               with:
@@ -134,3 +133,37 @@ jobs:
               with:
                 root: ./public
                 skip_git_check: true
+
+    lighthouse-check:
+      needs: build-site
+      runs-on: ubuntu-latest
+      steps:
+          - name: Download built site
+            uses: actions/download-artifact@v4
+            with:
+              name: built-site
+              path: ./public
+              
+          - name: Create output directory
+            run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+              
+          - name: Start local server
+            run: |
+              npx http-server ./public -p 8080 &
+              sleep 3 # Give server time to start
+              
+          - name: Lighthouse Check
+            uses: foo-software/lighthouse-check-action@v12.0.1
+            with:
+              device: 'all'
+              # leave PR comments
+              gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+              prCommentEnabled: true
+              urls: 'http://localhost:8080'
+              outputDirectory: ${{ github.workspace }}/tmp/artifacts
+              
+          - name: Upload Lighthouse report
+            uses: actions/upload-artifact@v4
+            with:
+              name: lighthouse-report              
+              path: ${{ github.workspace }}/tmp/artifacts
