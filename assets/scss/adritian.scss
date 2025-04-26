@@ -280,6 +280,8 @@ footer_links .nav-item .nav-link::after {
   .header.collapsing::before {
     background-color: #181818;
   }
+
+
   @media (min-width: 992px) {
     .header .navbar .nav-item:hover .nav-link::after {
       background-color: #fff;
@@ -333,7 +335,7 @@ footer_links .nav-item .nav-link::after {
   .lead a:hover,
   p a:hover,
   span a:hover {
-    color: $base-color;
+    color: $dark-primary;
   }
   p {
     color: $light-text-emphasis-dark;
