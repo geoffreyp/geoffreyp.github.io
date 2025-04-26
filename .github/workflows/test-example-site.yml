@@ -11,8 +11,8 @@ env:
   CI: true
 
 jobs:
-  # Build job
-  build-and-test:
+  # Prepare dependencies job
+  prepare:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.136.2
@@ -55,6 +55,42 @@ jobs:
         if: steps.cache-playwright.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
+  # Test with no menus
+  test-no-menus:
+    needs: prepare
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.136.2
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Restore Node Modules
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+          
+      - name: Restore Playwright Browsers
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
+
       - name: Build site (no menus)
         run: |
           cd exampleSite
@@ -64,21 +100,66 @@ jobs:
       - name: Run Playwright tests (no menus)
         run: npm run test:e2e:no-menus
 
-      - name: Stop hugo server
+      - name: Get the failure count
+        id: tests
         run: |
-          killall hugo
+          export count=$(cat ./playwright-report/result.txt | grep Failed | cut -d ':' -f 2 | tr -d ' ') 
+          echo "fail_count=$count" >> "$GITHUB_OUTPUT"
+          echo $count
 
-      - name: Build and serve demo site (default; with menus)
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-no-menus
+          path: playwright-report/
+          retention-days: 30
+    outputs:
+      fail_count: ${{ steps.tests.outputs.fail_count }}
+
+  # Test with menus
+  test-with-menus:
+    needs: prepare
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.136.2
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Restore Node Modules
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+          
+      - name: Restore Playwright Browsers
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
+
+      - name: Build and serve demo site (with menus)
         run: |
           cd exampleSite
           hugo server --themesDir ../.. --buildDrafts --buildFuture --bind 0.0.0.0 &
           sleep 10
 
-      - name: Run Playwright tests (default; with menus)
+      - name: Run Playwright tests (with menus)
         run: npm run test:e2e
-
-
-
 
       - name: Get the failure count
         id: tests
@@ -86,41 +167,21 @@ jobs:
           export count=$(cat ./playwright-report/result.txt | grep Failed | cut -d ':' -f 2 | tr -d ' ') 
           echo "fail_count=$count" >> "$GITHUB_OUTPUT"
           echo $count
-      
-#      - uses: mshick/add-pr-comment@v2
-#        if: always()
-#        with:
-#            message-path: |
-#              ./playwright-report/result.txt
-#            message-failure: |
-#              Workflow failed
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report
+          name: playwright-report-with-menus
           path: playwright-report/
           retention-days: 30
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Artifact for pages
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-              path: "./playwright-report"
-     
-#      - name: Fail the job if there any failed case
-#        if:  steps.tests.outputs.fail_count != '0' 
-#        run : |
-#            exit 1
     outputs:
       fail_count: ${{ steps.tests.outputs.fail_count }}
 
+  # Combine reports and publish
   publish-reports:
     if: github.ref == 'refs/heads/main'
     continue-on-error: true
-    needs: [ build-and-test ]
+    needs: [test-no-menus, test-with-menus]
     runs-on: ubuntu-latest
     permissions: 
         pages: write
@@ -128,8 +189,36 @@ jobs:
     environment:
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
+        - name: Download no-menus report
+          uses: actions/download-artifact@v4
+          with:
+            name: playwright-report-no-menus
+            path: playwright-report-no-menus
+
+        - name: Download with-menus report
+          uses: actions/download-artifact@v4
+          with:
+            name: playwright-report-with-menus
+            path: playwright-report-with-menus
+            
+        - name: Combine reports
+          run: |
+            mkdir -p combined-report
+            cp -r playwright-report-no-menus/* combined-report/
+            mkdir -p combined-report/with-menus
+            cp -r playwright-report-with-menus/* combined-report/with-menus/
+            
+        - name: Upload combined artifact for pages
+          if: always()
+          uses: actions/upload-pages-artifact@v3
+          with:
+                path: "./combined-report"
+        
         - name: Deploy to GitHub Pages
           id: deployment
-          uses: actions/deploy-pages@v4  
+          uses: actions/deploy-pages@v4
+            
+        - name: Check for test failures
+          if: ${{ needs.test-no-menus.outputs.fail_count != '0' || needs.test-with-menus.outputs.fail_count != '0' }}
+          run: exit 1
