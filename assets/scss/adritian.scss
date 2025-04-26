@@ -257,6 +257,7 @@ footer_links .nav-item .nav-link::after {
 
 /* dark mode */
 @include color-mode(dark) {
+  $primary: $dark-primary;
   html body,
   body {
     color: #fff;

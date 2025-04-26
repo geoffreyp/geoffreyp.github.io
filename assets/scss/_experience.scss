@@ -1,9 +1,13 @@
 .experience__company {
-    color: $base-color !important;
+    color: $base-color;
 }
 
-.experience__company {
-    color: $base-color;
+
+/* enhanced contrast */
+@include color-mode(dark) {
+    .experience__company {
+        color: $dark-primary;
+    }
 }
 
 .experience__location {
@@ -68,7 +72,6 @@ body.home div.experience {
 .experience__company {
     font-size: 14px;
     font-weight: 700;
-    color: #AE1B13;
 }
 
 .experience {
