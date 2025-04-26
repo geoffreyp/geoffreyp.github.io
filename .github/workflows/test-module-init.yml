@@ -155,8 +155,10 @@ jobs:
           - name: Lighthouse Check
             uses: foo-software/lighthouse-check-action@v12.0.1
             with:
+              device: 'all'
               # leave PR comments
               gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+              prCommentEnabled: true
               urls: 'http://localhost:8080'
               outputDirectory: ${{ github.workspace }}/tmp/artifacts
               
