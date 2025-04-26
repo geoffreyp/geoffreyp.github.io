@@ -153,3 +153,9 @@ jobs:
             uses: foo-software/lighthouse-check-action@v12.0.1
             with:
               urls: 'http://localhost:8080'
+              outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          - name: Upload Lighthouse report
+            uses: actions/upload-artifact@v4
+            with:
+              name: lighthouse-report              
+              path: ${{ github.workspace }}/tmp/artifacts/lighthouse-report
