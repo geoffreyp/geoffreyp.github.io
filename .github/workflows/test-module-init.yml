@@ -144,6 +144,9 @@ jobs:
               name: built-site
               path: ./public
               
+          - name: Create output directory
+            run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+              
           - name: Start local server
             run: |
               npx http-server ./public -p 8080 &
@@ -154,8 +157,9 @@ jobs:
             with:
               urls: 'http://localhost:8080'
               outputDirectory: ${{ github.workspace }}/tmp/artifacts
+              
           - name: Upload Lighthouse report
             uses: actions/upload-artifact@v4
             with:
               name: lighthouse-report              
-              path: ${{ github.workspace }}/tmp/artifacts/lighthouse-report
+              path: ${{ github.workspace }}/tmp/artifacts
