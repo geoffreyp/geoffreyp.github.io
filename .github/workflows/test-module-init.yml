@@ -1,4 +1,4 @@
-name: Test Module Init & HTML Validation
+name: Module Init, HTML and Lighthouse Check
 
 on:
     push:
