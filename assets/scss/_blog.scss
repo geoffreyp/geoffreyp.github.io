@@ -1,8 +1,12 @@
+
+
+
 .blog {
 
     .post .post-title a {
         color: $base-color;
     }
+
 
 
     .has-sidebar {
@@ -138,6 +142,11 @@
 
 @include color-mode(dark) {
     .blog {
+
+        .post .post-title a {
+            color: $dark-primary;
+        }
+
         .blog-sidebar {
             .sidebar-section {
                 background: var(--bs-gray-800);
