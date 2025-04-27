@@ -1,5 +1,12 @@
 name: Update Example Site
-
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+  pull-requests: write
+  checks: write
+  statuses: write
+  actions: write
 on:
   workflow_dispatch:
   schedule:

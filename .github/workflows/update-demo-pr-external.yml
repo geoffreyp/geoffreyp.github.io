@@ -2,6 +2,16 @@
 ## taken from https://stackoverflow.com/a/68213855/570087
 
 name: PR demo site (on external PR)
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+  pull-requests: write
+  checks: write
+  statuses: write
+  actions: write
+
 ## This will open a PR which will open a vercel preview URL in the demo site
 on:
   pull_request_target:

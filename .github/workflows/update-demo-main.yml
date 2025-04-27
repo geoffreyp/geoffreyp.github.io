@@ -2,6 +2,15 @@
 ## triggers the update-hugo-module workflow in adritian-demo
 ## and the update-git-submodule workflow in the git-submodule-demo site
 name: Update demo repos
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+  pull-requests: write
+  checks: write
+  statuses: write
+  actions: write
+  
 on:
   push:
     ## run on push to main or a new semantic tag (ie: v1.2.3)

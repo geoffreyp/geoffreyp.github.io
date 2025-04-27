@@ -1,5 +1,12 @@
 name: Crease release
-
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+  pull-requests: write
+  checks: write
+  statuses: write
+  deployments: write
 on:
     push:
         tags:
