@@ -1,5 +1,12 @@
 name: Module Init, HTML and Lighthouse Check
 
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+  checks: write
+  statuses: write
+
 on:
     push:
         branches: [ main ]
