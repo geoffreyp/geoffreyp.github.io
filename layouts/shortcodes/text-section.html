@@ -1,6 +1,6 @@
 {{/*
   sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
-{{ $sectionId := "text-section" }}
+{{ $sectionId := "" }}
 {{ with .Get "sectionId" }}
   {{ $sectionId = . }}
 {{ end }}
