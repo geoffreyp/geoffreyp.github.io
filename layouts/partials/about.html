@@ -52,8 +52,14 @@
   {{- $btnText = i18n "about_button" -}}
 {{ end }}
 
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "about" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
 
-<section id="about" class="section rad-animation-group pb-0">
+<section id="{{ $sectionId }}" class="section rad-animation-group pb-0">
   <div class="rad-fade-down">
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="about__profile-picture col-12 col-md-6">

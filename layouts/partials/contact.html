@@ -1,6 +1,13 @@
 {{- $contextType := printf "%T" . -}}
 {{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
 
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "contact" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+
 {{/* ---------------------------------------------------------------------------
      CONTACT FORM ELEMENTS
      --------------------------------------------------------------------------- */}}
@@ -79,7 +86,7 @@
     {{- $addressText = i18n "contact_address_address" -}}
 {{ end }}
 
-<section id="contact" class="section section--contact pt-0">
+<section id="{{ $sectionId }}" class="section section--contact pt-0">
     <div class="container">
         <div class="contact w-100">
             <h2>{{ $title }}</h2>
