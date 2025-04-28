@@ -4,8 +4,10 @@
 {{/*
   sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
 {{ $sectionId := "experience-single" }}
-{{ with .Get "sectionId" }}
-  {{ $sectionId = . }}
+{{ if $isShortcode }}
+  {{ with .Get "sectionId" }}
+    {{ $sectionId = . }}
+  {{ end }}
 {{ end }}
 
 <section id="{{ $sectionId }}" class="section-experience section section--border-bottom rad-animation-group flex-grow-1">
