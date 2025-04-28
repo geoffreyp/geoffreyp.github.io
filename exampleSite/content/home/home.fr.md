@@ -68,7 +68,7 @@ draft = false
 
 ## Expérience (liste)
 
-Vous pouvez voir une autre version, utilisant `experience-list` sur [/cv](/cv].
+Vous pouvez voir une autre version, utilisant `experience-list` sur [/cv](/cv).
 
 {{< client-and-work-section
     title="Une sélection de mon travail"
