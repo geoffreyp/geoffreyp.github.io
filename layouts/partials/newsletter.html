@@ -22,7 +22,7 @@
   {{ $sectionId = . }}
 {{ end }}
 
-<section id="{{ $sectionId }}" class="section section--cta">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--cta">
   <div class="container d-flex justify-content-center align-items-center">
     <div class="row">
       <div class="col-12 text-center">

@@ -4,6 +4,6 @@
   href="{{ $url | absURL }}"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="{{ $icon }}"
-  ><i class="icon-{{ $icon }}"></i
-></a>
+  {{ if $icon }}aria-label="{{ $icon }}"{{ end }}
+  >{{ if $icon }}<i class="icon-{{ $icon }}"></i>{{ end }}
+</a>

@@ -27,7 +27,7 @@
   {{ $sectionId = . }}
 {{ end }}
 
-<section id="{{ $sectionId }}" class="section rad-animation-group section--border-bottom">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section rad-animation-group section--border-bottom">
     <div class="container">
     {{/* 
     When passed from a shortcode, the context type is *hugolib.ShortcodeWithPage. 

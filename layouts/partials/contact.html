@@ -1,136 +1,120 @@
-{{- $contextType := printf "%T" . -}}
-{{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
-
 {{/*
+  contact.html, used via {{ partial "contact.html" . }}
+  from contact-section.html
+  
+  Arguments:
   sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+
 {{ $sectionId := "contact" }}
 {{ with .Get "sectionId" }}
   {{ $sectionId = . }}
 {{ end }}
 
-{{/* ---------------------------------------------------------------------------
-     CONTACT FORM ELEMENTS
-     --------------------------------------------------------------------------- */}}
-{{- /* Title */}}
-{{- $title := "" -}}
-{{- if $isShortcode }}
-    {{- $title = .Get "title" -}}
-{{ else }}
-    {{- $title = i18n "contact_title" -}}
+{{/*----------------------------------------------
+    TITLE
+------------------------------------------------*/}}
+{{ $title := .Get "title" | default (i18n "contact_title") }}
+
+{{/*----------------------------------------------
+    FORM CONFIGURATION
+------------------------------------------------*/}}
+{{ $form_action := .Get "form_action" | default .Site.Data.homepage.contact.form_action }}
+{{ $form_method := .Get "form_method" | default .Site.Data.homepage.contact.form_method }}
+
+{{/*----------------------------------------------
+    FORM FIELD PLACEHOLDERS
+------------------------------------------------*/}}
+{{ $name_placeholder := .Get "name_placeholder" | default .Site.Data.homepage.contact.form_name_placeholder | default (i18n "contact_name_placeholder") }}
+{{ $name_placeholder_attr := "" }}
+{{ if $name_placeholder }}
+  {{ $name_placeholder_attr = printf "placeholder=%q" $name_placeholder }}
 {{ end }}
 
-{{/* ---------------------------------------------------------------------------
-     FORM CONFIGURATION
-     --------------------------------------------------------------------------- */}}
-{{- /* Form action and method */}}
-{{- $formAction := "" -}}
-{{- $formMethod := "" -}}
-{{- if $isShortcode }}
-    {{- $formAction = .Get "form_action" | default .Site.Data.homepage.contact.form.action -}}
-    {{- $formMethod = .Get "form_method" | default .Site.Data.homepage.contact.form.method -}}
-{{ else }}
-    {{- $formAction = .Site.Data.homepage.contact.form.action -}}
-    {{- $formMethod = .Site.Data.homepage.contact.form.method -}}
+{{ $email_placeholder := .Get "email_placeholder" | default .Site.Data.homepage.contact.form_email_placeholder | default (i18n "contact_email_placeholder") }}
+{{ $email_placeholder_attr := "" }}
+{{ if $email_placeholder }}
+  {{ $email_placeholder_attr = printf "placeholder=%q" $email_placeholder }}
 {{ end }}
 
-{{- /* Form placeholders */}}
-{{- $formName := "" -}}
-{{- $formEmail := "" -}}
-{{- $formMessage := "" -}}
-{{- $formButton := "" -}}
-{{- if $isShortcode }}
-    {{- $formName = .Get "contact_form_name" -}}
-    {{- $formEmail = .Get "contact_form_email" -}}
-    {{- $formMessage = .Get "contact_form_message" -}}
-    {{- $formButton = .Get "contact_button" -}}
-{{ else }}
-    {{- $formName = i18n "contact_form_name" -}}
-    {{- $formEmail = i18n "contact_form_email" -}}
-    {{- $formMessage = i18n "contact_form_message" -}}
-    {{- $formButton = i18n "contact_buton" -}}
+{{ $phone_placeholder := .Get "phone_placeholder" | default .Site.Data.homepage.contact.form_phone_placeholder | default (i18n "contact_phone_placeholder") }}
+{{ $phone_placeholder_attr := "" }}
+{{ if $phone_placeholder }}
+  {{ $phone_placeholder_attr = printf "placeholder=%q" $phone_placeholder }}
 {{ end }}
 
-{{/* ---------------------------------------------------------------------------
-     CONTACT INFO
-     --------------------------------------------------------------------------- */}}
-{{- /* Phone */}}
-{{- $phoneTitle := "" -}}
-{{- $phoneNumber := "" -}}
-{{- if $isShortcode }}
-    {{- $phoneTitle = .Get "contact_phone_title" -}}
-    {{- $phoneNumber = .Get "contact_phone_number" -}}
-{{ else }}
-    {{- $phoneTitle = i18n "contact_phone_title" -}}
-    {{- $phoneNumber = i18n "contact_phone_number" -}}
+{{ $message_placeholder := .Get "message_placeholder" | default .Site.Data.homepage.contact.form_message_placeholder | default (i18n "contact_message_placeholder") }}
+{{ $message_placeholder_attr := "" }}
+{{ if $message_placeholder }}
+  {{ $message_placeholder_attr = printf "placeholder=%q" $message_placeholder }}
 {{ end }}
 
-{{- /* Email */}}
-{{- $emailTitle := "" -}}
-{{- $emailAddress := "" -}}
-{{- if $isShortcode }}
-    {{- $emailTitle = .Get "contact_email_title" -}}
-    {{- $emailAddress = .Get "contact_email_email" -}}
-{{ else }}
-    {{- $emailTitle = i18n "contact_email_title" -}}
-    {{- $emailAddress = i18n "contact_email_email" -}}
-{{ end }}
+{{/*----------------------------------------------
+    BUTTON TEXT
+------------------------------------------------*/}}
+{{ $button_text := .Get "button_text" | default .Site.Data.homepage.contact.button_text | default (i18n "contact_button_text") }}
 
-{{- /* Address */}}
-{{- $addressTitle := "" -}}
-{{- $addressText := "" -}}
-{{- if $isShortcode }}
-    {{- $addressTitle = .Get "contact_address_title" -}}
-    {{- $addressText = .Get "contact_address_address" -}}
-{{ else }}
-    {{- $addressTitle = i18n "contact_address_title" -}}
-    {{- $addressText = i18n "contact_address_address" -}}
-{{ end }}
+{{/*----------------------------------------------
+    CONTACT INFORMATION FIELDS
+------------------------------------------------*/}}
+{{ $phone := .Get "phone" | default .Site.Data.homepage.contact.phone }}
+{{ $phone_display := .Get "phone_display" | default .Site.Data.homepage.contact.phone_display | default $phone }}
+{{ $email := .Get "email" | default .Site.Data.homepage.contact.email }}
+{{ $location := .Get "location" | default .Site.Data.homepage.contact.location }}
 
-<section id="{{ $sectionId }}" class="section section--contact pt-0">
+{{/*----------------------------------------------
+    HEADING LABELS
+------------------------------------------------*/}}
+{{ $phone_heading := .Get "phone_heading" | default .Site.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
+{{ $email_heading := .Get "email_heading" | default .Site.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
+{{ $location_heading := .Get "location_heading" | default .Site.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--contact pt-0">
     <div class="container">
         <div class="contact w-100">
             <h2>{{ $title }}</h2>
 
             <div class="row pt-2">
                 <div class="col-12 col-lg-7">
-                    <form action="{{ $formAction }}" method="{{ $formMethod }}">
+                    <form action="{{ $form_action }}" method="{{ $form_method }}">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <input type="text" name="full_name" id="full_name" placeholder="{{ $formName }}">
+                                <input type="text" name="full_name" class="form-control" {{ $name_placeholder_attr | safeHTMLAttr }}>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="text" name="email" id="email" placeholder="{{ $formEmail }}">
+                                <input type="email" name="email" class="form-control" {{ $email_placeholder_attr | safeHTMLAttr }}>
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <textarea name="message" id="message" cols="30" rows="3" placeholder="{{ $formMessage }}"></textarea>
+                                <input type="text" name="phone" class="form-control" {{ $phone_placeholder_attr | safeHTMLAttr }}>
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="{{ .Site.Data.homepage.contact.button.icon }}"></i>
-                                    {{ $formButton }}
-                                </button>
+                                <textarea name="message" class="form-control" rows="6" {{ $message_placeholder_attr | safeHTMLAttr }}></textarea>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">{{ $button_text }}</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-12 col-lg-5 contact__info">
-                    {{ if $phoneNumber }}
-                    <h3>{{ $phoneTitle }}</h3>
-                    <span>{{ $phoneNumber | safeHTML }}</span>
+                    {{ if $phone }}
+                    <h3>{{ $phone_heading }}</h3>
+                    <span><a href='tel:{{ $phone }}'>{{ $phone_display }}</a></span>
                     {{ end }}
 
-                    {{ if $emailAddress }}
-                    <h3>{{ $emailTitle }}</h3>
-                    <span>{{ $emailAddress | safeHTML }}</span>
+                    {{ if $email }}
+                    <h3>{{ $email_heading }}</h3>
+                    <span>{{ $email }}</span>
                     {{ end }}
                     
-                    {{ if $addressText }}
-                    <h3>{{ $addressTitle }}</h3>
-                    <span>{{ $addressText | safeHTML }}</span>
+                    {{ if $location }}
+                    <h3>{{ $location_heading }}</h3>
+                    <span>{{ $location }}</span>
                     {{ end }}
                 </div>
             </div>

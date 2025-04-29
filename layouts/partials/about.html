@@ -59,7 +59,7 @@
   {{ $sectionId = . }}
 {{ end }}
 
-<section id="{{ $sectionId }}" class="section rad-animation-group pb-0">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section rad-animation-group pb-0">
   <div class="rad-fade-down">
     <div class="row d-flex flex-column-reverse flex-md-row">
       <div class="about__profile-picture col-12 col-md-6">

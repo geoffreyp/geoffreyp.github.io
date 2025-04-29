@@ -23,7 +23,7 @@
     {{ $columnClass = printf "%s %s" $columnClass "text-center" }}
 {{ end }}
 
-<section id="{{ $sectionId }}" class="section section--border-bottom rad-animation-group {{ $paddingClass }}">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--border-bottom rad-animation-group {{ $paddingClass }}">
     <div class="{{ $containerClass }}">
         <div class="row rad-fade-down">
             <div class="{{ $columnClass }}">
