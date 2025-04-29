@@ -1,6 +1,10 @@
 {{/* layouts/shortcodes/platform-links.html */}}
 
-<div class="container">
+{{ $sectionId := "" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+<div class="container" id="{{ $sectionId }}">
   <div class="row platform-links shortcode">
     <div class="col-12">{{ .Inner }}</div>
   </div>

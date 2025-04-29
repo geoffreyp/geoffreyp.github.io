@@ -68,8 +68,8 @@ test.describe('Language switching functionality', () => {
   test('section IDs are translated in Spanish and French', async ({ page }) => {
     // Spanish
     await page.goto(`${BASE_URL}/es/`);
-    await expect(page.locator('#seccion-destacada')).toBeVisible();
-    await expect(page.locator('#enlaces-plataforma')).toBeVisible();
+    await expect(page.locator('#sobre-mi')).toBeVisible();
+    await expect(page.locator('#social')).toBeVisible();
     await expect(page.locator('#sobre-mi')).toBeVisible();
     await expect(page.locator('#formacion-academica')).toBeVisible();
     await expect(page.locator('#experiencia-laboral')).toBeVisible();

@@ -14,7 +14,7 @@ draft = false
     sectionId="seccion-destacada"
  >}}
 
-{{< platform-links sectionId="enlaces-plataforma" >}}
+{{< platform-links sectionId="social" >}}
     {{< link icon="square-facebook" url="https://facebook.com/yourpage" >}}
     {{< link icon="square-twitter" url="https://twitter.com/yourpage" >}}
     {{< link icon="linkedin" url="https://www.linkedin.com/in/adrianmoreno/" >}}
