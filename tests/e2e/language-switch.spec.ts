@@ -64,4 +64,26 @@ test.describe('Language switching functionality', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
     await expect(page.getByText('Langue').last()).toBeVisible();
   });
+
+  test('section IDs are translated in Spanish and French', async ({ page }) => {
+    // Spanish
+    await page.goto(`${BASE_URL}/es/`);
+    await expect(page.locator('#sobre-mi')).toBeVisible();
+    await expect(page.locator('#social')).toBeVisible();
+    await expect(page.locator('#sobre-mi')).toBeVisible();
+    await expect(page.locator('#formacion-academica')).toBeVisible();
+    await expect(page.locator('#experiencia-laboral')).toBeVisible();
+    await expect(page.locator('#trabajo')).toBeVisible();
+    await expect(page.locator('#testimonios')).toBeVisible();
+
+    // French
+    await page.goto(`${BASE_URL}/fr/`);
+    await expect(page.locator('#section-vedette')).toBeVisible();
+    await expect(page.locator('#liens-plateforme')).toBeVisible();
+    await expect(page.locator('#a-propos')).toBeVisible();
+    await expect(page.locator('#formation-academique')).toBeVisible();
+    await expect(page.locator('#experience-professionnelle')).toBeVisible();
+    await expect(page.locator('#travail')).toBeVisible();
+    await expect(page.locator('#temoignages')).toBeVisible();
+  });
 });

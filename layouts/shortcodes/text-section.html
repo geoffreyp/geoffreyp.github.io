@@ -1,3 +1,10 @@
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+
 {{ $title := .Get "title" | default "" }}
 {{ $subtitle := .Get "subtitle" | default "" }}
 {{ $padding := .Get "padding" | default "true" }}
@@ -16,7 +23,7 @@
     {{ $columnClass = printf "%s %s" $columnClass "text-center" }}
 {{ end }}
 
-<section class="section section--border-bottom rad-animation-group {{ $paddingClass }}">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--border-bottom rad-animation-group {{ $paddingClass }}">
     <div class="{{ $containerClass }}">
         <div class="row rad-fade-down">
             <div class="{{ $columnClass }}">

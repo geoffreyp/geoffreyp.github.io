@@ -20,7 +20,14 @@
   {{- $testimonials = $testimonials | lang.Merge (where $baseLangSite.RegularPages.ByDate "Type" "testimonial") -}}
 {{- end -}}
 
-<section id="testimonial" class="section rad-animation-group section--border-bottom">
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "testimonial" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section rad-animation-group section--border-bottom">
     <div class="container">
     {{/* 
     When passed from a shortcode, the context type is *hugolib.ShortcodeWithPage. 

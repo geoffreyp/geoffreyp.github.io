@@ -1,3 +1,10 @@
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "experience-list-shortcode" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+
 {{ $padding := .Get "padding" }}
 {{ $title := .Get "title" | default "" }}
 {{ $containerClass := "" }}
@@ -5,7 +12,7 @@
     {{ $containerClass = "container" }}
 {{ end }}
 
-<section id="experience-list-shortcode" class="section-experience section section--border-bottom rad-animation-group flex-grow-1 {{ $containerClass }}">
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section-experience section section--border-bottom rad-animation-group flex-grow-1 {{ $containerClass }}">
     <div class="row flex-column-reverse flex-md-row rad-fade-down">
         <div class="experience-list col-12 mt-5 mt-sm-0">
             {{ if $title }}

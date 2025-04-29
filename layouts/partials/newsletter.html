@@ -15,7 +15,14 @@
     {{- $formMethod = .Site.Data.homepage.newsletter.form.method -}}
 {{ end }}
 
-<section id="newsletter" class="section section--cta">
+{{/*
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+{{ $sectionId := "newsletter" }}
+{{ with .Get "sectionId" }}
+  {{ $sectionId = . }}
+{{ end }}
+
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--cta">
   <div class="container d-flex justify-content-center align-items-center">
     <div class="row">
       <div class="col-12 text-center">

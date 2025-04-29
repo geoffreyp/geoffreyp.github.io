@@ -55,7 +55,7 @@ test.describe('Search functionality', () => {
     await page.waitForTimeout(500);
     
     // Verify we have at least one result
-    await expect(page.locator('#search-results div[id^="summary-"]')).toBeVisible();
+    await expect(page.locator('#search-results div[id^="summary-"]').first()).toBeVisible();
     
     // Now clear the search box
     await page.locator('#search-query').fill('');
