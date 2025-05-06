@@ -5,68 +5,138 @@
   Arguments:
   sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
 
+{{- $contextType := printf "%T" . -}}
+{{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
+
 {{ $sectionId := "contact" }}
-{{ with .Get "sectionId" }}
-  {{ $sectionId = . }}
+{{ if $isShortcode }}
+  {{ with .Get "sectionId" }}
+    {{ $sectionId = . }}
+  {{ end }}
 {{ end }}
 
 {{/*----------------------------------------------
     TITLE
 ------------------------------------------------*/}}
-{{ $title := .Get "title" | default (i18n "contact_title") }}
+{{ $title := "" }}
+{{ if $isShortcode }}
+  {{ $title = .Get "title" | default (i18n "contact_title") }}
+{{ else }}
+  {{ $title = i18n "contact_title" }}
+{{ end }}
 
 {{/*----------------------------------------------
     FORM CONFIGURATION
 ------------------------------------------------*/}}
-{{ $form_action := .Get "form_action" | default .Site.Data.homepage.contact.form_action }}
-{{ $form_method := .Get "form_method" | default .Site.Data.homepage.contact.form_method }}
+{{ $form_action := "" }}
+{{ $form_method := "" }}
+{{ if $isShortcode }}
+  {{ $form_action = .Get "form_action" | default .Site.Data.homepage.contact.form_action }}
+  {{ $form_method = .Get "form_method" | default .Site.Data.homepage.contact.form_method }}
+{{ else }}
+  {{ $form_action = .Site.Data.homepage.contact.form_action }}
+  {{ $form_method = .Site.Data.homepage.contact.form_method }}
+{{ end }}
 
 {{/*----------------------------------------------
     FORM FIELD PLACEHOLDERS
 ------------------------------------------------*/}}
-{{ $name_placeholder := .Get "name_placeholder" | default .Site.Data.homepage.contact.form_name_placeholder | default (i18n "contact_name_placeholder") }}
+{{ $name_placeholder := "" }}
+{{ if $isShortcode }}
+  {{ $name_placeholder = .Get "contact_form_name" | default (.Get "name_placeholder") | default .Site.Data.homepage.contact.form_name_placeholder | default (i18n "contact_name_placeholder") }}
+{{ else }}
+  {{ $name_placeholder = .Site.Data.homepage.contact.form_name_placeholder | default (i18n "contact_name_placeholder") }}
+{{ end }}
 {{ $name_placeholder_attr := "" }}
 {{ if $name_placeholder }}
   {{ $name_placeholder_attr = printf "placeholder=%q" $name_placeholder }}
 {{ end }}
 
-{{ $email_placeholder := .Get "email_placeholder" | default .Site.Data.homepage.contact.form_email_placeholder | default (i18n "contact_email_placeholder") }}
+{{ $email_placeholder := "" }}
+{{ if $isShortcode }}
+  {{ $email_placeholder = .Get "contact_form_email" | default (.Get "email_placeholder") | default .Site.Data.homepage.contact.form_email_placeholder | default (i18n "contact_email_placeholder") }}
+{{ else }}
+  {{ $email_placeholder = .Site.Data.homepage.contact.form_email_placeholder | default (i18n "contact_email_placeholder") }}
+{{ end }}
 {{ $email_placeholder_attr := "" }}
 {{ if $email_placeholder }}
   {{ $email_placeholder_attr = printf "placeholder=%q" $email_placeholder }}
 {{ end }}
 
-{{ $phone_placeholder := .Get "phone_placeholder" | default .Site.Data.homepage.contact.form_phone_placeholder | default (i18n "contact_phone_placeholder") }}
+{{ $phone_placeholder := "" }}
+{{ if $isShortcode }}
+  {{ $phone_placeholder = .Get "contact_form_phone" | default (.Get "phone_placeholder") | default .Site.Data.homepage.contact.form_phone_placeholder | default (i18n "contact_phone_placeholder") }}
+{{ else }}
+  {{ $phone_placeholder = .Site.Data.homepage.contact.form_phone_placeholder | default (i18n "contact_phone_placeholder") }}
+{{ end }}
 {{ $phone_placeholder_attr := "" }}
 {{ if $phone_placeholder }}
   {{ $phone_placeholder_attr = printf "placeholder=%q" $phone_placeholder }}
 {{ end }}
 
-{{ $message_placeholder := .Get "message_placeholder" | default .Site.Data.homepage.contact.form_message_placeholder | default (i18n "contact_message_placeholder") }}
+{{ $message_placeholder := "" }}
+{{ if $isShortcode }}
+  {{ $message_placeholder = .Get "contact_form_message" | default (.Get "message_placeholder") | default .Site.Data.homepage.contact.form_message_placeholder | default (i18n "contact_message_placeholder") }}
+{{ else }}
+  {{ $message_placeholder = .Site.Data.homepage.contact.form_message_placeholder | default (i18n "contact_message_placeholder") }}
+{{ end }}
 {{ $message_placeholder_attr := "" }}
 {{ if $message_placeholder }}
   {{ $message_placeholder_attr = printf "placeholder=%q" $message_placeholder }}
 {{ end }}
 
 {{/*----------------------------------------------
+    TEXTAREA ROWS
+------------------------------------------------*/}}
+{{ $message_rows := 2 }}
+{{ if $isShortcode }}
+  {{ $message_rows = .Get "contact_form_rows" | default (.Get "message_rows") | default 2 }}
+{{ end }}
+
+{{/*----------------------------------------------
     BUTTON TEXT
 ------------------------------------------------*/}}
-{{ $button_text := .Get "button_text" | default .Site.Data.homepage.contact.button_text | default (i18n "contact_button_text") }}
+{{ $button_text := "" }}
+{{ if $isShortcode }}
+  {{ $button_text = .Get "contact_button" | default (.Get "button_text") | default .Site.Data.homepage.contact.button_text | default (i18n "contact_button_text") }}
+{{ else }}
+  {{ $button_text = .Site.Data.homepage.contact.button_text | default (i18n "contact_button_text") }}
+{{ end }}
 
 {{/*----------------------------------------------
     CONTACT INFORMATION FIELDS
 ------------------------------------------------*/}}
-{{ $phone := .Get "phone" | default .Site.Data.homepage.contact.phone }}
-{{ $phone_display := .Get "phone_display" | default .Site.Data.homepage.contact.phone_display | default $phone }}
-{{ $email := .Get "email" | default .Site.Data.homepage.contact.email }}
-{{ $location := .Get "location" | default .Site.Data.homepage.contact.location }}
+{{ $phone := "" }}
+{{ $phone_display := "" }}
+{{ $email := "" }}
+{{ $location := "" }}
+{{ if $isShortcode }}
+  {{ $phone = .Get "contact_phone_number" | default (.Get "phone") | default .Site.Data.homepage.contact.phone }}
+  {{ $phone_display = .Get "contact_phone_number" | default (.Get "phone_display") | default .Site.Data.homepage.contact.phone_display | default $phone }}
+  {{ $email = .Get "contact_email_email" | default (.Get "email") | default .Site.Data.homepage.contact.email }}
+  {{ $location = .Get "contact_address_address" | default (.Get "location") | default .Site.Data.homepage.contact.location }}
+{{ else }}
+  {{ $phone = .Site.Data.homepage.contact.phone }}
+  {{ $phone_display = .Site.Data.homepage.contact.phone_display | default $phone }}
+  {{ $email = .Site.Data.homepage.contact.email }}
+  {{ $location = .Site.Data.homepage.contact.location }}
+{{ end }}
 
 {{/*----------------------------------------------
     HEADING LABELS
 ------------------------------------------------*/}}
-{{ $phone_heading := .Get "phone_heading" | default .Site.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
-{{ $email_heading := .Get "email_heading" | default .Site.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
-{{ $location_heading := .Get "location_heading" | default .Site.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+{{ $phone_heading := "" }}
+{{ $email_heading := "" }}
+{{ $location_heading := "" }}
+{{ if $isShortcode }}
+  {{ $phone_heading = .Get "contact_phone_title" | default (.Get "phone_heading") | default .Site.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
+  {{ $email_heading = .Get "contact_email_title" | default (.Get "email_heading") | default .Site.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
+  {{ $location_heading = .Get "contact_address_title" | default (.Get "location_heading") | default .Site.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+{{ else }}
+  {{ $phone_heading = .Site.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
+  {{ $email_heading = .Site.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
+  {{ $location_heading = .Site.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+{{ end }}
 
 <section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--contact pt-0">
     <div class="container">
@@ -75,7 +145,7 @@
 
             <div class="row pt-2">
                 <div class="col-12 col-lg-7">
-                    <form action="{{ $form_action }}" method="{{ $form_method }}">
+                    <form action="{{ $form_action }}" method="{{ $form_method }}" class="contact__form">
                         <div class="row">
                             <div class="col-12 col-sm-6">
                                 <input type="text" name="full_name" class="form-control" {{ $name_placeholder_attr | safeHTMLAttr }}>
@@ -91,7 +161,7 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <textarea name="message" class="form-control" rows="6" {{ $message_placeholder_attr | safeHTMLAttr }}></textarea>
+                                <textarea name="message" class="form-control" rows="{{ $message_rows }}" {{ $message_placeholder_attr | safeHTMLAttr }}></textarea>
                             </div>
                         </div>
                         <div class="row pt-4">
@@ -104,17 +174,17 @@
                 <div class="col-12 col-lg-5 contact__info">
                     {{ if $phone }}
                     <h3>{{ $phone_heading }}</h3>
-                    <span><a href='tel:{{ $phone }}'>{{ $phone_display }}</a></span>
+                    <span>{{ $phone | safeHTML }}</span>
                     {{ end }}
 
                     {{ if $email }}
                     <h3>{{ $email_heading }}</h3>
-                    <span>{{ $email }}</span>
+                    <span>{{ $email | safeHTML }}</span>
                     {{ end }}
                     
                     {{ if $location }}
                     <h3>{{ $location_heading }}</h3>
-                    <span>{{ $location }}</span>
+                    <span>{{ $location | safeHTML }}</span>
                     {{ end }}
                 </div>
             </div>
