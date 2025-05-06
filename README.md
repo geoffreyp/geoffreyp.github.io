@@ -266,7 +266,7 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
 
 ## Contributors and collaborators ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
 
-<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors,Arturitu12 -start -->
 <table>
 	<tbody>
 		<tr>
@@ -403,7 +403,7 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
 		</tr>
 	<tbody>
 </table>
-<!-- readme: collaborators,contributors -end -->
+<!-- readme: collaborators,contributors,Arturitu12 -end -->
 
 ## License
 
