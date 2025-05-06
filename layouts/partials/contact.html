@@ -86,6 +86,14 @@
 {{ end }}
 
 {{/*----------------------------------------------
+    TEXTAREA ROWS
+------------------------------------------------*/}}
+{{ $message_rows := 2 }}
+{{ if $isShortcode }}
+  {{ $message_rows = .Get "contact_form_rows" | default (.Get "message_rows") | default 2 }}
+{{ end }}
+
+{{/*----------------------------------------------
     BUTTON TEXT
 ------------------------------------------------*/}}
 {{ $button_text := "" }}
@@ -153,7 +161,7 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <textarea name="message" class="form-control" rows="2" {{ $message_placeholder_attr | safeHTMLAttr }} placeholder="{{ $message_placeholder }}"></textarea>
+                                <textarea name="message" class="form-control" rows="{{ $message_rows }}" {{ $message_placeholder_attr | safeHTMLAttr }} placeholder="{{ $message_placeholder }}"></textarea>
                             </div>
                         </div>
                         <div class="row pt-4">

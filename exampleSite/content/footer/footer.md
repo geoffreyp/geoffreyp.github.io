@@ -20,6 +20,7 @@ draft = false
     contact_address_address="🇩🇰 Denmark"
     form_action="https://formspree.io/f/mail@example.com"
     form_method="POST"
+    contact_form_rows="3"
 >}}
 
 {{< newsletter-section 
