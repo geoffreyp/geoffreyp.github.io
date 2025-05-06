@@ -176,7 +176,7 @@
                     
                     {{ if $location }}
                     <h3>{{ $location_heading }}</h3>
-                    <span>{{ $location }}</span>
+                    <span>{{ $location | safeHTML }}</span>
                     {{ end }}
                 </div>
             </div>
