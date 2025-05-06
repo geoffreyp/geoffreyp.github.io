@@ -125,8 +125,8 @@ test.describe('Contact Form Functionality', () => {
     
     // Check headings in contact info section
     const infoHeadings = contactInfo.locator('h3');
-    await expect(infoHeadings).toHaveCount(await infoHeadings.count());
-    
+    // Replace with a meaningful assertion if the expected count is known
+    await expect(infoHeadings).toHaveCount(3); // Example: Replace 3 with the actual expected count
     // If your site has email info displayed, check it
     const emailSection = contactInfo.locator('h3', { hasText: /mail|email/i }).first();
     if (await emailSection.count() > 0) {
