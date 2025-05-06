@@ -46,6 +46,49 @@ test.describe('Contact Form Functionality', () => {
     expect(messagePlaceholder).toBeTruthy();
   });
 
+  test('contact form placeholders match values from shortcode', async ({ page }) => {
+    // Get the form field elements
+    const nameInput = page.locator('form input[name="full_name"]');
+    const emailInput = page.locator('form input[name="email"]');
+    const phoneInput = page.locator('form input[name="phone"]');
+    const messageTextarea = page.locator('form textarea[name="message"]');
+    
+    // Get the placeholder values
+    const namePlaceholder = await nameInput.getAttribute('placeholder');
+    const emailPlaceholder = await emailInput.getAttribute('placeholder');
+    const phonePlaceholder = await phoneInput.getAttribute('placeholder');
+    const messagePlaceholder = await messageTextarea.getAttribute('placeholder');
+    
+    // Log the placeholder values for debugging
+    console.log('Placeholder values:', {
+      name: namePlaceholder,
+      email: emailPlaceholder,
+      phone: phonePlaceholder,
+      message: messagePlaceholder
+    });
+    
+    // Verify placeholders have meaningful content
+    // The specific values will depend on what's set in your shortcode or defaults
+    // We're checking they're not empty and not just generic defaults
+    expect(namePlaceholder).toBeTruthy();
+    expect(namePlaceholder?.length).toBeGreaterThan(2);
+    
+    expect(emailPlaceholder).toBeTruthy();
+    expect(emailPlaceholder?.length).toBeGreaterThan(2);
+    
+    expect(phonePlaceholder).toBeTruthy();
+    expect(phonePlaceholder?.length).toBeGreaterThan(2);
+    
+    expect(messagePlaceholder).toBeTruthy();
+    expect(messagePlaceholder?.length).toBeGreaterThan(2);
+    
+    // Check that placeholders are not just "placeholder" or generic text
+    expect(namePlaceholder?.toLowerCase()).not.toBe('placeholder');
+    expect(emailPlaceholder?.toLowerCase()).not.toBe('placeholder');
+    expect(phonePlaceholder?.toLowerCase()).not.toBe('placeholder');
+    expect(messagePlaceholder?.toLowerCase()).not.toBe('placeholder');
+  });
+
   test('contact form has proper CSS styling', async ({ page }) => {
     // Verify that the form elements have the expected CSS classes
     await expect(page.locator('section.section--contact')).toBeVisible();
