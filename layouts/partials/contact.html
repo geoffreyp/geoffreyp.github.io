@@ -148,20 +148,20 @@
                     <form action="{{ $form_action }}" method="{{ $form_method }}" class="contact__form">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <input type="text" name="full_name" class="form-control" {{ $name_placeholder_attr | safeHTMLAttr }} placeholder="{{ $name_placeholder }}">
+                                <input type="text" name="full_name" class="form-control" {{ $name_placeholder_attr | safeHTMLAttr }}>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="email" name="email" class="form-control" {{ $email_placeholder_attr | safeHTMLAttr }} placeholder="{{ $email_placeholder }}">
+                                <input type="email" name="email" class="form-control" {{ $email_placeholder_attr | safeHTMLAttr }}>
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <input type="text" name="phone" class="form-control" {{ $phone_placeholder_attr | safeHTMLAttr }} placeholder="{{ $phone_placeholder }}">
+                                <input type="text" name="phone" class="form-control" {{ $phone_placeholder_attr | safeHTMLAttr }}>
                             </div>
                         </div>
                         <div class="row pt-4">
                             <div class="col-12">
-                                <textarea name="message" class="form-control" rows="{{ $message_rows }}" {{ $message_placeholder_attr | safeHTMLAttr }} placeholder="{{ $message_placeholder }}"></textarea>
+                                <textarea name="message" class="form-control" rows="{{ $message_rows }}" {{ $message_placeholder_attr | safeHTMLAttr }}></textarea>
                             </div>
                         </div>
                         <div class="row pt-4">
