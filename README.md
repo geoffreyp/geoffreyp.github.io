@@ -401,6 +401,15 @@ Have you used the theme on your website? Send a PR to add it to the list for ins
                 </a>
             </td>
 		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/arturitu12">
+                    <img src="https://avatars.githubusercontent.com/u/58103832?v=4" width="100;" alt="arturitu12"/>
+                    <br />
+                    <sub><b>arturitu12</b></sub>
+                </a>
+            </td>
+		</tr>
 	<tbody>
 </table>
 <!-- readme: collaborators,contributors,Arturitu12 -end -->
