@@ -281,7 +281,6 @@ footer_links .nav-item .nav-link::after {
     background-color: #181818;
   }
 
-
   @media (min-width: 992px) {
     .header .navbar .nav-item:hover .nav-link::after {
       background-color: #fff;
@@ -386,7 +385,7 @@ footer_links .nav-item .nav-link::after {
     color: #fff;
     border-color: #fff;
   }
-  .btn:focus-visible{
+  .btn:focus-visible {
     color: black;
     background-color: white;
     box-shadow: 0 0 0 0.2rem $primary;
