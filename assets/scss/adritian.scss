@@ -50,6 +50,10 @@ h6 {
   margin-bottom: 8px;
 }
 
+.btn:focus-visible{
+  box-shadow: 0 0 0 0.2rem $primary;
+}
+
 @media (min-width: 992px) {
   .h1,
   .h2,
