@@ -50,6 +50,10 @@ h6 {
   margin-bottom: 8px;
 }
 
+.btn:focus-visible{
+  box-shadow: 0 0 0 0.2rem $primary;
+}
+
 @media (min-width: 992px) {
   .h1,
   .h2,
@@ -281,7 +285,6 @@ footer_links .nav-item .nav-link::after {
     background-color: #181818;
   }
 
-
   @media (min-width: 992px) {
     .header .navbar .nav-item:hover .nav-link::after {
       background-color: #fff;
@@ -385,6 +388,11 @@ footer_links .nav-item .nav-link::after {
   .btn-frameless {
     color: #fff;
     border-color: #fff;
+  }
+  .btn:focus-visible {
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 0 0.2rem $primary;
   }
   .btn-frameless.disabled,
   .btn-frameless.focus,
