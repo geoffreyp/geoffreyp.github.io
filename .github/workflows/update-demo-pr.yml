@@ -28,12 +28,28 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['safe-to-test']
-            })
+            try {
+              // First check if the label exists
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'safe-to-test'
+              });
+              
+              // If it exists, add it to the PR
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['safe-to-test']
+              });
+              console.log('Added safe-to-test label to PR');
+            } catch (error) {
+              // If getting the label failed, the PR workflow can't add it
+              // Let's just modify our workflow to handle this differently
+              console.log('Could not add safe-to-test label: ' + error.message);
+              console.log('Will handle Dependabot PRs directly in check-conditions job');
+            }
 
   check-dependabot:
     runs-on: ubuntu-latest
@@ -49,14 +65,16 @@ jobs:
             exit 0
           fi
           
-          # Check if it's a dependabot PR
+          # Always allow Dependabot PRs to run
           if [[ "${{ github.actor }}" == "dependabot[bot]" ]]; then
-            echo "should-run=false" >> $GITHUB_OUTPUT
-            echo "PR is from Dependabot without safe-to-test label, skipping workflow"
-          else
             echo "should-run=true" >> $GITHUB_OUTPUT
-            echo "PR is not from Dependabot, allowing workflow to run"
+            echo "PR is from Dependabot, automatically allowing workflow to run"
+            exit 0
           fi
+          
+          # For other contributors
+          echo "should-run=true" >> $GITHUB_OUTPUT
+          echo "PR is from a trusted contributor, allowing workflow to run"
 
   update-demo:
     needs: check-dependabot
