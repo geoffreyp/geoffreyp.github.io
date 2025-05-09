@@ -33,3 +33,14 @@
 {{- if $vercelAnalytics }} 
 <script defer src="/_vercel/insights/script.js"></script>
 {{- end }}
+
+{{/* 
+  Page transition script is temporarily disabled for debugging
+*/}}
+{{- if not (isset .Site.Params "pageTransition") -}}
+  {{- /* Default behavior: load the script if not specified */ -}}
+  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+{{- else if .Site.Params.pageTransition.enabled -}}
+  {{- /* Load the script if explicitly enabled */ -}}
+  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+{{- end -}}

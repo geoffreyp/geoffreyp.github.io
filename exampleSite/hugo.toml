@@ -355,6 +355,10 @@ header = false
 mobileHeader = false
 ## by default we allow override AND automatic selection
 
+# Page transition settings
+[params.pageTransition]
+enabled = true  # Set to false to disable the page fade transition effect
+
 [params.blog]
 layout = "sidebar-right"     # options: default (no sidebar), sidebar, sidebar-right
 sidebarWidth = "25"    # percentage width of the sidebar
