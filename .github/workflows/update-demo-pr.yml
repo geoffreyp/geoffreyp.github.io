@@ -19,7 +19,22 @@ on:
   workflow_dispatch:
 
 jobs:
+  check-dependabot:
+    runs-on: ubuntu-latest
+    outputs:
+      is-dependabot: ${{ steps.is-dependabot.outputs.is-dependabot }}
+    steps:
+      - id: is-dependabot
+        run: |
+          if [[ "${{ github.actor }}" == "dependabot[bot]" ]]; then
+            echo "is-dependabot=true" >> $GITHUB_OUTPUT
+          else
+            echo "is-dependabot=false" >> $GITHUB_OUTPUT
+          fi
+
   update-demo:
+    needs: check-dependabot
+    if: needs.check-dependabot.outputs.is-dependabot != 'true'
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       PR_NUMBER: ${{ github.event.number }}
