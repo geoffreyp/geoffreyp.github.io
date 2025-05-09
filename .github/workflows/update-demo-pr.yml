@@ -19,22 +19,48 @@ on:
   workflow_dispatch:
 
 jobs:
+  label-dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Add safe-to-test label to Dependabot PRs
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['safe-to-test']
+            })
+
   check-dependabot:
     runs-on: ubuntu-latest
     outputs:
-      is-dependabot: ${{ steps.is-dependabot.outputs.is-dependabot }}
+      should-run: ${{ steps.check-conditions.outputs.should-run }}
     steps:
-      - id: is-dependabot
+      - id: check-conditions
         run: |
+          # Check if PR has safe-to-test label
+          if [[ "${{ contains(github.event.pull_request.labels.*.name, 'safe-to-test') }}" == "true" ]]; then
+            echo "should-run=true" >> $GITHUB_OUTPUT
+            echo "PR has safe-to-test label, allowing workflow to run"
+            exit 0
+          fi
+          
+          # Check if it's a dependabot PR
           if [[ "${{ github.actor }}" == "dependabot[bot]" ]]; then
-            echo "is-dependabot=true" >> $GITHUB_OUTPUT
+            echo "should-run=false" >> $GITHUB_OUTPUT
+            echo "PR is from Dependabot without safe-to-test label, skipping workflow"
           else
-            echo "is-dependabot=false" >> $GITHUB_OUTPUT
+            echo "should-run=true" >> $GITHUB_OUTPUT
+            echo "PR is not from Dependabot, allowing workflow to run"
           fi
 
   update-demo:
     needs: check-dependabot
-    if: needs.check-dependabot.outputs.is-dependabot != 'true'
+    if: needs.check-dependabot.outputs.should-run == 'true'
     env:
       SOURCE_BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       PR_NUMBER: ${{ github.event.number }}
