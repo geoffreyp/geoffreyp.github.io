@@ -7,7 +7,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 ## 🚀 Key Features
 
 - 🏎️ Fast, minimalistic code (no jQuery or other javascript frameworks)
-- 🖼️ Bootstrap v5 (`v5.3.5`) CSS framework with Scss customization
+- 🖼️ Bootstrap v5 (`v5.3.6`) CSS framework with Scss customization
 - 📚 Multi-language (i18n) support
 - 🛠️ Custom content types (work experience, education, projects/work showcase, testimonials, blog)
 - 🧰 Multiple shortcodes to customize your landing page in any way you want
