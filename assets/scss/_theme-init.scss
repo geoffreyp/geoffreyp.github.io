@@ -1,0 +1,19 @@
+/* Preload styles to prevent theme flash */
+:root {
+  &[data-bs-theme=dark] {
+    color-scheme: dark;
+    --bs-body-color: #fff;
+    --bs-body-bg: #181818;
+  }
+  
+  &[data-bs-theme=light] {
+    color-scheme: light;
+    --bs-body-color: #000;
+    --bs-body-bg: #fff;
+  }
+}
+
+/* Ensure smooth transition when switching themes */
+html {
+  transition: background-color 0.15s ease-in-out;
+} 
