@@ -6,18 +6,8 @@
 
 // Immediately set the theme before the page renders to prevent flash
 (function() {
-  const getStoredTheme = () => localStorage.getItem('theme')
-  const getPreferredTheme = () => {
-    const storedTheme = getStoredTheme()
-    if (storedTheme) {
-      return storedTheme
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-
-  // Apply the theme immediately to prevent flash
-  const theme = getPreferredTheme()
-  document.documentElement.setAttribute('data-bs-theme', theme)
+  const theme = getPreferredTheme();
+  setTheme(theme);
 })();
 
 // Main theme functionality
