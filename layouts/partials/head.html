@@ -96,16 +96,22 @@
 {{- if not .Site.Params.colorTheme.auto.disable }}
   {{/* Inline script to prevent theme flash */}}
   <script>
+    // Simple script to set initial theme to prevent flash
     (function() {
-      const getStoredTheme = () => localStorage.getItem('theme');
-      const getPreferredTheme = () => {
-        const storedTheme = getStoredTheme();
-        if (storedTheme) {
-          return storedTheme;
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        if (storedTheme === 'auto') {
+          const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme-auto', 'true');
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', storedTheme);
         }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      };
-      document.documentElement.setAttribute('data-bs-theme', getPreferredTheme());
+      } else {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme-auto', 'true');
+      }
     })();
   </script>
   {{- $colorModesScript := resources.Get "js/color-modes.js" }}

@@ -4,13 +4,6 @@
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  */
 
-// Immediately set the theme before the page renders to prevent flash
-(function() {
-  const theme = getPreferredTheme();
-  setTheme(theme);
-})();
-
-// Main theme functionality
 (() => {
     'use strict'
 
@@ -29,16 +22,27 @@
     }
   
     function setTheme(theme) {
+      // Apply a transition class before changing theme
+      document.documentElement.classList.add('theme-transition');
+      
+      // Set the new theme
       if (theme === 'auto') {
-        document.documentElement.setAttribute(
-          'data-bs-theme',
-          window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        )
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+        // Store the actual value for smoother transitions
+        document.documentElement.setAttribute('data-theme-auto', 'true');
       } else {
-        document.documentElement.setAttribute('data-bs-theme', theme)
+        document.documentElement.setAttribute('data-bs-theme', theme);
+        document.documentElement.removeAttribute('data-theme-auto');
       }
+      
+      // Remove the transition class after a short delay
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 300);
     }
   
+    // Apply theme immediately to prevent flash
     setTheme(getPreferredTheme())
   
     const showActiveTheme = (theme, focus = false) => {
@@ -70,10 +74,11 @@
       }
     }
   
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
       const storedTheme = getStoredTheme()
-      if (storedTheme !== 'light' && storedTheme !== 'dark') {
-        setTheme(getPreferredTheme())
+      if (storedTheme === 'auto' || (!storedTheme && document.documentElement.getAttribute('data-theme-auto') === 'true')) {
+        setTheme('auto')
       }
     })
   
