@@ -15,5 +15,24 @@
 
 /* Ensure smooth transition when switching themes */
 html {
-  transition: background-color 0.15s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Prevent flicker on elements that change color with theme */
+body, p, h1, h2, h3, h4, h5, h6, a {
+  transition: color 0.2s ease-in-out;
+}
+
+/* Applied during theme changes to ensure smooth transitions */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+  transition: all 0s !important;
+  -webkit-transition: all 0s !important;
+}
+
+/* Specific auto mode handling - prevents flash when system preference changes */
+html[data-theme-auto="true"] {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 } 
