@@ -2,6 +2,13 @@
 
 This documentation is meant to help you upgrade across versions, when potentially breaking changes are introduced.
 
+## v1.7.19
+
+Adding a new page transition effect.
+The new effect is applied to all pages, and is triggered when navigating through the site. It can be disabled in the `config.toml` file, under the `params.pageTransition` section.
+
+By default, the effect is enabled.
+
 ## v1.7.12
 
 __Introducing 🔎Search__

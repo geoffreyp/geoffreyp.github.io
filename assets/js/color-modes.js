@@ -4,6 +4,13 @@
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  */
 
+// Immediately set the theme before the page renders to prevent flash
+(function() {
+  const theme = getPreferredTheme();
+  setTheme(theme);
+})();
+
+// Main theme functionality
 (() => {
     'use strict'
 
