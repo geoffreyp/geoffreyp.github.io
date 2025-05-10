@@ -9,14 +9,25 @@ homepage = "https://github.com/zetxek/adritian-free-hugo-theme"
 demosite = "https://adritian-demo.vercel.app"
 min_version = "0.123.0"
 
-tags = ["responsive", "clean", "light", "personal", "bootstrap", "blog", "portfolio", "dark", "dark-mode", "light", "multilingual", "contact", "sass", "archive", "landing"]
-
-features = [
-    "widgets",
+tags = [
+    "responsive",
+    "clean",
+    "light",
+    "personal",
+    "bootstrap",
     "blog",
     "portfolio",
-    "dark-mode"
+    "dark",
+    "dark-mode",
+    "light",
+    "multilingual",
+    "contact",
+    "sass",
+    "archive",
+    "landing",
 ]
+
+features = ["widgets", "blog", "portfolio", "dark-mode"]
 
 [author]
 name = "Adrián Moreno Peña"
@@ -24,6 +35,6 @@ homepage = "https://www.adrianmoreno.info"
 
 # If porting an existing theme
 [original]
-    author = "Raditian"
-    homepage = "https://www.radity.com"
-    repo = "https://github.com/radity/raditian-free-hugo-theme"
+author = "Raditian"
+homepage = "https://www.radity.com"
+repo = "https://github.com/radity/raditian-free-hugo-theme"
