@@ -9,7 +9,7 @@ homepage = "https://github.com/zetxek/adritian-free-hugo-theme"
 demosite = "https://zetxek.github.io/adritian-demo/"
 min_version = "0.123.0"
 
-tags = ["responsive", "clean", "light", "personal", "bootstrap", "blog", "portfolio", "dark", "dark-mode", "light", "multilingual", "contact"]
+tags = ["responsive", "clean", "light", "personal", "bootstrap", "blog", "portfolio", "dark", "dark-mode", "light", "multilingual", "contact", "sass", "archive", "landing"]
 
 features = [
     "widgets",
