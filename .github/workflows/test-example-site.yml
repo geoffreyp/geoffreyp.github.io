@@ -22,7 +22,7 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.136.2
+      HUGO_VERSION: 0.147.2
     steps:
       - name: Install Hugo CLI
         run: |
@@ -67,7 +67,7 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.136.2
+      HUGO_VERSION: 0.147.2
     steps:
       - name: Install Hugo CLI
         run: |
@@ -128,7 +128,7 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.136.2
+      HUGO_VERSION: 0.147.2
     steps:
       - name: Install Hugo CLI
         run: |
