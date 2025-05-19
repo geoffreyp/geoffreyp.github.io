@@ -15,6 +15,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 💯 Perfect Lighthouse scores (Performance, Accessibility, SEO)
 - 🌚 Automatic dark/light theme switching, with manual override
 - 🖨️ Print-friendly CV template 
+- 🔧 Technical Skills showcase with visual skill bars and categories
 - ⚡ Vercel-ready with Analytics & Speed Insights support
 - 🖼️ Menus with icon support
 
@@ -136,6 +137,19 @@ You can check the repository [adritian-demo](https://github.com/zetxek/adritian-
 
 Following the initial setup instructions you will get a "ready-to-use" version of the site, with sample content for you to edit and customize.
 
+#### Technical Skills Showcase
+
+The theme includes a dedicated Technical Skills showcase section that allows you to visually display your skills with progress bars and categorization:
+
+- Create a `/skills` section in your site with customizable skill categories
+- Each skill can include name, proficiency level, years of experience, and description
+- Visual skill bars automatically use your theme's primary color
+- Full dark mode support with appropriate contrast
+- Responsive design for all device sizes
+- Accessible through navigation menu with multilingual support
+
+To use this feature, create a `skills/_index.md` file with structured front matter for your skill categories and individual skills. The theme will automatically generate a visually appealing skills showcase page.
+
 #### Shortcodes
 
 The theme has multiple shortcodes available for use in the content, so you can customize your homepage (or any other page) as you want. You can read about them in the [shortcodes page](https://adritian-demo.vercel.app/blog/shortcodes). Since version `v1.7.0,` this is the preferred way to set up your theme content and translations, as that's the most flexible system.
@@ -227,194 +241,4 @@ Error: error building site: TOCSS: failed to transform "/scss/adritian.scss" (te
 ```
 Make sure that you have the dependencies installed. Check the troubleshooting steps in the [following issue](https://github.com/zetxek/adritian-free-hugo-theme/issues/194#issuecomment-2634193132).
 
-- The site renders in a weird-looking way, or you miss content. Check that the content of your site's config file (`hugo.toml`) contains what is mentioned [in the guide](https://github.com/zetxek/adritian-free-hugo-theme?tab=readme-ov-file#as-a-hugo-module-recommended), especially the `mount` sections. 
-
-### Getting help
-
-The project is offered "as is", and it's a side project that powers my personal website. Support is given whenever life allows, and it's not offered in private e-mails: please use the public issue trackers in GitHub so others benefit from the conversation.
-
-- 🐛 For bugs or errors (either in the code or documentation): create an issue [create an issue](https://github.com/zetxek/adritian-free-hugo-theme/issues).
-- 💡 For ideas, discussion or open conversations: create a topic in the [discussion board for the theme](https://github.com/zetxek/adritian-free-hugo-theme/discussions).
-
-Are you confused about the difference? Discussions allow a more open chat about the topics, so they fit well unstructured conversations, such as brainstorming on ideas or requests on "how could I...?", where the issues fit better more straightforward threads ("this is broken and should work like this").
-
-## Showcase
-
-Have you used the theme on your website? Send a PR to add it to the list for inspiration! (Extra points if the repo is open source :-)
-
-- [demo site](https://adritian.vercel.app)
-- [adrian moreno's personal site](https://www.adrianmoreno.info)
-- https://davidcorto.es/ (https://github.com/dcorto/dcorto.github.io) *⭐ theme contributor*
-- https://cwb.dk/ (https://github.com/C0DK/C0DK.github.io)
-- https://shaun.gg/ (https://github.com/shauncampbell/shaun_dot_gg)
-- https://trevorpiltch.com/ (https://github.com/trevorpiltch/trevorpiltch.github.io)
-- https://vega-2135.github.io/ (https://github.com/vega-2135/vega-2135.github.io)
-- https://talinashrotriya.com/ (https://github.com/Talina06/talina06.github.io)
-- https://loseardes77.github.io/hugo-portfolio/ (https://github.com/LOSEARDES77/hugo-portfolio)
-- https://chandanpasunoori.com/ (https://github.com/chandanpasunoori/www.chandanpasunoori.com)
-- https://sathvikracha.com/ (https://github.com/sathvikracha/sathvikracha.com)
-- https://jlruan.me/ (https://github.com/jlruan/jlruan.github.io)
-- https://chenyugu.com/ (https://github.com/ChyenGCY/ChyenGCY.github.io)
-- https://benjaminkoltermann.me/ (https://github.com/p4ck3t0/websites)
-- https://kaiasaoka.github.io/ (https://KaiAsaoka/KaiAsaoka.github.io.old)
-- https://guillaumebabik.github.io/ (https://github.com/guillaumebabik/guillaumebabik.github.io)
-- https://oldgo.fael.my.id/danielweb/ (https://github.com/burnblazter/danielweb)
-- https://www.davidfreitag.com/ (https://github.com/dkfreitag/davidfreitag-com)
-
-➕ add your website here [by editing the theme README](https://github.com/zetxek/adritian-free-hugo-theme/edit/main/README.md).
-🔎 find other websites using the theme [searching in github](https://github.com/search?q=%22theme+%3D+%5C%22adritian-free-hugo-theme%5C%22%22&type=code).
-
-## Contributors and collaborators ![GitHub contributors](https://img.shields.io/github/contributors/zetxek/adritian-free-hugo-theme)
-
-<!-- readme: collaborators,contributors,Arturitu12 -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/zetxek">
-                    <img src="https://avatars.githubusercontent.com/u/240085?v=4" width="100;" alt="zetxek"/>
-                    <br />
-                    <sub><b>Adrián Moreno Peña</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/mnordhaus">
-                    <img src="https://avatars.githubusercontent.com/u/1510804?v=4" width="100;" alt="mnordhaus"/>
-                    <br />
-                    <sub><b>Markus Nordhaus</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/dcorto">
-                    <img src="https://avatars.githubusercontent.com/u/5486937?v=4" width="100;" alt="dcorto"/>
-                    <br />
-                    <sub><b>D. Corto</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/selmanceker">
-                    <img src="https://avatars.githubusercontent.com/u/32300911?v=4" width="100;" alt="selmanceker"/>
-                    <br />
-                    <sub><b>selmanceker</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/AtocM">
-                    <img src="https://avatars.githubusercontent.com/u/8729791?v=4" width="100;" alt="AtocM"/>
-                    <br />
-                    <sub><b>Murat Öcal</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/n0rthdev">
-                    <img src="https://avatars.githubusercontent.com/u/7472943?v=4" width="100;" alt="n0rthdev"/>
-                    <br />
-                    <sub><b>Martin Weber</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/fhinok">
-                    <img src="https://avatars.githubusercontent.com/u/22161574?v=4" width="100;" alt="fhinok"/>
-                    <br />
-                    <sub><b>Sämi Will</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/martinsam">
-                    <img src="https://avatars.githubusercontent.com/u/34697?v=4" width="100;" alt="martinsam"/>
-                    <br />
-                    <sub><b>Samuel Martin</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/martin-weber-dynatrace">
-                    <img src="https://avatars.githubusercontent.com/u/205166030?v=4" width="100;" alt="martin-weber-dynatrace"/>
-                    <br />
-                    <sub><b>martin-weber-dynatrace</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/raulalmeidatarazona">
-                    <img src="https://avatars.githubusercontent.com/u/61455658?v=4" width="100;" alt="raulalmeidatarazona"/>
-                    <br />
-                    <sub><b>Raul Almeida</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/oaksakal">
-                    <img src="https://avatars.githubusercontent.com/u/453038?v=4" width="100;" alt="oaksakal"/>
-                    <br />
-                    <sub><b>Ozgur Aksakal</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/Ceesaxp">
-                    <img src="https://avatars.githubusercontent.com/u/67934?v=4" width="100;" alt="Ceesaxp"/>
-                    <br />
-                    <sub><b>Andrei Popov</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/brandynmauro">
-                    <img src="https://avatars.githubusercontent.com/u/34288491?v=4" width="100;" alt="brandynmauro"/>
-                    <br />
-                    <sub><b>Brandyn</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/ericreid">
-                    <img src="https://avatars.githubusercontent.com/u/16538?v=4" width="100;" alt="ericreid"/>
-                    <br />
-                    <sub><b>Eric Reid</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/BangKarlsen">
-                    <img src="https://avatars.githubusercontent.com/u/1835444?v=4" width="100;" alt="BangKarlsen"/>
-                    <br />
-                    <sub><b>Jesper Højgaard</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/LeahWilleke">
-                    <img src="https://avatars.githubusercontent.com/u/60404112?v=4" width="100;" alt="LeahWilleke"/>
-                    <br />
-                    <sub><b>LeahWilleke</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/lukasulc">
-                    <img src="https://avatars.githubusercontent.com/u/68392977?v=4" width="100;" alt="lukasulc"/>
-                    <br />
-                    <sub><b>Luka Šulc</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/evolutionise">
-                    <img src="https://avatars.githubusercontent.com/u/6320469?v=4" width="100;" alt="evolutionise"/>
-                    <br />
-                    <sub><b>Alix</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/arturitu12">
-                    <img src="https://avatars.githubusercontent.com/u/58103832?v=4" width="100;" alt="arturitu12"/>
-                    <br />
-                    <sub><b>arturitu12</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
-<!-- readme: collaborators,contributors,Arturitu12 -end -->
-
-## License
-
-- Copyright 2020 Radity (https://radity.com/), 2022 Adrián Moreno Peña (https://www.adrianmoreno.info)
-- Licensed under MIT (https://github.com/zetxek/adritian-free-hugo-theme/blob/master/LICENSE)
+- The site renders in a weird-looking way, or you miss content. Check that the co
