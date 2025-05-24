@@ -98,7 +98,7 @@ Reference your new icons in your content, as for the [pre-provided icons](/blog/
 <!-- In a markdown file -->
 { {< link icon="icon-your-new-icon-name" url="https://example.com" >} }
 ```
-Note: for the markdown file, no spaces between the curly braces - addded so it gets displayed here propertly.
+Note: for the markdown file, no spaces between the curly braces - added so it gets displayed here properly.
 
 ## Troubleshooting
 
