@@ -45,10 +45,14 @@
 {{/* 
   Page transition script is temporarily disabled for debugging
 */}}
+{{- $pageTransitionScript := resources.Get "js/page-transition.js" }}
+{{- if hugo.IsProduction }}
+  {{- $pageTransitionScript = $pageTransitionScript | resources.Minify | resources.Fingerprint }}
+{{- end }}
 {{- if not (isset .Site.Params "pageTransition") -}}
   {{- /* Default behavior: load the script if not specified */ -}}
-  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+  <script defer src="{{ $pageTransitionScript.Permalink }}"></script>
 {{- else if .Site.Params.pageTransition.enabled -}}
   {{- /* Load the script if explicitly enabled */ -}}
-  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+  <script defer src="{{ $pageTransitionScript.Permalink }}"></script>
 {{- end -}}
