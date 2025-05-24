@@ -57,12 +57,11 @@ draft = false
     intro_title="Intro (intro_title)"
     intro_description="Description (intro_description).<br>You can use HTML,with <strong>strong</strong> formatting, or lists <ul><li>one</li><li>two</li></ul>" 
     button1_url="https://example.com"
-    button1_text="Visit Example"
+    button1_text="(1) Visit Example"
     button1_icon="icon-globe"
-    button2_text="All experience"
-    button2_url="/experience"
-    button3_text="Button #3"
-    button3_url="/experience"
+    button2_text="(2) Skills"
+    button2_url="/skills"
+    hideViewAll="false"
 >}}
 
 {{< experience-list
