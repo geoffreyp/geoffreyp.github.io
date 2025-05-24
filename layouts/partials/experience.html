@@ -2,11 +2,17 @@
 {{ $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") }}
 
 {{/*
-  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used.
+  hideViewAll: Optional argument to hide the "View All" button. Set to "true" to hide the button. */}}
 {{ $sectionId := "experience-single" }}
+{{ $showViewAll := true }}
 {{ if $isShortcode }}
   {{ with .Get "sectionId" }}
     {{ $sectionId = . }}
+  {{ end }}
+  {{ $hideViewAllParam := .Get "hideViewAll" }}
+  {{ if eq $hideViewAllParam "true" }}
+    {{ $showViewAll = false }}
   {{ end }}
 {{ end }}
 
@@ -68,7 +74,7 @@
       </div>
       {{ end }}
 
-      {{ if gt $xpCount $totalCount }}
+      {{ if and (gt $xpCount $totalCount) $showViewAll }}
       <div class="all-experience-container">
         {{ $xpExtra := sub $xpCount $totalCount }}
         <em>And {{ $xpExtra }} more</em><br />
