@@ -1,16 +1,24 @@
+<!-- Optimized lazy loading initialization -->
 <script>
   window.addEventListener("load", function() {
-    try{
-      var observer = window.lozad(".lozad", {
-        rootMargin: window.innerHeight / 2 + "px 0px",
-        threshold: 0.01
-      }); // lazy loads elements with default selector as '.lozad'
-      observer.observe();
-    } catch(e) {
-      console.error(e);
+    if (typeof lozad !== 'undefined') {
+      try {
+        var observer = window.lozad(".lozad", {
+          rootMargin: window.innerHeight / 2 + "px 0px",
+          threshold: 0.01,
+          loaded: function(el) {
+            el.setAttribute('data-loaded', 'true');
+          }
+        });
+        observer.observe();
+      } catch(e) {
+        console.error('Lozad initialization error:', e);
+      }
     }
   });
 </script>
+
+<!-- Non-critical scripts loaded with defer for better performance -->
 <script defer src='{{ "js/rad-animations.js" | absURL }}'></script>
 <script defer src='{{ "js/library/smooth-scroll.polyfills.min.js" | absURL }}'></script>
 <script defer src='{{ "js/sticky-header.js" | absURL }}'></script>
@@ -37,10 +45,14 @@
 {{/* 
   Page transition script is temporarily disabled for debugging
 */}}
+{{- $pageTransitionScript := resources.Get "js/page-transition.js" }}
+{{- if hugo.IsProduction }}
+  {{- $pageTransitionScript = $pageTransitionScript | resources.Minify | resources.Fingerprint }}
+{{- end }}
 {{- if not (isset .Site.Params "pageTransition") -}}
   {{- /* Default behavior: load the script if not specified */ -}}
-  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+  <script defer src="{{ $pageTransitionScript.Permalink }}"></script>
 {{- else if .Site.Params.pageTransition.enabled -}}
   {{- /* Load the script if explicitly enabled */ -}}
-  <script defer src='{{ "js/page-transition.js" | absURL }}'></script>
+  <script defer src="{{ $pageTransitionScript.Permalink }}"></script>
 {{- end -}}

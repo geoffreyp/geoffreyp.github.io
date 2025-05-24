@@ -4,6 +4,37 @@
     extended = true
     min = "0.92.0"
 
+# Performance optimizations
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    lineNos = false
+    style = "github"
+
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "Smart"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepDefaultAttrVals = true
+      keepWhitespace = false
+    [minify.tdewolff.css]
+      precision = 0
+    [minify.tdewolff.js]
+      precision = 0
+
 
 # Exclude content with type "footer" from being rendered as HTML pages
 [outputFormats]

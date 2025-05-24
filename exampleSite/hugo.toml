@@ -2,9 +2,6 @@ baseURL = "https://adritian-demo.vercel.app/"
 title = "Adritian Demo"
 languageCode = "en"
 
- 
-[markup.goldmark.renderer]
-unsafe = true
 
 # Exclude footer section from generating list pages (index.html and index.xml)
 [outputs]
@@ -384,3 +381,35 @@ featured_sort_by_date = false
 
 [params.experience]
 showJobCard = true # Set to false to hide the job card
+
+
+# Performance optimizations
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    lineNos = false
+    style = "github"
+
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "Smart"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepDefaultAttrVals = true
+      keepWhitespace = false
+    [minify.tdewolff.css]
+      precision = 0
+    [minify.tdewolff.js]
+      precision = 0

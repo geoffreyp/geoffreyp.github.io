@@ -324,8 +324,10 @@
     }
 }
 
+input.form-control,
 input[type="text"],
 input[type="email"],
+input[type="tel"],
 textarea,
 textarea.form-control {
     padding: 10px 0;

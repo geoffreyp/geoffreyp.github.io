@@ -8,17 +8,16 @@
 {{- end }}
 {{- if .Site.Params.analytics.googleAnalytics.enabled }}
   {{- if .Site.Params.analytics.googleAnalytics.code }}
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - moved to bottom for non-blocking -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ .Site.Params.analytics.googleAnalytics.code}}');
+    </script>
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.googleAnalytics.code }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{ .Site.Params.analytics.googleAnalytics.code}} ');
-</script>
   {{- end }}
 {{- end }}
 
@@ -36,7 +35,9 @@
 {{- $critical := resources.Get "css/critical.css" | resources.Minify }}
 <style data-generator="critical-css">
 {{- $critical.Content | safeCSS }}
-</style> {{- $cssResources := slice }}
+</style>
+
+{{- $cssResources := slice }}
 {{- range .Site.Params.plugins.css }}
   {{- if findRE "^http" .URL }}
     <link rel="stylesheet" href="{{ .URL | absURL }}" />
@@ -133,6 +134,8 @@
 {{- else }}
   <!-- no google tag displayed -->
 {{- end }}
-<script src="{{ "js/library/lozad.min.js" | absURL }}"></script>
+<!-- Preload lozad for faster image loading -->
+<link rel="preload" href="{{ "js/library/lozad.min.js" | absURL }}" as="script">
+<script async src="{{ "js/library/lozad.min.js" | absURL }}"></script>
 
 {{ template "_internal/opengraph.html" . }}
