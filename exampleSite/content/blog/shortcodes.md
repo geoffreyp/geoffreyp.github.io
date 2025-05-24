@@ -129,6 +129,8 @@ The shortcodes can be customized with different arguments:
 
     - `imgScale` - Specifies the scale used for the image (for example, `0.5` if the high resolution image is double the size of the smaller one) This is only considered if neither imgWidth nor imgHeight is used.
 
+    - `text_align` - Controls the vertical alignment of the text content relative to the image. Accepts "center" (default), "top", or "bottom".
+
     - Primary Button Arguments
       - `button1_enable` - Boolean value to show or hide the primary button. Defaults to the value from site data.
 
