@@ -54,7 +54,7 @@ function optimizePerformance() {
   minifyOutput = true
   [minify.tdewolff]
     [minify.tdewolff.html]
-      keepDefaultAttrVals = false
+      keepDefaultAttrVals = true
       keepWhitespace = false
     [minify.tdewolff.css]
       precision = 0

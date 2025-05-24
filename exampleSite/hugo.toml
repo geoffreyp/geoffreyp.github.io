@@ -407,7 +407,7 @@ showJobCard = true # Set to false to hide the job card
   minifyOutput = true
   [minify.tdewolff]
     [minify.tdewolff.html]
-      keepDefaultAttrVals = false
+      keepDefaultAttrVals = true
       keepWhitespace = false
     [minify.tdewolff.css]
       precision = 0
