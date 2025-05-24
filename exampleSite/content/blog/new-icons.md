@@ -10,6 +10,8 @@ weight = 100
 
 # How to Add Custom Icons to the Adritian Theme
 
+{{< toc >}}
+
 This guide will walk you through adding custom icons to your Adritian Hugo theme. Whether you need new social media icons, brand logos, or custom symbols, follow these steps to integrate them seamlessly.
 
 ## Prerequisites
@@ -44,6 +46,8 @@ To add new icons, you'll need to:
 4. Fontello will load your current icon set
 
 ## Step 3: Add New Icons
+
+![Adding new icons in Fontello](/img/blog/new-icon-3.png)
 
 1. **Browse available icons** in Fontello's library
 2. **Click on icons** you want to add (they'll be highlighted)
@@ -91,9 +95,10 @@ Reference your new icons in your content, as for the [pre-provided icons](/blog/
 <i class="icon-your-new-icon-name"></i>
 <!-- In markdown with HTML -->
 <i class="icon-your-new-icon-name"></i> Custom Icon Text
-`<!-- In a markdown file -->
-{{< link icon="icon-your-new-icon-name" url="https://example.com" >}}
+<!-- In a markdown file -->
+{ {< link icon="icon-your-new-icon-name" url="https://example.com" >} }
 ```
+Note: for the markdown file, no spaces between the curly braces - addded so it gets displayed here propertly.
 
 ## Troubleshooting
 
@@ -121,12 +126,11 @@ Reference your new icons in your content, as for the [pre-provided icons](/blog/
 
 ## Additional Resources
 
-- [Fontello Documentation](https://fontello.bableck.dev/)
-- [Hugo Documentation](https://gohugo.io/documentation/)
+- [Fontello Documentation](https://github.com/fontello/fontello/wiki/Help)
 - [Adritian Theme Icons](/blog/icons/) - View all available icons
 
 ---
 
-**Need help?** If you encounter issues following this guide, check the [theme's GitHub repository](https://github.com/zetxek/adritian-free-hugo-theme) for support and examples.
+**Need help?** If you encounter issues following this guide, check the [theme's GitHub repository](https://github.com/zetxek/adritian-free-hugo-theme) for support and examples. If you still need help, you can open a new issue in the [theme's GitHub repository](https://github.com/zetxek/adritian-free-hugo-theme/issues).
 
 

@@ -1,0 +1,14 @@
+{{ $class := .Get "class" | default "table-of-contents" }}
+{{ $heading := .Get "heading" | default "Table of Contents" }}
+{{ $showHeading := .Get "showHeading" | default true }}
+
+{{ if .Page.TableOfContents }}
+<div class="{{ $class }}">
+  {{ if $showHeading }}
+    <h2 class="toc-heading">{{ $heading }}</h2>
+  {{ end }}
+  <div class="toc-content">
+    {{ .Page.TableOfContents }}
+  </div>
+</div>
+{{ end }} 
