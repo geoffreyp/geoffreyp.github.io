@@ -36,6 +36,17 @@
 {{ end }}
 
 {{/* ---------------------------------------------------------------------------
+     TEXT ALIGNMENT
+     --------------------------------------------------------------------------- */}}
+{{- $textAlign := "center" -}}
+
+{{- if $isShortcode }}
+  {{- $textAlign = .Get "text_align" | default "center" -}}
+{{ else }}
+  {{- $textAlign = .Site.Data.homepage.about.text_align | default "center" -}}
+{{ end }}
+
+{{/* ---------------------------------------------------------------------------
      BUTTON
      --------------------------------------------------------------------------- */}}
 {{- $btnURL := "" -}}
@@ -65,7 +76,7 @@
       <div class="about__profile-picture col-12 col-md-6">
         {{ partial "lazypicture" (dict "src" $imgSrc "width" $imgWidth "height" $imgHeight "scale" $imgScale "class" "image-left-overflow")}}
       </div>
-      <div class="col-12 col-md-6 my-auto my-auto">
+      <div class="col-12 col-md-6{{ if eq $textAlign "center" }} my-auto{{ else if eq $textAlign "top" }} align-self-start{{ else if eq $textAlign "bottom" }} align-self-end{{ end }}">
         <h1>{{ $title }}</h1>
         <div class="about-me content lead">
           {{ $content }}
