@@ -5,7 +5,7 @@ draft = false
 featured = true
 weight = 100
 [images]
-  featured_image= '/img/blog/icons.png'
+  featured_image= '/img/blog/new-icon-3.png'
 +++
 
 # How to Add Custom Icons to the Adritian Theme
