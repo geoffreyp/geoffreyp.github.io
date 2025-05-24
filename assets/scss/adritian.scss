@@ -411,8 +411,11 @@ footer_links .nav-item .nav-link::after {
     border-color: #fff;
     color: #181818;
   }
+  input.form-control,
   input[type="text"],
   input[type="email"],
+  input[type="tel"],
+
   textarea {
     color: #fff;
     border-bottom: 1px solid #fff;
