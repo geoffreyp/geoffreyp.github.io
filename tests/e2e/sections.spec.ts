@@ -50,7 +50,7 @@ test.describe('Hugo sections functionality', () => {
     await page.goto(BASE_URL);
     
     // Navigate to articles section
-    await page.click('a[href="/articles"]');
+    await page.click('a[href="/articles/"]');
     await expect(page).toHaveURL(`${BASE_URL}/articles/`);
     await expect(page.locator('h1')).toContainText('Articles');
     
