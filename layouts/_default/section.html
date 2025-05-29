@@ -20,7 +20,7 @@
                 <article class="post mb-4">
                   <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                   {{ if .Summary }}
-                    <p>{{ .Summary }}</p>
+                    <div>{{ .Summary | safeHTML }}</div>
                   {{ end }}
                   <div class="post-meta">
                     <small class="text-muted">{{ .Date.Format "January 2, 2006" }}</small>
