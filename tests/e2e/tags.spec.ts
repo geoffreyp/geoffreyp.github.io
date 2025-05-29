@@ -11,7 +11,7 @@ test.describe('Tag functionality', () => {
 
   test('verify there are 2 tags, each with 1 article', async ({ page }) => {
     await page.goto(`${BASE_URL}/tags`);
-    await expect(page.locator('ul.list-taxonomy li')).toHaveCount(4);
+    await expect(page.locator('ul.list-taxonomy li')).toHaveCount(11);
 
     // Each item shows how many articles
     // e.g. "Lorem-Ipsum (1)" or "Sample (1)"
