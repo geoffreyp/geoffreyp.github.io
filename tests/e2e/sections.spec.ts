@@ -34,7 +34,8 @@ test.describe('Hugo sections functionality', () => {
     await expect(page.getByText('Latest news updates').first()).toBeVisible();
 
     // Check that news posts are listed
-    await expect(page.locator('article.post')).toHaveCountGreaterThan(0);
+    const newsCount = await page.locator('article.post').count();
+    expect(newsCount).toBeGreaterThan(0);
   });
 
   test('individual news pages load correctly', async ({ page }) => {
