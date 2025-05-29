@@ -14,7 +14,6 @@
         
         {{ if .Pages }}
           <div class="section-posts mt-5">
-            <h2>{{ .Title }}</h2>
             <div class="posts-list">
               {{ range .Pages.ByDate.Reverse }}
                 <article class="post mb-4">
