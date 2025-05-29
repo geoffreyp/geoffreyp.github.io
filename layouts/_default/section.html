@@ -15,7 +15,8 @@
         {{ if .Pages }}
           <div class="section-posts mt-5">
             <div class="posts-list">
-              {{ range .Pages.ByDate.Reverse }}
+              {{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+              {{ range $paginator.Pages }}
                 <article class="post mb-4">
                   <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                   {{ if .Summary }}
