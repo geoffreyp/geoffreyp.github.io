@@ -13,7 +13,8 @@ test.describe('Hugo sections functionality', () => {
     await expect(page.getByText('Welcome to the articles section')).toBeVisible();
     
     // Check that article posts are listed
-    await expect(page.locator('article.post')).toHaveCountGreaterThan(0);
+    const articleCount = await page.locator('article.post').count();
+    expect(articleCount).toBeGreaterThan(0);
   });
 
   test('individual article pages load correctly', async ({ page }) => {
