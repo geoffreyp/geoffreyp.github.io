@@ -26,9 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.name, 'safe to test')
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source repository (theme)
+        uses: actions/checkout@v4
+        with:
+          path: theme-source
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
+      
+      - name: Checkout demo repository
+        uses: actions/checkout@v4
         with: 
           repository: zetxek/adritian-demo
+          path: demo-repo
           token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
       
       - name: Dump github context
@@ -39,8 +48,8 @@ jobs:
 
       - name: Send pull-request
         run: |
-          LATEST_TAG=$(git describe --tags --always)  
-          LATEST_COMMIT=$(git rev-parse HEAD)
+          LATEST_TAG=$(cd theme-source && git describe --tags --always)  
+          LATEST_COMMIT=$(cd theme-source && git rev-parse HEAD)
           SOURCE_REPOSITORY="zetxek/adritian-free-hugo-theme"
           REPOSITORY="zetxek/adritian-demo"
           REPO_NAME=${{ github.event.pull_request.head.repo.full_name }}
@@ -83,8 +92,8 @@ jobs:
           echo 'Updating theme module: '"$COMMIT_MSG_THEME"
           git commit -am "$COMMIT_MSG_THEME" && git push --force || echo "No changes to theme"
 
-          # Copy content
-          cp themes/adritian-free-hugo-theme/exampleSite/hugo.toml hugo.toml
+          # Copy content from the checked-out theme source
+          cp ../../theme-source/exampleSite/hugo.toml hugo.toml
           # Update URL
           sed -i -e "s/\"https\:\/\/www\.adrianmoreno\.info\"/\"https\:\/\/adritian-demo\.vercel\.app\/\"/g" hugo.toml
 
