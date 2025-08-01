@@ -12,7 +12,7 @@
     "test:e2e:debug": "playwright test --debug"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.1",
+    "@playwright/test": "^1.54.2",
     "@types/node": "^24.1.0",
     "@zetxek/adritian-theme-helper": "^1.0.5",
     "autoprefixer": "^10.4.17",
