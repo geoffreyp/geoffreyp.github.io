@@ -129,7 +129,14 @@ The shortcodes can be customized with different arguments:
 
     - `imgScale` - Specifies the scale used for the image (for example, `0.5` if the high resolution image is double the size of the smaller one) This is only considered if neither imgWidth nor imgHeight is used.
 
-    - `text_align` - Controls the vertical alignment of the text content relative to the image. Accepts "center" (default), "top", or "bottom".
+    - `v_align` - Controls the vertical alignment of the text content relative to the image. Accepts "center" (default), "top", or "bottom".
+    - `text_align` - **Deprecated**: Use `v_align` instead. Maintains backwards compatibility.
+    - `h_align` - Controls the horizontal alignment of the text content. Accepts "left" (default), "center", or "right".
+    
+    **Alignment Examples**:
+    - `v_align="center" h_align="left"` - Text vertically centered, left-aligned (default)
+    - `v_align="top" h_align="center"` - Text at top, horizontally centered
+    - `v_align="bottom" h_align="right"` - Text at bottom, right-aligned
 
     - Primary Button Arguments
       - `button1_enable` - Boolean value to show or hide the primary button. Defaults to the value from site data.

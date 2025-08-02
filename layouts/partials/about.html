@@ -36,14 +36,19 @@
 {{ end }}
 
 {{/* ---------------------------------------------------------------------------
-     TEXT ALIGNMENT
+     ALIGNMENT
      --------------------------------------------------------------------------- */}}
-{{- $textAlign := "center" -}}
+{{- $vAlign := "center" -}}
+{{- $hAlign := "left" -}}
 
 {{- if $isShortcode }}
-  {{- $textAlign = .Get "text_align" | default "center" -}}
+  {{- /* Support both v_align and text_align for backwards compatibility */ -}}
+  {{- $vAlign = .Get "v_align" | default (.Get "text_align") | default "center" -}}
+  {{- $hAlign = .Get "h_align" | default "left" -}}
 {{ else }}
-  {{- $textAlign = .Site.Data.homepage.about.text_align | default "center" -}}
+  {{- /* Support both v_align and text_align for backwards compatibility */ -}}
+  {{- $vAlign = .Site.Data.homepage.about.v_align | default .Site.Data.homepage.about.text_align | default "center" -}}
+  {{- $hAlign = .Site.Data.homepage.about.h_align | default "left" -}}
 {{ end }}
 
 {{/* ---------------------------------------------------------------------------
@@ -76,7 +81,7 @@
       <div class="about__profile-picture col-12 col-md-6">
         {{ partial "lazypicture" (dict "src" $imgSrc "width" $imgWidth "height" $imgHeight "scale" $imgScale "class" "image-left-overflow")}}
       </div>
-      <div class="col-12 col-md-6{{ if eq $textAlign "center" }} my-auto{{ else if eq $textAlign "top" }} align-self-start{{ else if eq $textAlign "bottom" }} align-self-end{{ end }}">
+      <div class="col-12 col-md-6{{ if eq $vAlign "center" }} my-auto{{ else if eq $vAlign "top" }} align-self-start{{ else if eq $vAlign "bottom" }} align-self-end{{ end }}{{ if eq $hAlign "center" }} text-center{{ else if eq $hAlign "right" }} text-end{{ end }}">
         <h1>{{ $title }}</h1>
         <div class="about-me content lead">
           {{ $content }}
