@@ -140,7 +140,7 @@ URL = '/skills'
 weight = 3
 [[languages.en.menus.header]]
 name = 'Portfolio'
-URL = '#portfolio'
+URL = '#client-and-work-section'
 weight = 4
 #  [[languages.en.menus.header]]
 #  name = "Experience"
@@ -244,7 +244,7 @@ weight = 2
 
 [[languages.es.menus.footer]]
 name = "Portfolio"
-URL = "/es/#portfolio"
+URL = "/es/#client-and-work-section"
 weight = 3
 
 [[languages.es.menus.footer]]
@@ -275,7 +275,7 @@ URL = '/fr/skills'
 weight = 3
 [[languages.fr.menus.header]]
 name = 'Portfolio'
-URL = '#portfolio'
+URL = '#client-and-work-section'
 weight = 4
 #  [[languages.fr.menus.header]]
 #  name = "Experience"
@@ -310,7 +310,7 @@ weight = 2
 
 [[languages.fr.menus.footer]]
 name = "Portfolio"
-URL = "#portfolio"
+URL = "#client-and-work-section"
 weight = 3
 
 [[languages.fr.menus.footer]]
