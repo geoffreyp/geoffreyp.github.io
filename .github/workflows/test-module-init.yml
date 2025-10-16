@@ -204,45 +204,37 @@ jobs:
                 echo '  "scores": {' >> current-scores.json
                 
                 # The results.json from lighthouse-check-action contains an array of results
-                # Index 0 is typically mobile, index 1 is desktop (when device: 'all')
+                # Scores are already 0-100, not 0-1
                 num_results=$(jq 'length' "$results_file")
                 echo "Number of lighthouse results: $num_results"
                 
-                if [ "$num_results" -ge 1 ]; then
-                  # First result (mobile)
-                  perf=$(jq -r '.[0].scores.performance * 100 | floor // 0' "$results_file")
-                  a11y=$(jq -r '.[0].scores.accessibility * 100 | floor // 0' "$results_file")
-                  bp=$(jq -r '.[0].scores["best-practices"] * 100 | floor // 0' "$results_file")
-                  seo=$(jq -r '.[0].scores.seo * 100 | floor // 0' "$results_file")
-                  
-                  echo "Mobile scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
-                  
-                  echo '    "mobile": {' >> current-scores.json
-                  echo "      \"performance\": $perf," >> current-scores.json
-                  echo "      \"accessibility\": $a11y," >> current-scores.json
-                  echo "      \"best-practices\": $bp," >> current-scores.json
-                  echo "      \"seo\": $seo" >> current-scores.json
-                  echo -n "    }" >> current-scores.json
-                fi
+                first_device=true
                 
-                if [ "$num_results" -ge 2 ]; then
-                  echo "," >> current-scores.json
+                # Loop through results and organize by emulatedFormFactor
+                for i in $(seq 0 $((num_results - 1))); do
+                  form_factor=$(jq -r ".[$i].emulatedFormFactor // \"unknown\"" "$results_file")
                   
-                  # Second result (desktop)
-                  perf=$(jq -r '.[1].scores.performance * 100 | floor // 0' "$results_file")
-                  a11y=$(jq -r '.[1].scores.accessibility * 100 | floor // 0' "$results_file")
-                  bp=$(jq -r '.[1].scores["best-practices"] * 100 | floor // 0' "$results_file")
-                  seo=$(jq -r '.[1].scores.seo * 100 | floor // 0' "$results_file")
+                  perf=$(jq -r ".[$i].scores.performance // 0" "$results_file")
+                  a11y=$(jq -r ".[$i].scores.accessibility // 0" "$results_file")
+                  bp=$(jq -r ".[$i].scores.bestPractices // 0" "$results_file")
+                  seo=$(jq -r ".[$i].scores.seo // 0" "$results_file")
                   
-                  echo "Desktop scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
+                  echo "$form_factor scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
                   
-                  echo '    "desktop": {' >> current-scores.json
-                  echo "      \"performance\": $perf," >> current-scores.json
-                  echo "      \"accessibility\": $a11y," >> current-scores.json
-                  echo "      \"best-practices\": $bp," >> current-scores.json
-                  echo "      \"seo\": $seo" >> current-scores.json
-                  echo -n "    }" >> current-scores.json
-                fi
+                  if [ "$form_factor" = "mobile" ] || [ "$form_factor" = "desktop" ]; then
+                    if [ "$first_device" = false ]; then
+                      echo "," >> current-scores.json
+                    fi
+                    first_device=false
+                    
+                    echo "    \"$form_factor\": {" >> current-scores.json
+                    echo "      \"performance\": $perf," >> current-scores.json
+                    echo "      \"accessibility\": $a11y," >> current-scores.json
+                    echo "      \"best-practices\": $bp," >> current-scores.json
+                    echo "      \"seo\": $seo" >> current-scores.json
+                    echo -n "    }" >> current-scores.json
+                  fi
+                done
                 
                 echo "" >> current-scores.json
                 echo "  }" >> current-scores.json
