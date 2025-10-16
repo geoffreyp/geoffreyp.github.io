@@ -177,22 +177,44 @@ jobs:
                 echo "**Test Results for commit:** \`${{ github.sha }}\`" >> comment.md
                 echo "" >> comment.md
                 
-                # Parse and format the results from Lighthouse outputs
-                if [ -f "${{ github.workspace }}/tmp/artifacts/results.json" ]; then
-                  echo "### Desktop Results" >> comment.md
-                  echo "" >> comment.md
-                  echo "| Category | Score |" >> comment.md
-                  echo "|----------|-------|" >> comment.md
-                  
-                  # You can customize this to parse the actual JSON results
-                  echo "| Performance | ⚡ See detailed report below |" >> comment.md
-                  echo "| Accessibility | 🎯 See detailed report below |" >> comment.md
-                  echo "| Best Practices | ✅ See detailed report below |" >> comment.md
-                  echo "| SEO | 🔍 See detailed report below |" >> comment.md
-                  echo "" >> comment.md
-                fi
+                # Function to get score emoji
+                get_emoji() {
+                  score=$1
+                  if (( $(echo "$score >= 90" | bc -l) )); then
+                    echo "🟢"
+                  elif (( $(echo "$score >= 50" | bc -l) )); then
+                    echo "🟠"
+                  else
+                    echo "🔴"
+                  fi
+                }
                 
-                echo "📊 **Full reports have been uploaded as artifacts.**" >> comment.md
+                # Parse and format the results from Lighthouse outputs
+                for device in "mobile" "desktop"; do
+                  # Look for lighthouse report files
+                  report_file=$(find "${{ github.workspace }}/tmp/artifacts" -name "*${device}*.json" -type f | head -n 1)
+                  
+                  if [ -f "$report_file" ]; then
+                    echo "### ${device^} Results" >> comment.md
+                    echo "" >> comment.md
+                    echo "| Category | Score |" >> comment.md
+                    echo "|----------|-------|" >> comment.md
+                    
+                    # Extract scores using jq
+                    perf=$(jq -r '.categories.performance.score * 100 | floor' "$report_file")
+                    a11y=$(jq -r '.categories.accessibility.score * 100 | floor' "$report_file")
+                    bp=$(jq -r '.categories["best-practices"].score * 100 | floor' "$report_file")
+                    seo=$(jq -r '.categories.seo.score * 100 | floor' "$report_file")
+                    
+                    echo "| Performance | $(get_emoji $perf) $perf |" >> comment.md
+                    echo "| Accessibility | $(get_emoji $a11y) $a11y |" >> comment.md
+                    echo "| Best Practices | $(get_emoji $bp) $bp |" >> comment.md
+                    echo "| SEO | $(get_emoji $seo) $seo |" >> comment.md
+                    echo "" >> comment.md
+                  fi
+                done
+                
+                echo "📊 **Full detailed reports are available in the workflow artifacts.**" >> comment.md
                 echo "" >> comment.md
                 echo "_Report generated at $(date)_" >> comment.md
                 
