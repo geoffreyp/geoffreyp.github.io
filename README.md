@@ -186,7 +186,27 @@ You can add a menu link to it in `hugo.toml`.
 
 The posts will be markdown files stored in the `content/blog` folder.
 
-The layout can be configured in the `hugo.toml` file, under the `[params.blog]` section.
+The layout can be configured in the `hugo.toml` file, under the `[params.blog]` section:
+
+```toml
+[params.blog]
+layout = "sidebar-right"     # options: default (no sidebar), sidebar, sidebar-right
+sidebarWidth = "25"          # percentage width of the sidebar (when using sidebar layouts)
+narrowContent = true         # if true, limits content width to 720px for better readability (default: true)
+showCategories = true        # show categories in the sidebar
+showRecentPosts = true       # show recent posts in the sidebar
+recentPostCount = 5          # number of recent posts to display
+listStyle = "summary"        # options: simple, summary
+```
+
+**Configuration options:**
+- `layout`: Choose between `default` (no sidebar), `sidebar` (left sidebar), or `sidebar-right` (right sidebar)
+- `sidebarWidth`: Set the percentage width of the sidebar (e.g., "25" for 25%)
+- `narrowContent`: When set to `true` (default), limits the blog content width to 720px for optimal readability. Set to `false` for full-width content
+- `showCategories`: Display category links in the sidebar
+- `showRecentPosts`: Display recent posts in the sidebar
+- `recentPostCount`: Number of recent posts to show in the sidebar
+- `listStyle`: Choose between `simple` (title and date only) or `summary` (includes excerpt)
 
 #### (Job) Experience
 

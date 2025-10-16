@@ -371,6 +371,7 @@ enabled = true  # Set to false to disable the page fade transition effect
 [params.blog]
 layout = "sidebar-right"     # options: default (no sidebar), sidebar, sidebar-right
 sidebarWidth = "25"    # percentage width of the sidebar
+narrowContent = true   # if true, limits content width to 720px for better readability
 showCategories = true
 showRecentPosts = true
 recentPostCount = 5

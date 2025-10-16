@@ -33,6 +33,12 @@
         }
     }
 
+    .col-content {
+        &.narrow-content {
+            max-width: 720px;
+        }
+    }
+
     .blog-sidebar {
         position: sticky;
         top: 2rem;
