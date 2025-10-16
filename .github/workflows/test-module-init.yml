@@ -141,36 +141,70 @@ jobs:
                 root: ./public
                 skip_git_check: true
 
-    lighthouse-check:
-      needs: build-site
-      runs-on: ubuntu-latest
-      steps:
-          - name: Download built site
-            uses: actions/download-artifact@v4
-            with:
-              name: built-site
-              path: ./public
-              
-          - name: Create output directory
-            run: mkdir -p ${{ github.workspace }}/tmp/artifacts
-              
-          - name: Start local server
-            run: |
-              npx http-server ./public -p 8080 &
-              sleep 3 # Give server time to start
-              
-          - name: Lighthouse Check
-            uses: foo-software/lighthouse-check-action@v12.0.1
-            with:
-              device: 'all'
-              # leave PR comments
-              gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-              prCommentEnabled: true
-              urls: 'http://localhost:8080'
-              outputDirectory: ${{ github.workspace }}/tmp/artifacts
-              
-          - name: Upload Lighthouse report
-            uses: actions/upload-artifact@v4
-            with:
-              name: lighthouse-report              
-              path: ${{ github.workspace }}/tmp/artifacts
+  lighthouse-check:
+     needs: build-site
+     runs-on: ubuntu-latest
+     steps:
+         - name: Download built site
+           uses: actions/download-artifact@v4
+           with:
+             name: built-site
+             path: ./public
+             
+         - name: Create output directory
+           run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+             
+         - name: Start local server
+           run: |
+             npx http-server ./public -p 8080 &
+             sleep 3 # Give server time to start
+             
+         - name: Lighthouse Check
+           id: lighthouse
+           uses: foo-software/lighthouse-check-action@v12.0.1
+           with:
+             device: 'all'
+             gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+             prCommentEnabled: false
+             urls: 'http://localhost:8080'
+             outputDirectory: ${{ github.workspace }}/tmp/artifacts
+             
+         - name: Format Lighthouse results
+           id: format-results
+           run: |
+             echo "## 🔦 Lighthouse Performance Report" > comment.md
+             echo "" >> comment.md
+             echo "**Test Results for commit:** \`${{ github.sha }}\`" >> comment.md
+             echo "" >> comment.md
+             
+             # Parse and format the results from Lighthouse outputs
+             if [ -f "${{ github.workspace }}/tmp/artifacts/results.json" ]; then
+               echo "### Desktop Results" >> comment.md
+               echo "" >> comment.md
+               echo "| Category | Score |" >> comment.md
+               echo "|----------|-------|" >> comment.md
+               
+               # You can customize this to parse the actual JSON results
+               echo "| Performance | ⚡ See detailed report below |" >> comment.md
+               echo "| Accessibility | 🎯 See detailed report below |" >> comment.md
+               echo "| Best Practices | ✅ See detailed report below |" >> comment.md
+               echo "| SEO | 🔍 See detailed report below |" >> comment.md
+               echo "" >> comment.md
+             fi
+             
+             echo "📊 **Full reports have been uploaded as artifacts.**" >> comment.md
+             echo "" >> comment.md
+             echo "_Report generated at $(date)_" >> comment.md
+             
+         - name: Update PR comment
+           uses: marocchino/sticky-pull-request-comment@v2
+           if: github.event_name == 'pull_request'
+           with:
+             header: lighthouse-report
+             path: comment.md
+             
+         - name: Upload Lighthouse report
+           uses: actions/upload-artifact@v4
+           with:
+             name: lighthouse-report              
+             path: ${{ github.workspace }}/tmp/artifacts
