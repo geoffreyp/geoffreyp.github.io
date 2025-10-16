@@ -187,58 +187,62 @@ jobs:
                 # Extract scores from Lighthouse reports
                 mkdir -p .github
                 
+                results_file="${{ github.workspace }}/tmp/artifacts/results.json"
+                
+                if [ ! -f "$results_file" ]; then
+                  echo "❌ Error: results.json not found"
+                  echo '{"timestamp":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","commit":"${{ github.sha }}","scores":{}}' > current-scores.json
+                  exit 0
+                fi
+                
+                echo "Found results.json, parsing..."
+                cat "$results_file"
+                
                 echo "{" > current-scores.json
                 echo '  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",' >> current-scores.json
                 echo '  "commit": "${{ github.sha }}",' >> current-scores.json
                 echo '  "scores": {' >> current-scores.json
                 
-                first_device=true
+                # The results.json from lighthouse-check-action contains an array of results
+                # Index 0 is typically mobile, index 1 is desktop (when device: 'all')
+                num_results=$(jq 'length' "$results_file")
+                echo "Number of lighthouse results: $num_results"
                 
-                # Try to find lighthouse report files with various naming patterns
-                for device in "mobile" "desktop"; do
-                  # Try different naming patterns
-                  report_file=""
+                if [ "$num_results" -ge 1 ]; then
+                  # First result (mobile)
+                  perf=$(jq -r '.[0].scores.performance * 100 | floor // 0' "$results_file")
+                  a11y=$(jq -r '.[0].scores.accessibility * 100 | floor // 0' "$results_file")
+                  bp=$(jq -r '.[0].scores["best-practices"] * 100 | floor // 0' "$results_file")
+                  seo=$(jq -r '.[0].scores.seo * 100 | floor // 0' "$results_file")
                   
-                  # Pattern 1: *mobile*.json or *desktop*.json
-                  report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -iname "*${device}*.json" 2>/dev/null | head -n 1)
+                  echo "Mobile scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
                   
-                  # Pattern 2: lighthouse-*.json (numbered)
-                  if [ -z "$report_file" ] || [ ! -f "$report_file" ]; then
-                    if [ "$device" = "mobile" ]; then
-                      report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -name "lighthouse-*.json" 2>/dev/null | head -n 1)
-                    else
-                      report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -name "lighthouse-*.json" 2>/dev/null | tail -n 1)
-                    fi
-                  fi
+                  echo '    "mobile": {' >> current-scores.json
+                  echo "      \"performance\": $perf," >> current-scores.json
+                  echo "      \"accessibility\": $a11y," >> current-scores.json
+                  echo "      \"best-practices\": $bp," >> current-scores.json
+                  echo "      \"seo\": $seo" >> current-scores.json
+                  echo -n "    }" >> current-scores.json
+                fi
+                
+                if [ "$num_results" -ge 2 ]; then
+                  echo "," >> current-scores.json
                   
-                  echo "Checking for $device report: $report_file"
+                  # Second result (desktop)
+                  perf=$(jq -r '.[1].scores.performance * 100 | floor // 0' "$results_file")
+                  a11y=$(jq -r '.[1].scores.accessibility * 100 | floor // 0' "$results_file")
+                  bp=$(jq -r '.[1].scores["best-practices"] * 100 | floor // 0' "$results_file")
+                  seo=$(jq -r '.[1].scores.seo * 100 | floor // 0' "$results_file")
                   
-                  if [ -n "$report_file" ] && [ -f "$report_file" ]; then
-                    echo "Found report file for $device: $report_file"
-                    
-                    if [ "$first_device" = false ]; then
-                      echo "," >> current-scores.json
-                    fi
-                    first_device=false
-                    
-                    # Extract scores with error handling
-                    perf=$(jq -r '.categories.performance.score * 100 | floor // 0' "$report_file")
-                    a11y=$(jq -r '.categories.accessibility.score * 100 | floor // 0' "$report_file")
-                    bp=$(jq -r '.categories["best-practices"].score * 100 | floor // 0' "$report_file")
-                    seo=$(jq -r '.categories.seo.score * 100 | floor // 0' "$report_file")
-                    
-                    echo "  $device scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
-                    
-                    echo "    \"$device\": {" >> current-scores.json
-                    echo "      \"performance\": $perf," >> current-scores.json
-                    echo "      \"accessibility\": $a11y," >> current-scores.json
-                    echo "      \"best-practices\": $bp," >> current-scores.json
-                    echo "      \"seo\": $seo" >> current-scores.json
-                    echo -n "    }" >> current-scores.json
-                  else
-                    echo "No report file found for $device"
-                  fi
-                done
+                  echo "Desktop scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
+                  
+                  echo '    "desktop": {' >> current-scores.json
+                  echo "      \"performance\": $perf," >> current-scores.json
+                  echo "      \"accessibility\": $a11y," >> current-scores.json
+                  echo "      \"best-practices\": $bp," >> current-scores.json
+                  echo "      \"seo\": $seo" >> current-scores.json
+                  echo -n "    }" >> current-scores.json
+                fi
                 
                 echo "" >> current-scores.json
                 echo "  }" >> current-scores.json
