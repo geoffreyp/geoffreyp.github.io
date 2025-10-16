@@ -175,6 +175,12 @@ jobs:
                 urls: 'http://localhost:8080'
                 outputDirectory: ${{ github.workspace }}/tmp/artifacts
                 
+            - name: Debug - List generated files
+              run: |
+                echo "Files in artifacts directory:"
+                ls -la "${{ github.workspace }}/tmp/artifacts" || echo "Directory not found"
+                find "${{ github.workspace }}/tmp/artifacts" -type f -name "*.json" || echo "No JSON files found"
+                
             - name: Extract and save Lighthouse scores
               id: extract-scores
               run: |
@@ -187,19 +193,41 @@ jobs:
                 echo '  "scores": {' >> current-scores.json
                 
                 first_device=true
+                
+                # Try to find lighthouse report files with various naming patterns
                 for device in "mobile" "desktop"; do
-                  report_file=$(find "${{ github.workspace }}/tmp/artifacts" -name "*${device}*.json" -type f | head -n 1)
+                  # Try different naming patterns
+                  report_file=""
                   
-                  if [ -f "$report_file" ]; then
+                  # Pattern 1: *mobile*.json or *desktop*.json
+                  report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -iname "*${device}*.json" 2>/dev/null | head -n 1)
+                  
+                  # Pattern 2: lighthouse-*.json (numbered)
+                  if [ -z "$report_file" ] || [ ! -f "$report_file" ]; then
+                    if [ "$device" = "mobile" ]; then
+                      report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -name "lighthouse-*.json" 2>/dev/null | head -n 1)
+                    else
+                      report_file=$(find "${{ github.workspace }}/tmp/artifacts" -type f -name "lighthouse-*.json" 2>/dev/null | tail -n 1)
+                    fi
+                  fi
+                  
+                  echo "Checking for $device report: $report_file"
+                  
+                  if [ -n "$report_file" ] && [ -f "$report_file" ]; then
+                    echo "Found report file for $device: $report_file"
+                    
                     if [ "$first_device" = false ]; then
                       echo "," >> current-scores.json
                     fi
                     first_device=false
                     
-                    perf=$(jq -r '.categories.performance.score * 100 | floor' "$report_file")
-                    a11y=$(jq -r '.categories.accessibility.score * 100 | floor' "$report_file")
-                    bp=$(jq -r '.categories["best-practices"].score * 100 | floor' "$report_file")
-                    seo=$(jq -r '.categories.seo.score * 100 | floor' "$report_file")
+                    # Extract scores with error handling
+                    perf=$(jq -r '.categories.performance.score * 100 | floor // 0' "$report_file")
+                    a11y=$(jq -r '.categories.accessibility.score * 100 | floor // 0' "$report_file")
+                    bp=$(jq -r '.categories["best-practices"].score * 100 | floor // 0' "$report_file")
+                    seo=$(jq -r '.categories.seo.score * 100 | floor // 0' "$report_file")
+                    
+                    echo "  $device scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
                     
                     echo "    \"$device\": {" >> current-scores.json
                     echo "      \"performance\": $perf," >> current-scores.json
@@ -207,6 +235,8 @@ jobs:
                     echo "      \"best-practices\": $bp," >> current-scores.json
                     echo "      \"seo\": $seo" >> current-scores.json
                     echo -n "    }" >> current-scores.json
+                  else
+                    echo "No report file found for $device"
                   fi
                 done
                 
@@ -214,20 +244,28 @@ jobs:
                 echo "  }" >> current-scores.json
                 echo "}" >> current-scores.json
                 
+                echo "=== Generated scores JSON ==="
                 cat current-scores.json
+                echo "==========================="
                 
             - name: Load baseline scores from main
               id: load-baseline
               if: github.event_name == 'pull_request'
               run: |
                 # Try to fetch baseline scores from main branch
+                echo "Attempting to fetch baseline from origin/main:.github/lighthouse-scores.json"
+                
                 if git show origin/main:.github/lighthouse-scores.json > baseline-scores.json 2>/dev/null; then
                   echo "baseline_exists=true" >> $GITHUB_OUTPUT
-                  echo "Baseline scores loaded from main branch"
+                  echo "✅ Baseline scores loaded from main branch"
+                  echo "=== Baseline scores ==="
                   cat baseline-scores.json
+                  echo "======================="
                 else
                   echo "baseline_exists=false" >> $GITHUB_OUTPUT
-                  echo "No baseline scores found in main branch"
+                  echo "⚠️ No baseline scores found in main branch (first run or file doesn't exist yet)"
+                  # Create empty baseline
+                  echo '{"commit":"","scores":{}}' > baseline-scores.json
                 fi
                 
             - name: Format Lighthouse results with comparison
@@ -236,6 +274,11 @@ jobs:
                 # Function to get score emoji
                 get_emoji() {
                   score=$1
+                  # Handle empty or invalid scores
+                  if [ -z "$score" ] || [ "$score" = "0" ] || [ "$score" = "null" ]; then
+                    echo "⚪"
+                    return
+                  fi
                   if (( $(echo "$score >= 90" | bc -l) )); then
                     echo "🟢"
                   elif (( $(echo "$score >= 50" | bc -l) )); then
@@ -249,17 +292,17 @@ jobs:
                 get_delta() {
                   current=$1
                   baseline=$2
-                  if [ "$baseline" = "null" ] || [ -z "$baseline" ]; then
+                  if [ "$baseline" = "null" ] || [ -z "$baseline" ] || [ "$baseline" = "0" ]; then
                     echo ""
                     return
                   fi
                   delta=$((current - baseline))
                   if [ $delta -gt 0 ]; then
-                    echo " (↑ +$delta)"
+                    echo "(↑ +$delta)"
                   elif [ $delta -lt 0 ]; then
-                    echo " (↓ $delta)"
+                    echo "(↓ $delta)"
                   else
-                    echo " (→)"
+                    echo "(→)"
                   fi
                 }
                 
@@ -271,20 +314,35 @@ jobs:
                 # Check if we have baseline scores
                 has_baseline=false
                 if [ -f "baseline-scores.json" ]; then
-                  has_baseline=true
-                  baseline_commit=$(jq -r '.commit' baseline-scores.json)
-                  echo "_Comparing against main branch baseline (commit: \`${baseline_commit:0:7}\`)_" >> comment.md
+                  baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
+                  if [ -n "$baseline_commit" ] && [ "$baseline_commit" != "null" ]; then
+                    has_baseline=true
+                    echo "_Comparing against main branch baseline (commit: \`${baseline_commit:0:7}\`)_" >> comment.md
+                    echo "" >> comment.md
+                  fi
+                fi
+                
+                # Check if current scores exist
+                if [ ! -f "current-scores.json" ]; then
+                  echo "❌ **Error:** No Lighthouse scores were generated." >> comment.md
                   echo "" >> comment.md
+                  echo "Check the workflow logs for more details." >> comment.md
+                  exit 0
                 fi
                 
                 # Parse and format the results
+                found_scores=false
                 for device in "mobile" "desktop"; do
                   current_perf=$(jq -r ".scores.$device.performance // 0" current-scores.json)
                   current_a11y=$(jq -r ".scores.$device.accessibility // 0" current-scores.json)
                   current_bp=$(jq -r ".scores.$device[\"best-practices\"] // 0" current-scores.json)
                   current_seo=$(jq -r ".scores.$device.seo // 0" current-scores.json)
                   
-                  if [ "$current_perf" != "0" ]; then
+                  echo "DEBUG: $device scores - perf=$current_perf, a11y=$current_a11y, bp=$current_bp, seo=$current_seo"
+                  
+                  # Check if we have any real scores (not just 0)
+                  if [ "$current_perf" != "0" ] || [ "$current_a11y" != "0" ] || [ "$current_bp" != "0" ] || [ "$current_seo" != "0" ]; then
+                    found_scores=true
                     echo "### ${device^} Results" >> comment.md
                     echo "" >> comment.md
                     
@@ -292,10 +350,10 @@ jobs:
                       echo "| Category | Score | Change |" >> comment.md
                       echo "|----------|-------|--------|" >> comment.md
                       
-                      baseline_perf=$(jq -r ".scores.$device.performance // null" baseline-scores.json)
-                      baseline_a11y=$(jq -r ".scores.$device.accessibility // null" baseline-scores.json)
-                      baseline_bp=$(jq -r ".scores.$device[\"best-practices\"] // null" baseline-scores.json)
-                      baseline_seo=$(jq -r ".scores.$device.seo // null" baseline-scores.json)
+                      baseline_perf=$(jq -r ".scores.$device.performance // 0" baseline-scores.json)
+                      baseline_a11y=$(jq -r ".scores.$device.accessibility // 0" baseline-scores.json)
+                      baseline_bp=$(jq -r ".scores.$device[\"best-practices\"] // 0" baseline-scores.json)
+                      baseline_seo=$(jq -r ".scores.$device.seo // 0" baseline-scores.json)
                       
                       echo "| Performance | $(get_emoji $current_perf) $current_perf | $(get_delta $current_perf $baseline_perf) |" >> comment.md
                       echo "| Accessibility | $(get_emoji $current_a11y) $current_a11y | $(get_delta $current_a11y $baseline_a11y) |" >> comment.md
@@ -314,9 +372,22 @@ jobs:
                   fi
                 done
                 
+                if [ "$found_scores" = false ]; then
+                  echo "⚠️ **Warning:** No Lighthouse scores were found in the reports." >> comment.md
+                  echo "" >> comment.md
+                  echo "This may be because:" >> comment.md
+                  echo "- The Lighthouse action did not generate reports" >> comment.md
+                  echo "- The report files have an unexpected format" >> comment.md
+                  echo "" >> comment.md
+                fi
+                
                 echo "📊 **Full detailed reports are available in the workflow artifacts.**" >> comment.md
                 echo "" >> comment.md
                 echo "_Report generated at $(date)_" >> comment.md
+                
+                echo "=== Generated comment ==="
+                cat comment.md
+                echo "========================"
                 
             - name: Update PR comment
               uses: marocchino/sticky-pull-request-comment@v2
