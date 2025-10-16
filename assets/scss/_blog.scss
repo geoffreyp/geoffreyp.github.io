@@ -22,9 +22,14 @@
     // Add specific ordering for sidebar right layout
     .col-sidebar {
         width: 100%;
+        min-width: 280px;
 
         @media (min-width: 768px) {
             min-width: 250px;
+        }
+        
+        @media (max-width: 380px) {
+            min-width: 240px;
         }
     }
 
@@ -37,6 +42,18 @@
             padding: 1.5rem;
             background: #edf1f4;
             border-radius: 0.5rem;
+
+            // Increase padding and set minimum width on smaller screens
+            @media (max-width: 767px) {
+                padding: 2rem;
+                min-width: 280px;
+                width: 100%;
+            }
+            
+            @media (max-width: 380px) {
+                min-width: 240px;
+                padding: 1.5rem;
+            }
 
             h3 {
                 margin-bottom: 1rem;
@@ -67,6 +84,17 @@
             }
 
             &.recent-posts {
+                ul li {
+                    // Ensure proper wrapping on small screens
+                    @media (max-width: 767px) {
+                        a {
+                            overflow-wrap: break-word;
+                            line-height: 1.4;
+                            display: block;
+                        }
+                    }
+                }
+                
                 .post-date {
                     display: block;
                     font-size: 0.875rem;
@@ -80,6 +108,11 @@
                     flex-wrap: wrap;
                     gap: 10px;
                     
+                    // Add extra bottom padding on smaller screens to accommodate wrapped items
+                    @media (max-width: 767px) {
+                        padding-bottom: 0.5rem;
+                    }
+                    
                     li {
                         margin-bottom: 8px;
                         
@@ -90,6 +123,8 @@
                             border-radius: 4px;
                             font-size: 14px;
                             transition: all 0.2s ease;
+                            white-space: nowrap;
+                            overflow-wrap: normal;
                         }
                     }
                 }
