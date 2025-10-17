@@ -16,7 +16,7 @@ This is a **Hugo theme** for personal websites/portfolios, not a standalone site
 
 ## Project Architecture
 
-This is a **Hugo theme** for personal websites/portfolios, not a standalone site. The theme provides layouts, styling, and functionality that users import via Hugo modules or as a git submodule, and importing the theme.
+This is a **Hugo theme** for personal websites/portfolios, not a standalone site. The theme provides layouts, styling, and functionality that users import via Hugo modules or as a git submodule.
 
 The theme provides a example site (`exampleSite/`) that demonstrates all features and serves as a starting point for users. It is also used for the integration tests.
 
