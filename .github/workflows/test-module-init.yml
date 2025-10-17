@@ -387,31 +387,26 @@ jobs:
             - name: Save baseline scores to lighthouse-data branch
               if: github.ref == 'refs/heads/main' && github.event_name == 'push'
               run: |
-                # Copy current scores as the new baseline
-                mkdir -p .github
-                cp current-scores.json .github/lighthouse-scores.json
+                # Save the current scores file path
+                SCORES_FILE="${{ github.workspace }}/current-scores.json"
                 
                 # Configure git
                 git config user.name "github-actions[bot]"
                 git config user.email "github-actions[bot]@users.noreply.github.com"
                 
-                # Fetch the lighthouse-data branch or create it if it doesn't exist
-                git fetch origin lighthouse-data:lighthouse-data 2>/dev/null || git checkout -b lighthouse-data
-                
-                # Switch to lighthouse-data branch (create if needed)
-                git checkout lighthouse-data 2>/dev/null || git switch --orphan lighthouse-data
-                
-                # If this is a new orphan branch, clear it
-                if [ $(git rev-parse --verify lighthouse-data 2>/dev/null) ]; then
-                  echo "Lighthouse-data branch exists, updating it"
+                # Try to fetch and checkout the lighthouse-data branch
+                if git fetch origin lighthouse-data 2>/dev/null && git checkout lighthouse-data 2>/dev/null; then
+                  echo "✅ Checked out existing lighthouse-data branch"
                 else
-                  echo "Creating new lighthouse-data branch"
+                  echo "Creating new lighthouse-data orphan branch"
+                  git checkout --orphan lighthouse-data
                   git rm -rf . 2>/dev/null || true
+                  git clean -fd 2>/dev/null || true
                 fi
                 
                 # Copy only the lighthouse scores file
                 mkdir -p .github
-                cp ${{ github.workspace }}/current-scores.json .github/lighthouse-scores.json
+                cp "$SCORES_FILE" .github/lighthouse-scores.json
                 
                 # Commit and push if there are changes
                 git add .github/lighthouse-scores.json
@@ -419,6 +414,6 @@ jobs:
                   echo "No changes to lighthouse scores"
                 else
                   git commit -m "chore: update lighthouse baseline scores [skip ci]"
-                  git push origin lighthouse-data --force
-                  echo "Lighthouse baseline scores updated in lighthouse-data branch"
+                  git push origin lighthouse-data
+                  echo "✅ Lighthouse baseline scores updated in lighthouse-data branch"
                 fi
