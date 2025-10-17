@@ -234,15 +234,15 @@ jobs:
                 
                 echo "✅ Scores extracted successfully"
                 
-            - name: Load baseline scores from main
+            - name: Load baseline scores from lighthouse-data branch
               id: load-baseline
               if: github.event_name == 'pull_request'
               run: |
-                # Try to fetch baseline scores from main branch
-                if git show origin/main:.github/lighthouse-scores.json > baseline-scores.json 2>/dev/null; then
+                # Try to fetch baseline scores from lighthouse-data branch
+                if git show origin/lighthouse-data:.github/lighthouse-scores.json > baseline-scores.json 2>/dev/null; then
                   echo "baseline_exists=true" >> $GITHUB_OUTPUT
                   baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
-                  echo "✅ Baseline scores loaded from main (commit: ${baseline_commit:0:7})"
+                  echo "✅ Baseline scores loaded from lighthouse-data branch (commit: ${baseline_commit:0:7})"
                 else
                   echo "baseline_exists=false" >> $GITHUB_OUTPUT
                   echo "ℹ️ No baseline found - this will be the first baseline after merge"
@@ -305,7 +305,7 @@ jobs:
                   if [ -n "$baseline_commit" ] && [ "$baseline_commit" != "null" ]; then
                     has_baseline=true
                     baseline_commit_url="https://github.com/${{ github.repository }}/commit/$baseline_commit"
-                    echo "_Comparing against main branch baseline (commit: [\`${baseline_commit:0:7}\`]($baseline_commit_url))_" >> comment.md
+                    echo "_Comparing against baseline from lighthouse-data branch (commit: [\`${baseline_commit:0:7}\`]($baseline_commit_url))_" >> comment.md
                     echo "" >> comment.md
                   fi
                 fi
@@ -384,7 +384,7 @@ jobs:
                 name: lighthouse-report              
                 path: ${{ github.workspace }}/tmp/artifacts
                 
-            - name: Save baseline scores to repository
+            - name: Save baseline scores to lighthouse-data branch
               if: github.ref == 'refs/heads/main' && github.event_name == 'push'
               run: |
                 # Copy current scores as the new baseline
@@ -395,12 +395,30 @@ jobs:
                 git config user.name "github-actions[bot]"
                 git config user.email "github-actions[bot]@users.noreply.github.com"
                 
+                # Fetch the lighthouse-data branch or create it if it doesn't exist
+                git fetch origin lighthouse-data:lighthouse-data 2>/dev/null || git checkout -b lighthouse-data
+                
+                # Switch to lighthouse-data branch (create if needed)
+                git checkout lighthouse-data 2>/dev/null || git switch --orphan lighthouse-data
+                
+                # If this is a new orphan branch, clear it
+                if [ $(git rev-parse --verify lighthouse-data 2>/dev/null) ]; then
+                  echo "Lighthouse-data branch exists, updating it"
+                else
+                  echo "Creating new lighthouse-data branch"
+                  git rm -rf . 2>/dev/null || true
+                fi
+                
+                # Copy only the lighthouse scores file
+                mkdir -p .github
+                cp ${{ github.workspace }}/current-scores.json .github/lighthouse-scores.json
+                
                 # Commit and push if there are changes
                 git add .github/lighthouse-scores.json
-                if git diff --staged --quiet; then
+                if git diff --staged --quiet 2>/dev/null; then
                   echo "No changes to lighthouse scores"
                 else
                   git commit -m "chore: update lighthouse baseline scores [skip ci]"
-                  git push
-                  echo "Lighthouse baseline scores updated"
+                  git push origin lighthouse-data --force
+                  echo "Lighthouse baseline scores updated in lighthouse-data branch"
                 fi
