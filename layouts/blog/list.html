@@ -15,7 +15,7 @@
 
 
         <div
-          class="col-content"
+          class="col-content {{ if ne .Site.Params.blog.narrowContent false }}narrow-content{{ end }}"
           {{ if or (eq .Site.Params.blog.layout "sidebar") (eq .Site.Params.blog.layout "sidebar-right") }}
             style="width: calc(100% - {{ .Site.Params.blog.sidebarWidth }}%)"
           {{ end }}>

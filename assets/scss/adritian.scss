@@ -470,6 +470,40 @@ footer_links .nav-item .nav-link::after {
   .dropdown-item:hover {
     background-color: $base-color;
   }
+
+  // Blog post meta section dark mode
+  #blog-single #meta {
+    #topics,
+    .tags {
+      li a {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+        border: none;
+
+        &:hover {
+          background-color: #3a3a3a;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  // General tags styling for dark mode (consistency across all pages)
+  ul.tags,
+  ul.topics,
+  #topics,
+  ul.list-taxonomy {
+    li a {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border: none;
+
+      &:hover {
+        background-color: #3a3a3a;
+        color: #fff;
+      }
+    }
+  }
 }
 
 /* end dark mode */

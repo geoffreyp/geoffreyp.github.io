@@ -142,35 +142,265 @@ jobs:
                 skip_git_check: true
 
     lighthouse-check:
-      needs: build-site
-      runs-on: ubuntu-latest
-      steps:
-          - name: Download built site
-            uses: actions/download-artifact@v4
-            with:
-              name: built-site
-              path: ./public
+        needs: build-site
+        runs-on: ubuntu-latest
+        permissions:
+          contents: write
+          pull-requests: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
               
-          - name: Create output directory
-            run: mkdir -p ${{ github.workspace }}/tmp/artifacts
-              
-          - name: Start local server
-            run: |
-              npx http-server ./public -p 8080 &
-              sleep 3 # Give server time to start
-              
-          - name: Lighthouse Check
-            uses: foo-software/lighthouse-check-action@v12.0.1
-            with:
-              device: 'all'
-              # leave PR comments
-              gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
-              prCommentEnabled: true
-              urls: 'http://localhost:8080'
-              outputDirectory: ${{ github.workspace }}/tmp/artifacts
-              
-          - name: Upload Lighthouse report
-            uses: actions/upload-artifact@v4
-            with:
-              name: lighthouse-report              
-              path: ${{ github.workspace }}/tmp/artifacts
+            - name: Download built site
+              uses: actions/download-artifact@v4
+              with:
+                name: built-site
+                path: ./public
+                
+            - name: Create output directory
+              run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+                
+            - name: Start local server
+              run: |
+                npx http-server ./public -p 8080 &
+                sleep 3 # Give server time to start
+                
+            - name: Lighthouse Check
+              id: lighthouse
+              uses: foo-software/lighthouse-check-action@v12.0.1
+              with:
+                device: 'all'
+                gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+                prCommentEnabled: false
+                urls: 'http://localhost:8080'
+                outputDirectory: ${{ github.workspace }}/tmp/artifacts
+                
+            - name: Extract and save Lighthouse scores
+              id: extract-scores
+              run: |
+                # Extract scores from Lighthouse reports
+                mkdir -p .github
+                
+                results_file="${{ github.workspace }}/tmp/artifacts/results.json"
+                
+                if [ ! -f "$results_file" ]; then
+                  echo "❌ Error: results.json not found"
+                  echo '{"timestamp":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","commit":"${{ github.sha }}","scores":{}}' > current-scores.json
+                  exit 0
+                fi
+                
+                echo "✅ Found results.json, extracting scores..."
+                
+                echo "{" > current-scores.json
+                echo '  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",' >> current-scores.json
+                echo '  "commit": "${{ github.sha }}",' >> current-scores.json
+                echo '  "scores": {' >> current-scores.json
+                
+                # The results.json from lighthouse-check-action contains an array of results
+                # Scores are already 0-100, not 0-1
+                num_results=$(jq 'length' "$results_file")
+                
+                first_device=true
+                
+                # Loop through results and organize by emulatedFormFactor
+                for i in $(seq 0 $((num_results - 1))); do
+                  form_factor=$(jq -r ".[$i].emulatedFormFactor // \"unknown\"" "$results_file")
+                  
+                  perf=$(jq -r ".[$i].scores.performance // 0" "$results_file")
+                  a11y=$(jq -r ".[$i].scores.accessibility // 0" "$results_file")
+                  bp=$(jq -r ".[$i].scores.bestPractices // 0" "$results_file")
+                  seo=$(jq -r ".[$i].scores.seo // 0" "$results_file")
+                  
+                  echo "  📱 $form_factor: Performance=$perf, Accessibility=$a11y, Best Practices=$bp, SEO=$seo"
+                  
+                  if [ "$form_factor" = "mobile" ] || [ "$form_factor" = "desktop" ]; then
+                    if [ "$first_device" = false ]; then
+                      echo "," >> current-scores.json
+                    fi
+                    first_device=false
+                    
+                    echo "    \"$form_factor\": {" >> current-scores.json
+                    echo "      \"performance\": $perf," >> current-scores.json
+                    echo "      \"accessibility\": $a11y," >> current-scores.json
+                    echo "      \"best-practices\": $bp," >> current-scores.json
+                    echo "      \"seo\": $seo" >> current-scores.json
+                    echo -n "    }" >> current-scores.json
+                  fi
+                done
+                
+                echo "" >> current-scores.json
+                echo "  }" >> current-scores.json
+                echo "}" >> current-scores.json
+                
+                echo "✅ Scores extracted successfully"
+                
+            - name: Load baseline scores from main
+              id: load-baseline
+              if: github.event_name == 'pull_request'
+              run: |
+                # Try to fetch baseline scores from main branch
+                if git show origin/main:.github/lighthouse-scores.json > baseline-scores.json 2>/dev/null; then
+                  echo "baseline_exists=true" >> $GITHUB_OUTPUT
+                  baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
+                  echo "✅ Baseline scores loaded from main (commit: ${baseline_commit:0:7})"
+                else
+                  echo "baseline_exists=false" >> $GITHUB_OUTPUT
+                  echo "ℹ️ No baseline found - this will be the first baseline after merge"
+                  # Create empty baseline
+                  echo '{"commit":"","scores":{}}' > baseline-scores.json
+                fi
+                
+            - name: Format Lighthouse results with comparison
+              id: format-results
+              run: |
+                # Function to get score emoji
+                get_emoji() {
+                  score=$1
+                  # Handle empty or invalid scores
+                  if [ -z "$score" ] || [ "$score" = "0" ] || [ "$score" = "null" ]; then
+                    echo "⚪"
+                    return
+                  fi
+                  if (( $(echo "$score >= 90" | bc -l) )); then
+                    echo "🟢"
+                  elif (( $(echo "$score >= 50" | bc -l) )); then
+                    echo "🟠"
+                  else
+                    echo "🔴"
+                  fi
+                }
+                
+                # Function to get delta indicator
+                get_delta() {
+                  current=$1
+                  baseline=$2
+                  if [ "$baseline" = "null" ] || [ -z "$baseline" ] || [ "$baseline" = "0" ]; then
+                    echo ""
+                    return
+                  fi
+                  delta=$((current - baseline))
+                  if [ $delta -gt 0 ]; then
+                    echo "(↑ +$delta)"
+                  elif [ $delta -lt 0 ]; then
+                    echo "(↓ $delta)"
+                  else
+                    echo "(→)"
+                  fi
+                }
+                
+                # Build URLs
+                commit_sha="${{ github.sha }}"
+                commit_url="https://github.com/${{ github.repository }}/commit/$commit_sha"
+                artifacts_url="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                
+                echo "## 🔦 Lighthouse Performance Report" > comment.md
+                echo "" >> comment.md
+                echo "**Test Results for commit:** [\`${commit_sha:0:7}\`]($commit_url)" >> comment.md
+                echo "" >> comment.md
+                
+                # Check if we have baseline scores
+                has_baseline=false
+                if [ -f "baseline-scores.json" ]; then
+                  baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
+                  if [ -n "$baseline_commit" ] && [ "$baseline_commit" != "null" ]; then
+                    has_baseline=true
+                    baseline_commit_url="https://github.com/${{ github.repository }}/commit/$baseline_commit"
+                    echo "_Comparing against main branch baseline (commit: [\`${baseline_commit:0:7}\`]($baseline_commit_url))_" >> comment.md
+                    echo "" >> comment.md
+                  fi
+                fi
+                
+                # Check if current scores exist
+                if [ ! -f "current-scores.json" ]; then
+                  echo "❌ **Error:** No Lighthouse scores were generated." >> comment.md
+                  echo "" >> comment.md
+                  echo "Check the workflow logs for more details." >> comment.md
+                  exit 0
+                fi
+                
+                # Parse and format the results
+                found_scores=false
+                for device in "mobile" "desktop"; do
+                  current_perf=$(jq -r ".scores.$device.performance // 0" current-scores.json)
+                  current_a11y=$(jq -r ".scores.$device.accessibility // 0" current-scores.json)
+                  current_bp=$(jq -r ".scores.$device[\"best-practices\"] // 0" current-scores.json)
+                  current_seo=$(jq -r ".scores.$device.seo // 0" current-scores.json)
+                  
+                  # Check if we have any real scores (not just 0)
+                  if [ "$current_perf" != "0" ] || [ "$current_a11y" != "0" ] || [ "$current_bp" != "0" ] || [ "$current_seo" != "0" ]; then
+                    found_scores=true
+                    echo "### ${device^} Results" >> comment.md
+                    echo "" >> comment.md
+                    
+                    if [ "$has_baseline" = true ]; then
+                      echo "| Category | Score | Change |" >> comment.md
+                      echo "|----------|-------|--------|" >> comment.md
+                      
+                      baseline_perf=$(jq -r ".scores.$device.performance // 0" baseline-scores.json)
+                      baseline_a11y=$(jq -r ".scores.$device.accessibility // 0" baseline-scores.json)
+                      baseline_bp=$(jq -r ".scores.$device[\"best-practices\"] // 0" baseline-scores.json)
+                      baseline_seo=$(jq -r ".scores.$device.seo // 0" baseline-scores.json)
+                      
+                      echo "| Performance | $(get_emoji $current_perf) $current_perf | $(get_delta $current_perf $baseline_perf) |" >> comment.md
+                      echo "| Accessibility | $(get_emoji $current_a11y) $current_a11y | $(get_delta $current_a11y $baseline_a11y) |" >> comment.md
+                      echo "| Best Practices | $(get_emoji $current_bp) $current_bp | $(get_delta $current_bp $baseline_bp) |" >> comment.md
+                      echo "| SEO | $(get_emoji $current_seo) $current_seo | $(get_delta $current_seo $baseline_seo) |" >> comment.md
+                    else
+                      echo "| Category | Score |" >> comment.md
+                      echo "|----------|-------|" >> comment.md
+                      
+                      echo "| Performance | $(get_emoji $current_perf) $current_perf |" >> comment.md
+                      echo "| Accessibility | $(get_emoji $current_a11y) $current_a11y |" >> comment.md
+                      echo "| Best Practices | $(get_emoji $current_bp) $current_bp |" >> comment.md
+                      echo "| SEO | $(get_emoji $current_seo) $current_seo |" >> comment.md
+                    fi
+                    echo "" >> comment.md
+                  fi
+                done
+                
+                if [ "$found_scores" = false ]; then
+                  echo "⚠️ **Warning:** No Lighthouse scores were found in the reports." >> comment.md
+                  echo "" >> comment.md
+                  echo "This may be because:" >> comment.md
+                  echo "- The Lighthouse action did not generate reports" >> comment.md
+                  echo "- The report files have an unexpected format" >> comment.md
+                  echo "" >> comment.md
+                fi
+                
+                echo "📊 **[View full detailed reports in workflow artifacts]($artifacts_url)**" >> comment.md
+                echo "" >> comment.md
+                echo "_Report generated at $(date)_" >> comment.md
+                
+            - name: Update PR comment
+              uses: marocchino/sticky-pull-request-comment@v2
+              if: github.event_name == 'pull_request'
+              with:
+                header: lighthouse-report
+                path: comment.md
+                
+            - name: Upload Lighthouse report
+              uses: actions/upload-artifact@v4
+              with:
+                name: lighthouse-report              
+                path: ${{ github.workspace }}/tmp/artifacts
+                
+            - name: Save baseline scores to repository
+              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+              run: |
+                # Copy current scores as the new baseline
+                mkdir -p .github
+                cp current-scores.json .github/lighthouse-scores.json
+                
+                # Configure git
+                git config user.name "github-actions[bot]"
+                git config user.email "github-actions[bot]@users.noreply.github.com"
+                
+                # Commit and push if there are changes
+                git add .github/lighthouse-scores.json
+                if git diff --staged --quiet; then
+                  echo "No changes to lighthouse scores"
+                else
+                  git commit -m "chore: update lighthouse baseline scores [skip ci]"
+                  git push
+                  echo "Lighthouse baseline scores updated"
+                fi
