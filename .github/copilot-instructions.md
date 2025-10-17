@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a **Hugo theme** for personal websites/portfolios, not a standalone site. The theme provides layouts, styling, and functionality that users import via Hugo modules or as a git submodule.
+This is a **Hugo theme** for personal websites/portfolios, not a standalone site (although a example site is provided, to demonstrate the usage of the theme itself). The theme provides layouts, styling, and functionality that users import via Hugo modules or as a git submodule.
 
 **Technology Stack:**
 - **Static Site Generator:** Hugo (v0.136+ extended version required)
