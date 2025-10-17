@@ -406,8 +406,10 @@ jobs:
             - name: Save baseline scores to lighthouse-data branch
               if: github.ref == 'refs/heads/main' && github.event_name == 'push'
               run: |
-                # Save the current scores file path
-                SCORES_FILE="${{ github.workspace }}/current-scores.json"
+                # Copy scores to temp location before branch switching
+                # (git clean will remove it from the working directory)
+                TEMP_SCORES="/tmp/lighthouse-scores-${{ github.sha }}.json"
+                cp "${{ github.workspace }}/current-scores.json" "$TEMP_SCORES"
                 
                 # Configure git
                 git config user.name "github-actions[bot]"
@@ -423,9 +425,9 @@ jobs:
                   git clean -fd 2>/dev/null || true
                 fi
                 
-                # Copy only the lighthouse scores file
+                # Copy the lighthouse scores file from temp location
                 mkdir -p .github
-                cp "$SCORES_FILE" .github/lighthouse-scores.json
+                cp "$TEMP_SCORES" .github/lighthouse-scores.json
                 
                 # Commit and push if there are changes
                 git add .github/lighthouse-scores.json
@@ -436,3 +438,6 @@ jobs:
                   git push origin lighthouse-data
                   echo "✅ Lighthouse baseline scores updated in lighthouse-data branch"
                 fi
+                
+                # Clean up temp file
+                rm -f "$TEMP_SCORES"
