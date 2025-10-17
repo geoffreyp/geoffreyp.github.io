@@ -175,12 +175,6 @@ jobs:
                 urls: 'http://localhost:8080'
                 outputDirectory: ${{ github.workspace }}/tmp/artifacts
                 
-            - name: Debug - List generated files
-              run: |
-                echo "Files in artifacts directory:"
-                ls -la "${{ github.workspace }}/tmp/artifacts" || echo "Directory not found"
-                find "${{ github.workspace }}/tmp/artifacts" -type f -name "*.json" || echo "No JSON files found"
-                
             - name: Extract and save Lighthouse scores
               id: extract-scores
               run: |
@@ -195,8 +189,7 @@ jobs:
                   exit 0
                 fi
                 
-                echo "Found results.json, parsing..."
-                cat "$results_file"
+                echo "✅ Found results.json, extracting scores..."
                 
                 echo "{" > current-scores.json
                 echo '  "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'",' >> current-scores.json
@@ -206,7 +199,6 @@ jobs:
                 # The results.json from lighthouse-check-action contains an array of results
                 # Scores are already 0-100, not 0-1
                 num_results=$(jq 'length' "$results_file")
-                echo "Number of lighthouse results: $num_results"
                 
                 first_device=true
                 
@@ -219,7 +211,7 @@ jobs:
                   bp=$(jq -r ".[$i].scores.bestPractices // 0" "$results_file")
                   seo=$(jq -r ".[$i].scores.seo // 0" "$results_file")
                   
-                  echo "$form_factor scores: perf=$perf, a11y=$a11y, bp=$bp, seo=$seo"
+                  echo "  📱 $form_factor: Performance=$perf, Accessibility=$a11y, Best Practices=$bp, SEO=$seo"
                   
                   if [ "$form_factor" = "mobile" ] || [ "$form_factor" = "desktop" ]; then
                     if [ "$first_device" = false ]; then
@@ -240,26 +232,20 @@ jobs:
                 echo "  }" >> current-scores.json
                 echo "}" >> current-scores.json
                 
-                echo "=== Generated scores JSON ==="
-                cat current-scores.json
-                echo "==========================="
+                echo "✅ Scores extracted successfully"
                 
             - name: Load baseline scores from main
               id: load-baseline
               if: github.event_name == 'pull_request'
               run: |
                 # Try to fetch baseline scores from main branch
-                echo "Attempting to fetch baseline from origin/main:.github/lighthouse-scores.json"
-                
                 if git show origin/main:.github/lighthouse-scores.json > baseline-scores.json 2>/dev/null; then
                   echo "baseline_exists=true" >> $GITHUB_OUTPUT
-                  echo "✅ Baseline scores loaded from main branch"
-                  echo "=== Baseline scores ==="
-                  cat baseline-scores.json
-                  echo "======================="
+                  baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
+                  echo "✅ Baseline scores loaded from main (commit: ${baseline_commit:0:7})"
                 else
                   echo "baseline_exists=false" >> $GITHUB_OUTPUT
-                  echo "⚠️ No baseline scores found in main branch (first run or file doesn't exist yet)"
+                  echo "ℹ️ No baseline found - this will be the first baseline after merge"
                   # Create empty baseline
                   echo '{"commit":"","scores":{}}' > baseline-scores.json
                 fi
@@ -302,9 +288,14 @@ jobs:
                   fi
                 }
                 
+                # Build URLs
+                commit_sha="${{ github.sha }}"
+                commit_url="https://github.com/${{ github.repository }}/commit/$commit_sha"
+                artifacts_url="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                
                 echo "## 🔦 Lighthouse Performance Report" > comment.md
                 echo "" >> comment.md
-                echo "**Test Results for commit:** \`${{ github.sha }}\`" >> comment.md
+                echo "**Test Results for commit:** [\`${commit_sha:0:7}\`]($commit_url)" >> comment.md
                 echo "" >> comment.md
                 
                 # Check if we have baseline scores
@@ -313,7 +304,8 @@ jobs:
                   baseline_commit=$(jq -r '.commit // ""' baseline-scores.json)
                   if [ -n "$baseline_commit" ] && [ "$baseline_commit" != "null" ]; then
                     has_baseline=true
-                    echo "_Comparing against main branch baseline (commit: \`${baseline_commit:0:7}\`)_" >> comment.md
+                    baseline_commit_url="https://github.com/${{ github.repository }}/commit/$baseline_commit"
+                    echo "_Comparing against main branch baseline (commit: [\`${baseline_commit:0:7}\`]($baseline_commit_url))_" >> comment.md
                     echo "" >> comment.md
                   fi
                 fi
@@ -333,8 +325,6 @@ jobs:
                   current_a11y=$(jq -r ".scores.$device.accessibility // 0" current-scores.json)
                   current_bp=$(jq -r ".scores.$device[\"best-practices\"] // 0" current-scores.json)
                   current_seo=$(jq -r ".scores.$device.seo // 0" current-scores.json)
-                  
-                  echo "DEBUG: $device scores - perf=$current_perf, a11y=$current_a11y, bp=$current_bp, seo=$current_seo"
                   
                   # Check if we have any real scores (not just 0)
                   if [ "$current_perf" != "0" ] || [ "$current_a11y" != "0" ] || [ "$current_bp" != "0" ] || [ "$current_seo" != "0" ]; then
@@ -377,13 +367,9 @@ jobs:
                   echo "" >> comment.md
                 fi
                 
-                echo "📊 **Full detailed reports are available in the workflow artifacts.**" >> comment.md
+                echo "📊 **[View full detailed reports in workflow artifacts]($artifacts_url)**" >> comment.md
                 echo "" >> comment.md
                 echo "_Report generated at $(date)_" >> comment.md
-                
-                echo "=== Generated comment ==="
-                cat comment.md
-                echo "========================"
                 
             - name: Update PR comment
               uses: marocchino/sticky-pull-request-comment@v2
