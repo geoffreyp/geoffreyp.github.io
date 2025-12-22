@@ -2,11 +2,37 @@
     <section id="main-content" class="section four-o-four">
       <div class="container text-center">
         <h1 class="display-1">404</h1>
-        <h4>{{ i18n "404_title" }}</h4>
-        <p>
+        <h4 id="error-title">{{ i18n "404_title" }}</h4>
+        <p id="error-description">
           {{ i18n "404_description" }}
         </p>
-        <a href="{{ .Site.BaseURL | absURL }}" class="btn btn-primary">{{ i18n "404_button" }}</a>
+        <a id="error-button" href='{{ "/" | absLangURL }}' class="btn btn-primary">{{ i18n "404_button" }}</a>
       </div>
     </section>
+
+    {{/* Get available languages for redirect logic */}}
+    {{- $languages := slice }}
+    {{- range .Site.Languages }}
+      {{- if ne .Lang "en" }}
+        {{- $languages = $languages | append .Lang }}
+      {{- end }}
+    {{- end }}
+
+    <script>
+      (function() {
+        // Available non-default languages from Hugo config
+        const languages = {{ $languages | jsonify | safeJS }};
+        
+        // Detect language from URL path
+        const path = window.location.pathname;
+        const pathParts = path.split('/').filter(p => p);
+        const firstPart = pathParts[0] || '';
+        
+        // If URL starts with a known language code and we're not already on the 404.html page,
+        // redirect to the language-specific 404 page for full localization (header, footer, etc.)
+        if (languages.includes(firstPart) && !path.endsWith('/404.html')) {
+          window.location.replace('/' + firstPart + '/404.html');
+        }
+      })();
+    </script>
 {{ end }}
