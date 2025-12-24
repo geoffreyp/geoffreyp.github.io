@@ -45,6 +45,16 @@
 - id: "theme_auto"
   translation: "✨ Auto"
 
+## Search
+- id: "search_tags_label"
+  translation: "Tags"
+- id: "search_categories_label"
+  translation: "Categories"
+- id: "search_filter_by_tag"
+  translation: "Filter search results by tag"
+- id: "search_filter_by_category"
+  translation: "Filter search results by category"
+
 ## Homepage head title
 - id: "head_title"
   translation: "Demo site for Adritian - a high performance hugo theme by Adrián Moreno"
@@ -262,4 +272,8 @@
   translation: "Categories"
 - id: "recent_posts"
   translation: "Recent Posts"
+- id: "popular_tags"
+  translation: "Popular Tags"
+- id: "view_all_tags"
+  translation: "View all tags"
 
