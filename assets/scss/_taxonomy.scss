@@ -43,13 +43,18 @@
 
   // Count badge for tags
   .taxonomy-count {
-    background-color: $base-color;
-    color: white;
-    border-radius: 50%;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.75rem;
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    min-width: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+    color: $white;
+    background-color: $base-color;
+    border: 1px solid $base-color;
+    border-radius: 0.375rem;
+    min-width: 2.5rem;
     text-align: center;
   }
 
@@ -227,6 +232,7 @@
 
     .taxonomy-count {
       background-color: $dark-primary;
+      border-color: $dark-primary;
     }
 
     .category-card {
