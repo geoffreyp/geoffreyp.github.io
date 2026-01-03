@@ -175,6 +175,37 @@ The theme includes a dedicated Technical Skills showcase section that allows you
 
 To use this feature, create a `skills/_index.md` file with structured front matter for your skill categories and individual skills. The theme will automatically generate a visually appealing skills showcase page.
 
+#### Favicons and web manifest
+
+The theme auto-generates favicons and the web manifest from a single high-resolution source image.
+By default it looks for `assets/icons/favicon.png` and uses Hugo image processing to produce
+16×16, 32×32, 180×180, 192×192, and 512×512 assets. The `favicon.ico` file is generated
+via `npm run favicons` (and is automatically run in the `npm run serve` and `npm run build` scripts).
+
+You can override any individual path via `params.favicons`, or drop your own files in your site’s
+`static/` directory using the same paths. Uncommenting any of the override lines below disables
+that generated asset and uses the static file at that path (or an absolute URL) instead. The
+manifest is generated using your site title and the `params.themeColor` value (falling back to
+`#478079`).
+
+```toml
+[params.favicons]
+# Optional: provide a different source image for auto-generation
+source = "icons/favicon.png"
+
+# Optional: override any generated file with a static one
+favicon = "/favicon.ico"
+icon16 = "/icons/icon-16.png"
+icon32 = "/icons/icon-32.png"
+appleTouch = "/icons/apple-touch-icon.png"
+icon192 = "/icons/icon-192.png"
+icon512 = "/icons/icon-512.png"
+manifest = "/site.webmanifest"
+```
+
+If you need custom names or colors in the manifest, place your own manifest file at the path above
+(or update `manifest` to point to a custom location).
+
 #### Shortcodes
 
 The theme has multiple shortcodes available for use in the content, so you can customize your homepage (or any other page) as you want. You can read about them in the [shortcodes page](https://adritian-demo.vercel.app/blog/shortcodes). Since version `v1.7.0,` this is the preferred way to set up your theme content and translations, as that's the most flexible system.
