@@ -7,7 +7,7 @@
   {% if author.avatar contains 'http' %}
   <img src="{{ author.avatar }}" class="bio-photo" alt="{{ author.name }} bio photo">
   {% else %}
-  <img src="{{ site.github.url }}/{{site.lang}}/assets/images/{{ author.avatar }}" class="bio-photo"
+  <img src="{{ site.github.url }}/assets/images/{{ author.avatar }}" class="bio-photo"
     alt="{{ author.name }} bio photo">
   {% endif %}
 
