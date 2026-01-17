@@ -5,15 +5,15 @@ locale: en_US
 logo: # filename of a logo image that has been placed into your images directory
 
 # Multi-site (translate)
-languages: ["fr", "en"]
+languages: ["fr"]
 #exclude_from_localizations: ["javascript", "images", "css"]
-default_locale_in_subfolder: true
+default_locale_in_subfolder: false
 
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
-  name: Geoffrey Pruvost
+  name: Dr Geoffrey Pruvost
   avatar: bio-photo.jpg
-  bio: "Docteur-Entrepreneur a l'Inria Startup Studio."
+  bio: "CTO / Directeur technique chez Diag n'Grow"
   email: 
   twitter: #username
   linkedin: geoffreypruvost

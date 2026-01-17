@@ -1,21 +1,22 @@
 <div class="navigation-wrapper">
 	<div class="site-name">
 		{% if site.logo %}
-		<a href="{{ site.github.url }}/{{site.lang}}/"><img src="{{ site.github.url }}/images/{{ site.logo }} "></a>
+		<a href="{{ site.github.url }}/"><img src="{{ site.github.url }}/images/{{ site.logo }} "></a>
 		{% else %}
-		<a href="{{ site.github.url }}/{{site.lang}}/">{{ site.title }}</a>
+		<a href="{{ site.github.url }}/">{{ site.title }}</a>
 		{% endif %}
 		<br>
 	</div><!-- /.site-name -->
 	<div class="top-navigation">
 		<nav role="navigation" id="site-nav" class="nav">
 			<ul style="display: inline-block;width: 70%;">
-				<li><a href="/{{site.lang}}/">{% t nav.home %}</a></li>
-				<li><a href="/{{site.lang}}/resume/">{% t nav.resume %}</a></li>
-				<li><a href="/{{site.lang}}/thesis/">{% t nav.thesis %}</a></li>
-				<li><a href="/{{site.lang}}/research/">{% t nav.research %}</a></li>
+				<li><a href="/">{% t nav.home %}</a></li>
+				<li><a href="/resume/">{% t nav.resume %}</a></li>
+				<li><a href="/thesis/">{% t nav.thesis %}</a></li>
+				<li><a href="/research/">{% t nav.research %}</a></li>
+				<li><a href="/teaching/">{% t nav.teaching %}</a></li>
 			</ul>
-			<div style="display: inline-block;width: 20%;">
+			<div style="display: none;width: 20%;">
 
 
 				{% if site.lang == "en" %}
