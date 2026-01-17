@@ -1,0 +1,192 @@
+{{ define "main" }}
+<div class="list flex-grow-1">
+  <section id="main-content" class="section list-{{ .Kind }}">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {{ $taxonomy := .Data.Plural }}
+          {{ $pages := .Pages }}
+          {{ $authorPage := . }}
+          {{ $authorName := .Title }}
+          {{ if and (eq $taxonomy "authors") .Data.Term }}
+            {{ with .Site.GetPage (printf "authors/%s" (.Data.Term | urlize)) }}
+              {{ $authorPage = . }}
+            {{ end }}
+            {{ with $authorPage.Params.name }}
+              {{ $authorName = . }}
+            {{ end }}
+          {{ end }}
+
+          <h1 class="mb-4">{{ $authorName }}</h1>
+
+          {{ if eq $taxonomy "series" }}
+            {{ $pagesWithOrder := where $pages "Params.series_order" "ne" nil }}
+            {{ if gt (len $pagesWithOrder) 0 }}
+              {{ $pages = sort $pages "Params.series_order" "asc" }}
+            {{ else }}
+              {{ $pages = $pages.ByWeight }}
+            {{ end }}
+          {{ end }}
+          {{/* Fallback: if no pages found via taxonomy, search for posts with matching author param.
+               This handles edge cases where posts use author/authors param but aren't properly
+               linked to the taxonomy. This iteration is only triggered when .Pages is empty. */}}
+                {{ if and (eq $taxonomy "authors") (eq (len $pages) 0) .Data.Term }}
+                  {{/* Edge-case fallback for legacy author/author[] params. This scans RegularPages,
+                       so keep it bounded for large sites. Configure with params.authorFallbackLimit. */}}
+                  {{ $term := .Data.Term | urlize }}
+                  {{ $fallback := slice }}
+                  {{ $fallbackLimit := .Site.Params.authorFallbackLimit | default 500 }}
+                  {{ range first $fallbackLimit .Site.RegularPages }}
+              {{ $match := false }}
+              {{ with .Params.author }}
+                {{ if eq ($term | urlize) (. | urlize) }}
+                  {{ $match = true }}
+                {{ end }}
+              {{ end }}
+              {{ with .Params.authors }}
+                {{ if reflect.IsSlice . }}
+                  {{ range . }}
+                    {{ if eq ($term | urlize) (. | urlize) }}
+                      {{ $match = true }}
+                    {{ end }}
+                  {{ end }}
+                {{ else if reflect.IsString . }}
+                  {{ if eq ($term | urlize) (. | urlize) }}
+                    {{ $match = true }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              {{ if $match }}
+                {{ $fallback = $fallback | append . }}
+              {{ end }}
+            {{ end }}
+            {{ $pages = $fallback }}
+          {{ end }}
+          {{ $stats := dict }}
+          {{ if eq $taxonomy "authors" }}
+            {{ $stats = dict "count" (len $pages) }}
+            {{ if gt (len $pages) 0 }}
+              {{ $sorted := $pages.ByDate }}
+              {{ $stats = merge $stats (dict "firstDate" (index $sorted 0).Date "lastDate" (index $sorted (sub (len $sorted) 1)).Date) }}
+            {{ end }}
+          {{ end }}
+
+          {{ if eq $taxonomy "authors" }}
+            {{ partial "author-bio.html" (dict "page" $authorPage "showHeading" false "stats" $stats) }}
+          {{ else if eq $taxonomy "series" }}
+            {{ with .Content }}
+              <div class="series-description mb-4">
+                {{ . }}
+              </div>
+            {{ end }}
+          {{ end }}
+
+          <div class="term-page">
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                {{ $paginator := .Paginate $pages }}
+
+                {{ if eq $taxonomy "authors" }}
+                  <h2 class="h4 mb-3">{{ i18n "author_posts" | default "Posts by this author" }}</h2>
+                {{ else if eq $taxonomy "series" }}
+                  <h2 class="h4 mb-3">{{ i18n "series_posts" | default "Series posts" }}</h2>
+                {{ end }}
+
+                <ul class="posts-list-simple">
+                  {{ range $paginator.Pages }}
+                    <li class="post rad-animation-group rad-fade-down rad-animate">
+                      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                      {{ if eq $taxonomy "series" }}
+                        {{ with .Params.series_order }}
+                          <span class="series-order badge bg-light text-dark ms-2">{{ i18n "series_part" | default "Part" }} {{ . }}</span>
+                        {{ end }}
+                      {{ end }}
+                      <div class="meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
+                        {{ if gt .ReadingTime 0 }}
+                          <span>•</span>
+                          <span>{{ .ReadingTime }} {{ i18n "min_read" | default "min read" }}</span>
+                        {{ end }}
+                      </div>
+                      {{ if eq $taxonomy "authors" }}
+                        {{ with .Summary }}
+                          <p class="post-excerpt">{{ . | plainify | truncate 180 }}</p>
+                        {{ end }}
+                        {{ with .GetTerms "tags" }}
+                          <ul class="post-tags">
+                            {{ range . }}
+                              <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                            {{ end }}
+                          </ul>
+                        {{ end }}
+                      {{ end }}
+                    </li>
+                  {{ end }}
+                </ul>
+
+                {{ if gt $paginator.TotalPages 1 }}
+                  <nav aria-label="Page navigation" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                      {{ if $paginator.HasPrev }}
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $paginator.Prev.URL }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      {{ end }}
+
+                      {{ $window := 2 }}
+                      {{ $current := $paginator.PageNumber }}
+                      {{ $total := $paginator.TotalPages }}
+                      {{ $scratch := newScratch }}
+                      {{ $scratch.Set "leftDots" false }}
+                      {{ $scratch.Set "rightDots" false }}
+
+                      {{ range $paginator.Pagers }}
+                        {{ $n := .PageNumber }}
+                        {{ $inWindow := and (ge $n (sub $current $window)) (le $n (add $current $window)) }}
+
+                        {{ if or (eq $n 1) (eq $n $total) $inWindow }}
+                          <li class="page-item {{ if eq . $paginator }}active{{ end }}">
+                            <a class="page-link" href="{{ .URL }}" {{ if eq . $paginator }}aria-current="page"{{ end }}>{{ .PageNumber }}</a>
+                          </li>
+                        {{ else if and (eq $n 2) (gt (sub $current $window) 2) (not ($scratch.Get "leftDots")) }}
+                          <li class="page-item disabled" aria-hidden="true">
+                            <span class="page-link">&hellip;</span>
+                          </li>
+                          {{ $scratch.Set "leftDots" true }}
+                        {{ else if and (eq $n (sub $total 1)) (lt (add $current $window) (sub $total 1)) (not ($scratch.Get "rightDots")) }}
+                          <li class="page-item disabled" aria-hidden="true">
+                            <span class="page-link">&hellip;</span>
+                          </li>
+                          {{ $scratch.Set "rightDots" true }}
+                        {{ end }}
+                      {{ end }}
+
+                      {{ if $paginator.HasNext }}
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $paginator.Next.URL }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      {{ end }}
+                    </ul>
+                  </nav>
+                {{ end }}
+              </div>
+
+              <div class="col-12 col-lg-4">
+                {{ if eq $taxonomy "authors" }}
+                  {{ partial "widgets/author-tags.html" (dict "pages" $pages "context" .) }}
+                {{ else }}
+                  {{ partial "widgets/popular-tags.html" . }}
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}

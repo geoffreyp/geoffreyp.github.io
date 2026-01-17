@@ -23,7 +23,7 @@ A modern, fast and extensible Hugo theme for personal websites and professional 
 - 📑 **Table of Contents** - Auto-generated, sticky TOC for blog posts
 - 💬 **Comments integration** - Support for Disqus, Giscus, and Utterances
 - ⏱️ **Reading time display** - Estimated reading time for blog posts
-- 🏷️ **Enhanced taxonomy support** - Improved tags and categories display
+- 🏷️ **Enhanced taxonomy support** - Improved tags, categories, authors, and series display
 
 The theme focuses on accessibility, high performance, and usability (it's very easy to get started). It's extendable by adding your own styles or content types, and it has a solid foundation on which to build.
 
@@ -55,7 +55,7 @@ Other relevant repositories related to this theme are:
 
 1. [adritian-theme-helper](https://github.com/zetxek/adritian-theme-helper): npm package helper, used to bootstrap the theme. It helps initialize a site with the right content and configuration files.
 1. A full-featured site, [my personal website](https://www.adrianmoreno.info) [in github too](https://github.com/zetxek/adrianmoreno.info), so you can see how the theme can look real-life (including deployment scripts).
-1. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)), where the demo content comes from.
+1. A simpler [demo site for the theme, adritian-demo](https://adritian-demo.vercel.app/) ([and its code](https://github.com/zetxek/adritian-demo)), where the demo content comes from. Author page example: https://adritian-demo.vercel.app/authors/adrian-moreno-pena/.
 1. The same demo site, in a [git submodules integration](https://github.com/zetxek/adritian-git-submodule-demo).
 
 💡 For more inspiration, check this document's [showcase section](#showcase).
@@ -382,6 +382,45 @@ Blog posts automatically display:
 - Word count
 - Publication date
 - Last modified date (if `lastmod` is set in frontmatter)
+
+**Authors & Series**
+
+You can group posts by author and series using taxonomies:
+
+```toml
+authors = ["Jane Doe"]
+series = ["Hugo Basics"]
+series_order = 2 # optional, to order posts inside the series
+```
+
+To customize author or series pages, create term content files:
+- `hugo new authors/jane-doe/_index.md`
+- `hugo new series/hugo-basics/_index.md`
+
+Author pages support extra metadata when defined in the term content front matter:
+
+```yaml
+---
+title: "Jane Doe"
+name: "Jane Doe"
+role: "Staff Writer"
+avatar: "/img/authors/jane.jpg"
+bio: "Writes about Hugo and design systems."
+links:
+  - label: "Website"
+    url: "https://example.com"
+  - label: "GitHub"
+    url: "https://github.com/janedoe"
+---
+```
+
+Blog posts display author links automatically:
+- If you use the `authors` taxonomy, the post header links to each author page.
+- As a fallback, plain `author` or `authors` front matter strings also render a link (to `/authors/<slug>/`).
+
+The post meta section also labels Topics and Tags for clarity.
+
+Performance note: the fallback author matching scans up to `params.authorFallbackLimit` regular pages (default: 500). For large sites, prefer the `authors` taxonomy.
 
 #### (Job) Experience
 
