@@ -106,10 +106,43 @@
     {{- $pageDescription = $pageDescription | plainify -}}
   {{- end -}}
 
+  {{/* Page image fallback order:
+       1. .Params.featuredImage
+       2. .Params.featured_image
+       3. .Params.images.featured_image (map format: images: { featured_image: '/path.png' })
+       4. .Params.images[0] (slice format: images: ['/path1.png', '/path2.png'])
+       5. Site-level image
+  */}}
   {{- $pageImage := "" -}}
-  {{- with .Params.images -}}
-    {{- if isset . "featured_image" -}}
-      {{- $pageImage = .featured_image -}}
+  {{/* Prefer the page-level featured image from frontmatter.
+       Supported parameters (checked in this order):
+       - featuredImage        : Hugo-style camelCase alternative
+       - featured_image       : snake_case variant
+       - images (first entry) : standard Hugo images array
+   */}}
+  {{- with .Params.featuredImage -}}
+    {{- $pageImage = . -}}
+  {{- end -}}
+  {{- if not $pageImage -}}
+    {{- with .Params.featured_image -}}
+      {{- $pageImage = . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $pageImage -}}
+    {{- with .Params.images -}}
+      {{- if reflect.IsMap . -}}
+        {{- with .featured_image -}}
+          {{- $pageImage = . -}}
+        {{- end -}}
+      {{- else if reflect.IsSlice . -}}
+        {{- if gt (len .) 0 -}}
+          {{- $pageImage = index . 0 -}}
+        {{- end -}}
+      {{- else -}}
+        {{- with .featured_image -}}
+          {{- $pageImage = . -}}
+        {{- end -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
   {{- if and (not $pageImage) $siteImage -}}
