@@ -1,6 +1,6 @@
 baseURL = "https://adritian-demo.vercel.app/"
-title = "Adritian Demo"
-languageCode = "en"
+title = "Geoffrey Pruvost"
+languageCode = "fr"
 
 [pagination]
 pagerSize = 3
