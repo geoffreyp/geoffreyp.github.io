@@ -54,7 +54,7 @@
 {{- $btn2Text := "" -}}
 
 {{- if $isShortcode }}
-  {{- $btn2Enable = true -}}
+  {{- $btn2Enable = false -}}
   {{- $hideViewAll := .Get "hideViewAll" -}}
   {{- if eq $hideViewAll "true" -}}
     {{- $btn2Enable = false -}}
@@ -112,7 +112,7 @@
     {{- $btn2URL = . -}}
   {{ end }}
   {{- with .Params.button2_text }}
-    {{- $btn2Enable = true -}}
+    {{- $btn2Enable = false -}}
     {{- $btn2Text = . -}}
   {{ end }}
   {{- with .Params.button3_icon }}

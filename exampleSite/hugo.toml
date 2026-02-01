@@ -1,6 +1,8 @@
-baseURL = "https://adritian-demo.vercel.app/"
+baseURL = "https://geoffreypruvost.fr/"
 title = "Geoffrey Pruvost"
 languageCode = "fr"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = false
 
 [pagination]
 pagerSize = 3
@@ -74,23 +76,25 @@ target = "assets/css/bootstrap-print.css"
 
 
 [params]
-title = 'Adritian - a high performance hugo theme by Adrián Moreno'
-description = 'This hugo theme (Adritian) is based on Bootstrap and has features that make it suitable for a personal site, a portfolio or other kind of Single Page Applications.'
+title = 'Geoffrey Pruvost - CTO & Docteur en Informatique'
+description = 'Site personnel de Geoffrey Pruvost, CTO chez Diag n Grow, docteur en informatique spécialisé en IA et optimisation multi-objectif.'
 images = ['/img/og-img.png']
 themeColor = '#478079'
 
 [params.seo]
-siteName = 'Adritian'
-siteDescription = 'This hugo theme (Adritian) is based on Bootstrap and has features that make it suitable for a personal site, a portfolio or other kind of Single Page Applications.'
+siteName = 'Geoffrey Pruvost'
+siteDescription = 'Site personnel de Geoffrey Pruvost, CTO chez Diag n Grow, docteur en informatique spécialisé en IA et optimisation multi-objectif.'
 siteImage = '/img/og-img.png'
 
 [params.social]
-twitter = 'zetxek'
+twitter = ''
+linkedin = 'geoffreypruvost'
+github = 'geoffreyp'
 
 [params.seo.person]
-name = 'Adrián Moreno Peña'
-url = 'https://www.adrianmoreno.info'
-sameAs = ['https://github.com/zetxek']
+name = 'Geoffrey Pruvost'
+url = 'https://geoffreypruvost.fr'
+sameAs = ['https://github.com/geoffreyp', 'https://linkedin.com/in/geoffreypruvost', 'https://scholar.google.fr/citations?user=7fn66M0AAAAJ']
 sections = [
   "showcase",
   "about",
@@ -160,7 +164,7 @@ languageCode = 'en'
 languageDirection = 'ltr'
 languageName = 'English'
 title = ''
-weight = 0
+weight = 2
 
 [languages.en.menus]
 [[languages.en.menus.header]]
@@ -223,7 +227,7 @@ weight = 4
 
 
 [languages.es]
-disabled = false
+disabled = true
 languageCode = 'es'
 languageDirection = 'ltr'
 languageName = 'Español'
@@ -295,68 +299,45 @@ languageCode = 'fr'
 languageDirection = 'ltr'
 languageName = 'Français'
 title = ''
-weight = 0
+weight = 1
 
 [languages.fr.menus]
 [[languages.fr.menus.header]]
-name = "ACCUEIL"
-URL = "/fr/"
+name = "Accueil"
+URL = "/"
 weight = 1
 [[languages.fr.menus.header]]
-name = 'About'
-URL = '#about'
+name = 'CV'
+URL = '/cv'
 weight = 2
 [[languages.fr.menus.header]]
-name = 'Compétences'
-URL = '/fr/skills'
+name = 'Recherche'
+URL = '/research'
 weight = 3
 [[languages.fr.menus.header]]
-name = 'Portfolio'
-URL = '#client-and-work-section'
+name = 'Enseignement'
+URL = '/teaching'
 weight = 4
-#  [[languages.fr.menus.header]]
-#  name = "Experience"
-#  URL = "#experience"
-#  weight = 4
 
-[[languages.fr.menus.header]]
-name = "Blog"
-URL = "/blog"
-weight = 5
-
-[[languages.fr.menus.header]]
-pre = "email"
-name = "Contact"
-URL = "#contact"
-weight = 6
-
-[[languages.fr.menus.header]]
-pre = "search"
-name = "Recherche"
-URL = "/search"
-weight = 7
 [[languages.fr.menus.footer]]
-name = "ACCUEIL"
-URL = "/fr/"
+name = "Accueil"
+URL = "/"
 weight = 1
-
 [[languages.fr.menus.footer]]
-name = "About"
-URL = "#about"
+name = "CV"
+URL = "/cv"
 weight = 2
-
 [[languages.fr.menus.footer]]
-name = "Portfolio"
-URL = "#client-and-work-section"
+name = "Recherche"
+URL = "/research"
 weight = 3
-
 [[languages.fr.menus.footer]]
 name = "Contact"
 URL = "#contact"
 weight = 4
 
 [languages.ar]
-disabled = false
+disabled = true
 languageCode = 'ar'
 languageDirection = 'rtl'
 languageName = 'العربية'
@@ -413,7 +394,7 @@ URL = "/ar/#تواصل"
 weight = 4
 
 [languages.he]
-disabled = false
+disabled = true
 languageCode = 'he'
 languageDirection = 'rtl'
 languageName = 'עברית'
@@ -522,9 +503,9 @@ enabled = true  # Set to false to disable the page fade transition effect
 [params.blog]
 layout = "sidebar-right"     # options: default (no sidebar), sidebar, sidebar-right
 sidebarWidth = "25"    # percentage width of the sidebar
-narrowContent = true   # if true, limits content width to 720px for better readability
-showCategories = true
-showRecentPosts = true
+narrowContent = false   # if true, limits content width to 720px for better readability
+showCategories = false
+showRecentPosts = false
 recentPostCount = 5
 listStyle = "summary"  # options: simple, summary
 listLayout = "default" # options: default, cards

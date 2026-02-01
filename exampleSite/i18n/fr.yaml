@@ -14,9 +14,9 @@
 - id: "logo_alt"
   translation: "Adritian logo"
 - id: "logo_text1"
-  translation: "Cool"
+  translation: "Geoffrey "
 - id: "logo_text2"
-  translation: "Nom"
+  translation: "Pruvost"
   
 ## General
 - id: "skipToMainContent"
@@ -26,7 +26,7 @@
 
 ## Footer
 - id: "footer_notice"
-  translation: "© Adritian. Thème gratuit Hugo par Adrián Moreno Peña."
+  translation: "© Thème Hugo par Adrián Moreno Peña."
 - id: "language"
   translation: "Langue"
 - id: "toggle_theme"
